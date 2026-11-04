@@ -5,16 +5,14 @@ import { bootstrap } from './seed.mjs';
 import { XP } from './xp.mjs';
 import { isUuid, fail, clampInt, text } from './core.mjs';
 
-const limitFor = (n) => n;
-
 export function createContent({ store, xp }) {
   async function rawCatalog() {
     await bootstrap(store);
     const [courses, modules, lessons, banks] = await Promise.all([
       store.all('courses', 'id,slug,title,summary,level,order_no', { column: 'order_no', ascending: true }, 30),
-      store.all('modules', 'id,course_id,slug,title,summary,order_no,minutes,offline_ok', { column: 'order_no', ascending: true }, limitFor(120)),
-      store.all('lessons', 'id,module_id,title,order_no,minutes', { column: 'order_no', ascending: true }, limitFor(400)),
-      store.all('banks', 'id,module_id,title,time_limit_seconds,pass_score', { column: 'created_at', ascending: true }, limitFor(120)),
+      store.all('modules', 'id,course_id,slug,title,summary,order_no,minutes,offline_ok', { column: 'order_no', ascending: true }, 120),
+      store.all('lessons', 'id,module_id,title,order_no,minutes', { column: 'order_no', ascending: true }, 400),
+      store.all('banks', 'id,module_id,title,time_limit_seconds,pass_score', { column: 'created_at', ascending: true }, 120),
     ]);
     return { courses, modules, lessons, banks };
   }

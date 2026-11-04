@@ -50,6 +50,10 @@ export const json = (value, status = 200, headers = {}) =>
 export const errorJson = (code, status, requestId) =>
   json({ error: code, ok: false, request_id: requestId }, status);
 
+/** Ampul galat yang sama dipakai index.ts, dev server, dan asap uji. Galat lain dikirim `null` supaya penangan host yang memroses. */
+export const typedResponse = (error, requestId) =>
+  typeof error?.code === 'string' && Number.isInteger(error?.status) ? errorJson(error.code, error.status, requestId) : null;
+
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 export const isUuid = (value) => typeof value === 'string' && UUID_RE.test(value);
 

@@ -77,6 +77,12 @@ export function createAds({ store, storage }) {
       await store.patch('ad_slots', row, [['id', existing.id]], 'id');
       return { id: existing.id, ...row };
     }
+    // Kunci slot tetap empat nama yang sama, jadi penyimpanan tanpa id memperbarui baris yang ada.
+    const byKey = await store.one('ad_slots', 'id', [['slot_key', body.slot_key]]);
+    if (byKey) {
+      await store.patch('ad_slots', row, [['id', byKey.id]], 'id');
+      return { id: byKey.id, ...row };
+    }
     const id = crypto.randomUUID();
     await store.insert('ad_slots', { id, ...row, created_at: new Date().toISOString() });
     return { id, ...row };

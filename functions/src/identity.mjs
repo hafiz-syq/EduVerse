@@ -23,7 +23,12 @@ function projection(row, state) {
 }
 
 export function createIdentity({ store, env, userFromContext }) {
-  const secret = env.APP_SESSION_SECRET || 'dev-only-insecure-secret';
+  // Tanpa Secret dari Site Settings kita menolak melayani sesi, alih-alih menandatangani
+  // cookie dengan konstanta yang tertulis di kode sumber dan bisa dipalsukan siapa saja.
+  const secret = env.APP_SESSION_SECRET;
+  if (!secret || secret.length < 16) {
+    throw new AppError('session_secret_missing', 500, 'APP_SESSION_SECRET wajib diisi, minimal 16 karakter.');
+  }
 
   async function attachState(user) {
     const state = await store.one('user_state', 'user_id,xp,rank_key,streak,longest_streak,version', [['user_id', user.id]]);

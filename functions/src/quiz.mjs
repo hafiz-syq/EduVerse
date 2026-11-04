@@ -7,6 +7,10 @@ import { XP } from './xp.mjs';
 const GRACE_MS = 30_000;
 const MAX_QUESTIONS = 40;
 
+/** Soal dibekukan bersama attempt supaya nilai dihitung dari soal yang dilihat peserta. */
+export const toSnapshot = (questions) =>
+  questions.map((q) => ({ id: q.id, prompt: q.prompt, options: q.options, answer: q.answer, explanation: q.explanation ?? '' }));
+
 export function createQuiz({ store, xp, identity }) {
   async function myAttempts(userId, bankId, limit = 50) {
     const all = await store.list('attempts', 'id,bank_id,attempt_no,status,score,correct,total,started_at,finished_at,offline', [['user_id', userId]], { column: 'started_at', ascending: false }, limit);
@@ -39,6 +43,7 @@ export function createQuiz({ store, xp, identity }) {
       total: questions.length,
       score: 0,
       offline: false,
+      snapshot: toSnapshot(questions),
       created_at: new Date(now).toISOString(),
     };
     await store.insert('attempts', attempt);
@@ -51,7 +56,7 @@ export function createQuiz({ store, xp, identity }) {
   }
 
   async function loadOwned(user, attemptId) {
-    const attempt = await store.one('attempts', 'id,user_id,bank_id,status,deadline_at,attempt_no,tournament_id', [['id', attemptId]]);
+    const attempt = await store.one('attempts', 'id,user_id,bank_id,status,deadline_at,attempt_no,tournament_id,snapshot', [['id', attemptId]]);
     if (!attempt || attempt.user_id !== user.id) fail('not_found', 404);
     return attempt;
   }
@@ -60,6 +65,7 @@ export function createQuiz({ store, xp, identity }) {
     if (!isUuid(body?.attempt_id) || !isUuid(body?.question_id) || !clampInt(body?.chosen, 0, 9)) fail('invalid_input', 400);
     const attempt = await loadOwned(user, body.attempt_id);
     if (attempt.status !== 'running') fail('attempt_closed', 409);
+    if (!attempt.snapshot.some((q) => q.id === body.question_id)) fail('invalid_input', 400);
     const deadline = new Date(attempt.deadline_at).getTime();
     const late = Date.now() > deadline + GRACE_MS;
     const existing = await store.one('answers', 'attempt_id,question_id,chosen', [['attempt_id', attempt.id], ['question_id', body.question_id]]);
@@ -77,27 +83,19 @@ export function createQuiz({ store, xp, identity }) {
     const attempt = await loadOwned(user, body?.attempt_id);
     if (attempt.status !== 'running') {
       const saved = await store.one('attempts', 'id,status,score,correct,total,offline', [['id', attempt.id]]);
-      const review = await review(user, attempt.bank_id, attempt.id);
-      return { attempt: saved, review, replayed: true };
+      return { attempt: saved, review: await reviewFor(attempt), replayed: true };
     }
-    const questions = await bankQuestions(attempt.bank_id);
     const queued = Array.isArray(body?.answers) ? body.answers.slice(0, MAX_QUESTIONS) : [];
     for (const item of queued) {
       if (!isUuid(item?.question_id) || !clampInt(item?.chosen, 0, 9)) continue;
+      if (!attempt.snapshot.some((q) => q.id === item.question_id)) continue;
       const existing = await store.one('answers', 'attempt_id,question_id', [['attempt_id', attempt.id], ['question_id', item.question_id]]);
       if (existing) await store.patch('answers', { chosen: item.chosen, answered_at: new Date().toISOString() }, [['attempt_id', attempt.id], ['question_id', item.question_id]], 'attempt_id');
       else await store.insert('answers', { attempt_id: attempt.id, question_id: item.question_id, chosen: item.chosen, answered_at: new Date().toISOString() });
     }
-    const stored = await store.list('answers', 'question_id,chosen', [['attempt_id', attempt.id]], undefined, MAX_QUESTIONS);
-    const chosenByQuestion = new Map(stored.map((a) => [a.question_id, a.chosen]));
-    let correct = 0;
-    const review = questions.map((q) => {
-      const chosen = chosenByQuestion.get(q.id);
-      const right = chosen === q.answer;
-      if (right) correct += 1;
-      return { id: q.id, prompt: q.prompt, options: q.options, chosen: chosen ?? null, answer: q.answer, correct: right, explanation: q.explanation };
-    });
-    const total = questions.length || 1;
+    const review = await reviewFor(attempt);
+    const correct = review.reduce((sum, row) => sum + (row.correct ? 1 : 0), 0);
+    const total = attempt.snapshot.length || 1;
     const score = Math.round((correct / total) * 100);
     const bank = await store.one('banks', 'id,pass_score,title,module_id', [['id', attempt.bank_id]]);
     const now = Date.now();
@@ -134,11 +132,14 @@ export function createQuiz({ store, xp, identity }) {
     };
   }
 
-  async function review(user, bankId, attemptId) {
-    const answers = await store.list('answers', 'question_id,chosen', [['attempt_id', attemptId]], undefined, MAX_QUESTIONS);
-    const questions = await bankQuestions(bankId);
+  async function reviewFor(attempt) {
+    const answers = await store.list('answers', 'question_id,chosen', [['attempt_id', attempt.id]], undefined, MAX_QUESTIONS);
     const chosen = new Map(answers.map((a) => [a.question_id, a.chosen]));
-    return questions.map((q) => ({ id: q.id, prompt: q.prompt, options: q.options, chosen: chosen.get(q.id) ?? null, answer: q.answer, correct: chosen.get(q.id) === q.answer, explanation: q.explanation }));
+    return attempt.snapshot.map((q) => ({
+      id: q.id, prompt: q.prompt, options: q.options,
+      chosen: chosen.get(q.id) ?? null, answer: q.answer,
+      correct: chosen.get(q.id) === q.answer, explanation: q.explanation,
+    }));
   }
 
   async function history(user, bankId) {

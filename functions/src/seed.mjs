@@ -47,9 +47,9 @@ const LESSONS = [
     { t: 'tip', x: 'Baris <!doctype html> memberi tahu browser untuk memakai mode standar. Tanpanya, tampilan bisa berubah sendiri.' },
   ], 8],
   ['html-pertama', 'Semantik: memilih tag yang benar', [
-    { t: 'p', x: 'Tag semantik describing makna, bukan tampilan. <nav> untuk navigasi, <main> untuk isi utama, <article> untuk konten mandiri, <section> untuk bagian bertopik.' },
+    { t: 'p', x: 'Tag semantik yang menggambarkan makna, bukan tampilan. <nav> untuk navigasi, <main> untuk isi utama, <article> untuk konten mandiri, <section> untuk bagian bertopik.' },
     { t: 'list', items: ['<header> dan <footer>: pembuka dan penutup halaman atau artikel', '<article>: konten yang masih masuk akal jika dipindah ke halaman lain', '<section>: bagian dalam satu topik, biasanya punya judul sendiri'] },
-    { t: 'p', x: 'Alasan ini penting: pembaca layar, hasil pencarian Google, dan EdiVerse mode luring semuanya bergantung pada struktur, bukan warna.' },
+    { t: 'p', x: 'Alasan ini penting: pembaca layar, hasil pencarian Google, dan mode luring EduVerse semuanya bergantung pada struktur, bukan warna.' },
   ], 10],
   ['html-pertama', 'Tautan, gambar, dan formulir', [
     { t: 'p', x: 'Tiga elemen yang hampir selalu ada: tautan (<a href>), gambar (<img src alt>), dan formulir (<form> dengan <input>).' },
@@ -86,7 +86,7 @@ const LESSONS = [
     { t: 'p', x: 'Pakai const untuk nilai yang tidak diganti, let untuk yang berubah. var adalah warisan lama dan sebaiknya ditinggalkan.' },
     { t: 'code', lang: 'js', x: 'const nama = "Rafi";\nlet skor = 0;\nskor += 10;\n\n// tipe dasar: string, number, boolean, null, undefined, bigint, symbol' },
   ], 8],
-  ['js-dasar', 'Operator dan pengecohan', [
+  ['js-dasar', 'Operator dan coercion tipe data', [
     { t: 'p', x: 'Gunakan === dan !==. Perbandingan longgar melakukan konversi tipe yang mengejutkan: 0 == "" bernilai true.' },
     { t: 'code', lang: 'js', x: '0 == "";   // true, hindari\n0 === "";  // false\nnull ?? "cadangan"; // null hanya untuk kosongkan nilai' },
   ], 9],
@@ -119,7 +119,7 @@ const LESSONS = [
     { t: 'tip', x: 'Penunjuk indeks (this.depan) membuat dequeue O(1) tanpa menggeser isi array.' },
   ], 12],
   ['stack-queue', 'Memilih struktur saat wawancara', [
-    { t: 'list', items: ['Butuh "yang terbaru" dulu: stack', 'Butuh "yang paling lama menunggu" dulu: queue', 'Butuh dua arah: deque (双端) atau linked list', 'Butuh pencarian cepat: hash map, bukan array'] },
+    { t: 'list', items: ['Butuh "yang terbaru" dulu: stack', 'Butuh "yang paling lama menunggu" dulu: queue', 'Butuh dua arah: deque (antrean dua arah) atau linked list', 'Butuh pencarian cepat: hash map, bukan array'] },
     { t: 'p', x: 'Soal klasik seperti "valid parentheses" hampir selalu diselesaikan dengan stack, dan "hot reload job order" dengan queue.' },
   ], 8],
 ];
@@ -160,7 +160,7 @@ const BANKS = [
     pass_score: 70,
     questions: [
       ['Struktur mana yang cocok untuk fitur undo?', ['Queue', 'Stack', 'Hash map', 'Heap'], 1, 'Undo mengembalikan tindakan terakhir: last in, first out.'],
-      ['Operasi dequeue pada array biasa costing O(n) karena…', ['memori penuh', 'indeks seluruh elemen bergeser', 'array tidak terurut', 'butuh recursion'], 1, 'Menggeser n elemen adalah pekerjaan linear.'],
+      ['Operasi dequeue pada array biasa berkompleksitas O(n) karena…', ['memori penuh', 'indeks seluruh elemen bergeser', 'array tidak terurut', 'butuh recursion'], 1, 'Menggeser n elemen adalah pekerjaan linear.'],
       ['Untuk urutan layanan adil (yang dulu, dilayani dulu) pakai…', ['Stack', 'Queue', 'Tree', 'Set'], 1, 'Queue menjaga first in, first out.'],
       ['Kompleksitas lookup kunci pada hash map rata-rata…', ['O(n)', 'O(log n)', 'O(1)', 'O(n log n)'], 2, 'Hash map menghitung indeks dari kunci, jadi rata-rata konstan.'],
       ['Soal tanda kurung berpasangan paling alami diselesaikan dengan…', ['queue', 'stack', 'sort', 'binary search'], 1, 'Kurung terakhir yang terbuka adalah yang pertama harus ditutup.'],
@@ -173,6 +173,7 @@ const AD_SLOTS = [
   { slot_key: 'top-banner', kind: 'banner', title: 'Ruang sponsor Anda', sponsor: 'Iklan', target_url: '', priority: 1 },
   { slot_key: 'sidebar', kind: 'card', title: 'Tawaran untuk pembelajar', sponsor: 'Iklan', target_url: '', priority: 2 },
   { slot_key: 'in-feed', kind: 'native', title: 'Dukungan EduVerse', sponsor: 'Disponsori', target_url: '', priority: 3 },
+  { slot_key: 'module-footer', kind: 'banner', title: 'Modul berikutnya', sponsor: 'Iklan', target_url: '', priority: 4 },
 ];
 
 function now() {

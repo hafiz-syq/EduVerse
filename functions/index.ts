@@ -1,5 +1,6 @@
 import { createDatabaseClient, createSiteContext, errorResponse, requireUser } from './_qoder/backend.mjs';
 import { createStorageClient } from './_qoder/storage.mjs';
+import { typedResponse } from './src/core.mjs';
 import { application } from './src/application.mjs';
 
 const env = (name) => {
@@ -34,12 +35,6 @@ Deno.serve(async (request) => {
     context = createSiteContext(request);
     return await handle(context);
   } catch (error) {
-    if (typeof error?.code === 'string' && Number.isInteger(error?.status)) {
-      return Response.json({ error: error.code, ok: false, request_id: context?.requestId }, {
-        status: error.status,
-        headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' },
-      });
-    }
-    return errorResponse(error, context?.requestId);
+    return typedResponse(error, context?.requestId) ?? errorResponse(error, context?.requestId);
   }
 });

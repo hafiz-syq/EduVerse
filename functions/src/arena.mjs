@@ -4,6 +4,7 @@
 
 import { fail, isUuid, isoWeekKey, rateLimit } from './core.mjs';
 import { XP } from './xp.mjs';
+import { toSnapshot } from './quiz.mjs';
 
 const MAX_ENTRIES = 200;
 
@@ -50,7 +51,7 @@ export function createArena({ store, xp, identity }) {
     const pool = [];
     for (const bankId of tournament.bank_ids ?? []) {
       if (!isUuid(bankId)) continue;
-      const rows = await store.list('questions', 'id,bank_id,prompt,options,answer,order_no', [['bank_id', bankId]], { column: 'order_no', ascending: true }, 40);
+      const rows = await store.list('questions', 'id,bank_id,prompt,options,answer,explanation,order_no', [['bank_id', bankId]], { column: 'order_no', ascending: true }, 40);
       pool.push(...rows);
     }
     return shuffled(pool, tournament.seed || tournament.key).slice(0, tournament.question_count);
@@ -73,21 +74,24 @@ export function createArena({ store, xp, identity }) {
     if (!isUuid(body?.tournament_id)) fail('invalid_input', 400);
     const tournament = await store.one('tournaments', 'id,key,title,starts_at,ends_at,duration_seconds,question_count,bank_ids,seed', [['id', body.tournament_id]]);
     if (!tournament) fail('not_found', 404);
-    if (statusOf(tournament, Date.now()) !== 'live') fail(tournament ? 'window_closed' : 'not_found', 409);
+    if (statusOf(tournament, Date.now()) !== 'live') fail('window_closed', 409);
     const limit = await rateLimit(store, { action: 'arena', principal: user.id, limit: 3, windowSeconds: 86400 });
     if (!limit.allowed) fail('rate_limited', 429);
     const mine = await store.list('attempts', 'id', [['user_id', user.id], ['tournament_id', tournament.id]], undefined, 10);
     if (mine.length >= 3) fail('entry_limit', 409);
     const questions = await tournamentQuestions(tournament);
     if (!questions.length) fail('empty_bank', 409);
+    const bankId = questions[0].bank_id;
+    // attempt_no unik per (user, bank), jadi nomor dihitung dari semua attempt bank itu, bukan dari turnamen saja.
+    const sameBank = await store.list('attempts', 'attempt_no', [['user_id', user.id], ['bank_id', bankId]], undefined, 200);
     const now = Date.now();
     const hardEnd = Math.min(now + tournament.duration_seconds * 1000, new Date(tournament.ends_at).getTime());
     const attempt = {
       id: crypto.randomUUID(),
       user_id: user.id,
-      bank_id: questions[0].bank_id,
+      bank_id: bankId,
       tournament_id: tournament.id,
-      attempt_no: mine.length + 1,
+      attempt_no: sameBank.reduce((max, row) => Math.max(max, row.attempt_no ?? 0), 0) + 1,
       status: 'running',
       started_at: new Date(now).toISOString(),
       deadline_at: new Date(hardEnd).toISOString(),
@@ -95,6 +99,7 @@ export function createArena({ store, xp, identity }) {
       total: questions.length,
       score: 0,
       offline: false,
+      snapshot: toSnapshot(questions),
       created_at: new Date(now).toISOString(),
     };
     await store.insert('attempts', attempt);
@@ -181,7 +186,7 @@ export function createArena({ store, xp, identity }) {
     for (const [index, entry] of ranked.slice(0, 30).entries()) {
       const user = await store.one('users', 'id,name,picture', [['id', entry.user_id]]);
       const state = await store.one('user_state', 'xp,rank_key', [['user_id', entry.user_id]]);
-      rowsOut.push({ place: index + 1, user_id: entry.user_id, name: user?.name ?? entry.display_name ?? 'Peserta', picture: user?.picture ?? '', best_score: entry.best_score, best_duration_ms: entry.best_duration_ms, xp: state?.xp ?? 0, rank_key: state?.rank_key ?? 'pemula', me: Boolean(user && user && entry.user_id === user?.id) });
+      rowsOut.push({ place: index + 1, user_id: entry.user_id, name: user?.name ?? entry.display_name ?? 'Peserta', picture: user?.picture ?? '', best_score: entry.best_score, best_duration_ms: entry.best_duration_ms, xp: state?.xp ?? 0, rank_key: state?.rank_key ?? 'pemula', me: Boolean(user && entry.user_id === user.id) });
     }
     return { week, tournaments: inWeek, entries: rowsOut, my_place: user ? rowsOut.findIndex((r) => r.user_id === user.id) + 1 || null : null };
   }
