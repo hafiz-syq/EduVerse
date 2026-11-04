@@ -11,6 +11,7 @@ import { createQuiz } from './quiz.mjs';
 import { createSocial } from './social.mjs';
 import { createArena } from './arena.mjs';
 import { createAds } from './ads.mjs';
+import { createOAuth } from './oauth.mjs';
 import { bootstrap } from './seed.mjs';
 
 const strip = (value, max = 4000) => (typeof value === 'string' ? value.slice(0, max) : '');
@@ -24,6 +25,7 @@ export function application({ db, storage, env = {}, contextUser }) {
   const social = createSocial({ store, xp, identity });
   const arena = createArena({ store, xp, identity });
   const ads = createAds({ store, storage });
+  const oauth = createOAuth({ env, identity });
 
   let seeding = null;
   function ensureSeeded() {
@@ -37,8 +39,8 @@ export function application({ db, storage, env = {}, contextUser }) {
   }
 
   const auth = {
-    google: Boolean(env.APP_GOOGLE_CLIENT_ID),
-    github: Boolean(env.APP_GITHUB_CLIENT_ID),
+    google: Boolean(env.APP_GOOGLE_CLIENT_ID && env.APP_GOOGLE_CLIENT_SECRET),
+    github: Boolean(env.APP_GITHUB_CLIENT_ID && env.APP_GITHUB_CLIENT_SECRET),
     platform: Boolean(contextUser),
   };
 
@@ -172,6 +174,8 @@ export function application({ db, storage, env = {}, contextUser }) {
       const cookie = await identity.endSession(_c.request);
       return json({ ok: true, signed_out: user.name }, 200, { 'set-cookie': cookie });
     } },
+    { method: 'GET', path: /^\/api\/auth\/start$/, auth: false, run: (c) => oauth.start(c.query.get('provider') || 'google', c.request) },
+    { method: 'GET', path: /^\/api\/auth\/callback$/, auth: false, run: (c) => oauth.finish(c.query.get('provider') || 'google', c.request, c.query) },
 
     { method: 'GET', path: /^\/api\/home$/, auth: false, run: (_c, user) => content.home(user) },
     { method: 'GET', path: /^\/api\/catalog$/, auth: false, run: (_c, user) => content.catalog(user) },

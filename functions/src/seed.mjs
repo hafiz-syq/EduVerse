@@ -303,7 +303,7 @@ async function ensureTournaments(store) {
       {
         id: uuid(2000 + offset),
         key,
-        title: `Uji Kompetensi #${starts.getUTCFullYear()}-${key}`,
+        title: `Uji Kompetensi #${key}`,
         starts_at: starts.toISOString(),
         ends_at: ends.toISOString(),
         duration_seconds: 900,

@@ -1,0 +1,18 @@
+{
+  "name": "EduVerse — Belajar Pemrograman Gratis",
+  "short_name": "EduVerse",
+  "description": "Belajar pemrograman gratis: materi terstruktur, kuis berbatas waktu, kolom diskusi, dan Uji Kompetensi berperingkat. Bisa dibaca luring.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FFFFFF",
+  "theme_color": "#1F6FEB",
+  "lang": "id",
+  "icons": [
+    { "src": "/icon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/icon.png", "type": "image/png", "sizes": "1024x1024", "purpose": "any" },
+    { "src": "/icon.png", "type": "image/png", "sizes": "1024x1024", "purpose": "maskable" }
+  ]
+}

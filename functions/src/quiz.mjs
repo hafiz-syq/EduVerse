@@ -115,9 +115,13 @@ export function createQuiz({ store, xp, identity }) {
 
     let granted = 0;
     let promoted = null;
-    if (!late) {
-      const amount = score >= 90 ? XP.quiz_top : status === 'pass' ? XP.quiz_pass : XP.quiz_try;
-      const award = await xp.award(user, score >= 90 ? 'quiz_top' : status === 'pass' ? 'quiz_pass' : 'quiz_try', attempt.id, amount, { bank_id: attempt.bank_id, score });
+    const dijawab = review.filter((row) => row.chosen !== null).length;
+    if (!late && dijawab > 0) {
+      const kind = score >= 90 ? 'quiz_top' : status === 'pass' ? 'quiz_pass' : 'quiz_try';
+      // Bonus "coba" dikunci per bank, bukan per percobaan, supaya XP tidak bisa ditambang
+      // dengan mengirim kosong berulang kali.
+      const refId = kind === 'quiz_try' ? `${user.id}:${attempt.bank_id}` : attempt.id;
+      const award = await xp.award(user, kind, refId, XP[kind], { bank_id: attempt.bank_id, score });
       granted = award.granted;
       promoted = award.rank;
       if (status === 'pass') await xp.award(user, 'quiz_first_pass', `${user.id}:${attempt.bank_id}`, 40, { bank_id: attempt.bank_id });

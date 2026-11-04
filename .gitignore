@@ -8,3 +8,5 @@ dist/
 .qoder-sites/
 .qoder-sites.json
 .dev/
+*.log
+vibe_images/

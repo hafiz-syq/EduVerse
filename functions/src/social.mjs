@@ -86,9 +86,9 @@ export function createSocial({ store, xp, identity }) {
 
   async function vote(user, body) {
     if (!isUuid(body?.post_id) || ![-1, 0, 1].includes(body?.value)) fail('invalid_input', 400);
-    const thread = await store.one('threads', 'id', [['id', body.thread_id]]);
+    const thread = await store.one('threads', 'id,user_id', [['id', body.thread_id]]);
     if (!thread) fail('not_found', 404);
-    const post = body.post_id === thread.id ? { id: thread.id } : await store.one('posts', 'id,user_id', [['id', body.post_id], ['thread_id', thread.id]]);
+    const post = body.post_id === thread.id ? { id: thread.id, user_id: thread.user_id } : await store.one('posts', 'id,user_id', [['id', body.post_id], ['thread_id', thread.id]]);
     if (!post) fail('not_found', 404);
     if (user.id === post.user_id) fail('self_vote', 409);
     const existing = await store.one('votes', 'post_id,user_id,value', [['thread_id', thread.id], ['post_id', body.post_id], ['user_id', user.id]]);
@@ -116,7 +116,9 @@ export function createSocial({ store, xp, identity }) {
     await store.patch('threads', { accepted_post_id: body.unaccept ? null : post.id, last_activity_at: new Date().toISOString() }, [['id', thread.id]], 'id');
     if (body.unaccept) return { ok: true, awarded: 0 };
     const answerer = await identity.attachState(await store.one('users', 'id,name,email,picture,role', [['id', post.user_id]]));
-    const awarded = answerer ? await xp.award(answerer, 'answer_accepted', post.id, XP.answer_accepted, { thread_id: thread.id }) : { granted: 0 };
+    // Menandai jawaban sendiri tidak membayar XP: hadiah ini untuk membantu orang lain.
+    const bolehXp = Boolean(answerer) && post.user_id !== thread.user_id;
+    const awarded = bolehXp ? await xp.award(answerer, 'answer_accepted', post.id, XP.answer_accepted, { thread_id: thread.id }) : { granted: 0 };
     return { ok: true, awarded: awarded.granted, answerer: answerer?.name ?? '' };
   }
 

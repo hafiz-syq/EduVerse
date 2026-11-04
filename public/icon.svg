@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Logo EduVerse">
+  <rect width="512" height="512" rx="112" fill="#1F6FEB" />
+  <path d="M256 132 428 208v24L256 308 84 232v-24z" fill="#F7C9D9" />
+  <path d="M150 250v72c0 30 48 52 106 52s106-22 106-52v-72l-106 46z" fill="#FFFFFF" opacity="0.92" />
+  <circle cx="428" cy="232" r="16" fill="#F7C9D9" />
+  <path d="M428 248v56" stroke="#F7C9D9" stroke-width="14" stroke-linecap="round" />
+</svg>

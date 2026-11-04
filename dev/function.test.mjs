@@ -13,7 +13,7 @@ const PREFIX = '/functions/v1/app';
 const ACCOUNTS = { 'learner-a': 'Rangga', 'learner-b': 'Wisnu', admin: 'Hafiz' };
 const SCHEMA = parseMigrations(join(import.meta.dirname, '..', 'migrations'));
 
-function createClient() {
+function createClient(envExtra = {}) {
   const db = createFakeDb(SCHEMA);
   const storage = {
     async createSignedUrl(path) { return { signedUrl: `/dev-assets/${path}` }; },
@@ -23,10 +23,11 @@ function createClient() {
     const key = ctx.request.headers.get('x-dev-account');
     return key && ACCOUNTS[key] ? { user_id: `dev-${key}`, name: ACCOUNTS[key], picture: '' } : null;
   };
-  const handle = application({ db, storage, env: { APP_ADMIN_IDENTITIES: 'qoder:dev-admin', APP_SESSION_SECRET: 'test-only-session-secret-0123456789' }, contextUser });
-  const call = async (method, path, { account, body, origin = BASE, mount = PREFIX } = {}) => {
+  const handle = application({ db, storage, env: { APP_ADMIN_IDENTITIES: 'qoder:dev-admin', APP_SESSION_SECRET: 'test-only-session-secret-0123456789', ...envExtra }, contextUser });
+  const call = async (method, path, { account, body, origin = BASE, mount = PREFIX, cookie } = {}) => {
     const headers = { origin };
     if (account) headers['x-dev-account'] = account;
+    if (cookie) headers.cookie = cookie;
     const init = { method, headers };
     if (body !== undefined) {
       headers['content-type'] = 'application/json';
@@ -40,9 +41,9 @@ function createClient() {
       // Ampul galat dipakai lewat core.typedResponse, sama dengan index.ts dan dev server.
       const failure = typedResponse(error, 'test');
       if (!failure) throw error;
-      return { status: failure.status, json: await failure.json() };
+      return { status: failure.status, headers: failure.headers, json: await failure.json() };
     }
-    return { status: response.status, json: await response.json().catch(() => null) };
+    return { status: response.status, headers: response.headers, json: await response.json().catch(() => null) };
   };
   return { call, db };
 }
@@ -159,6 +160,33 @@ test('kuis lewat batas waktu dinilai sebagai latihan tanpa XP', async () => {
   assert.equal(after.json.user.xp, before.json.user.xp, 'XP tidak berubah untuk latihan');
 });
 
+test('bonus coba ditambatkan per bank sehingga XP kuis tidak bisa ditambang', async () => {
+  const { call } = createClient();
+  const catalog = await call('GET', '/api/catalog');
+  const bank = catalog.json[0].modules[0].bank;
+
+  const kosong = await call('POST', '/api/quiz/start', { account: 'learner-a', body: { bank_id: bank.id } });
+  const dinilaiKosong = await call('POST', '/api/quiz/finish', { account: 'learner-a', body: { attempt_id: kosong.json.attempt.id, answers: [] } });
+  assert.equal(dinilaiKosong.json.attempt.score, 0);
+  assert.equal(dinilaiKosong.json.awarded.xp, 0, 'percobaan tanpa satu pun jawaban tidak menambah XP');
+
+  const sesi = await call('GET', '/api/session', { account: 'learner-a' });
+  const xpSetelahKosong = sesi.json.user.xp;
+
+  const salah = await call('POST', '/api/quiz/start', { account: 'learner-a', body: { bank_id: bank.id } });
+  const jawabanSalah = salah.json.questions.map((q) => ({ question_id: q.id, chosen: 9 }));
+  const percobaanPertama = await call('POST', '/api/quiz/finish', { account: 'learner-a', body: { attempt_id: salah.json.attempt.id, answers: jawabanSalah } });
+  assert.equal(percobaanPertama.json.attempt.status, 'fail');
+  assert.equal(percobaanPertama.json.awarded.xp, 15, 'sekali saja bonus ikut serta dibayar');
+
+  const ulangi = await call('POST', '/api/quiz/start', { account: 'learner-a', body: { bank_id: bank.id } });
+  const percobaanKedua = await call('POST', '/api/quiz/finish', { account: 'learner-a', body: { attempt_id: ulangi.json.attempt.id, answers: jawabanSalah } });
+  assert.equal(percobaanKedua.json.awarded.xp, 0, 'percobaan berikutnya pada bank yang sama tidak menambah bonus');
+
+  const akhir = await call('GET', '/api/session', { account: 'learner-a' });
+  assert.equal(akhir.json.user.xp, xpSetelahKosong + 15, 'total XP bertambah tepat satu bonus');
+});
+
 test('diskusi: tanya, jawab, dan terima jawaban terbaik', async () => {
   const { call, db } = createClient();
   const catalog = await call('GET', '/api/catalog');
@@ -205,6 +233,40 @@ test('diskusi: tanya, jawab, dan terima jawaban terbaik', async () => {
   const list = await call('GET', `/api/discussion/${catalog.json[0].modules[0].slug}`);
   assert.equal(list.json.threads[0].answer_count, 1);
   assert.equal(list.json.can_post, false, 'anonym hanya membaca');
+});
+
+test('vote dan tandai kunci tidak bisa dipakai menambang XP sendiri', async () => {
+  const { call, db } = createClient();
+  const catalog = await call('GET', '/api/catalog');
+  const moduleId = db.__dump().modules.find((m) => m.slug === catalog.json[0].modules[0].slug).id;
+
+  const asked = await call('POST', '/api/discussion/thread', {
+    account: 'learner-a',
+    body: { module_id: moduleId, title: 'Bolehkah menjawab pertanyaan sendiri?', body: 'Sayaajukan pertanyaan ini lalu menjawabnya sendiri untuk menguji aturan XP.' },
+  });
+  const threadId = asked.json.thread_id;
+
+  const voteSendiri = await call('POST', '/api/discussion/vote', {
+    account: 'learner-a',
+    body: { thread_id: threadId, post_id: threadId, value: 1 },
+  });
+  assert.equal(voteSendiri.status, 409, 'pemilik topik tidak bisa vote pada pertanyaannya sendiri');
+  assert.equal(voteSendiri.json.error, 'self_vote');
+
+  const answered = await call('POST', '/api/discussion/post', {
+    account: 'learner-a',
+    body: { thread_id: threadId, body: 'Jawaban sendiri: binding tetap, objek yang dirujuk boleh berubah.' },
+  });
+  const sebelum = await call('GET', '/api/session', { account: 'learner-a' });
+
+  const diterima = await call('POST', '/api/discussion/accept', {
+    account: 'learner-a',
+    body: { thread_id: threadId, post_id: answered.json.post_id },
+  });
+  assert.equal(diterima.json.awarded, 0, 'menandai jawaban sendiri tetap boleh, tetapi tanpa XP hadiah');
+
+  const sesudah = await call('GET', '/api/session', { account: 'learner-a' });
+  assert.equal(sesudah.json.user.xp, sebelum.json.user.xp, 'total XP tidak bergerak');
 });
 
 test('Uji Kompetensi: jendela live, soal identik, papan kelas, penyelesaian malas', async () => {
@@ -334,4 +396,34 @@ test('tanpa APP_SESSION_SECRET layanan menolak start, bukan menandatangani sesi 
     () => application({ db, storage: {}, env: { APP_ADMIN_IDENTITIES: '' }, contextUser: () => null }),
     (error) => error.code === 'session_secret_missing' && error.status === 500,
   );
+});
+
+test('masuk Google: tanpa rahasia ditolak, dengan rahasia diarahkan ke penyedia, state wajib cocok', async () => {
+  const kosong = createClient();
+  const tertutup = await kosong.call('GET', '/api/auth/start?provider=google');
+  assert.equal(tertutup.status, 503);
+  assert.equal(tertutup.json.error, 'provider_unavailable');
+  assert.equal((await kosong.call('GET', '/api/health')).json.providers.google, false);
+
+  const siap = createClient({ APP_GOOGLE_CLIENT_ID: 'klien-test', APP_GOOGLE_CLIENT_SECRET: 'rahasia-test' });
+  assert.equal((await siap.call('GET', '/api/health')).json.providers.google, true);
+
+  const alih = await siap.call('GET', '/api/auth/start?provider=google');
+  assert.equal(alih.status, 302);
+  const target = new URL(alih.headers.get('location'));
+  assert.equal(target.origin, 'https://accounts.google.com');
+  assert.equal(target.searchParams.get('client_id'), 'klien-test');
+  assert.equal(target.searchParams.get('redirect_uri'), `${BASE}${PREFIX}/api/auth/callback`);
+  assert.ok(target.searchParams.get('state'), 'state anti-CSRDF dikirim');
+  const cookie = alih.headers.get('set-cookie');
+  assert.match(cookie, /ev_oauth=/);
+  assert.match(cookie, /HttpOnly/);
+
+  const palsu = await siap.call('GET', '/api/auth/callback?provider=google&code=abc&state=palsu', { cookie: 'ev_oauth=asli' });
+  assert.equal(palsu.status, 400);
+  assert.equal(palsu.json.error, 'state_mismatch');
+
+  const tanpaKode = await siap.call('GET', '/api/auth/callback?provider=google&state=asli', { cookie: 'ev_oauth=asli' });
+  assert.equal(tanpaKode.status, 400);
+  assert.equal(tanpaKode.json.error, 'code_missing');
 });
