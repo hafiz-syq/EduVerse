@@ -1,0 +1,231 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../vendor/shadcn-tailwind-4.13.0.css";
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility scrollbar-gutter-stable {
+  scrollbar-gutter: stable;
+}
+
+/* EduVerse — palet 5 (Biru & Pink Soft). Biru untuk aksi/belajar, pink untuk komunitas & peringkat. */
+:root {
+  --background: #ffffff;
+  --foreground: #14243b;
+  --card: #ffffff;
+  --card-foreground: #14243b;
+  --popover: #ffffff;
+  --popover-foreground: #14243b;
+  --primary: #1f6feb;
+  --primary-foreground: #ffffff;
+  --primary-soft: #e3eeff;
+  --secondary: #f6f9fe;
+  --secondary-foreground: #14243b;
+  --muted: #f6f9fe;
+  --muted-foreground: #5c6b7f;
+  --accent: #e3eeff;
+  --accent-foreground: #14243b;
+  --blush: #f0749f;
+  --blush-soft: #fde7ef;
+  --success: #2e9e6b;
+  --warning: #b8791a;
+  --destructive: #d33a5c;
+  --border: #e4eaf2;
+  --input: #d8e3f0;
+  --ring: #1f6feb;
+  --chart-1: #1f6feb;
+  --chart-2: #f0749f;
+  --chart-3: #2e9e6b;
+  --chart-4: #b8791a;
+  --chart-5: #6b5bd2;
+  --radius: 0.75rem;
+  --sidebar: #f6f9fe;
+  --sidebar-foreground: #14243b;
+  --sidebar-primary: #1f6feb;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e3eeff;
+  --sidebar-accent-foreground: #14243b;
+  --sidebar-border: #e4eaf2;
+  --sidebar-ring: #1f6feb;
+  --rank-pemula: #7fa8cf;
+  --rank-madya: #2e9e6b;
+  --rank-maha: #1f6feb;
+  --rank-master: #f0749f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-blush: var(--blush);
+  --color-blush-soft: var(--blush-soft);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-rank-pemula: var(--rank-pemula);
+  --color-rank-madya: var(--rank-madya);
+  --color-rank-maha: var(--rank-maha);
+  --color-rank-master: var(--rank-master);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0e1626;
+    --foreground: #e8eef7;
+    --card: #142033;
+    --card-foreground: #e8eef7;
+    --popover: #142033;
+    --popover-foreground: #e8eef7;
+    --primary: #5ea0f5;
+    --primary-foreground: #0b1220;
+    --primary-soft: #17294a;
+    --secondary: #18263c;
+    --secondary-foreground: #e8eef7;
+    --muted: #18263c;
+    --muted-foreground: #94a6bf;
+    --accent: #1c2c47;
+    --accent-foreground: #e8eef7;
+    --blush: #f289ae;
+    --blush-soft: #2a1a26;
+    --success: #4ed0a0;
+    --warning: #e8b65c;
+    --destructive: #ff7a97;
+    --border: #ffffff1f;
+    --input: #ffffff2b;
+    --ring: #5ea0f5;
+    --chart-1: #5ea0f5;
+    --chart-2: #f289ae;
+    --chart-3: #4ed0a0;
+    --chart-4: #e8b65c;
+    --chart-5: #a08cf0;
+    --sidebar: #142033;
+    --sidebar-foreground: #e8eef7;
+    --sidebar-primary: #5ea0f5;
+    --sidebar-primary-foreground: #0b1220;
+    --sidebar-accent: #1c2c47;
+    --sidebar-accent-foreground: #e8eef7;
+    --sidebar-border: #ffffff1f;
+    --sidebar-ring: #5ea0f5;
+    --rank-pemula: #9dc0e2;
+    --rank-madya: #4ed0a0;
+    --rank-maha: #5ea0f5;
+    --rank-master: #f289ae;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--blush-soft);
+  color: var(--foreground);
+}
+
+pre,
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+.prose-lesson :is(h2, h3) {
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.prose-lesson p {
+  margin-block: 0.85em;
+  line-height: 1.7;
+}
+
+.prose-lesson ul {
+  margin: 0.85em 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.prose-lesson li {
+  margin-block: 0.35em;
+  line-height: 1.65;
+}
+
+.prose-lesson pre {
+  margin-block: 1.1em;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  overflow-x: auto;
+}
+
+.prose-lesson :not(pre) > code {
+  padding: 0.12em 0.38em;
+  border-radius: 0.35em;
+  background: var(--primary-soft);
+  color: var(--foreground);
+}
+
+.pb-safe {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
