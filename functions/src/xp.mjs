@@ -14,6 +14,7 @@ export const XP = {
   tournament_entry: 25,
   tournament_win: 150,
   streak_day: 6,
+  code_pass: 40,
 };
 
 export function createXp({ store }) {

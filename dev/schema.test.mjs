@@ -2,8 +2,9 @@
 // harus memuat setiap tabel/kolom yang benar-benar dipakai Function.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
+import { tmpdir } from 'node:os';
 import { parseMigrations, uniqueGroups } from './schema.mjs';
 import { TABLES } from '../functions/src/core.mjs';
 
@@ -143,8 +144,8 @@ const POSITIONS = {
 test('migrations masuk subset DDL yang didukung AppHub', () => {
   const { problems, files, tables } = parseMigrations(MIGRATIONS);
   assert.deepEqual(problems, [], `ditemukan ${problems.length} masalah DDL: ${problems.join(' | ')}`);
-  assert.equal(files.length, 8);
-  assert.equal(tables.size, 23);
+  assert.equal(files.length, 10);
+  assert.equal(tables.size, 24);
 });
 
 test('setiap tabel yang dipakai Function ada di skema, dan tidak ada tabel yatim', () => {
@@ -179,4 +180,75 @@ test('kolom yang dibaca dan ditulis Function ada dalam skema', () => {
     }
   }
   assert.deepEqual(drift, [], `drift kolom:\n${drift.join('\n')}`);
+});
+
+// Penjaga keputusan integritas (migrasi 0010): setiap FK baru harus punya ON DELETE yang
+// tertulis, kalau tidak Postgres diam-diam memakai RESTRICT dan admins menemukan dirinya
+// tidak bisa menghapus baris tanpa alasan yang tercatat di suatu berkas.
+test('setiap referensi tanpa kunci punya keputusan: FK dengan ON DELETE atau alasan tertulis', () => {
+  const { tables, problems } = parseMigrations(MIGRATIONS);
+  assert.deepEqual(problems, [], `ditemukan ${problems.length} masalah DDL: ${problems.join(' | ')}`);
+
+  const harapan = [
+    ['user_state', 'rank_key', 'ranks', 'rank_key', 'RESTRICT'],
+    ['entries', 'rank_key', 'ranks', 'rank_key', 'RESTRICT'],
+    ['threads', 'accepted_post_id', 'posts', 'id', 'SET NULL'],
+    ['flags', 'resolved_by', 'users', 'id', 'SET NULL'],
+    ['ad_events', 'slot_key', 'ad_slots', 'slot_key', 'RESTRICT'],
+  ];
+  const found = new Map();
+  for (const table of tables.values()) {
+    for (const fk of table.foreignKeys) found.set(`${table.name}.${fk.column}`, fk);
+  }
+  for (const [tabel, kolom, sasaran, kolomSasaran, aksi] of harapan) {
+    const fk = found.get(`${tabel}.${kolom}`);
+    assert.ok(fk, `FK ${tabel}.${kolom} tidak ditemukan`);
+    assert.equal(fk.references.table, sasaran);
+    assert.equal(fk.references.column, kolomSasaran);
+    assert.equal(fk.onDelete, aksi, `ON DELETE ${tabel}.${kolom} berubah dari keputusan yang ditulis`);
+  }
+
+  // Empat butir yang sengaja dibiarkan tanpa FK harus tetap tertulis alasannya di migrasi,
+  // dan votes.post_id tidak boleh diam-diam diberi FK: isinya juga id thread (pertanyaan).
+  const teks = readFileSync(join(MIGRATIONS, '0010_key_integrity.sql'), 'utf8');
+  for (const butir of ['flags.target_kind', 'votes.post_id', 'ad_events.user_id', 'tournaments.bank_ids']) {
+    assert.ok(teks.includes(butir), `${butir} hilang dari catatan 0010_key_integrity.sql`);
+  }
+  assert.deepEqual(tables.get('votes').foreignKeys, [], 'votes.post_id jangan diberi FK — berisi id thread atau id post');
+});
+
+test('penjaga DDL menolak FK tanpa ON DELETE, sasaran tak dikenal, dan SET NULL di kolom NOT NULL', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'ev-ddl-'));
+  try {
+    writeFileSync(
+      join(dir, '0001_a.sql'),
+      [
+        'CREATE TABLE app.induk (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), kunci text NOT NULL UNIQUE, lepas text);',
+        'CREATE TABLE app.anak (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), wajib text NOT NULL, lepasan text, asing text, sasaran text);',
+      ].join('\n'),
+      'utf8',
+    );
+    writeFileSync(
+      join(dir, '0002_b.sql'),
+      [
+        'ALTER TABLE app.anak ADD CONSTRAINT anak_sasaran_fkey FOREIGN KEY (sasaran) REFERENCES app.induk (kunci) ON DELETE RESTRICT;',
+        'ALTER TABLE app.anak ADD CONSTRAINT anak_wajib_fkey FOREIGN KEY (wajib) REFERENCES app.induk (kunci);',
+        'ALTER TABLE app.anak ADD CONSTRAINT anak_setnull_fkey FOREIGN KEY (wajib) REFERENCES app.induk (kunci) ON DELETE SET NULL;',
+        'ALTER TABLE app.anak ADD CONSTRAINT anak_asing_fkey FOREIGN KEY (asing) REFERENCES app.tabel_hantu (kunci) ON DELETE CASCADE;',
+        'ALTER TABLE app.anak ADD CONSTRAINT anak_unik_fkey FOREIGN KEY (lepasan) REFERENCES app.induk (lepas) ON DELETE SET NULL;',
+      ].join('\n'),
+      'utf8',
+    );
+    const { problems } = parseMigrations(dir);
+    const ikut = (teks) => problems.some((p) => p.includes(teks));
+    assert.equal(problems.length, 4, `harus tepat 4 masalah, dapat:\n${problems.join('\n')}`);
+    assert.ok(ikut('FK tanpa ON DELETE eksplisit: anak_wajib_fkey'), problems.join(' | '));
+    assert.ok(ikut('SET NULL pada kolom NOT NULL: anak.wajib'), problems.join(' | '));
+    assert.ok(ikut('references ke tabel tak dikenal: anak.asing'), problems.join(' | '));
+    assert.ok(ikut('sasaran FK harus UNIQUE: induk.lepas'), problems.join(' | '));
+    // Baris pertama (FK sah) tidak boleh ikut dilaporkan.
+    assert.ok(!ikut('anak_sasaran_fkey'), 'FK yang benar ikut ditolak');
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });

@@ -45,7 +45,7 @@ function resolveDefault(raw, column, problems) {
 
 function readTable(name, body, problems, tables) {
   if (tables.has(name)) problems.push(`tabel dibuat dua kali: ${name}`);
-  const table = { name, columns: new Map(), uniques: [], indexes: [] };
+  const table = { name, columns: new Map(), uniques: [], indexes: [], foreignKeys: [] };
   for (const part of splitTop(body)) {
     const group = /^UNIQUE \(([^)]*)\)$/.exec(part);
     if (group) {
@@ -105,6 +105,32 @@ export function parseMigrations(dir) {
           else if (!table.columns.has(column)) problems.push(`kolom index tidak ada: ${simple[3]}.${column}`);
         }
         table.indexes.push({ name: simple[2], columns });
+        continue;
+      }
+      const fk = /^ALTER TABLE app\.([a-z_]+) ADD CONSTRAINT ([a-z0-9_]+) FOREIGN KEY \(([a-z_]+)\) REFERENCES app\.([a-z_]+) \(([a-z_]+)\)( ON DELETE (RESTRICT|CASCADE|SET NULL))?$/.exec(statement);
+      if (fk) {
+        const [, nama, kunci, kolom, targetTabel, targetKolom, , aksi] = fk;
+        const sumber = tables.get(nama);
+        if (!sumber) problems.push(`ALTER ke tabel yang belum dibuat: ${nama}`);
+        else {
+          const kolomSumber = sumber.columns.get(kolom);
+          if (!kolomSumber) problems.push(`kolom FK tidak ada: ${nama}.${kolom}`);
+          if (!aksi) problems.push(`FK tanpa ON DELETE eksplisit: ${kunci}`);
+          else if (aksi === 'SET NULL' && kolomSumber?.notNull) problems.push(`SET NULL pada kolom NOT NULL: ${nama}.${kolom}`);
+          const target = tables.get(targetTabel);
+          if (!target) problems.push(`references ke tabel tak dikenal: ${nama}.${kolom}`);
+          else {
+            const kolomTarget = target.columns.get(targetKolom);
+            if (!kolomTarget) problems.push(`kolom sasaran FK tidak ada: ${targetTabel}.${targetKolom}`);
+            else if (!kolomTarget.pk && !kolomTarget.unique) problems.push(`sasaran FK harus UNIQUE: ${targetTabel}.${targetKolom}`);
+          }
+          sumber.foreignKeys.push({
+            name: kunci,
+            column: kolom,
+            references: { table: targetTabel, column: targetKolom },
+            onDelete: aksi ?? null,
+          });
+        }
         continue;
       }
       problems.push(`pernyataan di luar subset: ${statement.slice(0, 48)}`);

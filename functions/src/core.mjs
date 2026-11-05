@@ -25,6 +25,7 @@ export const TABLES = {
   flags: 'flags',
   limiter: 'limiter',
   downloads: 'downloads',
+  playgroundRuns: 'playground_runs',
 };
 
 export class AppError extends Error {

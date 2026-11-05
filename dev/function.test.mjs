@@ -2,8 +2,10 @@
 // Semua request masuk lewat router yang sama dengan produksi; hanya DB dan storage yang tiruan.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { application } from '../functions/src/application.mjs';
+import { TASK_KEYS } from '../functions/src/playground.mjs';
 import { typedResponse } from '../functions/src/core.mjs';
 import { createFakeDb } from './fake-db.mjs';
 import { parseMigrations } from './schema.mjs';
@@ -105,6 +107,48 @@ test('rute privat menolak anonim, lalu memberi XP saat progres dicatat', async (
   assert.equal(session.json.user.source, 'platform');
   assert.equal(session.json.user.rank_title, 'Pemula');
   assert.ok(session.json.user.xp > 0);
+});
+
+test('lab koding: hasil lulus tercatat sekali dan memberi XP code_pass', async () => {
+  const { call, db } = createClient();
+
+  const anon = await call('POST', '/api/code/run', { body: { task_key: 'sapa', mode: 'js', passed: true, duration_ms: 4200 } });
+  assert.equal(anon.status, 401);
+  assert.equal(anon.json.error, 'login_required');
+
+  const lulus = await call('POST', '/api/code/run', { account: 'learner-a', body: { task_key: 'sapa', mode: 'js', passed: true, duration_ms: 4200 } });
+  assert.equal(lulus.status, 200);
+  assert.equal(lulus.json.granted, 40, 'XP code_pass = 40');
+  assert.equal(lulus.json.attempts, 1);
+
+  const ulang = await call('POST', '/api/code/run', { account: 'learner-a', body: { task_key: 'sapa', mode: 'js', passed: true, duration_ms: 3100 } });
+  assert.equal(ulang.json.granted, 0, 'latihan yang sama tidak memberi XP kedua');
+  assert.equal(ulang.json.attempts, 2, 'pengulangan tetap dihitung');
+
+  const asing = await call('POST', '/api/code/run', { account: 'learner-a', body: { task_key: 'sihir', mode: 'js', passed: true } });
+  assert.equal(asing.status, 400);
+  assert.equal(asing.json.error, 'invalid_input', 'task_key di luar daftar latihan ditolak');
+
+  const mode = await call('POST', '/api/code/run', { account: 'learner-a', body: { task_key: 'sapa', mode: 'kosakata', passed: true } });
+  assert.equal(mode.status, 400);
+
+  const runs = db.__dump().playground_runs;
+  assert.equal(runs.length, 1, 'satu baris per (user, task_key)');
+  assert.equal(runs[0].attempts, 2);
+  assert.equal(runs[0].duration_ms, 3100, 'durasi terakhir yang disimpan');
+  const hadiah = db.__dump().xp_events.filter((e) => e.kind === 'code_pass');
+  assert.equal(hadiah.length, 1, 'xp_events hanya menampung code_pass pertama');
+
+  const profile = await call('GET', '/api/profile', { account: 'learner-a' });
+  assert.equal(profile.json.lab.passed, 1);
+  assert.equal(profile.json.lab.total, TASK_KEYS.size);
+});
+
+test('daftar latihan di server sama persis dengan daftar di klien', () => {
+  const sumber = readFileSync(join(import.meta.dirname, '..', 'lib', 'playground', 'tasks.ts'), 'utf8');
+  const idKlien = [...sumber.matchAll(/^\s+id: "([a-z0-9-]+)",$/gm)].map((match) => match[1]);
+  assert.ok(idKlien.length >= 8, `regex penangkap id hanya ketemu ${idKlien.length} latihan`);
+  assert.deepEqual([...TASK_KEYS].sort(), [...new Set(idKlien)].sort());
 });
 
 test('kuis: soal dikirim tanpa kunci, nilai dihitung server', async () => {

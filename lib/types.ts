@@ -331,6 +331,19 @@ export interface ProfilePayload {
   activity: { threads: number; answers: number; accepted: number };
   attempts: AttemptRow[];
   downloads: { module_id: string; pack_hash: string; bytes: number; created_at: string }[];
+  lab: {
+    total: number;
+    passed: number;
+    attempts: number;
+    recent: {
+      task_key: string;
+      mode: string;
+      passed: boolean;
+      duration_ms: number | null;
+      attempts: number;
+      occurred_at: string;
+    }[];
+  };
   badges: string[];
   course_progress: { slug: string; title: string; percent: number }[];
 }

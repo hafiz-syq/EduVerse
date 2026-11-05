@@ -11,6 +11,7 @@ import { createQuiz } from './quiz.mjs';
 import { createSocial } from './social.mjs';
 import { createArena } from './arena.mjs';
 import { createAds } from './ads.mjs';
+import { createPlayground } from './playground.mjs';
 import { createOAuth } from './oauth.mjs';
 import { bootstrap } from './seed.mjs';
 
@@ -25,6 +26,7 @@ export function application({ db, storage, env = {}, contextUser }) {
   const social = createSocial({ store, xp, identity });
   const arena = createArena({ store, xp, identity });
   const ads = createAds({ store, storage });
+  const code = createPlayground({ store, xp });
   const oauth = createOAuth({ env, identity });
 
   let seeding = null;
@@ -148,6 +150,7 @@ export function application({ db, storage, env = {}, contextUser }) {
     const catalog = await content.catalog(user);
     const downloads = await store.list('downloads', 'module_id,pack_hash,bytes,created_at', [['user_id', user.id]], { column: 'created_at', ascending: false }, 40);
     const accepted = posts.filter((p) => p.accepted).length;
+    const lab = await code.summary(user);
     const badgeCount = [
       attempts.some((a) => a.score >= 90) && 'Jawap Kilat',
       accepted >= 1 && 'Penolong Pertama',
@@ -162,6 +165,7 @@ export function application({ db, storage, env = {}, contextUser }) {
       activity: { threads: threads.length, answers: posts.length, accepted },
       attempts: attempts.slice(0, 20),
       downloads: downloads.filter((d) => d.module_id),
+      lab,
       badges: badgeCount,
       course_progress: catalog.map((c) => ({ slug: c.slug, title: c.title, percent: c.percent })),
     };
@@ -182,6 +186,7 @@ export function application({ db, storage, env = {}, contextUser }) {
     { method: 'GET', path: /^\/api\/module\/([a-z0-9-]{3,60})$/, auth: false, run: (c, user, m) => content.moduleDetail(m[1], user) },
     { method: 'GET', path: /^\/api\/pack\/([a-z0-9-]{3,60})$/, auth: true, run: (c, user, m) => content.pack(m[1], user) },
     { method: 'POST', path: /^\/api\/progress$/, auth: true, run: (c, user) => content.markProgress(user, c.body) },
+    { method: 'POST', path: /^\/api\/code\/run$/, auth: true, run: (c, user) => code.recordRun(user, c.body) },
     { method: 'GET', path: /^\/api\/ranks$/, auth: false, run: () => ({ ranks: xp.ladder() }) },
     { method: 'GET', path: /^\/api\/profile$/, auth: true, run: (_c, user) => handleProfile(user) },
 

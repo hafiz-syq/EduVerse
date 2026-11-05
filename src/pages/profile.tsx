@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
-import { Award, Download, Flame, MessagesSquare, Trophy } from "lucide-react";
+import { Award, Download, Flame, MessagesSquare, Terminal, Trophy } from "lucide-react";
 
 const JENIS_XP: Record<string, string> = {
   lesson_done: "Pelajaran selesai",
@@ -26,6 +26,7 @@ const JENIS_XP: Record<string, string> = {
   tournament_win: "Menang tantangan",
   tournament_place: "Peringkat tantangan",
   streak_day: "Seri harian",
+  code_pass: "Latihan koding lulus",
 };
 
 const KUNCI_LABEL: Record<string, string> = {
@@ -90,11 +91,12 @@ export function ProfilePage() {
                 </CardContent>
               </Card>
 
-              <div className="grid gap-3 sm:grid-cols-3">
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {[
                   { label: "Seri belajar", nilai: `${isi.user.streak} hari`, icon: Flame, catatan: `terpanjang ${isi.user.longest_streak} hari` },
                   { label: "Lencana", nilai: `${isi.badges.length}`, icon: Award, catatan: "capaian khusus" },
                   { label: "Paket luring", nilai: `${packs.length}`, icon: Download, catatan: "tersimpan di perangkat" },
+                  { label: "Latihan koding", nilai: `${isi.lab.passed}/${isi.lab.total}`, icon: Terminal, catatan: `${isi.lab.attempts} kali diselesaikan` },
                 ].map((kiri) => (
                   <Card key={kiri.label}>
                     <CardContent className="flex flex-col gap-1 py-4">
