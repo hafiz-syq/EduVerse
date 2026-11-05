@@ -5,6 +5,7 @@ import { RankBadge } from "./rank-badge";
 import { Button } from "@/components/ui/button";
 import {
   BookOpen,
+  Braces,
   GraduationCap,
   House,
   MessagesSquare,
@@ -17,6 +18,7 @@ const NAV = [
   { to: "/", label: "Beranda", icon: House },
   { to: "/materi", label: "Materi", icon: BookOpen },
   { to: "/kuis", label: "Kuis", icon: Timer },
+  { to: "/koding", label: "Koding", icon: Braces },
   { to: "/diskusi", label: "Diskusi", icon: MessagesSquare },
   { to: "/arena", label: "Arena", icon: Trophy },
   { to: "/profil", label: "Profil", icon: GraduationCap },
@@ -126,12 +128,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 aria-current={isAktif ? "page" : undefined}
                 className={
                   isAktif
-                    ? "flex min-h-11 flex-1 flex-col items-center gap-0.5 rounded-lg text-xs font-semibold text-primary"
-                    : "flex min-h-11 flex-1 flex-col items-center gap-0.5 rounded-lg text-xs text-muted-foreground"
+                    ? "flex min-h-11 min-w-0 flex-1 flex-col items-center gap-0.5 rounded-lg text-[11px] font-semibold text-primary"
+                    : "flex min-h-11 min-w-0 flex-1 flex-col items-center gap-0.5 rounded-lg text-[11px] text-muted-foreground"
                 }
               >
                 <Icon className="size-5" />
-                {item.label}
+                <span className="max-w-full truncate">{item.label}</span>
               </Link>
             );
           })}

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { AppProvider, useApp } from "@/lib/app-context";
 import { RouterProvider, matchRoute, useRouter } from "@/lib/router";
 import { flushProgress } from "@/lib/progress-queue";
@@ -16,11 +16,16 @@ import { ProfilePage } from "./pages/profile";
 import { SignInPage } from "./pages/signin";
 import { AdminPage } from "./pages/admin";
 
+// Lab koding membawa CodeMirror + Anime.js; dipisah jadi chunk sendiri agar pelajar
+// yang tidak membuka /koding tidak menanggung unduhannya (hemat bandwidth, tetap luring).
+const KodingPage = lazy(() => import("./pages/koding"));
+
 const RUTE: { pattern: string; halaman: (params: Record<string, string>) => React.ReactNode }[] = [
   { pattern: "/", halaman: () => <HomePage /> },
   { pattern: "/materi", halaman: () => <CatalogPage /> },
   { pattern: "/modul/:slug", halaman: (p) => <ModuleReaderPage slug={p.slug} /> },
   { pattern: "/kuis", halaman: () => <QuizPage /> },
+  { pattern: "/koding", halaman: () => <KodingPage /> },
   { pattern: "/diskusi", halaman: () => <DiscussionPage /> },
   { pattern: "/diskusi/:id", halaman: (p) => <ThreadDetailPage id={p.id} /> },
   { pattern: "/arena", halaman: () => <ArenaPage /> },
@@ -35,7 +40,21 @@ function Isi() {
 
   for (const rute of RUTE) {
     const params = matchRoute(rute.pattern, pathname);
-    if (params) return rute.halaman(params);
+    if (params) {
+      return (
+        <Suspense
+          fallback={
+            <div className="flex flex-col gap-3" role="status" aria-live="polite">
+              <div className="h-8 w-56 animate-pulse rounded-lg bg-secondary" />
+              <div className="h-4 w-80 animate-pulse rounded-lg bg-secondary" />
+              <div className="h-64 animate-pulse rounded-xl bg-secondary" />
+            </div>
+          }
+        >
+          {rute.halaman(params)}
+        </Suspense>
+      );
+    }
   }
 
   return (

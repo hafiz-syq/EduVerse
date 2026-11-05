@@ -1,5 +1,5 @@
 /* EduVerse service worker: shell luring + cache aset statis. */
-const VERSI = "eduverse-v1";
+const VERSI = "eduverse-v2";
 const CEPAT_SAJA = ["/", "/offline.html", "/manifest.webmanifest", "/icon.svg", "/icon.png"];
 
 self.addEventListener("install", (event) => {

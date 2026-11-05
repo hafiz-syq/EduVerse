@@ -10,3 +10,9 @@ dist/
 .dev/
 *.log
 vibe_images/
+
+# Hasil `netlify functions:build` (zip bundel + manifest-nya). Dibuat ulang setiap kali
+# CLI membangun function, jadi tidak boleh masuk version control — sumbernya api.mjs dan
+# pg-store.mjs yang ada di folder yang sama.
+netlify/functions/*.zip
+netlify/functions/manifest.json

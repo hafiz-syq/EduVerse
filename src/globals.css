@@ -43,6 +43,15 @@
   --border: #e4eaf2;
   --input: #d8e3f0;
   --ring: #1f6feb;
+  /* Warna sorotan sintaks editor lab koding (dipakai CodeMirror lewat var()). */
+  --code-comment: #6b7a8f;
+  --code-keyword: #1a5cc4;
+  --code-string: #146c43;
+  --code-number: #a15c07;
+  --code-function: #b3386a;
+  --code-type: #0b6b78;
+  --code-variable: #14243b;
+  --code-operator: #52657d;
   --chart-1: #1f6feb;
   --chart-2: #f0749f;
   --chart-3: #2e9e6b;
@@ -139,6 +148,14 @@
     --border: #ffffff1f;
     --input: #ffffff2b;
     --ring: #5ea0f5;
+    --code-comment: #8598b0;
+    --code-keyword: #7fb2ff;
+    --code-string: #7fd8ae;
+    --code-number: #f0c07a;
+    --code-function: #ff9ec4;
+    --code-type: #7ad6e0;
+    --code-variable: #e8eef7;
+    --code-operator: #9fb2c9;
     --chart-1: #5ea0f5;
     --chart-2: #f289ae;
     --chart-3: #4ed0a0;
@@ -208,6 +225,20 @@ code {
   border: 1px solid var(--border);
   background: var(--secondary);
   overflow-x: auto;
+}
+
+/* Blok kode berbingkai (Salin / Coba): bingkai milik <figure>, jangan dobel. */
+.prose-lesson figure {
+  margin-block: 1.1em;
+  border-radius: var(--radius-md);
+  background: var(--secondary);
+}
+
+.prose-lesson figure pre {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .prose-lesson :not(pre) > code {

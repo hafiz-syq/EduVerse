@@ -1,15 +1,63 @@
+import { useState } from "react";
 import type { LessonBlock } from "@/lib/types";
+import { useRouter } from "@/lib/router";
+import { benihDariKode, semai, simpanan } from "@/lib/playground/draft";
+
+async function salin(teks: string) {
+  try {
+    await navigator.clipboard.writeText(teks);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function BlokKode({ block }: { block: LessonBlock }) {
+  const { navigate } = useRouter();
+  const [pesan, setPesan] = useState<string | null>(null);
+
+  const coba = () => {
+    semai(simpanan(), benihDariKode(block.text ?? "", block.lang));
+    navigate("/koding");
+  };
+
+  return (
+    <figure className="overflow-hidden rounded-lg border">
+      <figcaption className="flex items-center justify-between gap-2 border-b bg-secondary px-3 py-1.5">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+          {block.lang || "kode"}
+        </span>
+        <span className="flex items-center gap-1">
+          {pesan && <span className="text-[11px] text-muted-foreground">{pesan}</span>}
+          <button
+            type="button"
+            className="rounded-md px-2 py-1 text-[11px] font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
+            onClick={async () => setPesan((await salin(block.text ?? "")) ? "disalin" : "salin manual")}
+          >
+            Salin
+          </button>
+          <button
+            type="button"
+            className="rounded-md bg-primary px-2 py-1 text-[11px] font-semibold text-primary-foreground hover:bg-primary/90"
+            onClick={coba}
+          >
+            Coba
+          </button>
+        </span>
+      </figcaption>
+      <pre className="overflow-x-auto">
+        <code>{block.text}</code>
+      </pre>
+    </figure>
+  );
+}
 
 export function LessonBody({ blocks }: { blocks: LessonBlock[] }) {
   return (
     <div className="prose-lesson max-w-none">
       {blocks.map((block, index) => {
         if (block.type === "code") {
-          return (
-            <pre key={index} className="overflow-x-auto">
-              <code>{block.text}</code>
-            </pre>
-          );
+          return <BlokKode key={index} block={block} />;
         }
         if (block.type === "list") {
           return (
