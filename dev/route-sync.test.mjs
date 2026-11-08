@@ -225,6 +225,27 @@ test('setiap host melayani prefiks API yang sama dengan yang dipakai klien', () 
   assert.deepEqual(fromToml.filter((f) => f === '/*'), [], `redirect /* akan menutup ${base}`);
 });
 
+test('pembagian host prefiks warisan tertulis, bukan diandaikan', () => {
+  // Penjaga nama ini ada karena test titik masuk sempat dibaca seolah DUA host melayani
+  // '/functions/v1/app/*'. Faktanya tidak: Vercel mengambil rute dari nama berkas
+  // (api/index.mjs -> "/api") dan tidak punya rewrite untuk prefiks itu, jadi di
+  // eduverselearn.vercel.app path tersebut 404 halaman NOT_FOUND platform (terukur
+  // 2026-11-09: 404 79 B), sementara Netlify memasangnya lewat config.path dan hanya
+  // bisa dibuktikan dari dalam karena site password membalas 401 untuk semua path.
+  const sumberVercel = JSON.parse(baca('vercel.json'));
+  const sentuhanLama = [
+    ...sumberVercel.rewrites,
+    ...(sumberVercel.redirects ?? []),
+  ].filter((r) => (r.source ?? r.from ?? '').includes('/functions/v1'));
+  assert.deepEqual(sentuhanLama, [], 'vercel.json tidak boleh pura-pura melayani prefiks warisan');
+
+  // Diambil dari blok config.path saja, bukan dari seluruh berkas: prefiks itu juga tertulis
+  // di komentar penjaga api.mjs, dan pencocokan seluruh berkas menghitungnya dua kali.
+  const blokLama = (baca('netlify/functions/api.mjs').match(/path:\s*(\[[^\]]*\]|'[^']*')/) ?? [, '(config.path tidak ketemu)'])[1];
+  const pathNetlify = [...blokLama.matchAll(/['"](\/functions\/v1\/app\/\*)['"]/g)].map((m) => m[1]);
+  assert.deepEqual(pathNetlify, ['/functions/v1/app/*'], 'prefiks warisan hanya boleh dipasang di titik masuk Netlify');
+});
+
 test('setiap kind yang dikirim ke xp.award punya kunci di tabel XP', () => {
   // award(user, kind, ref, amount = XP[kind] ?? 0) — kind di luar tabel berarti dua hal:
   // jumlah harus dituliskan telanjang di pemanggil, dan kalau argumen jumlah terlupa

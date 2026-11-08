@@ -9,6 +9,7 @@
 //      bentuk handler Node lama pun tidak akan kehilangan sesi.
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
+import { join } from 'node:path';
 import { test } from 'node:test';
 
 process.env.DATABASE_URL = 'postgres://eduverse:rahasia-uji@127.0.0.1:1/eduverse';
@@ -46,12 +47,32 @@ test('katalog dengan koneksi mati menjadi 503 database_unavailable, bukan keboco
   assert.doesNotMatch(JSON.stringify(body), /127\.0\.0\.1|ECONNREFUSED|at .*\.mjs/);
 });
 
-test('prefiks lama sengaja masih dikenali selama Netlify dan Vercel hidup berdampingan', async () => {
+test('router mengenali prefiks warisan, tapi hanya Netlify yang mencangkoknya di URL', async () => {
+  // BATASAN HOST — jangan dibaca sebagai "dua host sudah terbukti melayani prefiks lama":
+  // yang dibuktikan di bawah hanyalah bahwa ROUTER yang sama menjawab path itu. Di host,
+  // prefiks '/functions/v1/app/*' hanya terpasang lewat `config.path` milik Netlify
+  // (netlify/functions/api.mjs); Vercel mengambil rute dari NAMA BERKAS api/index.mjs dan
+  // vercel.json hanya menulis rewrite untuk '/api/(.*)'.
+  // Terukur 2026-11-09 di eduverselearn.vercel.app:
+  //   /functions/v1/app/api/health -> 404 79 B, body halaman NOT_FOUND Vercel (bukan JSON
+  //   router), sedang /api/health di host yang sama 200. Netlify tidak bisa diukur publik
+  //   karena site password membalas 401 untuk SEMUA path, termasuk yang ini.
   const lama = await panggil('/functions/v1/app/api/health');
   assert.equal(lama.status, 200, 'router dipakai bersama; rute Vercel hanya menambah bentuk /api');
+  assert.match(await lama.text(), /"ok":true/, 'yang 200 di sini jawaban router, bukan halaman platform');
 
   const asing = await panggil('/api/bukan-endpoint');
   assert.equal(asing.status, 404);
+  // 404 di sini berarti "rute tidak dikenal", BUKAN "belum login". /api/me tidak ada di
+  // router (grep "'/api/me'" functions/src/application.mjs = 0), jadi ia tidak pernah bisa
+  // dipakai sebagai bukti sesi. Bukti gerbang login adalah 401 login_required — dan itu
+  // hanya bisa tercapai kalau database hidup: di harness ini sesi dibaca dari store yang
+  // mati, jadi rute ber-auth dibalas 503 lebih dulu (dijaga test di atas). Di host produksi
+  // yang DB-nya hidup, /api/catalog anonim terukur 401 {"error":"login_required"}.
+  assert.equal((await asing.json()).error, 'not_found');
+  const jugaAsing = await panggil('/api/me');
+  assert.equal(jugaAsing.status, 404, 'rute tak dikenal = 404, bukan sinyal login');
+  assert.equal((await jugaAsing.json()).error, 'not_found');
 
   // Seed dicek lebih dulu daripada login (application.mjs:252), jadi dengan koneksi mati
   // yang terbukti di sini adalah penjaga asal mutasi bekerja lewat titik masuk baru.
@@ -62,6 +83,26 @@ test('prefiks lama sengaja masih dikenali selama Netlify dan Vercel hidup berdam
   });
   assert.equal(lintasAsal.status, 403);
   assert.equal((await lintasAsal.json()).error, 'origin_mismatch');
+});
+
+test('Preview tanpa DATABASE_URL gagal cepat di impor, dan itu keputusan — bukan regresi', async () => {
+  // KEPUTUSAN PEMILIK 2026-11-09: scope Production-only untuk DATABASE_URL,
+  // APP_SESSION_SECRET dan APP_ADMIN_IDENTITIES. Konsekuensinya DITERIMA, bukan
+  // diperbaiki diam-diam: di deployment Preview api/index.mjs:21 melempar saat modul
+  // diimpor, jadi SETIAP /api (termasuk /api/health) mati invokasi dan login OAuth
+  // tidak akan pernah selesai di Preview. Gerbang preview yang benar menuntut 500 itu;
+  // kalau penjaga ini jadi merah, yang berubah adalah keputusan scope env — bukan kode.
+  // Diukur di host: `vercel curl <preview>/api/health` -> FUNCTION_INVOCATION_FAILED.
+  const { spawnSync } = await import('node:child_process');
+  const env = { ...process.env };
+  delete env.DATABASE_URL;
+  const jalan = spawnSync(process.execPath, ['--input-type=module', '-e', "import('./api/index.mjs')"], {
+    cwd: join(import.meta.dirname, '..'),
+    env,
+    encoding: 'utf8',
+  });
+  assert.notEqual(jalan.status, 0, 'tanpa DATABASE_URL modul harus gagal, bukan diam-diam hidup');
+  assert.match(jalan.stderr, /DATABASE_URL belum diisi/, `galat tak terduga: ${jalan.stderr.slice(0, 200)}`);
 });
 
 test('jembatan (req,res) Node meneruskan cookie, body, dan status galat JSON', async () => {

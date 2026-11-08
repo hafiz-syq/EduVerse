@@ -88,7 +88,26 @@ flowchart LR
 
 | Perintah | Isi | Status terverifikasi (2026-11-05) |
 |---|---|---|
-| `npm run test:function` | `dev/*.test.mjs` — 40 tes: Function, pg-store, entry Netlify, playground, draf, skema | lulus 40 / gagal 0 |
-| `npm run build` | `tsc --noEmit` + `scripts/build.mjs` | hijau, `dist/assets/koding-*.js` 600,66 kB (gzip 209 kB) |
+| `npm run test:function` | `dev/*.test.mjs` — 74 tes: Function, pg-store, entry Netlify + Vercel, playground, draf, skema, penjaga rute | lulus 74 / gagal 0 (terukur 2026-11-09) |
+| `npm run build` | `tsc --noEmit` + `scripts/build.mjs` | hijau, `dist/assets/koding-DhGcim_f.js` 27,31 kB · CSS 164,26 kB (terukur 2026-11-09) |
 | `npm run check:function` | `deno check functions/index.ts` | butuh Deno |
 | penjaga skema | `dev/schema.test.mjs` — migrasi masuk subset DDL AppHub, tak ada tabel yatim, kolom Function ada di skema | lulus |
+
+## 5. Keputusan per lingkungan host (bukan bug — jangan "diperbaiki" dengan menambah variabel)
+
+| Host | Variabel Function | Konsekuensi yang SAH | Penjaga |
+|---|---|---|---|
+| Vercel Production | `DATABASE_URL` + `APP_SESSION_SECRET` + `APP_ALLOWED_ORIGINS` terisi | `/api/health` 200, `/api/catalog` 401 `login_required` untuk anonim, rute tak dikenal 404 `not_found` | `dev/vercel-entry.test.mjs` |
+| Vercel Preview | **sengaja tanpa `DATABASE_URL`** (keputusan pemilik 2026-11-09) | `api/index.mjs:22` melempar saat impor → `FUNCTION_INVOCATION_FAILED` (500) untuk SEMUA `/api/*`, termasuk `/api/health`. Artinya: **login OAuth di Preview tidak akan pernah selesai** dan halaman yang butuh katalog akan gagal. 500 di Preview BUKAN regresi. | test `Preview tanpa DATABASE_URL gagal cepat di impor, dan itu keputusan — bukan regresi` (menjalakan `import('./api/index.mjs')` dengan env tanpa `DATABASE_URL` dan menuntut galat) |
+| Netlify (Production + Preview) | terpasang di site, termasuk `NETLIFY_*` warisan | Prefiks `/functions/v1/app/*` tetap hidup di sini SAJA | `dev/route-sync.test.mjs` |
+
+Dua batas yang sering salah dibaca:
+
+1. **Prefiks warisan hanya terpasang di Netlify.** Vercel mengambil rute dari nama berkas
+   (`api/index.mjs` → `/api`) dan `vercel.json` tidak punya rewrite untuk `/functions/v1/*`,
+   jadi di `eduverselearn.vercel.app` path itu 404 halaman `NOT_FOUND` platform (terukur
+   404 · 79 B · 2026-11-09). Router inti tetap mengenal prefiksnya, jadi test titik masuk
+   yang memakai prefiks itu membuktikan `applicationPath`, bukan dua host.
+2. **Vercel proyek ini tidak terhubung ke Git.** Deployment dibuat lewat CLI, sehingga push
+   ke `main` TIDAK menyegarkan situs publik; yang menyegarkan Netlify adalah push itu sendiri
+   (build Git-CD dari `main`).
