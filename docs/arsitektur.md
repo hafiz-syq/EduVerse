@@ -88,7 +88,7 @@ flowchart LR
 
 | Perintah | Isi | Status terverifikasi (2026-11-05) |
 |---|---|---|
-| `npm run test:function` | `dev/*.test.mjs` — 74 tes: Function, pg-store, entry Netlify + Vercel, playground, draf, skema, penjaga rute | lulus 74 / gagal 0 (terukur 2026-11-09) |
+| `npm run test:function` | `dev/*.test.mjs` — 75 tes: Function, pg-store, entry Netlify + Vercel, playground, draf, skema, penjaga rute + penjaga nama env di dokumen | lulus 75 / gagal 0 (terukur 2026-11-09; angka lama 74 ditulis sebelum penjaga env masuk) |
 | `npm run build` | `tsc --noEmit` + `scripts/build.mjs` | hijau, `dist/assets/koding-DhGcim_f.js` 27,31 kB · CSS 164,26 kB (terukur 2026-11-09) |
 | `npm run check:function` | `deno check functions/index.ts` | butuh Deno |
 | penjaga skema | `dev/schema.test.mjs` — migrasi masuk subset DDL AppHub, tak ada tabel yatim, kolom Function ada di skema | lulus |
@@ -97,11 +97,11 @@ flowchart LR
 
 | Host | Variabel Function | Konsekuensi yang SAH | Penjaga |
 |---|---|---|---|
-| Vercel Production | `DATABASE_URL`, `DATABASE_POOL_MAX`, `DATABASE_SSL` (`api/index.mjs:21-30`) + `APP_SESSION_SECRET`, `APP_ADMIN_IDENTITIES`, `APP_GOOGLE_CLIENT_ID`/`_SECRET`, `APP_GITHUB_CLIENT_ID`/`_SECRET`, `APP_PUBLIC_URL` (`api/index.mjs:35-42`) | `/api/health` 200, `/api/catalog` 401 `login_required` untuk anonim, rute tak dikenal 404 `not_found` | `dev/vercel-entry.test.mjs` + penjaga nama env di `dev/route-sync.test.mjs` |
+| Vercel Production | `DATABASE_URL`, `DATABASE_POOL_MAX`, `DATABASE_SSL` (`api/index.mjs:21-30`) + `APP_SESSION_SECRET`, `APP_ADMIN_IDENTITIES`, `APP_GOOGLE_CLIENT_ID`/`_SECRET`, `APP_GITHUB_CLIENT_ID`/`_SECRET`, `APP_PUBLIC_URL` (`api/index.mjs:35-42`) | `/api/health` 200 `{"providers":{"google":true,"github":true,"platform":false}}`, `/api/catalog` 401 `login_required` untuk anonim, rute tak dikenal 404 `not_found` — semuanya diukur langsung dari `eduverselearn.vercel.app` lewat curl 2026-11-09, bukan dari harness | `dev/vercel-entry.test.mjs` + penjaga nama env di `dev/route-sync.test.mjs` |
 | Vercel Preview | **sengaja tanpa `DATABASE_URL`** (keputusan pemilik 2026-11-09) | `api/index.mjs:22` melempar saat impor → `FUNCTION_INVOCATION_FAILED` (500) untuk SEMUA `/api/*`, termasuk `/api/health`. Artinya: **login OAuth di Preview tidak akan pernah selesai** dan halaman yang butuh katalog akan gagal. 500 di Preview BUKAN regresi. | test `Preview tanpa DATABASE_URL gagal cepat di impor, dan itu keputusan — bukan regresi` (menjalakan `import('./api/index.mjs')` dengan env tanpa `DATABASE_URL` dan menuntut galat) |
 | Netlify (Production + Preview) | tidak terverifikasi dari agen — situs memakai Team protection: `/`, `/api/health`, `/functions/v1/app/api/health` semuanya 401 · `server=Netlify` (terukur 2026-11-09) | Di SUMBER, prefiks `/functions/v1/app/*` hanya dipasang di `netlify/functions/api.mjs` (`config.path`). Apakah host-nya masih melayani kedua prefiks BELUM terbukti: butuh akun anggota tim yang masuk ke dashboard. | `dev/route-sync.test.mjs` (sumber saja) |
 
-Enam batas yang sering salah dibaca:
+Tujuh batas yang sering salah dibaca:
 
 1. **Prefiks warisan hanya terpasang di Netlify.** Vercel mengambil rute dari nama berkas
    (`api/index.mjs` → `/api`) dan `vercel.json` tidak punya rewrite untuk `/functions/v1/*`,
@@ -139,6 +139,15 @@ Enam batas yang sering salah dibaca:
    `@source`, jadi build di lingkungan tanpa repositori Git tetap bisa menyerap utility dari
    `node_modules`. Pemilik memutuskan `src/globals.css` TIDAK diubah sekarang, karena build
    Git sudah terbukti menghasilkan byte yang sama dengan lokal.
+7. **Alur OAuth nyata sudah berjalan di host, tetapi login-nya belum selesai.** Terukur
+   2026-11-09 lewat peramban: klik "Lanjut dengan Google" di `/masuk` memanggil
+   `/api/auth/start?provider=google` dan mendarat di `accounts.google.com/v3/signin/accountchooser`
+   membawa `client_id=156265574443-…usercontent.com`, `redirect_uri=https://eduverselearn.vercel.app/api/auth/callback`,
+   `scope=openid email profile`, `prompt=select_account`, dan `state` 64 karakter heks.
+   Artinya `APP_GOOGLE_CLIENT_ID` terpasang dan rute itu hidup di produksi. Yang MASIH belum
+   terbukti hanya sisi setelahnya — `Set-Cookie: __Host-ev_session` yang benar-benar diterima
+   peramban dan papan mingguan yang hanya bisa dibaca setelah sesi ada; keduanya butuh pemilik
+   menyelesaikan halaman IdP itu sendiri karena kredensial tidak pernah lewat agen.
 
 ## 6. KOREKSI angka yang pernah saya kutip di dokumen ini
 
