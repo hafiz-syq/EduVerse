@@ -246,6 +246,28 @@ test('pembagian host prefiks warisan tertulis, bukan diandaikan', () => {
   assert.deepEqual(pathNetlify, ['/functions/v1/app/*'], 'prefiks warisan hanya boleh dipasang di titik masuk Netlify');
 });
 
+test('setiap nama env yang ditulis di dokumen benar-benar dibaca salah satu titik masuk', () => {
+  // Penyakit yang sama muncul dua kali: dokumen menyebut nama variabel yang tidak ada di
+  // kode mana pun. APP_ALLOWED_ORIGINS dikira menyetir penjaga origin, padahal yang
+  // bekerja adalah sameOrigin(request) di functions/src/core.mjs — tanpa env apa pun.
+  // Nama env karangan adalah instruksi palsu untuk operator (dia akan menambah variabel
+  // yang tidak dibaca aplikasi), jadi tulisan di docs wajib terbukti di sumber titik masuk.
+  const sumber = [baca('api/index.mjs'), baca('netlify/functions/api.mjs')].join('\n');
+  const dokumen = readdirSync(join(ROOT, 'docs'), { withFileTypes: true })
+    .filter((e) => e.isFile() && e.name.endsWith('.md'))
+    .map((e) => [`docs/${e.name}`, baca(`docs/${e.name}`)]);
+  assert.ok(dokumen.length >= 1, 'tidak ada dokumen untuk dijaga');
+  for (const [nama, teks] of dokumen) {
+    const token = [...new Set([...teks.matchAll(/\bAPP_[A-Z][A-Z0-9_]*\b/g)].map((m) => m[0]))].sort();
+    const palsu = token.filter((t) => !sumber.includes(t));
+    assert.deepEqual(
+      palsu,
+      [],
+      `${nama} menyebut ${palsu.length} env yang tidak dibaca api/index.mjs maupun netlify/functions/api.mjs: ${JSON.stringify(palsu)} (tercocok ${token.length} token: ${token.join(', ')})`,
+    );
+  }
+});
+
 test('setiap kind yang dikirim ke xp.award punya kunci di tabel XP', () => {
   // award(user, kind, ref, amount = XP[kind] ?? 0) — kind di luar tabel berarti dua hal:
   // jumlah harus dituliskan telanjang di pemanggil, dan kalau argumen jumlah terlupa
