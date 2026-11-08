@@ -231,7 +231,7 @@ test('pembagian host prefiks warisan tertulis, bukan diandaikan', () => {
   // (api/index.mjs -> "/api") dan tidak punya rewrite untuk prefiks itu, jadi di
   // eduverselearn.vercel.app path tersebut 404 halaman NOT_FOUND platform (terukur
   // 2026-11-09: 404 79 B), sementara Netlify memasangnya lewat config.path dan hanya
-  // bisa dibuktikan dari dalam karena site password membalas 401 untuk semua path.
+  // bisa dibuktikan dari dalam karena Team protection Netlify membalas 401 untuk semua path.
   const sumberVercel = JSON.parse(baca('vercel.json'));
   const sentuhanLama = [
     ...sumberVercel.rewrites,

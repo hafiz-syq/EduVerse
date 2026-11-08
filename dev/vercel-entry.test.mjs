@@ -56,7 +56,7 @@ test('router mengenali prefiks warisan, tapi hanya Netlify yang mencangkoknya di
   // Terukur 2026-11-09 di eduverselearn.vercel.app:
   //   /functions/v1/app/api/health -> 404 79 B, body halaman NOT_FOUND Vercel (bukan JSON
   //   router), sedang /api/health di host yang sama 200. Netlify tidak bisa diukur publik
-  //   karena site password membalas 401 untuk SEMUA path, termasuk yang ini.
+  //   karena Team protection Netlify membalas 401 untuk SEMUA path, termasuk yang ini.
   const lama = await panggil('/functions/v1/app/api/health');
   assert.equal(lama.status, 200, 'router dipakai bersama; rute Vercel hanya menambah bentuk /api');
   assert.match(await lama.text(), /"ok":true/, 'yang 200 di sini jawaban router, bukan halaman platform');
