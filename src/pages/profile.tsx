@@ -1,5 +1,6 @@
 import { apiGet } from "@/lib/api";
 import { useApp } from "@/lib/app-context";
+import { anakDari, gunakanAnimasi } from "@/lib/motion-lazy";
 import { Link } from "@/lib/router";
 import { useData } from "@/lib/use-data";
 import type { ProfilePayload } from "@/lib/types";
@@ -46,6 +47,15 @@ export function ProfilePage() {
   const { user, packs } = useApp();
   const state = useData("profile", () => apiGet<ProfilePayload>("/profile"), [user?.id ?? "anon"]);
 
+  // Dipanggil sebelum gerbang `!user` supaya urutan hook tetap sama di dua cabang.
+  // Angka XP dibaca dari teks yang sudah ter-render, jadi kalau chunk animasi gagal
+  // dimuat yang tersisa selalu nilai asli — bukan nol atau angka basi.
+  const wadah = gunakanAnimasi<HTMLDivElement>([state.data], (motion, root) => {
+    const xp = anakDari(root, "[data-gerak='xp']")[0];
+    if (xp) motion.hitungNaik(xp, Number(xp.textContent));
+    motion.munculkanKisi(anakDari(root, "[data-gerak='kisi'] > *"), 4, 45);
+  });
+
   if (!user) {
     return (
       <Card>
@@ -60,7 +70,7 @@ export function ProfilePage() {
   }
 
   return (
-    <div className="flex flex-col gap-6">
+    <div ref={wadah} className="flex flex-col gap-6">
       <AsyncBlock state={state} rows={3}>
         {(isi) => {
           const naik = rankProgress(isi.user.xp, isi.ladder);
@@ -77,7 +87,12 @@ export function ProfilePage() {
                     <p className="text-sm text-muted-foreground">{isi.user.email}</p>
                     <div className="mt-2 flex flex-wrap items-center gap-2">
                       <Badge variant="secondary">{isi.user.rank_title}</Badge>
-                      <Badge variant="outline">{isi.user.xp} XP</Badge>
+                      <Badge variant="outline">
+                        <span data-gerak="xp" className="tabular-nums">
+                          {isi.user.xp}
+                        </span>{" "}
+                        XP
+                      </Badge>
                       {isi.user.role === "admin" && <Badge variant="default">admin</Badge>}
                     </div>
                   </div>
@@ -91,7 +106,7 @@ export function ProfilePage() {
                 </CardContent>
               </Card>
 
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div data-gerak="kisi" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {[
                   { label: "Seri belajar", nilai: `${isi.user.streak} hari`, icon: Flame, catatan: `terpanjang ${isi.user.longest_streak} hari` },
                   { label: "Lencana", nilai: `${isi.badges.length}`, icon: Award, catatan: "capaian khusus" },

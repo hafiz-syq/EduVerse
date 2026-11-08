@@ -181,9 +181,12 @@ export function application({ db, storage, env = {}, contextUser }) {
     { method: 'GET', path: /^\/api\/auth\/start$/, auth: false, run: (c) => oauth.start(c.query.get('provider') || 'google', c.request) },
     { method: 'GET', path: /^\/api\/auth\/callback$/, auth: false, run: (c) => oauth.finish(c.query.get('provider') || 'google', c.request, c.query) },
 
-    { method: 'GET', path: /^\/api\/home$/, auth: false, run: (_c, user) => content.home(user) },
-    { method: 'GET', path: /^\/api\/catalog$/, auth: false, run: (_c, user) => content.catalog(user) },
-    { method: 'GET', path: /^\/api\/module\/([a-z0-9-]{3,60})$/, auth: false, run: (c, user, m) => content.moduleDetail(m[1], user) },
+    // Kebijakan: materi, diskusi, dan arena hanya untuk akun. Halaman publik (`/` dan
+    // `/masuk`) tidak boleh memanggil rute di blok ini — kalau memanggil, angkanya
+    // hilang saat pengunjung belum masuk.
+    { method: 'GET', path: /^\/api\/home$/, auth: true, run: (_c, user) => content.home(user) },
+    { method: 'GET', path: /^\/api\/catalog$/, auth: true, run: (_c, user) => content.catalog(user) },
+    { method: 'GET', path: /^\/api\/module\/([a-z0-9-]{3,60})$/, auth: true, run: (c, user, m) => content.moduleDetail(m[1], user) },
     { method: 'GET', path: /^\/api\/pack\/([a-z0-9-]{3,60})$/, auth: true, run: (c, user, m) => content.pack(m[1], user) },
     { method: 'POST', path: /^\/api\/progress$/, auth: true, run: (c, user) => content.markProgress(user, c.body) },
     { method: 'POST', path: /^\/api\/code\/run$/, auth: true, run: (c, user) => code.recordRun(user, c.body) },
@@ -202,8 +205,8 @@ export function application({ db, storage, env = {}, contextUser }) {
     } },
     { method: 'GET', path: /^\/api\/quiz\/history\/([0-9a-f-]{36})$/, auth: true, run: (c, user, m) => quiz.history(user, m[1]) },
 
-    { method: 'GET', path: /^\/api\/discussion\/([a-z0-9-]{3,60})$/, auth: false, run: (c, user, m) => social.list(m[1], user) },
-    { method: 'GET', path: /^\/api\/thread\/([0-9a-f-]{36})$/, auth: false, run: (c, user, m) => social.detail(m[1], user) },
+    { method: 'GET', path: /^\/api\/discussion\/([a-z0-9-]{3,60})$/, auth: true, run: (c, user, m) => social.list(m[1], user) },
+    { method: 'GET', path: /^\/api\/thread\/([0-9a-f-]{36})$/, auth: true, run: (c, user, m) => social.detail(m[1], user) },
     { method: 'GET', path: /^\/api\/discussion$/, auth: true, run: (_c, user) => social.mine(user) },
     { method: 'POST', path: /^\/api\/discussion\/thread$/, auth: true, run: (c, user) => social.createThread(user, c.body) },
     { method: 'POST', path: /^\/api\/discussion\/post$/, auth: true, run: (c, user) => social.createPost(user, c.body) },
@@ -211,10 +214,10 @@ export function application({ db, storage, env = {}, contextUser }) {
     { method: 'POST', path: /^\/api\/discussion\/accept$/, auth: true, run: (c, user) => social.accept(user, c.body) },
     { method: 'POST', path: /^\/api\/discussion\/flag$/, auth: true, run: (c, user) => social.flag(user, c.body) },
 
-    { method: 'GET', path: /^\/api\/arena$/, auth: false, run: (_c, user) => arena.list(user) },
-    { method: 'GET', path: /^\/api\/arena\/weekly$/, auth: false, run: (_c, user) => arena.weekly(user) },
-    { method: 'GET', path: /^\/api\/arena\/alltime$/, auth: false, run: (_c, user) => arena.allTime(user) },
-    { method: 'GET', path: /^\/api\/arena\/([0-9a-f-]{36})\/leaderboard$/, auth: false, run: (c, _u, m) => arena.leaderboard(m[1]) },
+    { method: 'GET', path: /^\/api\/arena$/, auth: true, run: (_c, user) => arena.list(user) },
+    { method: 'GET', path: /^\/api\/arena\/weekly$/, auth: true, run: (_c, user) => arena.weekly(user) },
+    { method: 'GET', path: /^\/api\/arena\/alltime$/, auth: true, run: (_c, user) => arena.allTime(user) },
+    { method: 'GET', path: /^\/api\/arena\/([0-9a-f-]{36})\/leaderboard$/, auth: true, run: (c, _u, m) => arena.leaderboard(m[1]) },
     { method: 'GET', path: /^\/api\/arena\/([0-9a-f-]{36})\/history$/, auth: true, run: (c, user, m) => arena.history(user, m[1]) },
     { method: 'POST', path: /^\/api\/arena\/start$/, auth: true, run: (c, user) => arena.start(user, c.body) },
 

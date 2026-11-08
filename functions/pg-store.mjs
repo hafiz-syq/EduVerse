@@ -27,11 +27,17 @@ const daftarKolom = (columns) => {
   return parts.map((part) => quote(part, 'kolom')).join(',');
 };
 
+// Array JS wajib dikirim sebagai JSON. node-pg menyerialisasi array biasa menjadi literal
+// array Postgres ({...}), dan kolom jsonb menolaknya dengan 22P02 — yang lewat KODE_GALAT
+// berubah menjadi invalid_input 400. Skema app punya 0 kolom bertipe array, jadi konversi
+// ini tidak bisa merusak kolom mana pun.
+const nilaiSql = (value) => (Array.isArray(value) ? JSON.stringify(value) : value);
+
 const isi = (values) => {
   const entries = Object.entries(values ?? {}).filter(([, value]) => value !== undefined);
   return {
     columns: entries.map(([key]) => quote(key, 'kolom')),
-    params: entries.map(([, value]) => value),
+    params: entries.map(([, value]) => nilaiSql(value)),
   };
 };
 

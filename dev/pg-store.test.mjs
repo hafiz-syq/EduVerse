@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { createPgStore } from '../netlify/pg-store.mjs';
+import { createPgStore } from '../functions/pg-store.mjs';
 import { makeStore } from '../functions/src/core.mjs';
 
 function perekam(rows = []) {
@@ -58,6 +58,24 @@ test('insertAbsent jadi ON CONFLICT DO NOTHING dan diam saat baris sudah ada', a
     text: 'INSERT INTO "app"."user_state" ("user_id","xp") VALUES ($1,$2) ON CONFLICT ("user_id") DO NOTHING RETURNING *',
     params: ['u1', 0],
   });
+});
+
+test('array JS dikirim sebagai JSON, bukan literal array Postgres', async () => {
+  // node-pg menyerialisasi array biasa menjadi {a,b} dan kolom jsonb menolaknya
+  // dengan 22P02 -> invalid_input 400. Inilah yang merusakkan seed questions dan
+  // membuat seluruh rute non-health 400 lewat ensureSeeded.
+  const { pool, store } = satu([]);
+  await store.insert('questions', { id: 'q1', options: ['A', 'B', 'C'], answer: 1 });
+  assert.deepEqual(pool.log[0], {
+    text: 'INSERT INTO "app"."questions" ("id","options","answer") VALUES ($1,$2,$3) RETURNING *',
+    params: ['q1', '["A","B","C"]', 1],
+  });
+
+  await store.patch('tournaments', { bank_ids: ['b1', 'b2'] }, [['id', 't1']], 'id');
+  assert.deepEqual(pool.log[1].params, ['["b1","b2"]', 't1']);
+
+  await store.insertAbsent('tournaments', { id: 't1', bank_ids: [] }, 'id');
+  assert.equal(pool.log[2].params[1], '[]');
 });
 
 test('update menaruh nilai SET sebelum nilai WHERE', async () => {

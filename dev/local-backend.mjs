@@ -73,7 +73,10 @@ const env = {
   APP_SESSION_SECRET: process.env.APP_SESSION_SECRET || 'dev-only-insecure-secret',
   APP_ADMIN_IDENTITIES: 'qoder:dev-admin',
   APP_GOOGLE_CLIENT_ID: process.env.APP_GOOGLE_CLIENT_ID || '',
+  APP_GOOGLE_CLIENT_SECRET: process.env.APP_GOOGLE_CLIENT_SECRET || '',
   APP_GITHUB_CLIENT_ID: process.env.APP_GITHUB_CLIENT_ID || '',
+  APP_GITHUB_CLIENT_SECRET: process.env.APP_GITHUB_CLIENT_SECRET || '',
+  APP_PUBLIC_URL: process.env.APP_PUBLIC_URL || '',
 };
 
 const handle = application({ db, storage, env, contextUser });
@@ -152,12 +155,14 @@ function devEndpoint(request, response, pathname) {
 
 async function writeResponse(res, response) {
   const headers = Object.fromEntries(response.headers.entries());
-  delete headers['set-cookie'];
   // Prefiks __Host- menuntut HTTPS; di http lokal namanya dipetakan dan Secure dilepas.
   const cookies = (response.headers.getSetCookie?.() ?? []).map((value) =>
     value.replace(SESSION_COOKIE, DEV_SESSION_COOKIE).replace(/;\s*Secure/i, ''));
+  // setHeader() setelah writeHead() melempar ERR_HTTP_HEADERS_SENT dan mematikan proses,
+  // jadi cookie harus masuk sebelum header ditulis — routes logout dan OAuth selalu membawanya.
+  if (cookies.length) headers['set-cookie'] = cookies;
+  else delete headers['set-cookie'];
   res.writeHead(response.status, headers);
-  if (cookies.length) res.setHeader('set-cookie', cookies);
   res.end(Buffer.from(await response.arrayBuffer()));
 }
 
@@ -180,7 +185,7 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`API EduVerse lokal: http://${HOST}:${PORT}/functions/v1/app/api/health`);
+  console.log(`API EduVerse lokal: http://${HOST}:${PORT}/api/health`);
   console.log(`Ganti identitas dev: http://${HOST}:${PORT}/__dev/switch?as=learner-b (learner-a, learner-b, admin, anon)`);
   console.log(`Reset data lokal:   POST http://${HOST}:${PORT}/__dev/reset`);
 });

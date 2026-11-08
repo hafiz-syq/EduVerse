@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { apiPost, messageFor } from "@/lib/api";
 import { useApp } from "@/lib/app-context";
+import { anakDari, gunakanAnimasi } from "@/lib/motion-lazy";
 import type { QuizFinishPayload, QuizStartPayload, ReviewRow } from "@/lib/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -224,9 +225,18 @@ function HasilKuis({ hasil, onUlang, sibuk }: { hasil: QuizFinishPayload; onUlan
   const latihan = hasil.attempt.status === "late" || hasil.awarded?.practice;
   const skor = hasil.attempt.score;
 
+  // Gerakan menjelaskan status: kartu skor berdenyut kalau lulus, bergetar kalau belum,
+  // lalu baris ulasan masuk bertahap mulai dari soal pertama.
+  const wadah = gunakanAnimasi<HTMLDivElement>([hasil], (motion, root) => {
+    const papan = anakDari(root, "[data-gerak='skor']")[0];
+    if (lulus) motion.denyut(papan);
+    else motion.getar(papan);
+    motion.munculkan(anakDari(root, "[data-gerak='ulasan'] > *"), { jarak: 12, antar: 45 });
+  });
+
   return (
-    <div className="flex flex-col gap-4">
-      <Card>
+    <div ref={wadah} className="flex flex-col gap-4">
+      <Card data-gerak="skor">
         <CardHeader>
           <CardTitle className="text-lg">Skor {skor} · {hasil.attempt.correct}/{hasil.attempt.total} benar</CardTitle>
         </CardHeader>
@@ -254,7 +264,7 @@ function HasilKuis({ hasil, onUlang, sibuk }: { hasil: QuizFinishPayload; onUlan
         </CardContent>
       </Card>
 
-      <div className="flex flex-col gap-3">
+      <div data-gerak="ulasan" className="flex flex-col gap-3">
         {hasil.review.map((baris, indeks) => (
           <ReviewCard key={baris.id} baris={baris} indeks={indeks} />
         ))}

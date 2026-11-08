@@ -1,4 +1,4 @@
-export const API_BASE = "/functions/v1/app/api";
+export const API_BASE = "/api";
 
 export class ApiError extends Error {
   readonly code: string;

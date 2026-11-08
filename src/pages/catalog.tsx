@@ -1,5 +1,6 @@
 import { apiGet } from "@/lib/api";
 import { useApp } from "@/lib/app-context";
+import { anakDari, gunakanAnimasi } from "@/lib/motion-lazy";
 import { Link } from "@/lib/router";
 import { useData } from "@/lib/use-data";
 import type { Course } from "@/lib/types";
@@ -58,6 +59,10 @@ export function CatalogPage() {
   const { online } = useApp();
   const state = useData("catalog", () => apiGet<Course[]>("/catalog"), []);
 
+  const wadah = gunakanAnimasi<HTMLDivElement>([state.data], (motion, root) => {
+    motion.munculkanKisi(anakDari(root, "[data-gerak='kartu']"), 1, 70);
+  });
+
   return (
     <div className="flex flex-col gap-6">
       <header className="flex flex-col gap-1">
@@ -75,10 +80,10 @@ export function CatalogPage() {
 
       <AsyncBlock state={state} rows={4}>
         {(courses) => (
-          <div className="flex flex-col gap-6">
+          <div ref={wadah} className="flex flex-col gap-6">
             {courses.map((course, index) => (
               <section className="flex flex-col gap-3" key={course.id}>
-                <Card>
+                <Card data-gerak="kartu">
                   <CardHeader className="flex flex-row items-center justify-between gap-3 space-y-0">
                     <div className="min-w-0">
                       <CardTitle className="text-base">{course.title}</CardTitle>

@@ -1,7 +1,38 @@
 import { useState } from "react";
+import type { ReactNode } from "react";
 import type { LessonBlock } from "@/lib/types";
 import { useRouter } from "@/lib/router";
 import { benihDariKode, semai, simpanan } from "@/lib/playground/draft";
+
+// Hanya https yang boleh jadi tautan: skema lain (javascript:, data:) tetap teks biasa,
+// jadi alamat dari materi tidak pernah bisa berubah menjadi vektor navigasi. Kurung
+// penutup dan titik tidak ikut tertangkap karena materi menulis tautan di dalam kurung.
+function tautanDalamTeks(teks: string): ReactNode[] {
+  const keluaran: ReactNode[] = [];
+  let cursor = 0;
+  for (const cocok of teks.matchAll(/https:\/\/[^\s<>"'`)\]]+/g)) {
+    const mentah = cocok[0];
+    const url = mentah.replace(/[.,;:!?]+$/, "");
+    if (cocok.index === undefined) continue;
+    if (cocok.index > cursor) keluaran.push(teks.slice(cursor, cocok.index));
+    keluaran.push(
+      <a
+        key={`tautan-${keluaran.length}`}
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="break-all font-medium text-primary underline underline-offset-2"
+      >
+        {url}
+      </a>
+    );
+    const ekor = mentah.slice(url.length);
+    if (ekor) keluaran.push(ekor);
+    cursor = cocok.index + mentah.length;
+  }
+  if (cursor < teks.length) keluaran.push(teks.slice(cursor));
+  return keluaran;
+}
 
 async function salin(teks: string) {
   try {
@@ -63,7 +94,7 @@ export function LessonBody({ blocks }: { blocks: LessonBlock[] }) {
           return (
             <ul key={index}>
               {(block.items ?? []).map((item, itemIndex) => (
-                <li key={itemIndex}>{item}</li>
+                <li key={itemIndex}>{tautanDalamTeks(item)}</li>
               ))}
             </ul>
           );
@@ -71,11 +102,11 @@ export function LessonBody({ blocks }: { blocks: LessonBlock[] }) {
         if (block.type === "tip") {
           return (
             <p key={index} className="rounded-lg border border-blush/30 bg-blush-soft px-3 py-2 text-sm not-italic">
-              {block.text}
+              {tautanDalamTeks(block.text ?? "")}
             </p>
           );
         }
-        return <p key={index}>{block.text}</p>;
+        return <p key={index}>{tautanDalamTeks(block.text ?? "")}</p>;
       })}
     </div>
   );

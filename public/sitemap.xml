@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  EduVerse hanya mendaftarkan rute publik di sini. Halaman materi, kuis, diskusi, arena, profil,
+  dasbor, dan admin menuntut sesi login dan ditolak Function dengan 401 login_required, jadi
+  memasukkannya ke sitemap hanya menghasilkan baris kuning di Search Console.
+  Saat keputusan monetisasi membuka sebagian materi untuk pembaca anonim, tambahkan
+  <url> per modul di berkas ini — jangan menghapus catatan di atas.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://eduverselearn.vercel.app/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://eduverselearn.vercel.app/masuk</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eduverselearn.vercel.app/kebijakan-privasi</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+</urlset>

@@ -67,7 +67,7 @@ const keysFor = (db, questionIds) => {
   return questionIds.map((id) => ({ question_id: id, chosen: byId.get(id).answer }));
 };
 
-test('katalog dan kesehatan layanan bisa dibaca tanpa login', async () => {
+test('kesehatan dan sesi publik, isi materi hanya untuk akun', async () => {
   const { call } = createClient();
   const health = await call('GET', '/api/health');
   assert.equal(health.status, 200);
@@ -75,21 +75,64 @@ test('katalog dan kesehatan layanan bisa dibaca tanpa login', async () => {
   assert.equal(health.json.providers.platform, true);
   assert.equal(health.json.providers.google, false);
 
-  const catalog = await call('GET', '/api/catalog');
-  assert.equal(catalog.status, 200);
-  assert.ok(catalog.json.length >= 3, 'seed minimal tiga kursus');
-  const module = catalog.json[0].modules[0];
-  assert.ok(module.bank, 'setiap modul punya bank soal');
-  assert.equal(module.lessons.length > 0, true);
+  // Dua rute ini satu-satunya yang boleh dipanggil halaman publik (landing dan halaman
+  // masuk). Landing tidak menyentuh rute materi, jadi tidak ada angka yang hilang.
+  const sesi = await call('GET', '/api/session');
+  assert.equal(sesi.status, 200, 'halaman masuk butuh daftar penyedia tanpa akun');
+  assert.equal(sesi.json.user, null);
 
-  const detail = await call('GET', `/api/module/${module.slug}`);
+  const masuk = await call('GET', '/api/catalog', { account: 'learner-a' });
+  assert.equal(masuk.status, 200);
+  assert.ok(masuk.json.length >= 3, 'seed minimal tiga kursus');
+  const modul = masuk.json[0].modules[0];
+  assert.ok(modul.bank, 'setiap modul punya bank soal');
+  assert.equal(modul.lessons.length > 0, true);
+  const slug = modul.slug;
+
+  const detail = await call('GET', `/api/module/${slug}`, { account: 'learner-a' });
   assert.equal(detail.status, 200);
   assert.ok(detail.json.module.lessons[0].body.blocks.length > 0);
+
+  for (const path of ['/api/home', '/api/catalog', `/api/module/${slug}`, `/api/discussion/${slug}`, '/api/arena', '/api/arena/alltime']) {
+    const anonim = await call('GET', path);
+    assert.equal(anonim.status, 401, `${path} tidak lagi terbuka untuk anonim`);
+    assert.equal(anonim.json.error, 'login_required');
+  }
+});
+
+// Peta jalan id seed. Angka-angka ini bukan milik file ini: database produksi sudah
+// berisi baris dengan id tersebut (diukur via .dev/produksi-ids.json). Kalau sebuah
+// perubahan menggeser satu saja, penjaga per baris mengira barisnya belum ada dan
+// menyisipkan materi kembar — jadi kunciannya berjalan di sini, bukan di produksi.
+test('peta id materi yang sudah tayang tidak bergeser saat modul baru ditambahkan', async () => {
+  const { call, db } = createClient();
+  assert.equal((await call('GET', '/api/catalog', { account: 'learner-a' })).status, 200);
+  const dump = db.__dump();
+  const id = (n) => `0f5e0000-0000-4000-8000-${String(n).padStart(12, '0')}`;
+  const punya = (baris) => new Set(baris.map((r) => r.id));
+  const modul = punya(dump.modules);
+  const pelajaran = punya(dump.lessons);
+  const bank = punya(dump.banks);
+  const soal = punya(dump.questions);
+
+  for (let n = 1001; n <= 1006; n += 1) assert.ok(modul.has(id(n)), `modul tayang ${n} hilang`);
+  for (let n = 1007; n <= 1025; n += 1) assert.ok(pelajaran.has(id(n)), `pelajaran tayang ${n} hilang`);
+  for (const n of [1026, 1033, 1040]) assert.ok(bank.has(id(n)), `bank tayang ${n} hilang`);
+  for (const [awal, akhir] of [[1027, 1032], [1034, 1039], [1041, 1046]]) {
+    for (let n = awal; n <= akhir; n += 1) assert.ok(soal.has(id(n)), `soal tayang ${n} hilang`);
+  }
+  assert.equal(dump.lessons.length, 24, '19 pelajaran tayang + 5 pelajaran peta jalan');
+
+  // Baris baru harus tinggal di bloknya sendiri (4xxx) agar counter 1xxx tidak bergeser.
+  for (const n of [4001, 4002]) assert.ok(modul.has(id(n)), `modul peta jalan ${n} hilang`);
+  for (let n = 4101; n <= 4105; n += 1) assert.ok(pelajaran.has(id(n)), `pelajaran peta jalan ${n} hilang`);
+  const tabrakan = [...bank].filter((b) => pelajaran.has(b.id));
+  assert.deepEqual(tabrakan, [], 'id bank tidak boleh dipakai ulang oleh pelajaran');
 });
 
 test('rute privat menolak anonim, lalu memberi XP saat progres dicatat', async () => {
   const { call } = createClient();
-  const catalog = await call('GET', '/api/catalog');
+  const catalog = await call('GET', '/api/catalog', { account: 'learner-a' });
   const lesson = catalog.json[0].modules[0].lessons[0];
 
   const anon = await call('POST', '/api/progress', { body: { lesson_id: lesson.id, done: true } });
@@ -153,7 +196,7 @@ test('daftar latihan di server sama persis dengan daftar di klien', () => {
 
 test('kuis: soal dikirim tanpa kunci, nilai dihitung server', async () => {
   const { call, db } = createClient();
-  const catalog = await call('GET', '/api/catalog');
+  const catalog = await call('GET', '/api/catalog', { account: 'learner-a' });
   const bank = catalog.json[0].modules[0].bank;
 
   const started = await call('POST', '/api/quiz/start', { account: 'learner-a', body: { bank_id: bank.id } });
@@ -185,7 +228,7 @@ test('kuis: soal dikirim tanpa kunci, nilai dihitung server', async () => {
 
 test('kuis lewat batas waktu dinilai sebagai latihan tanpa XP', async () => {
   const { call, db } = createClient();
-  const catalog = await call('GET', '/api/catalog');
+  const catalog = await call('GET', '/api/catalog', { account: 'learner-a' });
   const bank = catalog.json[0].modules[1].bank ?? catalog.json[0].modules[0].bank;
   const started = await call('POST', '/api/quiz/start', { account: 'learner-b', body: { bank_id: bank.id } });
   const before = await call('GET', '/api/session', { account: 'learner-b' });
@@ -206,7 +249,7 @@ test('kuis lewat batas waktu dinilai sebagai latihan tanpa XP', async () => {
 
 test('bonus coba ditambatkan per bank sehingga XP kuis tidak bisa ditambang', async () => {
   const { call } = createClient();
-  const catalog = await call('GET', '/api/catalog');
+  const catalog = await call('GET', '/api/catalog', { account: 'learner-a' });
   const bank = catalog.json[0].modules[0].bank;
 
   const kosong = await call('POST', '/api/quiz/start', { account: 'learner-a', body: { bank_id: bank.id } });
@@ -233,7 +276,7 @@ test('bonus coba ditambatkan per bank sehingga XP kuis tidak bisa ditambang', as
 
 test('diskusi: tanya, jawab, dan terima jawaban terbaik', async () => {
   const { call, db } = createClient();
-  const catalog = await call('GET', '/api/catalog');
+  const catalog = await call('GET', '/api/catalog', { account: 'learner-a' });
   const moduleId = db.__dump().modules.find((m) => m.slug === catalog.json[0].modules[0].slug).id;
 
   const asked = await call('POST', '/api/discussion/thread', {
@@ -268,20 +311,25 @@ test('diskusi: tanya, jawab, dan terima jawaban terbaik', async () => {
   });
   assert.equal(accepted.json.awarded, 60);
 
-  const detail = await call('GET', `/api/thread/${threadId}`);
+  const detail = await call('GET', `/api/thread/${threadId}`, { account: 'learner-b' });
   assert.equal(detail.json.answered, true);
   assert.equal(detail.json.posts[0].accepted, true);
   assert.equal(detail.json.posts[0].votes, 1);
   assert.equal(detail.json.thread.can_accept, false, 'pengunjung lain tidak bisa menerima');
 
-  const list = await call('GET', `/api/discussion/${catalog.json[0].modules[0].slug}`);
+  const slugTopik = catalog.json[0].modules[0].slug;
+  const bacaAnonim = await call('GET', `/api/discussion/${slugTopik}`);
+  assert.equal(bacaAnonim.status, 401, 'diskusi tidak lagi terbuka untuk pengunjung tanpa akun');
+  assert.equal(bacaAnonim.json.error, 'login_required');
+
+  const list = await call('GET', `/api/discussion/${slugTopik}`, { account: 'learner-b' });
   assert.equal(list.json.threads[0].answer_count, 1);
-  assert.equal(list.json.can_post, false, 'anonym hanya membaca');
+  assert.equal(list.json.can_post, true, 'peserta yang masuk boleh ikut menjawab');
 });
 
 test('vote dan tandai kunci tidak bisa dipakai menambang XP sendiri', async () => {
   const { call, db } = createClient();
-  const catalog = await call('GET', '/api/catalog');
+  const catalog = await call('GET', '/api/catalog', { account: 'learner-a' });
   const moduleId = db.__dump().modules.find((m) => m.slug === catalog.json[0].modules[0].slug).id;
 
   const asked = await call('POST', '/api/discussion/thread', {
@@ -315,7 +363,7 @@ test('vote dan tandai kunci tidak bisa dipakai menambang XP sendiri', async () =
 
 test('Uji Kompetensi: jendela live, soal identik, papan kelas, penyelesaian malas', async () => {
   const { call, db } = createClient();
-  const arena = await call('GET', '/api/arena');
+  const arena = await call('GET', '/api/arena', { account: 'learner-a' });
   assert.equal(arena.status, 200);
   assert.equal(arena.json.tournaments.length >= 2, true, 'jendela berjalan dan berikutnya');
   const tournament = arena.json.tournaments[0];
@@ -354,16 +402,16 @@ test('Uji Kompetensi: jendela live, soal identik, papan kelas, penyelesaian mala
 
   const closedAt = Date.parse(tournament.ends_at) + 60_000;
   await withNow(closedAt, async () => {
-    const board = await call('GET', `/api/arena/${tournament.id}/leaderboard`);
+    const board = await call('GET', `/api/arena/${tournament.id}/leaderboard`, { account: 'learner-b' });
     assert.equal(board.json.tournament.derived_status, 'closed');
     const champion = await call('GET', '/api/session', { account: 'learner-a' });
     const xpAfterPrize = champion.json.user.xp;
-    await call('GET', `/api/arena/${tournament.id}/leaderboard`);
+    await call('GET', `/api/arena/${tournament.id}/leaderboard`, { account: 'learner-b' });
     const again = await call('GET', '/api/session', { account: 'learner-a' });
     assert.equal(again.json.user.xp, xpAfterPrize, 'hadiah peringkat dibayar sekali walau papan dibaca ulang');
   });
 
-  const allTime = await call('GET', '/api/arena/alltime');
+  const allTime = await call('GET', '/api/arena/alltime', { account: 'learner-a' });
   assert.equal(allTime.json.entries[0].xp > 0, true);
   const history = await call('GET', `/api/arena/${tournament.id}/history`, { account: 'learner-a' });
   assert.equal(history.json.attempts.length, 1);
@@ -406,7 +454,7 @@ test('slot iklan: baca publik, event tercatat, konfigurasi hanya untuk pemilik',
 
 test('paket luring menurunkan isi modul tanpa kunci jawaban', async () => {
   const { call } = createClient();
-  const catalog = await call('GET', '/api/catalog');
+  const catalog = await call('GET', '/api/catalog', { account: 'learner-a' });
   const slug = catalog.json[0].modules[0].slug;
   const anon = await call('GET', `/api/pack/${slug}`);
   assert.equal(anon.status, 401, 'paket tercatat per pengguna');
@@ -471,3 +519,98 @@ test('masuk Google: tanpa rahasia ditolak, dengan rahasia diarahkan ke penyedia,
   assert.equal(tanpaKode.status, 400);
   assert.equal(tanpaKode.json.error, 'code_missing');
 });
+
+// Bentuk rute Vercel: Function mengambil request langsung di /api/... tanpa prefiks
+// mount. Yang dijaga di sini adalah redirect_uri OAuth ikut turun ke /api, bukan
+// masih menempel /functions/v1/app, karena penyedia menolak URI yang tidak terdaftar.
+test('bentuk rute Vercel (/api tanpa prefiks) melayani router yang sama', async () => {
+  const siap = createClient({ APP_GOOGLE_CLIENT_ID: 'klien-test', APP_GOOGLE_CLIENT_SECRET: 'rahasia-test' });
+
+  const sehat = await siap.call('GET', '/api/health', { mount: '' });
+  assert.equal(sehat.status, 200);
+  assert.equal(sehat.json.ok, true);
+
+  const katalog = await siap.call('GET', '/api/catalog', { mount: '', account: 'learner-a' });
+  assert.equal(katalog.status, 200);
+  assert.ok(katalog.json.length >= 3, 'katalog terbaca di rute baru');
+
+  const alih = await siap.call('GET', '/api/auth/start?provider=google', { mount: '' });
+  assert.equal(alih.status, 302);
+  const target = new URL(alih.headers.get('location'));
+  assert.equal(target.searchParams.get('redirect_uri'), `${BASE}/api/auth/callback`, 'redirect_uri ikut ke /api');
+  const state = target.searchParams.get('state');
+  assert.ok(state, 'state anti-CSRDF dikirim');
+  assert.match(alih.headers.get('set-cookie'), /ev_oauth=/, 'cookie state terpasang di rute baru');
+
+  const salahState = await siap.call('GET', '/api/auth/callback?provider=google&code=abc&state=palsu', {
+    mount: '',
+    cookie: `ev_oauth=${state}`,
+  });
+  assert.equal(salahState.status, 400);
+  assert.equal(salahState.json.error, 'state_mismatch');
+
+  const lintasAsal = await siap.call('POST', '/api/progress', {
+    mount: '',
+    origin: 'http://situs-lain.test',
+    account: 'learner-a',
+    body: {},
+  });
+  assert.equal(lintasAsal.status, 403, 'penjaga asal mutasi berlaku di rute baru');
+  assert.equal(lintasAsal.json.error, 'origin_mismatch');
+
+  const diLuarRute = await siap.call('GET', '/api/health', { mount: '/functions/v1/lain' });
+  assert.equal(diLuarRute.status, 404, 'prefiks lama yang salah tetap bukan endpoint');
+});
+
+test('masuk Google paripurna: dua cookie terpisah, mendarat di /dashboard, sesi terbaca balik', async () => {
+  const asli = globalThis.fetch;
+  const ditukar = [];
+  globalThis.fetch = async (url, init) => {
+    const teks = String(url);
+    if (teks.endsWith('/token')) {
+      ditukar.push(Object.fromEntries(new URLSearchParams(init.body)));
+      return Response.json({ access_token: 'token-akses' });
+    }
+    if (teks.includes('userinfo')) {
+      return Response.json({ email: 'Baru@Kampus.test', name: 'Pelajar Baru', picture: 'https://contoh.test/a.png' });
+    }
+    return new Response('tidak distub', { status: 500 });
+  };
+
+  try {
+    const klien = createClient({ APP_GOOGLE_CLIENT_ID: 'klien', APP_GOOGLE_CLIENT_SECRET: 'rahasia' });
+    const alih = await klien.call('GET', '/api/auth/start?provider=google');
+    const state = alih.headers.get('set-cookie').match(/ev_oauth=([^;]+)/)[1];
+
+    const masuk = await klien.call('GET', `/api/auth/callback?provider=google&code=abc&state=${state}`, {
+      cookie: `ev_oauth=${state}`,
+    });
+
+    assert.equal(masuk.status, 302);
+    assert.equal(masuk.headers.get('location'), '/dashboard', 'sesi aktif dibuka di dasbor, bukan di landing');
+    assert.equal(ditukar.length, 1, 'code ditukar sekali');
+    assert.equal(ditukar[0].redirect_uri, `${BASE}${PREFIX}/api/auth/callback`, 'redirect_uri penukaran sama dengan yang didaftarkan');
+
+    const cookies = masuk.headers.getSetCookie();
+    assert.equal(cookies.length, 2, 'cookie sesi dan penghapusan state wajib jadi dua header sendiri');
+    const sesi = cookies.find((satu) => satu.startsWith('__Host-ev_session='));
+    const stateLama = cookies.find((satu) => satu.startsWith('ev_oauth='));
+    assert.ok(sesi && stateLama, `cookie yang muncul: ${cookies.join(' | ')}`);
+    assert.doesNotMatch(sesi, /ev_oauth/, 'nilai cookie sesi tidak boleh menelan cookie kedua');
+    assert.match(sesi, /;\s*Secure\b/, '__Host- menuntut Secure');
+    assert.match(sesi, /;\s*Path=\/(;|$)/, '__Host- menuntut Path=/');
+    assert.doesNotMatch(sesi, /Domain=/, '__Host- tidak boleh punya Domain');
+    assert.match(sesi, /Max-Age=\d{6,}/, 'sesi 30 hari, bukan cookie-per-session');
+    assert.match(stateLama, /Max-Age=0/, 'state dibuang setelah dipakai');
+
+    const token = sesi.split(';')[0].slice('__Host-ev_session='.length);
+    const siapa = await klien.call('GET', '/api/session', { cookie: `__Host-ev_session=${token}` });
+    assert.equal(siapa.status, 200);
+    assert.equal(siapa.json.user.email, 'baru@kampus.test', 'email dinormalisasi lowercase');
+    assert.equal(siapa.json.user.name, 'Pelajar Baru');
+    assert.equal(siapa.json.user.role, 'pembelajar');
+  } finally {
+    globalThis.fetch = asli;
+  }
+});
+

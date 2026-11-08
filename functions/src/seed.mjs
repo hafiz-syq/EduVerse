@@ -28,6 +28,16 @@ const COURSES = [
     level: 'madya',
     order_no: 3,
   },
+  {
+    // Id eksplisit (blok 4xxx) supaya tidak bertabrakan dengan id yang dihitung counter
+    // di 1xxx; lihat BASIS_ID_PELAJARAN di ensureCatalog.
+    id: uuid(4),
+    slug: 'peta-jalan',
+    title: 'Peta Jalan & Langkah Berikutnya',
+    summary: 'Cara memakai peta jalan pembelajaran: membaca isinya, memilih urutan, dan menghubungkannya ke latihan di EduVerse.',
+    level: 'pemula',
+    order_no: 4,
+  },
 ];
 
 const MODULES = [
@@ -37,6 +47,11 @@ const MODULES = [
   ['javascript-untuk-pemula', 'js-dasar', 'Variabel, Tipe, dan Operator', 4, 2],
   ['javascript-untuk-pemula', 'js-fungsi', 'Fungsi, Scope, dan Method Array', 3, 2],
   ['struktur-data', 'stack-queue', 'Antrian dan Stack di Dunia Nyata', 3, 2],
+  // Entri keenam = id eksplisit. Modul lama tetap memakai uuid(1000 + indeks) supaya id
+  // di database produksi tidak berubah; modul baru tidak boleh mengambil nomor 1xxx karena
+  // blok itu sudah dipakai pelajaran (1007 dan seterusnya).
+  ['peta-jalan', 'membaca-roadmap', 'Cara Membaca Peta Jalan', 4, 0, uuid(4001)],
+  ['peta-jalan', 'memilih-peta', 'Memilih Peta dan Menautkannya ke Latihan', 5, 0, uuid(4002)],
 ];
 
 // blok: p = paragraf, h2 = subjudul, code = blok kode, list = butir, tip = catatan
@@ -122,6 +137,38 @@ const LESSONS = [
     { t: 'list', items: ['Butuh "yang terbaru" dulu: stack', 'Butuh "yang paling lama menunggu" dulu: queue', 'Butuh dua arah: deque (antrean dua arah) atau linked list', 'Butuh pencarian cepat: hash map, bukan array'] },
     { t: 'p', x: 'Soal klasik seperti "valid parentheses" hampir selalu diselesaikan dengan stack, dan "hot reload job order" dengan queue.' },
   ], 8],
+  // Materi "outline + tautan": urutan topiknya ditelusuri dari peta jalan frontend di
+  // roadmap.sh, seluruh prosa ditulis sendiri dalam bahasa Indonesia, dan halamannya
+  // ditautkan, bukan disalin. Lihat catatan sumber di lesson terakhir modul ini.
+  ['membaca-roadmap', 'Apa isi peta jalan frontend', [
+    { t: 'p', x: 'Peta jalan adalah daftar topik beserta hubungannya, bukan buku teks. Isinya menjawab dua pertanyaan: apa yang perlu diketahui, dan mana yang sebaiknya didahulukan. Peta untuk frontend berada di https://roadmap.sh/frontend.' },
+    { t: 'h2', x: 'Lapisan yang muncul di peta frontend' },
+    { t: 'list', items: ['Sisi jaringan: cara internet bekerja, HTTP, nama domain, hosting, DNS, dan cara browser memproses halaman', 'Tiga bahasa wajib: HTML, CSS, dan JavaScript', 'Alat kerja: Git, inang repositori (GitHub atau GitLab), serta manajer paket (npm, yarn, pnpm)', 'Pustaka antarmuka: satu dari React, Vue.js, Angular, Svelte, atau Solid JS, plus rangka CSS seperti Tailwind', 'Mutu kode: formatter (Prettier), linter (ESLint), dan pengujian (Vitest, Jest, Playwright, Cypress)', 'Keamanan web: CORS, HTTPS, Content Security Policy, dan risiko OWASP', 'Jenis dan komponen: TypeScript, custom elements, Shadow DOM, HTML templates', 'Perenderan: SSR dan SSG, termasuk Next.js, Nuxt.js, SvelteKit, Astro, atau Eleventy', 'Kehadiran di luar browser: PWA, aplikasi mobile (React Native, Flutter, Ionic), aplikasi desktop (Electron, Tauri)', 'Peluncuran: GitHub Pages, Vercel, Netlify, Cloudflare, Railway, atau Render'] },
+    { t: 'tip', x: 'Peta yang tampak lebar itu menipu: sebagian besar cabangnya adalah pilihan, bukan daftar kewajiban. Anda cukup satu framework, satu bundler, dan satu alat uji.' },
+  ], 8, uuid(4101)],
+  ['membaca-roadmap', 'Legenda: rekomendasi, alternatif, urutan', [
+    { t: 'p', x: 'Sebelum menghafal kotak, baca legendanya dulu. Pada halaman peta ada tiga penanda yang mengubah cara membaca garis: rekomendasi pribadi, alternatif, dan catatan bahwa urutan tidak ketat.' },
+    { t: 'list', items: ['Rekomendasi pribadi: jalur yang dipilih penulis petanya, bukan satu-satunya yang benar', 'Alternatif: opsi lain yang setara, biasanya ditandai garis putus-putus, dan boleh Anda lewati', 'Urutan tidak ketat: beberapa kelompok boleh ditukar selama prasyarat terdekat sudah dikuasai', 'Versi pemula: peta yang sama dengan cabang yang dipangkas, cocok kalau daftar lengkap terasa berlebihan'] },
+    { t: 'p', x: 'Dua halaman pendamping yang biasanya lebih berguna daripada petanya sendiri: daftar proyek latihan di https://roadmap.sh/frontend/projects dan katalog semua peta di https://roadmap.sh/roadmaps.' },
+    { t: 'tip', x: 'Aturan praktis: kalau sebuah topik tidak dibutuhkan untuk proyek berikutnya, tandai sebagai wacana dan lanjut. Menyelesaikan satu proyek kecil mengalahkan mengumpulkan sepuluh centang.' },
+  ], 6, uuid(4102)],
+  ['membaca-roadmap', 'Dari topik ke rencana belajar mingguan', [
+    { t: 'p', x: 'Peta jalan berubah menjadi rencana begitu setiap topik diberi ukuran waktu dan satu bukti selesai. Bukti selesai berarti artefak: halaman yang tayang, tes yang lulus, atau proyek yang bisa dijelaskan tanpa membuka catatan.' },
+    { t: 'code', lang: 'js', x: 'const topik = [\n  { nama: "HTML semantik", jam: 4, bukti: "1 halaman tayang" },\n  { nama: "CSS layout", jam: 6, bukti: "1 halaman responsif" },\n  { nama: "JavaScript dasar", jam: 10, bukti: "3 soal lulus" },\n];\n\nconst perMinggu = 5; // jam nyata yang benar-benar tersedia\nconst minggu = Math.ceil(topik.reduce((total, t) => total + t.jam, 0) / perMinggu);\nconsole.log(`${minggu} minggu untuk paket pertama`);' },
+    { t: 'list', items: ['Satu topik = satu minggu maksimum; kalau lebih, pecah sampai bisa diuji', 'Tiga sesi singkat lebih tahan daripada satu sesi maraton di akhir pekan', 'Setiap akhir pekan: ulangi bukti selesai minggu lalu tanpa membuka materi', 'Kalau dua minggu berturut-turut meleset, kurangi jumlah topik, bukan jumlah latihan'] },
+    { t: 'tip', x: 'Pekan pertama sebaiknya menghasilkan satu halaman yang tayang. Rasa punya karya yang nyata adalah bahan bakar yang tidak diberikan oleh daftar bacaan.' },
+  ], 9, uuid(4103)],
+  ['memilih-peta', 'Peta per peran, bahasa, dan praktik', [
+    { t: 'p', x: 'Katalog di https://roadmap.sh/roadmaps memuat beberapa keluarga peta. Pilih satu keluarga sesuai pekerjaan yang ingin Anda kerjakan, lalu biarkan keluarga lain menjadi rujukan saat tersandung.' },
+    { t: 'list', items: ['Peran: frontend (https://roadmap.sh/frontend), backend (https://roadmap.sh/backend), dan versi pemula untuk keduanya di /frontend-beginner serta /backend-beginner', 'Bahasa dan runtime: JavaScript (https://roadmap.sh/javascript), TypeScript (https://roadmap.sh/typescript), Node.js (https://roadmap.sh/nodejs), Python (https://roadmap.sh/python), SQL (https://roadmap.sh/sql)', 'Pustaka: React (https://roadmap.sh/react), HTML (https://roadmap.sh/html), CSS (https://roadmap.sh/css), React Native (https://roadmap.sh/react-native)', 'Alat harian: Git dan GitHub (https://roadmap.sh/git-github), Linux (https://roadmap.sh/linux), API Design (https://roadmap.sh/api-design)', 'Praktik spesifik: keamanan API, performa backend, dan performa frontend, masing-masing berupa satu halaman berisi daftar periksa'] },
+    { t: 'tip', x: 'Empat peta sekaligus berarti nol peta. Tambahkan peta baru hanya ketika proyek Anda benar-benar menyentuh wilayah itu.' },
+  ], 8, uuid(4104)],
+  ['memilih-peta', 'Menautkan peta ke latihan EduVerse', [
+    { t: 'p', x: 'Peta jalan memberi arah; yang menggeser kemampuan adalah latihan yang berulang. Pemetaan di bawah memakai topik peta frontend dan menunjuk modul yang sudah ada di EduVerse.' },
+    { t: 'list', items: ['HTML dan semantik: modul Struktur Halaman HTML, lalu kuisnya untuk bukti lulus', 'CSS dan tata letak: modul Mengatur Tampilan dengan CSS dan Layout Responsif dan Flexbox', 'Variabel, tipe, dan alur: modul Variabel, Tipe, dan Operator', 'Fungsi dan metode array: modul Fungsi, Scope, dan Method Array', 'Struktur data: modul Antrian dan Stack di Dunia Nyata, plus Arena Uji Kompetensi untuk tekanan waktu', 'Sisanya belum tersedia di EduVerse: pengujian otomatis, keamanan web (CORS, HTTPS, CSP), aksesibilitas, SSR/SSG, dan PWA.'] },
+    { t: 'p', x: 'Kebijakan sumber kami: struktur dan nama topik diambil dari peta jalan komunitas, kalimat materi ditulis ulang sendiri, dan halaman aslinya ditautkan supaya pembaca bisa memeriksa versi terbaru. Kalau Anda menulis ulang catatan dari sumber lain, sebut sumbernya di akhir tulisan.' },
+    { t: 'tip', x: 'Materi peta jalan ini sengaja menautkan ke luar, jadi sebagian isinya butuh koneksi. Simpan modul teknis untuk belajar luring.' },
+  ], 7, uuid(4105)],
 ];
 
 const BANKS = [
@@ -203,20 +250,29 @@ async function ensureRanks(store) {
 }
 
 async function ensureCatalog(store) {
-  const courses = await store.all('courses', 'id,slug', { column: 'order_no', ascending: true }, 20);
-  if (courses.length) return;
   const createdAt = new Date().toISOString();
-  let counter = 1000;
+  // Penjaga per baris, bukan per katalog. Dulu "if (courses.length) return" membuat
+  // database yang terisi sebagian (banks ada, questions nol) tidak pernah sembuh, dan
+  // kegagalan bootstrap menular ke seluruh rute lewat ensureSeeded.
+  // Nama tabel ditulis apa adanya di setiap panggilan, bukan lewat variabel, supaya
+  // penjaga drift kolom (dev/schema.test.mjs) masih bisa memeriksa kolomnya.
+  const setId = (baris) => new Set(baris.map((b) => b.id));
+  const adaCourse = setId(await store.all('courses', 'id', { column: 'id', ascending: true }, 20));
+  const adaModul = setId(await store.all('modules', 'id', { column: 'id', ascending: true }, 40));
+  const adaPelajaran = setId(await store.all('lessons', 'id', { column: 'id', ascending: true }, 80));
   for (const course of COURSES) {
-    await store.insertAbsent('courses', { ...course, published: true, created_at: createdAt }, 'slug');
+    if (adaCourse.has(course.id)) continue;
+    await store.insertAbsent('courses', { ...course, id: course.id, published: true, created_at: createdAt }, 'slug');
   }
-  for (const [courseSlug, moduleSlug, title, minutes, offline] of MODULES) {
+  for (const [courseSlug, moduleSlug, title, minutes, offline, idKhusus] of MODULES) {
     const course = COURSES.find((c) => c.slug === courseSlug);
     const siblings = MODULES.filter((m) => m[0] === courseSlug);
+    const moduleId = idKhusus ?? uuid(1000 + MODULES.findIndex((m) => m[1] === moduleSlug) + 1);
+    if (adaModul.has(moduleId)) continue;
     await store.insertAbsent(
       'modules',
       {
-        id: uuid(counter += 1),
+        id: moduleId,
         course_id: course.id,
         slug: moduleSlug,
         title,
@@ -234,13 +290,25 @@ async function ensureCatalog(store) {
   const moduleRows = await store.all('modules', 'id,slug', { column: 'order_no', ascending: true }, 40);
   for (const row of moduleRows) moduleIds.set(row.slug, row.id);
 
-  for (const [moduleSlug, lessonTitle, blocks, minutes] of LESSONS) {
-    counter += 1;
+  // id baris ditentukan oleh urutan tabel sumber, bukan oleh counter yang berjalan,
+  // supaya baris yang sudah ada di produksi dikenali dan tidak pernah dibuat ganda.
+  // BASIS dibekukan pada nilai historis (1000 + 6 modul saat materi pertama dibuat).
+  // Kalau basisnya ikut bertambah saat modul baru ditambahkan, seluruh id pelajaran,
+  // bank, dan soal bergeser; penjaga per baris lalu mengira belum ada apa-apa dan
+  // menyisipkan materi kembar di database produksi.
+  const BASIS_ID_PELAJARAN = 1006;
+  let counter = BASIS_ID_PELAJARAN;
+  for (const [moduleSlug, lessonTitle, blocks, minutes, idKhusus] of LESSONS) {
+    // Entri ber-id eksplisit tidak memakan counter: nomor 1027 dan seterusnya masih
+    // menjadi milik bank soal dan pertanyaan yang sudah tayang.
+    if (idKhusus === undefined) counter += 1;
+    const lessonId = idKhusus ?? uuid(counter);
+    if (adaPelajaran.has(lessonId)) continue;
     const order = LESSONS.filter((l) => l[0] === moduleSlug).findIndex((l) => l[1] === lessonTitle) + 1;
     await store.insertAbsent(
       'lessons',
       {
-        id: uuid(counter),
+        id: lessonId,
         module_id: moduleIds.get(moduleSlug),
         title: lessonTitle,
         body: { blocks: blocks.map((b) => ({ type: b.t, text: b.x, lang: b.lang, items: b.items })) },
@@ -252,28 +320,34 @@ async function ensureCatalog(store) {
     );
   }
 
+  const adaBank = setId(await store.all('banks', 'id', { column: 'id', ascending: true }, 40));
+  const adaSoal = setId(await store.all('questions', 'id', { column: 'id', ascending: true }, 200));
   for (const bank of BANKS) {
     counter += 1;
     const bankId = uuid(counter);
-    await store.insertAbsent(
-      'banks',
-      {
-        id: bankId,
-        module_id: moduleIds.get(bank.module),
-        title: bank.title,
-        time_limit_seconds: bank.time_limit_seconds,
-        pass_score: bank.pass_score,
-        published: true,
-        created_at: createdAt,
-      },
-      'id'
-    );
+    if (!adaBank.has(bankId)) {
+      await store.insertAbsent(
+        'banks',
+        {
+          id: bankId,
+          module_id: moduleIds.get(bank.module),
+          title: bank.title,
+          time_limit_seconds: bank.time_limit_seconds,
+          pass_score: bank.pass_score,
+          published: true,
+          created_at: createdAt,
+        },
+        'id'
+      );
+    }
     for (const [index, [prompt, options, answer, explanation]] of bank.questions.entries()) {
       counter += 1;
+      const soalId = uuid(counter);
+      if (adaSoal.has(soalId)) continue;
       await store.insertAbsent(
         'questions',
         {
-          id: uuid(counter),
+          id: soalId,
           bank_id: bankId,
           prompt,
           options,

@@ -78,6 +78,9 @@ export const utcDateKey = (date = new Date()) => date.toISOString().slice(0, 10)
 
 /** Gateway mengganti segmen `app` dengan nama fisik, dan bisa membuang `/functions/v1`. */
 export function applicationPath(pathname) {
+  // Vercel memberi Function rute yang sama dengan nama berkasnya, jadi permintaan
+  // sudah datang sebagai `/api/...` dan tidak ada prefiks yang perlu dilepas.
+  if (pathname === '/api' || pathname.startsWith('/api/')) return pathname;
   const match = pathname.match(/^\/(?:functions\/v1\/)?(?:app|app-d[0-9a-f]{32})(\/.*)?$/);
   return match ? match[1] || '/' : null;
 }

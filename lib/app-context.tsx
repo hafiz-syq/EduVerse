@@ -7,12 +7,13 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { apiGet, apiPost } from "./api";
+import { apiGet, apiPost, ApiError } from "./api";
 import { dropPack, idbSupported, readPack, readPacks, savePack, type StoredPack } from "./idb";
 import type { PackPayload, Providers, SessionPayload, SessionUser } from "./types";
 
 export type Consent = "unknown" | "accepted" | "rejected";
 const CONSENT_KEY = "ev_ads_consent";
+const SESSION_KEY = "ev_session_snapshot";
 
 interface AppValue {
   ready: boolean;
@@ -37,6 +38,38 @@ const readConsent = (): Consent => {
   return saved === "accepted" || saved === "rejected" ? saved : "unknown";
 };
 
+/**
+ * Snapshot sesi terakhir, dibaca hanya saat permintaan /session tidak sampai ke server.
+ * Guard rute memakainya supaya paket materi yang sudah diunduh tetap terbuka di mode
+ * luring; galat 401 asli dari server selalu membuang snapshot ini.
+ */
+const bacaSnapshot = (): SessionPayload | null => {
+  try {
+    const mentah = localStorage.getItem(SESSION_KEY);
+    const data = mentah ? (JSON.parse(mentah) as SessionPayload) : null;
+    return data?.user ? data : null;
+  } catch {
+    return null;
+  }
+};
+
+const tulisSnapshot = (data: SessionPayload) => {
+  try {
+    if (data.user) localStorage.setItem(SESSION_KEY, JSON.stringify(data));
+    else localStorage.removeItem(SESSION_KEY);
+  } catch {
+    /* Penyimpanan privat penuh: akses luring saja yang terdampak, bukan keamanan sesi. */
+  }
+};
+
+const hapusSnapshot = () => {
+  try {
+    localStorage.removeItem(SESSION_KEY);
+  } catch {
+    /* Tidak ada yang bisa dibersihkan kalau penyimpanan tidak tersedia. */
+  }
+};
+
 export function AppProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<SessionPayload | null>(null);
   const [ready, setReady] = useState(false);
@@ -46,9 +79,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const refresh = useCallback(async () => {
     try {
-      setSession(await apiGet<SessionPayload>("/session"));
-    } catch {
-      setSession(null);
+      const data = await apiGet<SessionPayload>("/session");
+      setSession(data);
+      tulisSnapshot(data);
+    } catch (error) {
+      // 401/403 berarti server benar-benar tidak mengenal sesi ini: snapshot dibuang.
+      // Selain itu (jaringan mati, 5xx) snapshot terakhir dipakai supaya materi luring
+      // yang sudah tersimpan di perangkat tetap bisa dibuka.
+      const sesiDitolak = error instanceof ApiError && (error.status === 401 || error.status === 403);
+      if (sesiDitolak) hapusSnapshot();
+      setSession(sesiDitolak ? null : bacaSnapshot());
     } finally {
       setReady(true);
     }

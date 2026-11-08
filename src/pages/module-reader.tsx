@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { apiGet, apiPost, isUnreachable, messageFor } from "@/lib/api";
 import { useApp } from "@/lib/app-context";
 import { forgetQueued, queueProgress } from "@/lib/progress-queue";
+import { anakDari, gerakanDilarang, gunakanAnimasi } from "@/lib/motion-lazy";
 import { readPack, type StoredPack } from "@/lib/idb";
 import { Link, useRouter } from "@/lib/router";
 import { useData } from "@/lib/use-data";
@@ -48,12 +49,37 @@ const dariPaket = (paket: StoredPack): Papan => ({
   sumber: "luring",
 });
 
+/**
+ * Titik percik untuk momen modul selesai. Elemen titik harus ada di DOM sebelum helper
+ * `percik` bekerja, dan saat gerakan dilarang titik-titik itu tidak pernah digambar —
+ * helper itu sendiri berhenti tanpa mengubah nilai akhir, jadi titik statis akan tertinggal.
+ * Diulang dengan `key` baru tiap kali momen terjadi, supaya efeknya jalan dari awal.
+ */
+function Percik() {
+  const wadah = gunakanAnimasi<HTMLSpanElement>([], (motion, root) => {
+    motion.percik(anakDari(root, "[data-gerak='titik']"), 54);
+  });
+  if (gerakanDilarang()) return null;
+  return (
+    <span
+      ref={wadah}
+      aria-hidden
+      className="pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2"
+    >
+      {Array.from({ length: 10 }, (_, indeks) => (
+        <i key={indeks} data-gerak="titik" className="size-1.5 shrink-0 rounded-full bg-blush" />
+      ))}
+    </span>
+  );
+}
+
 export function ModuleReaderPage({ slug }: { slug: string }) {
   const { online, user, refresh } = useApp();
   const { query, navigate } = useRouter();
   const [paket, setPaket] = useState<StoredPack | null>(null);
   const [selesai, setSelesai] = useState<Record<string, boolean>>({});
   const [galat, setGalat] = useState("");
+  const [ledak, setLedak] = useState(0);
   const state = useData(`module:${slug}`, () => apiGet<ModuleDetailPayload>(`/module/${slug}`), [slug]);
 
   useEffect(() => {
@@ -106,20 +132,26 @@ export function ModuleReaderPage({ slug }: { slug: string }) {
 
   const tandai = async (id: string) => {
     const berikutnya = !selesai[id];
-    setSelesai((sebelumnya) => ({ ...sebelumnya, [id]: berikutnya }));
+    const petaBaru = { ...selesai, [id]: berikutnya };
+    const jumlahSelesai = papan ? papan.lessons.filter((les) => petaBaru[les.id]).length : 0;
+    const paripurna = Boolean(papan) && berikutnya && jumlahSelesai === (papan?.lessons.length ?? 0);
+    setSelesai(petaBaru);
     setGalat("");
     forgetQueued(id);
 
     if (!online) {
       queueProgress(id, berikutnya);
+      if (paripurna) setLedak((n) => n + 1);
       return;
     }
     try {
       await apiPost("/progress", { lesson_id: id, done: berikutnya });
       await refresh();
+      if (paripurna) setLedak((n) => n + 1);
     } catch (error) {
       if (isUnreachable(error)) {
         queueProgress(id, berikutnya);
+        if (paripurna) setLedak((n) => n + 1);
         return;
       }
       setSelesai((sebelumnya) => ({ ...sebelumnya, [id]: !berikutnya }));
@@ -214,9 +246,12 @@ export function ModuleReaderPage({ slug }: { slug: string }) {
                   </p>
                 )}
                 <div className="flex flex-wrap items-center gap-2 border-t pt-4">
-                  <Button size="sm" variant={selesai[pelajaran.id] ? "secondary" : "default"} onClick={() => void tandai(pelajaran.id)}>
-                    <Check /> {selesai[pelajaran.id] ? "Selesai dibaca" : "Tandai selesai"}
-                  </Button>
+                  <span className="relative inline-flex">
+                    <Button size="sm" variant={selesai[pelajaran.id] ? "secondary" : "default"} onClick={() => void tandai(pelajaran.id)}>
+                      <Check /> {selesai[pelajaran.id] ? "Selesai dibaca" : "Tandai selesai"}
+                    </Button>
+                    {ledak > 0 && <Percik key={ledak} />}
+                  </span>
                   <Button
                     size="sm"
                     variant="outline"

@@ -1,0 +1,10 @@
+# EduVerse membuka seluruh halaman publik untuk perayap, termasuk robot Google AdSense yang
+# memeriksa situs sebelum akun iklan disetujui. Isi materi, kuis, dan arena memang memerlukan
+# akun, tetapi tidak diblokir di sini — penjagaannya ada di Function (401 login_required), jadi
+# memblokir path itu di robots.txt hanya menyembunyikan fakta dari perayap.
+User-agent: *
+Allow: /
+
+# Berkas ini melayani domain produksi Vercel. Kalau nanti pindah domain kustom, baris Sitemap
+# di bawah harus ikut diganti atau sitemap.xml baru tidak akan ditemukan.
+Sitemap: https://eduverselearn.vercel.app/sitemap.xml

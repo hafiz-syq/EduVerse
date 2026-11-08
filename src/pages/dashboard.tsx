@@ -3,6 +3,7 @@ import { AdSlot } from "@/components/ad-slot";
 import { RankBadge } from "@/components/rank-badge";
 import { apiGet } from "@/lib/api";
 import { useApp } from "@/lib/app-context";
+import { anakDari, gunakanAnimasi } from "@/lib/motion-lazy";
 import { Link } from "@/lib/router";
 import { useData } from "@/lib/use-data";
 import type { HomePayload } from "@/lib/types";
@@ -20,19 +21,23 @@ const jam = (ms: number) => {
   return `${jam2} jam ${menit} menit`;
 };
 
-export function HomePage() {
+export function DashboardPage() {
   const { user, online } = useApp();
   const state = useData("home", () => apiGet<HomePayload>("/home"), [user?.id, online]);
 
+  const wadah = gunakanAnimasi<HTMLDivElement>([state.data], (motion, root) => {
+    motion.munculkanKisi(anakDari(root, "[data-gerak='ringkasan'] > *"), 3, 45);
+    motion.munculkanKisi(anakDari(root, "[data-gerak='kursus'] > *"), 2, 55);
+  });
+
   return (
-    <div className="flex flex-col gap-6">
+    <div ref={wadah} className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
         <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
-          {user ? `Halo, ${user.name.split(" ")[0]}` : "Belajar pemrograman gratis"}
+          {user ? `Halo, ${user.name.split(" ")[0]}` : "Dasbor belajar"}
         </h1>
         <p className="text-sm text-muted-foreground">
-          Materi bertahap, kuis berbatas waktu per modul, diskusi yang bisa dijawab siapa saja, dan Uji
-          Kompetensi mingguan untuk memperebutkan papan peringkat.
+          Progres Anda, modul yang tertunda, dan jendela Uji Kompetensi yang sedang dibuka.
         </p>
       </header>
 
@@ -45,7 +50,7 @@ export function HomePage() {
                   <p className="text-sm">
                     Masuk dengan email Anda untuk menyimpan progres, mengikuti kuis, dan naik peringkat.
                   </p>
-                  <Button asChild size="sm">
+                  <Button asChild size="sm" className="min-h-11">
                     <a href="/masuk">Masuk</a>
                   </Button>
                 </CardContent>
@@ -53,8 +58,8 @@ export function HomePage() {
             )}
 
             <section className="flex flex-col gap-3">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Ringkasan</h2>
-              <div className="grid gap-3 sm:grid-cols-3">
+              <h2 className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">Ringkasan</h2>
+              <div data-gerak="ringkasan" className="grid gap-3 sm:grid-cols-3">
                 <Card>
                   <CardContent className="flex items-center gap-3 py-4">
                     <Coins className="size-5 text-primary" />
@@ -98,8 +103,8 @@ export function HomePage() {
                   <p className="text-sm text-muted-foreground">
                     {data.continue.percent}% · {data.continue.lesson_count} pelajaran · {data.continue.minutes} menit
                   </p>
-                  <Button asChild size="sm" className="w-fit">
-                    <Link to={`/materi/${data.continue.slug}`}>Buka modul</Link>
+                  <Button asChild size="sm" className="w-fit min-h-11">
+                    <Link to={`/modul/${data.continue.slug}`}>Buka modul</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -109,12 +114,12 @@ export function HomePage() {
 
             <section className="flex flex-col gap-3">
               <div className="flex items-center justify-between">
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Kursus</h2>
+                <h2 className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">Kursus</h2>
                 <Link to="/materi" className="text-sm font-medium text-primary">
                   Semua materi
                 </Link>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div data-gerak="kursus" className="grid gap-3 sm:grid-cols-2">
                 {data.courses.map((course) => (
                   <Card key={course.slug}>
                     <CardContent className="flex flex-col gap-2 py-4">
@@ -135,7 +140,7 @@ export function HomePage() {
             </section>
 
             <section className="flex flex-col gap-3">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Uji Kompetensi</h2>
+              <h2 className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">Uji Kompetensi</h2>
               {data.tournament ? (
                 <Card>
                   <CardContent className="flex flex-col gap-3 py-5">
@@ -151,7 +156,12 @@ export function HomePage() {
                         ? `Tutup ${jam(Math.max(0, new Date(data.tournament.ends_at).getTime() - Date.now()))} lagi. Skor terbaik Anda yang dihitung.`
                         : `Buka ${new Date(data.tournament.starts_at).toLocaleString("id-ID")} WIB. Lawan peserta lain untuk posisi pertama.`}
                     </p>
-                    <Button asChild size="sm" className="w-fit" variant={data.tournament.mode === "live" ? "default" : "outline"}>
+                    <Button
+                      asChild
+                      size="sm"
+                      className="w-fit min-h-11"
+                      variant={data.tournament.mode === "live" ? "default" : "outline"}
+                    >
                       <Link to="/arena">Ke arena</Link>
                     </Button>
                   </CardContent>

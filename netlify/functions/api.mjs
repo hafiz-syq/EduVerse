@@ -5,7 +5,7 @@ import pg from 'pg';
 
 import { application } from '../../functions/src/application.mjs';
 import { fail, typedResponse } from '../../functions/src/core.mjs';
-import { createPgStore } from '../pg-store.mjs';
+import { createPgStore } from '../../functions/pg-store.mjs';
 
 const nilaiEnv = (name) => process.env[name] ?? '';
 

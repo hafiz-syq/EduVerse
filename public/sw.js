@@ -1,5 +1,7 @@
 /* EduVerse service worker: shell luring + cache aset statis. */
-const VERSI = "eduverse-v2";
+// v3: rute `/` kini landing publik dan `/dashboard` halaman sendiri. Nomor versi
+// dinaikkan agar shell lama dibuang di `activate` dan tidak ada campuran dua skema.
+const VERSI = "eduverse-v3";
 const CEPAT_SAJA = ["/", "/offline.html", "/manifest.webmanifest", "/icon.svg", "/icon.png"];
 
 self.addEventListener("install", (event) => {
@@ -30,7 +32,7 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   // Data dan identitas tidak pernah dilayan dari cache.
-  if (url.pathname.startsWith("/functions/")) return;
+  if (url.pathname === "/api" || url.pathname.startsWith("/api/")) return;
 
   if (request.mode === "navigate") {
     event.respondWith(

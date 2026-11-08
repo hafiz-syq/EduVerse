@@ -1,6 +1,6 @@
 import { useApp } from "@/lib/app-context";
 import { API_BASE } from "@/lib/api";
-import { Link } from "@/lib/router";
+import { Link, useRouter } from "@/lib/router";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,10 +28,13 @@ export function SignInPage() {
             {user.name || "Pembelajar"} · {user.email || "email tidak tersedia"} · {user.rank_title} · {user.xp} XP
           </p>
           <div className="flex flex-wrap gap-2">
-            <Button asChild size="sm">
+            <Button asChild size="sm" className="min-h-11">
+              <Link to="/dashboard">Buka dasbor</Link>
+            </Button>
+            <Button asChild size="sm" variant="outline" className="min-h-11">
               <Link to="/profil">Lihat profil</Link>
             </Button>
-            <Button size="sm" variant="outline" onClick={() => void signOut()}>
+            <Button size="sm" variant="ghost" className="min-h-11" onClick={() => void signOut()}>
               <LogOut /> Keluar
             </Button>
           </div>
@@ -40,6 +43,10 @@ export function SignInPage() {
     );
   }
 
+  const { query } = useRouter();
+  // Alamat asal dikirim penjaga rute di App.tsx. Hanya dibaca untuk ditampilkan, tidak
+  // pernah dipakai sebagai tujuan redirect — halaman setelah login ditentukan server.
+  const asal = query.get("dari");
   const tersedia = PENYEDIA.filter((item) => providers[item.key]);
 
   return (
@@ -47,9 +54,15 @@ export function SignInPage() {
       <header className="flex flex-col gap-1">
         <h1 className="text-2xl font-semibold tracking-tight">Masuk ke EduVerse</h1>
         <p className="text-sm text-muted-foreground">
-          Materi bisa dibaca tanpa akun. Masuk diperlukan untuk menyimpan progres, mengerjakan kuis berbatas
-          waktu, berdiskusi, dan ikut Uji Kompetensi.
+          Semua materi dikunci di balik akun. Masuk diperlukan untuk membuka katalog, membaca modul, mengerjakan
+          kuis berbatas waktu, berdiskusi, dan ikut Uji Kompetensi.
         </p>
+        {asal && (
+          <p className="text-sm text-muted-foreground">
+            Anda tadi membuka <code className="rounded bg-secondary px-1.5 py-0.5 text-xs">{asal}</code>. Setelah
+            masuk, dasbor yang terbuka lebih dulu.
+          </p>
+        )}
       </header>
 
       {!online && (
@@ -81,7 +94,7 @@ export function SignInPage() {
             </p>
           )}
           <p className="text-xs text-muted-foreground">
-            Setelah berhasil, Anda diarahkan kembali ke Beranda dan sesi disimpan sebagai cookie tersegel di
+            Setelah berhasil, Anda diarahkan ke dasbor dan sesi disimpan sebagai cookie tersegel di
             peramban ini.
           </p>
         </CardContent>
@@ -99,15 +112,15 @@ export function SignInPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Belum mau masuk?</CardTitle>
+          <CardTitle className="text-base">Belum yakin mau masuk?</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-2 text-sm text-muted-foreground">
           <p>
-            Daftar materi tetap terbuka untuk dibaca. Progres, XP, peringkat, dan papan peringkat baru tercatat
-            setelah Anda masuk.
+            Halaman perkenalan tetap terbuka untuk siapa saja tanpa akun. Di sana dijelaskan cara kerja modul, kuis,
+            diskusi, dan arena sebelum Anda memutuskan masuk.
           </p>
           <Button asChild size="sm" variant="link" className="w-fit px-0">
-            <Link to="/materi">Lihat daftar materi</Link>
+            <Link to="/">Baca perkenalan dulu</Link>
           </Button>
         </CardContent>
       </Card>

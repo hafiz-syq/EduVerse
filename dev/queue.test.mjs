@@ -52,7 +52,7 @@ test('baris lama tanpa kunci jenis dipetakan sebagai pelajaran, bukan dibuang', 
   assert.equal(antrean.pendingProgress(), 1);
   const terkirim = await antrean.flushProgress();
   assert.equal(terkirim, 1);
-  assert.equal(permintaan[0].url.endsWith('/functions/v1/app/api/progress'), true);
+  assert.equal(permintaan[0].url.endsWith('/api/progress'), true);
   assert.deepEqual(permintaan[0].body, { lesson_id: 'l-1', done: true });
   assert.equal(kanvas.get(KEY), '[]');
 });

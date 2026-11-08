@@ -33,8 +33,14 @@ export const providerKeys = Object.keys(PROVIDERS);
 const stateCookie = (token, maxAge, secure) =>
   `${STATE_COOKIE}=${token}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${maxAge}${secure ? '; Secure' : ''}`;
 
-const redirect = (location, cookies) =>
-  new Response(null, { status: 302, headers: { location, 'set-cookie': Array.isArray(cookies) ? cookies.join(', ') : cookies } });
+// Setiap cookie wajib jadi header Set-Cookie sendiri. Digabung dengan ", " akan
+// terurai sebagai satu cookie saja: Max-Age cookie sesi menelan cookie berikutnya,
+// sesi berubah jadi cookie-per-session, dan state lama tidak pernah dihapus.
+const redirect = (location, cookies) => {
+  const headers = new Headers({ location });
+  for (const cookie of Array.isArray(cookies) ? cookies : [cookies]) headers.append('set-cookie', cookie);
+  return new Response(null, { status: 302, headers });
+};
 
 async function readProfile(url, token) {
   const response = await fetch(url, { headers: { authorization: `Bearer ${token}`, accept: 'application/json', 'user-agent': 'EduVerse' } });
@@ -121,7 +127,9 @@ export function createOAuth({ env, identity }) {
     });
     const session = await identity.startSession(user);
     const secure = new URL(request.url).protocol === 'https:';
-    return redirect('/', [session.cookie, stateCookie('', 0, secure)]);
+    // Sesi baru selalu dibuka di dasbor: `/` kini halaman publik yang menggeser
+    // pengguna bersesi ke sana, jadi mengarahkan ke `/` hanya menambah satu lompatan.
+    return redirect('/dashboard', [session.cookie, stateCookie('', 0, secure)]);
   }
 
   return { finish, start };
