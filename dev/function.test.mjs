@@ -62,9 +62,16 @@ function withNow(ms, run) {
   return Promise.resolve().then(run).finally(() => { globalThis.Date = RealDate; });
 }
 
-const keysFor = (db, questionIds) => {
+// `benar` = fraksi soal yang dijawab tepat (1 = semuanya, seperti sebelum parameter ini ada).
+// Dipakai untuk membuat peserta ketiga berskor beda, supaya "tepat satu baris me" tidak lolos
+// hanya karena seri skor.
+const keysFor = (db, questionIds, benar = 1) => {
   const byId = new Map(db.__dump().questions.map((q) => [q.id, q]));
-  return questionIds.map((id) => ({ question_id: id, chosen: byId.get(id).answer }));
+  const jumlahBenar = Math.floor(questionIds.length * benar);
+  return questionIds.map((id, index) => ({
+    question_id: id,
+    chosen: index < jumlahBenar ? byId.get(id).answer : `${byId.get(id).answer}-salah`,
+  }));
 };
 
 test('kesehatan dan sesi publik, isi materi hanya untuk akun', async () => {
@@ -397,7 +404,28 @@ test('Uji Kompetensi: jendela live, soal identik, papan kelas, penyelesaian mala
     assert.ok(board.json.entries[0].best_duration_ms <= board.json.entries[1].best_duration_ms, 'skor sama dimenangkan yang lebih cepat');
 
     const weekly = await call('GET', '/api/arena/weekly', { account: 'learner-a' });
-    assert.equal(weekly.json.entries.some((e) => e.me), true);
+    // Penegakan klaim kepemilikan baris. Assertion lama hanya `some(e => e.me)` dan tetap
+    // hijau ketika SEMUA baris mengaku "me", karena `const user` di dalam loop menimpa
+    // parameter dan membuat perbandingan menjadi entry.user_id === entry.user_id.
+    const peserta = await call('POST', '/api/arena/start', { account: 'admin', body: { tournament_id: tournament.id } });
+    await call('POST', '/api/quiz/finish', {
+      account: 'admin',
+      body: { attempt_id: peserta.json.attempt.id, answers: keysFor(db, peserta.json.questions.map((q) => q.id), 0.5) },
+    });
+    const tiga = await call('GET', '/api/arena/weekly', { account: 'learner-a' });
+    const sayaA = (await call('GET', '/api/session', { account: 'learner-a' })).json.user.id;
+    const sayaB = (await call('GET', '/api/session', { account: 'learner-b' })).json.user.id;
+    assert.equal(tiga.json.entries.length, 3, 'dua pelajar dan satu admin masuk papan minggu ini');
+    const claimedA = tiga.json.entries.filter((e) => e.me);
+    assert.equal(claimedA.length, 1, `tepat satu baris milik pembaca, terbaca ${claimedA.length} dari ${tiga.json.entries.length}`);
+    assert.equal(claimedA[0].user_id, sayaA, 'baris yang ditandai me harus baris pembaca');
+    assert.equal(tiga.json.my_place, claimedA[0].place, 'my_place harus nomor tempat baris pembaca');
+    const papanB = await call('GET', '/api/arena/weekly', { account: 'learner-b' });
+    const claimedB = papanB.json.entries.filter((e) => e.me);
+    assert.equal(claimedB.length, 1, 'pemanggil lain hanya mengklaim barisnya sendiri');
+    assert.equal(claimedB[0].user_id, sayaB);
+    assert.equal(papanB.json.my_place, claimedB[0].place);
+    assert.notEqual(claimedA[0].user_id, claimedB[0].user_id, 'dua pembaca tidak boleh mengklaim baris yang sama');
   });
 
   const closedAt = Date.parse(tournament.ends_at) + 60_000;

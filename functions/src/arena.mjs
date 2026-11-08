@@ -151,7 +151,7 @@ export function createArena({ store, xp, identity }) {
     // Penyelesaian hadiah dilakukan malas saat papan dibaca setelah jendela tutup.
     if (statusOf(tournament, Date.now()) === 'closed') {
       for (const entry of entries.slice(0, 3)) {
-        const amount = entry.place === 1 ? XP.tournament_win : entry.place === 2 ? 100 : 60;
+        const amount = entry.place === 1 ? XP.tournament_win : entry.place === 2 ? XP.tournament_place_2 : XP.tournament_place;
         const account = await identity.attachState(await store.one('users', 'id,name,email,picture,role', [['id', entry.user_id]]));
         if (account) await xp.award(account, 'tournament_place', `${tournament.id}:${entry.place}`, amount, { place: entry.place });
       }
@@ -184,9 +184,12 @@ export function createArena({ store, xp, identity }) {
     const ranked = [...bestByUser.values()].sort((a, b) => b.best_score - a.best_score || a.best_duration_ms - b.best_duration_ms);
     const rowsOut = [];
     for (const [index, entry] of ranked.slice(0, 30).entries()) {
-      const user = await store.one('users', 'id,name,picture', [['id', entry.user_id]]);
+      // `profile` bukan `user`: nama loop yang menimpa parameter `weekly(user)` membuat
+      // perbandingan di bawah menjadi entry.user_id === entry.user_id, sehingga SEMUA baris
+      // mengaku milik pembaca.
+      const profile = await store.one('users', 'id,name,picture', [['id', entry.user_id]]);
       const state = await store.one('user_state', 'xp,rank_key', [['user_id', entry.user_id]]);
-      rowsOut.push({ place: index + 1, user_id: entry.user_id, name: user?.name ?? entry.display_name ?? 'Peserta', picture: user?.picture ?? '', best_score: entry.best_score, best_duration_ms: entry.best_duration_ms, xp: state?.xp ?? 0, rank_key: state?.rank_key ?? 'pemula', me: Boolean(user && entry.user_id === user.id) });
+      rowsOut.push({ place: index + 1, user_id: entry.user_id, name: profile?.name ?? entry.display_name ?? 'Peserta', picture: profile?.picture ?? '', best_score: entry.best_score, best_duration_ms: entry.best_duration_ms, xp: state?.xp ?? 0, rank_key: state?.rank_key ?? 'pemula', me: Boolean(user && entry.user_id === user.id) });
     }
     return { week, tournaments: inWeek, entries: rowsOut, my_place: user ? rowsOut.findIndex((r) => r.user_id === user.id) + 1 || null : null };
   }

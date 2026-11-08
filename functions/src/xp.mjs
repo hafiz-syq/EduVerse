@@ -9,10 +9,16 @@ export const XP = {
   quiz_pass: 90,
   quiz_top: 150,
   quiz_try: 15,
+  quiz_first_pass: 40,
   answer_post: 8,
   answer_accepted: 60,
   tournament_entry: 25,
   tournament_win: 150,
+  // Kunci `tournament_place` adalah kind yang dikirim ke xp_events; tempat 1 memakai
+  // tournament_win dan tempat 2 memakai tournament_place_2, jadi tidak ada angka telanjang
+  // di arena.mjs dan setiap kind punya kunci di tabel ini.
+  tournament_place: 60,
+  tournament_place_2: 100,
   streak_day: 6,
   code_pass: 40,
 };

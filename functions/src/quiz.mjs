@@ -124,7 +124,7 @@ export function createQuiz({ store, xp, identity }) {
       const award = await xp.award(user, kind, refId, XP[kind], { bank_id: attempt.bank_id, score });
       granted = award.granted;
       promoted = award.rank;
-      if (status === 'pass') await xp.award(user, 'quiz_first_pass', `${user.id}:${attempt.bank_id}`, 40, { bank_id: attempt.bank_id });
+      if (status === 'pass') await xp.award(user, 'quiz_first_pass', `${user.id}:${attempt.bank_id}`, XP.quiz_first_pass, { bank_id: attempt.bank_id });
     }
     const streak = await xp.touchStreak(user);
     const fresh = await identity.attachState(await store.one('users', 'id,name,email,picture,role', [['id', user.id]]));
