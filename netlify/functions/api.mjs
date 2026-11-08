@@ -1,6 +1,6 @@
-// Titik masuk Netlify Function. Jalur URL dijaga sama persis dengan versi Qoder Sites
-// (/functions/v1/app/*) supaya frontend, service worker, dan aturan asal permintaan
-// tidak perlu cabang khusus host.
+// Titik masuk Netlify Function. Jalur URL dipasang dua-duanya (lihat `config` di bawah)
+// supaya frontend, service worker, dan aturan asal permintaan tidak perlu cabang khusus
+// host mana pun.
 import pg from 'pg';
 
 import { application } from '../../functions/src/application.mjs';
@@ -65,6 +65,14 @@ export default async function (request, context) {
   }
 }
 
+// Dua prefiks sekaligus. `path` menerima array — docs resmi Netlify: "To configure multiple
+// paths, set `path` as an array" (docs.netlify.com/build/functions/configuration/, diakses
+// 2026-11-09) — dan halaman yang sama mengingatkan bahwa begitu `path` kustom dipasang,
+// fungsi HANYA tersedia di path itu, tidak lagi di /.netlify/functions/<nama>.
+// '/api/*' adalah prefiks yang dipakai klien (lib/api.ts API_BASE); tanpanya build Netlify
+// dari main menyajikan frontend yang memanggil /api sementara tidak ada rute di sana.
+// '/functions/v1/app/*' tetap dipasang karena sesi dan tautan OAuth yang sudah terbit
+// menunjuk ke sana, dan menghapusnya memutuskan pengguna aktif selama Netlify hidup.
 export const config = {
-  path: '/functions/v1/app/*',
+  path: ['/functions/v1/app/*', '/api/*'],
 };

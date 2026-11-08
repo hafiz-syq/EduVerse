@@ -3,7 +3,7 @@
 // tidak ikut diubah. Verifikasi rewrittenya lewat curl baru bisa setelah deploy, jadi
 // perbandingan sumber kebenaran ini yang berjalan di npm run test:function.
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
 
@@ -188,3 +188,75 @@ test('blok materi menautkan https dan menolak skema lain', () => {
   assert.equal(cabangTeks, 4, `satu definisi + tiga cabang teks (paragraf, tip, butir list), terbaca ${cabangTeks}`);
 });
 
+
+// API_BASE klien adalah '/api', tapi Function Netlify dulu hanya memasang prefiks warisan
+// '/functions/v1/app/*'. Git CD Netlify membangun dari main, jadi tiap push membuat salinan
+// Netlify melayani frontend yang memanggil /api/* sementara tidak ada satu pun rute di sana:
+// seluruh login, katalog, dan penilaian mati tanpa satu pun galat yang terlihat di build.
+test('setiap host melayani prefiks API yang sama dengan yang dipakai klien', () => {
+  const base = (baca('lib/api.ts').match(/API_BASE = "([^"]+)"/) ?? [, '(API_BASE tidak ketemu)'])[1];
+  assert.ok(base.startsWith('/') && !base.endsWith('/'), `API_BASE harus path relatif tanpa garis miring akhir, terbaca: ${base}`);
+
+  // Router inti yang mengenali prefiks ini, bukan aplikasi: kalau baris ini hilang, semua
+  // rewrite di dunia tetap menghasilkan 404.
+  const core = baca('functions/src/core.mjs');
+  assert.ok(core.includes(`'${base}'`), `router inti tidak mengenali prefiks ${base} (functions/src/core.mjs)`);
+
+  const sumberVercel = JSON.parse(baca('vercel.json'));
+  const keFunction = sumberVercel.rewrites.filter((r) => r.destination === base);
+  assert.equal(keFunction.length, 1, `harus tepat satu rewrite yang mengirim ${base} ke Function, terbaca ${keFunction.length}`);
+
+  const fnNetlify = baca('netlify/functions/api.mjs');
+  const blokPath = (fnNetlify.match(/path:\s*(\[[^\]]*\]|'[^']*')/) ?? [, '(config.path tidak ketemu)'])[1];
+  const daftarPath = [...blokPath.matchAll(/['"]([^'"]+)['"]/g)].map((m) => m[1]);
+  const fromToml = [...toml.matchAll(/^from\s*=\s*"([^"]+)"$/gm)].map((m) => m[1]);
+  const lewatConfig = daftarPath.some((p) => p === `${base}/*`);
+  const lewatRedirect = fromToml.includes(base) || fromToml.includes(`${base}/*`);
+  assert.ok(
+    lewatConfig || lewatRedirect,
+    `Netlify tidak melayani ${base}/* — config.path=${JSON.stringify(daftarPath)}, redirect=${JSON.stringify(fromToml.slice(0, 3))}`,
+  );
+
+  // Prefiks lama harus tetap terpasang: sesi yang sudah terbit di Netlify menunjuk ke sana,
+  // dan menghapusnya memutuskan pengguna yang sedang aktif.
+  assert.ok(daftarPath.includes('/functions/v1/app/*'), `prefiks warisan hilang dari config.path: ${JSON.stringify(daftarPath)}`);
+
+  // Urutan: tidak boleh ada catch-all SPA yang bisa menelan ${base} sebelum aturan Function.
+  assert.deepEqual(fromToml.filter((f) => f === '/*'), [], `redirect /* akan menutup ${base}`);
+});
+
+test('setiap kind yang dikirim ke xp.award punya kunci di tabel XP', () => {
+  // award(user, kind, ref, amount = XP[kind] ?? 0) — kind di luar tabel berarti dua hal:
+  // jumlah harus dituliskan telanjang di pemanggil, dan kalau argumen jumlah terlupa
+  // hadiahnya diam-diam jadi 0 tanpa galat. Penjaga ini yang membuat keduanya tidak bisa
+  // lolos dari repo.
+  const berkas = readdirSync(join(ROOT, 'functions', 'src'), { withFileTypes: true })
+    .filter((e) => e.isFile() && e.name.endsWith('.mjs'))
+    .map((e) => `functions/src/${e.name}`);
+  const kinds = new Map();
+  const catat = (k, dari) => { if (!kinds.has(k)) kinds.set(k, dari); };
+  for (const rel of berkas) {
+    const isi = baca(rel);
+    // Bentuk 1: literal langsung di posisi argumen kedua, termasuk award() internal modul.
+    for (const m of isi.matchAll(/(?:xp\.)?award\(\s*[^,)]+,\s*'([a-z0-9_]+)'/g)) catat(m[1], rel);
+    // Bentuk 2: variabel (quiz.mjs memilih kind lewat ternary). Literal pembentuk variabel
+    // itu ikut diperiksa, kalau tidak kind kuis lolos tanpa pernah menyentuh tabel.
+    for (const m of isi.matchAll(/(?:xp\.)?award\(\s*[^,)]+,\s*(\w+)\s*[,)]/g)) {
+      const penegas = new RegExp(`const ${m[1]} = ([^\\n]+)`, 'g');
+      for (const t of isi.matchAll(penegas)) {
+        // Bandingkan dulu: `status === 'pass'` adalah operand, bukan kandidat kind.
+        const ekspresi = t[1].replace(/[!=]==?\s*'[^']*'/g, '');
+        const literal = [...ekspresi.matchAll(/'([a-z0-9_]+)'/g)].map((l) => l[1]);
+        assert.ok(literal.length, `kind variabel ${m[1]} di ${rel} tidak punya literal pembentuk yang terbaca — penjaga buta bentuk ini`);
+        for (const k of literal) catat(k, `${rel} (via ${m[1]})`);
+      }
+    }
+  }
+  const blok = (baca('functions/src/xp.mjs').match(/export const XP = \{([\s\S]*?)\n\};/) ?? [, ''])[1];
+  const kunci = [...blok.matchAll(/^\s*([a-z0-9_]+):/gm)].map((m) => m[1]);
+
+  assert.ok(kinds.size >= 12, `kind terbaca cuma ${kinds.size} — regex-nya mungkin sudah tidak cocok`);
+  assert.ok(kunci.length >= kinds.size, `kunci XP ${kunci.length} lebih sedikit dari kind ${kinds.size}`);
+  const hilang = [...kinds.keys()].filter((k) => !kunci.includes(k));
+  assert.deepEqual(hilang, [], `kind tanpa kunci di XP: ${hilang.map((k) => `${k} (${kinds.get(k)})`).join(', ')}`);
+});
