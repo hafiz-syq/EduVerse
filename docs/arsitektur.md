@@ -101,7 +101,7 @@ flowchart LR
 | Vercel Preview | **sengaja tanpa `DATABASE_URL`** (keputusan pemilik 2026-11-09) | `api/index.mjs:22` melempar saat impor → `FUNCTION_INVOCATION_FAILED` (500) untuk SEMUA `/api/*`, termasuk `/api/health`. Artinya: **login OAuth di Preview tidak akan pernah selesai** dan halaman yang butuh katalog akan gagal. 500 di Preview BUKAN regresi. | test `Preview tanpa DATABASE_URL gagal cepat di impor, dan itu keputusan — bukan regresi` (menjalakan `import('./api/index.mjs')` dengan env tanpa `DATABASE_URL` dan menuntut galat) |
 | Netlify (Production + Preview) | tidak terverifikasi dari agen — situs memakai Team protection: `/`, `/api/health`, `/functions/v1/app/api/health` semuanya 401 · `server=Netlify` (terukur 2026-11-09) | Di SUMBER, prefiks `/functions/v1/app/*` hanya dipasang di `netlify/functions/api.mjs` (`config.path`). Apakah host-nya masih melayani kedua prefiks BELUM terbukti: butuh akun anggota tim yang masuk ke dashboard. | `dev/route-sync.test.mjs` (sumber saja) |
 
-Tujuh batas yang sering salah dibaca:
+Delapan batas yang sering salah dibaca:
 
 1. **Prefiks warisan hanya terpasang di Netlify.** Vercel mengambil rute dari nama berkas
    (`api/index.mjs` → `/api`) dan `vercel.json` tidak punya rewrite untuk `/functions/v1/*`,
@@ -139,15 +139,32 @@ Tujuh batas yang sering salah dibaca:
    `@source`, jadi build di lingkungan tanpa repositori Git tetap bisa menyerap utility dari
    `node_modules`. Pemilik memutuskan `src/globals.css` TIDAK diubah sekarang, karena build
    Git sudah terbukti menghasilkan byte yang sama dengan lokal.
-7. **Alur OAuth nyata sudah berjalan di host, tetapi login-nya belum selesai.** Terukur
-   2026-11-09 lewat peramban: klik "Lanjut dengan Google" di `/masuk` memanggil
+7. **Login OAuth nyata SUDAH selesai di produksi — yang kosong bukan login-nya, tapi datanya.**
+   Terukur 2026-11-09 lewat peramban: klik "Lanjut dengan Google" di `/masuk` memanggil
    `/api/auth/start?provider=google` dan mendarat di `accounts.google.com/v3/signin/accountchooser`
    membawa `client_id=156265574443-…usercontent.com`, `redirect_uri=https://eduverselearn.vercel.app/api/auth/callback`,
    `scope=openid email profile`, `prompt=select_account`, dan `state` 64 karakter heks.
-   Artinya `APP_GOOGLE_CLIENT_ID` terpasang dan rute itu hidup di produksi. Yang MASIH belum
-   terbukti hanya sisi setelahnya — `Set-Cookie: __Host-ev_session` yang benar-benar diterima
-   peramban dan papan mingguan yang hanya bisa dibaca setelah sesi ada; keduanya butuh pemilik
-   menyelesaikan halaman IdP itu sendiri karena kredensial tidak pernah lewat agen.
+   Sisi setelahnya kini terbukti dari data, bukan dari perkiraan: `app.users` berisi SATU baris
+   `identity` berprefix `google:` dengan email nyata (dibuat 2026-11-09 04:48 +07) dan
+   `app.sessions` berisi TIGA baris (04:48 → 06:58 +07, dua masih berlaku sampai 2026-12-09).
+   Satu-satunya penulis baris sesi adalah `identity.startSession()`
+   (`functions/src/identity.mjs:81-92`), dan satu-satunya pemanggilnya adalah
+   `functions/src/oauth.mjs:128` — jalur callback setelah tukar-token IdP berhasil. Tidak ada
+   jalur login-dev lain, jadi baris itu tidak mungkin muncul dari harness: `dev/fake-db.mjs`
+   yang dipakai naskah bukti tidak menyentuh Neon produksi sama sekali.
+   Header cookie juga sudah diukur langsung dari host, bukan hanya dari harness (curl
+   `…/api/auth/start?provider=github` → `302` + `Set-Cookie: ev_oauth=<masked>; HttpOnly;
+   SameSite=Lax; Path=/; Max-Age=600; Secure`): host benar-benar menerbitkan cookie Secure.
+8. **Dua hal yang masih belum terukur di host, dan keduanya bukan tugas kode.**
+   (a) Baris `Set-Cookie: __Host-ev_session` hanya terbit di `/api/auth/callback`, jadi satu-satunya
+   cara melihatnya adalah peramban yang memegang sesi pemilik — agen tidak boleh meminta tokennya.
+   (b) Papan mingguan tidak sedang kosong karena bug: `weekly()`
+   (`functions/src/arena.mjs:169-195`) mengambil `tournaments` + `entries`, dan terukur
+   `app.entries = 0`, `app.xp_events = 0`, `user_state.xp = 0`. Tanpa satu pun entri turnamen,
+   label "(Anda)" tidak punya baris untuk ditempel — koreksi `me` di `arena.mjs:187-192` tetap
+   dibuktikan test in-process, bukan oleh host yang tak punya data. Mengisi satu entri berarti
+   menulis ke Neon di luar batas "satu login nyata", jadi itu keputusan pemilik, bukan langkah
+   yang saya ambil sendiri.
 
 ## 6. KOREKSI angka yang pernah saya kutip di dokumen ini
 
