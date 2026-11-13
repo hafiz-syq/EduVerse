@@ -642,3 +642,51 @@ test('masuk Google paripurna: dua cookie terpisah, mendarat di /dashboard, sesi 
   }
 });
 
+
+// Baris sesi mati tidak pernah hilang dari produksi: logout hanya menggeser expires_at
+// ke masa lalu (identity.mjs:109) dan tidak ada satu pun jalur DELETE di functions/.
+// Buktinya ada di data nyata — satu baris dengan umur 99,871 detik masih terhitung di
+// app.sessions empat hari setelahnya. Tes ini ditulis LEBIH DULU dan wajib gagal.
+test('sesi kedaluwarsa ditolak dan logout menghapus barisnya dari tabel', async () => {
+  const asli = globalThis.fetch;
+  globalThis.fetch = async (url) => {
+    const teks = String(url);
+    if (teks.endsWith('/token')) return Response.json({ access_token: 'token-akses' });
+    if (teks.includes('userinfo')) return Response.json({ email: 'Putus@Kampus.test', name: 'Putus Sesi', picture: 'https://contoh.test/c.png' });
+    return new Response('tidak distub', { status: 500 });
+  };
+
+  try {
+    const klien = createClient({ APP_GOOGLE_CLIENT_ID: 'klien', APP_GOOGLE_CLIENT_SECRET: 'rahasia' });
+    const alih = await klien.call('GET', '/api/auth/start?provider=google');
+    const state = alih.headers.get('set-cookie').match(/ev_oauth=([^;]+)/)[1];
+    const masuk = await klien.call('GET', `/api/auth/callback?provider=google&code=abc&state=${state}`, { cookie: `ev_oauth=${state}` });
+    const token = masuk.headers.getSetCookie().find((satu) => satu.startsWith('__Host-ev_session=')).split(';')[0].slice('__Host-ev_session='.length);
+    const pakai = { cookie: `__Host-ev_session=${token}` };
+
+    assert.equal((await klien.call('GET', '/api/session', pakai)).status, 200, 'sesi baru harus bisa dipakai');
+
+    // Setengah pertama: kedaluwarsa tidak boleh lagi memberi identitas. /api/session sengaja
+    // auth:false (application.mjs:176) jadi ia menjawab 200 dengan user:null, sementara rute
+    // berbendera auth:true wajib menolak 401. Keduanya adalah kontrak aslinya.
+    const mati = await klien.db.from('sessions').update({ expires_at: '2020-01-01T00:00:00.000Z' });
+    assert.equal(mati.data.length, 1, 'premis: tepat satu baris sesi milik akun ini');
+    const setelahMati = await klien.call('GET', '/api/session', pakai);
+    assert.equal(setelahMati.status, 200, '/api/session tidak menuntut login');
+    assert.equal(setelahMati.json.user, null, 'sesi kedaluwarsa tidak boleh memberi identitas');
+    const rumahMati = await klien.call('GET', '/api/home', pakai);
+    assert.equal(rumahMati.status, 401, `rute auth:true wajib login_required, dapat ${rumahMati.status}`);
+    assert.equal(rumahMati.json.error, 'login_required');
+
+    // Setengah kedua: baris yang sudah tidak berguna harus hilang, bukan menumpuk selamanya.
+    await klien.db.from('sessions').update({ expires_at: new Date(Date.now() + 60_000).toISOString() });
+    // Sampul body wajib application/json (core.mjs:89) — sama seperti klien asli:
+    // lib/app-context.tsx:129 memanggil apiPost("/auth/logout") yang mengirim "{}" (lib/api.ts:77).
+    const keluar = await klien.call('POST', '/api/auth/logout', { ...pakai, body: {} });
+    assert.equal(keluar.status, 200, `logout harus berhasil, dapat ${keluar.status} ${JSON.stringify(keluar.json)}`);
+    assert.equal(klien.db.__count('sessions'), 0, 'logout harus MENGHAPUS baris sesi, bukan menyimpannya selamanya');
+    assert.equal((await klien.call('GET', '/api/session', pakai)).json.user, null, 'token lama tidak boleh naik kembali');
+  } finally {
+    globalThis.fetch = asli;
+  }
+});

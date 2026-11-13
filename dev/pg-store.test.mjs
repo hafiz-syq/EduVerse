@@ -1,5 +1,5 @@
 // Kontrak adapter Postgres: SQL dan urutan parameter harus sama persis dengan yang
-// dijanjikan dev/fake-db.mjs, karena 158 pemanggilan store di functions/src tidak diubah.
+// dijanjikan dev/fake-db.mjs, karena 162 pemanggilan store di functions/src tidak diubah.
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
@@ -133,4 +133,22 @@ test('builder tidak mengirim apa pun sebelum diawait', async () => {
   const db = createPgStore(pool);
   db.from('courses').select('id').eq('slug', 'x').limit(5);
   assert.equal(pool.log.length, 0);
+});
+
+// Retensi sesi: baris yang sudah mati tidak punya pemilik yang bisa menghapusnya, dan
+// sampai celah ini ditutup store hanya punya 6 metode tanpa satu pun jalur DELETE.
+test('hapus menghasilkan DELETE berkondisi dan menolak hapus tanpa filter', async () => {
+  const { pool, store } = satu([{ id: 'sesi-1' }]);
+  const hilang = await store.remove('sessions', [['id', 'sesi-1']], 'id');
+
+  assert.deepEqual(hilang, [{ id: 'sesi-1' }], 'RETURNING dipakai untuk melaporkan baris yang benar-benar hilang');
+  assert.deepEqual(
+    pool.log,
+    [{ text: 'DELETE FROM "app"."sessions" WHERE "id" = $1 RETURNING "id"', params: ['sesi-1'] }],
+    'DELETE harus diparameter dan tidak pernah membawa LIMIT tanpa WHERE',
+  );
+
+  await assert.rejects(() => store.remove('sessions', []), TypeError, 'tanpa filter, DELETE berarti menghapus seluruh tabel');
+  await assert.rejects(() => store.remove('sessions', [['id FROM sessions; DROP TABLE users; --', 'x']]), TypeError);
+  assert.equal(pool.log.length, 1, 'percobaan hapus tanpa filter / berisi injeksi tidak boleh dikirim ke server');
 });

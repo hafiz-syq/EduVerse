@@ -173,10 +173,15 @@ export function makeStore(db) {
       rows(await db.from(table).insertIfAbsent(row, { onConflict })),
     patch: async (table, patch, filters, columns = 'id') =>
       rows(await filters.reduce((q, [k, v]) => q.eq(k, v), db.from(table).update(patch)).select(columns)),
+    remove: async (table, filters, columns = 'id') => {
+      if (!filters.length) throw new TypeError('remove tanpa filter');
+      return rows(await filters.reduce((q, [k, v]) => q.eq(k, v), db.from(table).delete()).select(columns));
+    },
   };
 }
 
-/** Pembatas laju CAS: baris per (action, principal, window). Baris lama tetap tersimpan; lihat retensi. */
+/** Pembatas laju CAS: baris per (action, principal, window). Baris lama tetap tersimpan; lihat
+ *  keputusan retensi di docs/arsitektur.md §7 (satu baris per kunci, bukan per window). */
 export async function rateLimit(store, { action, principal, limit, windowSeconds }) {
   const now = Date.now();
   const key = `${action}:${principal}`;

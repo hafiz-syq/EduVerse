@@ -268,12 +268,14 @@ sekarang ditegakkan Postgres.
 | `ad_events.user_id` | tetap tanpa FK | `text` (bukan `uuid`) dan kejadian iklan harus tetap terhitung setelah akun dihapus. |
 | `tournaments.bank_ids` | tetap tanpa FK | `jsonb` array; FK tidak menjangkau elemen array. Validasi id bank di Function arena. |
 | `app.limiter` | berdiri sendiri | tidak terhubung siapa pun — disengaja. |
+| `sessions.user_id` → `users.id` | FK inline di CREATE TABLE, TANPA `ON DELETE` = RESTRICT diam-diam (`0001_identity.sql:12`) | Keputusan ini TIDAK tercatat di tabel atas dan penjaga tidak bisa melihatnya. `dev/schema.mjs` hanya memetakan `foreignKeys` dari bentuk `ALTER TABLE … ADD CONSTRAINT … FOREIGN KEY` (regex di `:110`, pushed di `:131`); `REFERENCES` inline disimpan sebagai `column.references` (`:64`, `:74`) dan tidak pernah diuji aturan ON DELETE. Bukti: `parseMigrations('migrations')` → `sessions.foreignKeys = []`, `sessions.user_id.references = {users,id}`, `problems = 0`, dan daftar yang dijaga tepat 5 FK. Hitungan mentah `grep -rn "REFERENCES app\." migrations/` = 31 baris: 5 ALTER + 26 inline. RESTRICT di kolom ini tidak menghalangi pembersihan sesi karena yang dihapus baris `sessions` (anak), bukan baris `users` (induk). Perlu diputuskan pemilik: perluas penjaga ke bentuk inline, atau tulis alasannya di sini. |
 
 `dev/schema.test.mjs` mengunci isi tabel ini: setiap FK harus membawa `ON DELETE` eksplisit, sasarannya
 harus `UNIQUE`, `SET NULL` ditolak pada kolom `NOT NULL`, dan `votes.post_id` diawasi agar tidak diam-diam
-diberi FK.
+diberi FK. Cakupan penjaga itu selebar tabel `harapan` di `dev/schema.test.mjs:192-198` — yaitu 5 FK
+bentukan `ALTER` saja, jadi 26 `REFERENCES` inline (termasuk `sessions.user_id`) tidak diuji sama sekali.
 
-Catatan penerapan: `grep -rn "DELETE FROM" functions netlify` = 0 dan API store hanya punya
+Catatan penerapan: sampai `5d82001` `grep -rn "DELETE FROM" functions netlify` = 0 dan API store hanya punya
 `list/one/all/insert/insertAbsent/patch` — tidak ada jalur aplikasi yang menghapus baris. Karena itu tidak
 ada baris yatim yang bisa membuat `ADD CONSTRAINT` gagal di database yang isinya hanya ditulis aplikasi.
 Kalau database Anda pernah diisi manual, jalankan dulu pemeriksaan yatim per kolom sebelum menerapkan 0010.

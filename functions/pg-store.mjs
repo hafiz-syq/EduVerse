@@ -1,7 +1,8 @@
 // Adapter Postgres untuk kontrak builder satu tabel yang dipakai functions/src/*.
 // Nilai selalu jadi parameter ($1, $2); nama tabel/kolom divalidas identifier dan tidak
 // pernah diterima dari input pengguna. Builder lazy: SQL dibangun saat diawait, sama seperti
-// dev/fake-db.mjs, supaya 158 pemanggilan store di aplikasi tidak perlu diubah.
+// dev/fake-db.mjs, supaya 162 pemanggilan store di functions/src tidak perlu diubah
+// (`grep -rnoE "store\.[a-zA-Z]+\(" functions/src | wc -l`, terukur 2026-11-14).
 
 const IDENT = /^[a-z_][a-z0-9_]*$/;
 
@@ -81,6 +82,14 @@ export function createPgStore(pool, { schema = 'app' } = {}) {
         return { text: `UPDATE ${namaTabel} SET ${set}${where} RETURNING ${kembalikan}`, params };
       }
 
+      if (state.mode === 'delete') {
+        // Tanpa filter, DELETE berarti mengosongkan seluruh tabel. Penjaga ini duduk di
+        // pembangun SQL sehingga panggilan yang salah tidak pernah dikirim ke pool.
+        if (!state.filters.length) throw new TypeError('delete tanpa filter');
+        const saring = state.filters.map(([key, value]) => `${quote(key, 'kolom')} = ${arg(value)}`).join(' AND ');
+        return { text: `DELETE FROM ${namaTabel} WHERE ${saring} RETURNING ${kembalikan}`, params };
+      }
+
       const where = state.filters.length
         ? ` WHERE ${state.filters.map(([key, value]) => `${quote(key, 'kolom')} = ${arg(value)}`).join(' AND ')}`
         : '';
@@ -119,6 +128,7 @@ export function createPgStore(pool, { schema = 'app' } = {}) {
         return builder;
       },
       update(values) { state.mode = 'update'; state.values = values; return builder; },
+      delete() { state.mode = 'delete'; return builder; },
       then(fulfilled, rejected) {
         berjalan ??= jalankan();
         return berjalan.then(fulfilled, rejected);

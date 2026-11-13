@@ -1,6 +1,6 @@
 // DB tiruan untuk verifikasi lokal: meniru builder satu tabel platform
-// (from/select/eq/order/limit/insert/insertIfAbsent/update) dengan kunci unik, DEFAULT,
-// dan NOT NULL yang dibaca langsung dari migrations/*.sql.
+// (from/select/eq/order/limit/insert/insertIfAbsent/update/delete) dengan kunci unik,
+// DEFAULT, dan NOT NULL yang dibaca langsung dari migrations/*.sql.
 // File ini TIDAK pernah ikut paket publikasi (dev/ di luar webDirectory & functionDirectory).
 import { applyDefaults, uniqueGroups } from './schema.mjs';
 
@@ -44,6 +44,13 @@ export function createFakeDb(schema, seedRows = {}) {
         return { data: project([row], state.columns), error: null };
       }
       let result = rowsOf(name).filter((row) => state.filters.every(([key, value]) => row[key] === value));
+      if (state.mode === 'delete') {
+        if (!state.filters.length) throw new TypeError('delete tanpa filter');
+        const tabel = rowsOf(name);
+        for (const row of result) tabel.splice(tabel.indexOf(row), 1);
+        persist();
+        return { data: project(result, state.columns), error: null };
+      }
       if (state.mode === 'update') {
         result.forEach((row) => Object.assign(row, state.values));
         persist();
@@ -72,6 +79,7 @@ export function createFakeDb(schema, seedRows = {}) {
         return builder;
       },
       update(values) { state.mode = 'update'; state.values = values; return builder; },
+      delete() { state.mode = 'delete'; return builder; },
       then(fulfilled, rejected) { return Promise.resolve().then(run).then(fulfilled, rejected); },
     };
     return builder;

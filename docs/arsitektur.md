@@ -88,7 +88,7 @@ flowchart LR
 
 | Perintah | Isi | Status terverifikasi (2026-11-05) |
 |---|---|---|
-| `npm run test:function` | `dev/*.test.mjs` — 75 tes: Function, pg-store, entry Netlify + Vercel, playground, draf, skema, penjaga rute + penjaga nama env di dokumen | lulus 75 / gagal 0 (terukur 2026-11-09; angka lama 74 ditulis sebelum penjaga env masuk) |
+| `npm run test:function` | `dev/*.test.mjs` — 77 tes: Function, pg-store, entry Netlify + Vercel, playground, draf, skema, penjaga rute + penjaga nama env di dokumen | lulus 77 / gagal 0 (terukur 2026-11-14; angka lama 75 ditulis sebelum dua tes jalur hapus sesi masuk, 74 sebelum penjaga env) |
 | `npm run build` | `tsc --noEmit` + `scripts/build.mjs` | hijau, `dist/assets/koding-DhGcim_f.js` 27,31 kB · CSS 164,26 kB (terukur 2026-11-09) |
 | `npm run check:function` | `deno check functions/index.ts` | butuh Deno |
 | penjaga skema | `dev/schema.test.mjs` — migrasi masuk subset DDL AppHub, tak ada tabel yatim, kolom Function ada di skema | lulus |
@@ -101,7 +101,7 @@ flowchart LR
 | Vercel Preview | **sengaja tanpa `DATABASE_URL`** (keputusan pemilik 2026-11-09) | `api/index.mjs:22` melempar saat impor → `FUNCTION_INVOCATION_FAILED` (500) untuk SEMUA `/api/*`, termasuk `/api/health`. Artinya: **login OAuth di Preview tidak akan pernah selesai** dan halaman yang butuh katalog akan gagal. 500 di Preview BUKAN regresi. | test `Preview tanpa DATABASE_URL gagal cepat di impor, dan itu keputusan — bukan regresi` (menjalakan `import('./api/index.mjs')` dengan env tanpa `DATABASE_URL` dan menuntut galat) |
 | Netlify (Production + Preview) | tidak terverifikasi dari agen — situs memakai Team protection: `/`, `/api/health`, `/functions/v1/app/api/health` semuanya 401 · `server=Netlify` (terukur 2026-11-09) | Di SUMBER, prefiks `/functions/v1/app/*` hanya dipasang di `netlify/functions/api.mjs` (`config.path`). Apakah host-nya masih melayani kedua prefiks BELUM terbukti: butuh akun anggota tim yang masuk ke dashboard. | `dev/route-sync.test.mjs` (sumber saja) |
 
-Delapan batas yang sering salah dibaca:
+Sepuluh batas yang sering salah dibaca:
 
 1. **Prefiks warisan hanya terpasang di Netlify.** Vercel mengambil rute dari nama berkas
    (`api/index.mjs` → `/api`) dan `vercel.json` tidak punya rewrite untuk `/functions/v1/*`,
@@ -139,14 +139,17 @@ Delapan batas yang sering salah dibaca:
    `@source`, jadi build di lingkungan tanpa repositori Git tetap bisa menyerap utility dari
    `node_modules`. Pemilik memutuskan `src/globals.css` TIDAK diubah sekarang, karena build
    Git sudah terbukti menghasilkan byte yang sama dengan lokal.
-7. **Login OAuth nyata SUDAH selesai di produksi — yang kosong bukan login-nya, tapi datanya.**
+7. **Login OAuth nyata SUDAH selesai pada host yang memakai Neon produksi — atribusi host-nya
+   belum terbukti, dan yang kosong bukan login-nya tapi datanya.**
    Terukur 2026-11-09 lewat peramban: klik "Lanjut dengan Google" di `/masuk` memanggil
    `/api/auth/start?provider=google` dan mendarat di `accounts.google.com/v3/signin/accountchooser`
    membawa `client_id=156265574443-…usercontent.com`, `redirect_uri=https://eduverselearn.vercel.app/api/auth/callback`,
    `scope=openid email profile`, `prompt=select_account`, dan `state` 64 karakter heks.
-   Sisi setelahnya kini terbukti dari data, bukan dari perkiraan: `app.users` berisi SATU baris
-   `identity` berprefix `google:` dengan email nyata (dibuat 2026-11-09 04:48 +07) dan
-   `app.sessions` berisi TIGA baris (04:48 → 06:58 +07, dua masih berlaku sampai 2026-12-09).
+   Sisi setelahnya terbukti dari data, bukan dari perkiraan: `app.users` berisi SATU baris
+   `identity` berprefix `google:` dengan email nyata (dibuat `2026-11-08T21:48:15Z`) dan
+   `app.sessions` berisi TIGA baris — dibuat `21:48:15Z`, `23:30:22Z`, `23:58:02Z` (semua UTC;
+   = 04:48, 06:30, 06:58 +07 pada 2026-11-09), dua masih berlaku sampai `2026-12-08T23:30:22Z`
+   dan `2026-12-08T23:58:02Z` (= 2026-12-09 06:30 dan 06:58 +07).
    Satu-satunya penulis baris sesi adalah `identity.startSession()`
    (`functions/src/identity.mjs:81-92`), dan satu-satunya pemanggilnya adalah
    `functions/src/oauth.mjs:128` — jalur callback setelah tukar-token IdP berhasil. Tidak ada
@@ -155,7 +158,18 @@ Delapan batas yang sering salah dibaca:
    Header cookie juga sudah diukur langsung dari host, bukan hanya dari harness (curl
    `…/api/auth/start?provider=github` → `302` + `Set-Cookie: ev_oauth=<masked>; HttpOnly;
    SameSite=Lax; Path=/; Max-Age=600; Secure`): host benar-benar menerbitkan cookie Secure.
-8. **Dua hal yang masih belum terukur di host, dan keduanya bukan tugas kode.**
+   Yang TIDAK dibuktikan data itu adalah host mana yang melayaninya. `app.sessions` cuma punya
+   empat kolom — `SELECT column_name FROM information_schema.columns WHERE table_schema='app'
+   AND table_name='sessions'` → `id`, `user_id`, `expires_at`, `created_at`; tidak ada kolom
+   `host`, `deployment`, apalagi `issuer`. Karena situs Netlify lama dan Vercel sekarang memakai
+   `DATABASE_URL` Neon yang sama, baris sesi mana pun bisa berasal dari salah satunya.
+   Daftar deployment terlama yang masih tersedia lewat CLI saat ini (`vercel ls`, 10 baris
+   terbaru) berakhir di `…/eduverse-8t9iz0rqj-…` yang `vercel inspect` laporkan sebagai
+   `dpl_FPDHiRC1pwy322RDmq5LykrUD57f`, dibuat `Mon Nov 09 2026 02:48:43 GMT+0700` — 1 jam
+   59 menit 32 detik sebelum baris sesi pertama. Itu cocok, tapi tetap bukan bukti: angkanya
+   adalah batas daftar TERSEDIA, bukan deployment pertama yang pernah ada, dan `vercel ls`
+   tidak pernah menampilkan baris repositori Git. Atribusi host karena itu pindah ke butir 8.
+8. **Tiga hal yang masih belum terukur di host, dan ketiganya bukan tugas kode.**
    (a) Baris `Set-Cookie: __Host-ev_session` hanya terbit di `/api/auth/callback`, jadi satu-satunya
    cara melihatnya adalah peramban yang memegang sesi pemilik — agen tidak boleh meminta tokennya.
    (b) Papan mingguan tidak sedang kosong karena bug: `weekly()`
@@ -165,6 +179,30 @@ Delapan batas yang sering salah dibaca:
    dibuktikan test in-process, bukan oleh host yang tak punya data. Mengisi satu entri berarti
    menulis ke Neon di luar batas "satu login nyata", jadi itu keputusan pemilik, bukan langkah
    yang saya ambil sendiri.
+   (c) HOST mana yang melayani login nyata itu. Skema `app.sessions` tidak punya kolom penanda
+   (empat kolom, lihat butir 7) dan kedua host berbagi `DATABASE_URL` yang sama, jadi satu-satunya
+   bukti yang mungkin adalah nomor deployment + waktu, yang hanya tersedia sampai batas daftar CLI.
+9. **Risiko terbuka kedua yang sengaja belum ditutup: cookie state OAuth tidak memakai prefiks
+   `__Host-`.** `grep -rn "__Host-" functions/src` = 1 (hanya `functions/src/identity.mjs:6`
+   `const COOKIE = '__Host-ev_session'`) dan `grep -rn "ev_oauth" functions/src` = 1 (hanya
+   `functions/src/oauth.mjs:6` `const STATE_COOKIE = 'ev_oauth'`); `grep -rno "__Host-ev_session\|ev_oauth" functions/`
+   = 1 dan 1, jadi tidak ada satu pun tempat yang pernah memberinya prefiks. Cookie state itu
+   bertahan 600 detik dan hanya dipakai untuk membandingkan `state` callback, tetapi tanpa
+   `__Host-` ia bisa disetel oleh subdomain lain dan tidak diikat ke Path=/. Perubahan ini
+   menyentuh `oauth.mjs` + `core.mjs` dan perlu tes sendiri — pemilik belum memutuskan.
+10. **Baris sesi yang sudah mati dulu tidak pernah dihapus — sekarang logout menghapusnya, tapi
+    pembersihan massal masih keputusan pemilik.** Bukti lamanya: satu baris dengan `created_at
+    2026-11-08T21:48:15Z` dan `expires_at 2026-11-08T21:49:55Z` (umur 416,456 detik pada
+    2026-11-14) masih terhitung di `app.sessions`, karena `endSession()` hanya menggeser
+    `expires_at` ke masa lalu dan `git grep -nw delete HEAD -- functions` = 0 — tidak ada satu pun
+    jalur DELETE, `makeStore` hanya punya 6 metode, dan `vercel.json` tidak punya `crons`
+    (`grep -c crons vercel.json` = 0). Yang ditutup sekarang: mode `delete` di
+    `functions/pg-store.mjs:85-91` + `:131`, dijaga agar DELETE tanpa filter melempar `TypeError`
+    sebelum SQL dikirim (`dev/pg-store.test.mjs`), dipakai di `identity.mjs:111` untuk logout.
+    Yang MASIH terbuka: baris yang kedaluwarsa tanpa logout (pengguna tutup tab) tidak punya
+    pembersih — dua kandidat sudah diusulkan ke pemilik (purge oportunistik di `startSession()`
+    vs `crons` di `vercel.json`) dan belum dipilih; lihat §7. Tidak ada DDL baru, tidak ada
+    migration, tidak ada penulisan ke Neon untuk perubahan ini.
 
 ## 6. KOREKSI angka yang pernah saya kutip di dokumen ini
 
@@ -173,3 +211,38 @@ Delapan batas yang sering salah dibaca:
   `dist/assets/index-CdlodoQH.css` dan pada berkas `assets/index-CdlodoQH.css` yang diunduh
   dari `eduverselearn.vercel.app`: keduanya `737e6845184f91fd23834b1fb785dfd8`,
   `wc -c` = 164265 B di kedua sisi.
+- Item 7 pernah berjudul "Login OAuth nyata SUDAH selesai **di produksi**". Yang dibuktikan
+  baris Neon adalah host yang memakai `DATABASE_URL` produksi, bukan host tertentu; atribusi
+  itu dicabut 2026-11-14 dan dipindahkan ke butir 8(c).
+- Tanggal kedaluwarsa sesi pernah ditulis "2026-12-09" tanpa zona. Nilai terukur sebenarnya
+  `2026-12-08T23:30:22Z` dan `2026-12-08T23:58:02Z` — bentuk 2026-12-09 adalah penyajian +07.
+  Sekarang keduanya ditulis UTC dengan padanan +07-nya.
+
+## 7. Keputusan yang masih di tangan pemilik
+
+- **Mekanisme pembersihan baris sesi kedaluwarsa.** Setelah logout ikut menghapus barisnya, satu
+  jalur tersisa tidak terersihkan: sesi yang mati karena `expires_at` terlewati tanpa pemiliknya
+  menekan "keluar". Dua opsi, keduanya punya konsekuensi berbeda dan saya tidak memilih:
+  1. **Purge oportunistik di `startSession()`** — sebelum menulis baris baru, hapus baris
+     `expires_at < now()` milik akun itu. Tidak butuh berkas baru, tidak menambah rute, tidak
+     menambah invocation, jadi tidak menyentuh kuota apa pun; bayarannya pembersihan hanya terjadi
+     ketika ada yang login, jadi tabel tetap membengkak di situs sepi dan sesi milik akun lain
+     tidak pernah tersentuh.
+  2. **`crons` di `vercel.json`** — satu jalur `/api/sweep` terjadwal (mis. `0 5 * * *`) menghapus
+     semua baris kedaluwarsa. Bersih dan bisa diaudit, tapi menurut dokumen resmi (diakses
+     2026-11-14): paket Hobby dibatasi **satu jalan per hari** — "Hobby accounts are limited to cron
+     jobs that run once per day. Cron expressions that would run more frequently will fail during
+     deployment" (`vercel.com/docs/schedules/cron-jobs/usage-and-pricing`, diperbarui 2026-07-15),
+     pemanggilannya bisa mendarat di mana saja dalam jam itu (presisi per-hour ±59 menit),
+     "Cron jobs invoke Vercel Functions. This means the same usage and pricing limits will apply",
+     "Cron jobs run only on production deployments" jadi tidak teruji di preview
+     (`.../manage-cron-jobs`, diperbarui 2026-08-11), pengirimannya best effort — bisa hilang dan
+     bisa dobel, jadi sapuan wajib idempoten, dan perlu `CRON_SECRET` (variabel env baru, di luar
+     daftar env yang ada sekarang). Halaman yang sama menyebut Cron Jobs sebagai "a legacy feature
+     and will be migrated to Schedules". Rewrite `/api/(.*)` → `/api` sudah ada di `vercel.json`
+     (14 rewrite), jadi tidak perlu rewrite baru — tapi perlu satu entri rute di
+     `functions/src/application.mjs` dan penjaga aslinya.
+  Putuskan: opsi 1, opsi 2, keduanya, atau biarkan menumpuk dan terima konsekuensinya.
+- **`__Host-` untuk cookie state OAuth** (butir 9) — belum diputuskan.
+- **26 `REFERENCES` inline di `migrations/` tidak diuji penjaga FK**, termasuk `sessions.user_id`
+  (`0001_identity.sql:12`) — perluas penjaga atau tulis alasannya; lihat `docs/erd.md` catatan relasi.

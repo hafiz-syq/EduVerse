@@ -106,7 +106,9 @@ export function createIdentity({ store, env, userFromContext }) {
     const token = cookieValue(request, COOKIE);
     if (!token) return clearCookie(COOKIE);
     const hashed = await hashToken(token, secret);
-    await store.patch('sessions', { expires_at: new Date(Date.now() - 1000).toISOString() }, [['id', hashed]], 'id');
+    // Hapus barisnya, bukan geser expires_at ke masa lalu: baris sesi tidak punya pemilik
+    // yang bisa membersihkan sendiri, jadi menyimpannya berarti menumpuk selamanya.
+    await store.remove('sessions', [['id', hashed]], 'id');
     return clearCookie(COOKIE);
   }
 
