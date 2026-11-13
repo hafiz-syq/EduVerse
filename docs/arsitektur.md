@@ -194,9 +194,11 @@ Sepuluh batas yang sering salah dibaca:
     pembersihan massal masih keputusan pemilik.** Bukti lamanya: satu baris dengan `created_at
     2026-11-08T21:48:15Z` dan `expires_at 2026-11-08T21:49:55Z` (umur 416,456 detik pada
     2026-11-14) masih terhitung di `app.sessions`, karena `endSession()` hanya menggeser
-    `expires_at` ke masa lalu dan `git grep -nw delete HEAD -- functions` = 0 — tidak ada satu pun
+    `expires_at` ke masa lalu dan `git grep -nw delete 5d82001 -- functions` = 0 — tidak ada satu pun
     jalur DELETE, `makeStore` hanya punya 6 metode, dan `vercel.json` tidak punya `crons`
-    (`grep -c crons vercel.json` = 0). Yang ditutup sekarang: mode `delete` di
+    (`grep -c crons vercel.json` = 0). Angka 0 dan "6 metode" itu snapshot `5d82001`; di `d77a555`
+    keduanya sudah tidak berlaku (`git grep -nw delete HEAD -- functions` = 4 baris, `makeStore` 7
+    metode). Yang ditutup sekarang: mode `delete` di
     `functions/pg-store.mjs:85-91` + `:131`, dijaga agar DELETE tanpa filter melempar `TypeError`
     sebelum SQL dikirim (`dev/pg-store.test.mjs`), dipakai di `identity.mjs:111` untuk logout.
     Yang MASIH terbuka: baris yang kedaluwarsa tanpa logout (pengguna tutup tab) tidak punya
@@ -217,6 +219,13 @@ Sepuluh batas yang sering salah dibaca:
 - Tanggal kedaluwarsa sesi pernah ditulis "2026-12-09" tanpa zona. Nilai terukur sebenarnya
   `2026-12-08T23:30:22Z` dan `2026-12-08T23:58:02Z` — bentuk 2026-12-09 adalah penyajian +07.
   Sekarang keduanya ditulis UTC dengan padanan +07-nya.
+- "Default Postgres (RESTRICT)" untuk FK tanpa `ON DELETE` adalah nama yang salah; defaultnya
+  **NO ACTION** (`pg_constraint.confdeltype = 'a'`, terukur 26 dari 31 FK skema ini di Neon produksi
+  2026-11-14). Kalimat itu tertulis di tiga tempat: `migrations/0010_key_integrity.sql:3` (tidak bisa
+  diperbaiki di sini — lihat §7), `docs/erd.md` catatan relasi (sudah dikoreksi), dan komentar
+  penjaga di `dev/schema.test.mjs:185-190` (sudah dikoreksi bersama nama tesnya). Efeknya untuk
+  skema ini nol — `condeferrable = true` = 0 dari 31, jadi NO ACTION dan RESTRICT tidak bisa
+  dibedakan — tapi tulisannya menyesatkan siapa pun yang menambahkan FK DEFERRABLE nanti.
 
 ## 7. Keputusan yang masih di tangan pemilik
 
@@ -246,3 +255,26 @@ Sepuluh batas yang sering salah dibaca:
 - **`__Host-` untuk cookie state OAuth** (butir 9) — belum diputuskan.
 - **26 `REFERENCES` inline di `migrations/` tidak diuji penjaga FK**, termasuk `sessions.user_id`
   (`0001_identity.sql:12`) — perluas penjaga atau tulis alasannya; lihat `docs/erd.md` catatan relasi.
+  Yang saya tutup hari ini hanya kejujurannya: nama tes dan komentar di `dev/schema.test.mjs:185-190`
+  tidak lagi menjanjikan "setiap referensi", dan `:230-231` mengunci `bentukAlter = 5` + `inline = 26`
+  supaya celahnya terlihat kalau angkanya bergeser.
+- **"Hapus akun" tidak bisa dilakukan hari ini, padahal halaman privasi berjanji bisa** — lihat
+  `docs/erd.md` bagian "Konsekuensi gabungan". Keputusan pemilik: (a) rute/admin tool yang menghapus
+  ber-urutan (12 FK NO ACTION ke `app.users` harus dibongkar duluan lewat anak-anaknya), (b) tambahkan
+  `ON DELETE` per keputusan lewat migrasi baru, atau (c) sunting janji di `src/pages/privacy.tsx:82,222`
+  supaya sesuai kenyataan. Tidak ada yang saya pilih; tidak ada DDL yang saya sentuh.
+- **Dua kalimat salah di `migrations/0010_key_integrity.sql` tidak bisa saya perbaiki tanpa merusak
+  penjaga drift.** Yang salah: `:3` "default Postgres (RESTRICT)" (seharusnya NO ACTION) dan `:1`
+  "Delapan referensi" sementara isinya `grep -c "^ALTER TABLE"` = 5 ditambah `grep -cE "^--   [a-z_.].* -> "`
+  = 4 butir penolakan = **9**. Kenapa tidak diedit: `scripts/apply-migrations.mjs:46-52` menghitung
+  `sha256` atas **seluruh isi berkas**, termasuk komentar, dan menolak jalan kalau checksum berbeda dari
+  baris ledger. Bukti terukur 2026-11-14: sha256 lokal ke-10 berkas sama persis dengan
+  `app.ev_schema_migrations.checksum`, termasuk `0010_key_integrity.sql` =
+  `22cb8f59b99310bf72be07ed6dbbcec34453ff924eced4e240a2ecd9d5f20272`. Satu karakter berubah di komentar →
+  skrip berhenti dengan `0010_key_integrity.sql diubah setelah pernah diterapkan`, dan karena ia melempar
+  (bukan continue), migrasi 0011 di belakangnya tidak akan pernah diterapkan lagi sampai ledger ditambal
+  manual — itu tulis ke Neon, dan putaran ini dilarang menulis ke Neon. KOREKSI yang sama sudah saya
+  tulis di dua tempat yang tidak dikunci checksum (`docs/erd.md` catatan relasi + `dev/schema.test.mjs`).
+  Putuskan: (a) biarkan berkas 0010 apa adanya dan dokumen yang jadi sumber kebenaran, (b) sunting
+  komentarnya lalu update baris ledger 0010 lewat satu UPDATE sadar, atau (c) catat koreksinya di
+  migrasi 0011 yang hanya berisi komentar.

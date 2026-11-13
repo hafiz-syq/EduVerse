@@ -182,10 +182,13 @@ test('kolom yang dibaca dan ditulis Function ada dalam skema', () => {
   assert.deepEqual(drift, [], `drift kolom:\n${drift.join('\n')}`);
 });
 
-// Penjaga keputusan integritas (migrasi 0010): setiap FK baru harus punya ON DELETE yang
-// tertulis, kalau tidak Postgres diam-diam memakai RESTRICT dan admins menemukan dirinya
-// tidak bisa menghapus baris tanpa alasan yang tercatat di suatu berkas.
-test('setiap referensi tanpa kunci punya keputusan: FK dengan ON DELETE atau alasan tertulis', () => {
+// Cakupan penjaga ini HANYA FK bentuk ALTER TABLE ... ADD CONSTRAINT. 0001..0009 menulis
+// REFERENCES inline, yang oleh Postgres dinamai otomatis dan dipakai default NO ACTION
+// (confdeltype 'a' — bukan RESTRICT; setara RESTRICT selama constraint tidak DEFERRABLE, dan
+// 0/31 deferrable di produksi, terukur 2026-11-14 lewat pg_constraint). Angka 5 dan 26 di
+// bawah adalah hitungan yang dicocokkan dengan katalog itu: kalau salah satunya berubah, ada
+// referensi baru yang keputusannya belum tercatat di mana pun.
+test('5 FK bentuk ALTER punya ON DELETE tertulis, dan 26 REFERENCES inline masih default (dilaporkan, bukan dijaga)', () => {
   const { tables, problems } = parseMigrations(MIGRATIONS);
   assert.deepEqual(problems, [], `ditemukan ${problems.length} masalah DDL: ${problems.join(' | ')}`);
 
@@ -215,6 +218,17 @@ test('setiap referensi tanpa kunci punya keputusan: FK dengan ON DELETE atau ala
     assert.ok(teks.includes(butir), `${butir} hilang dari catatan 0010_key_integrity.sql`);
   }
   assert.deepEqual(tables.get('votes').foreignKeys, [], 'votes.post_id jangan diberi FK — berisi id thread atau id post');
+
+  // Penjaga buta terhadap REFERENCES inline: ia tidak pernah memeriksa kolom itu, jadi
+  // Jumlahnya dikunci di sini supaya celahnya terlihat, bukan tersamar di balik nama tes.
+  let inline = 0;
+  for (const table of tables.values()) {
+    for (const column of table.columns.values()) if (column.references) inline += 1;
+  }
+  let bentukAlter = 0;
+  for (const table of tables.values()) bentukAlter += table.foreignKeys.length;
+  assert.equal(bentukAlter, 5, 'FK bentuk ALTER yang dijaga aturan ON DELETE berubah dari 5');
+  assert.equal(inline, 26, 'REFERENCES inline tanpa keputusan ON DELETE tercatat berubah dari 26');
 });
 
 test('penjaga DDL menolak FK tanpa ON DELETE, sasaran tak dikenal, dan SET NULL di kolom NOT NULL', () => {

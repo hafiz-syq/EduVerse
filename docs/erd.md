@@ -251,10 +251,16 @@ erDiagram
 
 ## Catatan relasi
 
-Sebelum `0010_key_integrity.sql`, tidak ada satu pun `ON DELETE` di `0001`–`0009` (dibuktikan dengan
-`grep -rn "ON DELETE" migrations/ | wc -l` = 0 saat hanya ada 9 berkas), jadi setiap FK baru berjalan
-dengan RESTRICT diam-diam. Keputusan di bawah ini ditulis sadar, satu per satu; kolom "Aksi" adalah yang
-sekarang ditegakkan Postgres.
+Sebelum `0010_key_integrity.sql`, tidak ada satu pun `ON DELETE` di `0001`–`0009` (`grep -rln "ON DELETE"
+migrations/000[1-9]*.sql | wc -l` = 0 berkas), jadi 26 FK inline berjalan dengan **default NO ACTION** —
+KOREKSI: dokumen ini sebelumnya menulis "RESTRICT diam-diam", dan itu salah nama. Diukur langsung dari
+katalog `pg_constraint` di Neon produksi 2026-11-14: `total_fk = 31`, `dengan_aksi = 5`,
+`default_no_action = 26`, dan `condeferrable = true` = 0 dari 31. Bedanya nyata (NO ACTION bisa ditunda
+sampai akhir transaksi kalau constraint DEFERRABLE; RESTRICT tidak), tapi di skema ini tidak bisa
+teramati karena tidak ada satu pun constraint yang DEFERRABLE — jadi koreksi ini soal kejujuran tulisan,
+bukan soal perilaku. Keputusan di bawah ini ditulis sadar, satu per satu untuk 5 FK bentuk `ALTER`; kolom
+"Aksi" adalah yang sekarang ditegakkan Postgres (`confdeltype`: `a` = NO ACTION, `r` = RESTRICT,
+`n` = SET NULL).
 
 | Relasi | Aksi | Alasan pilihan |
 |---|---|---|
@@ -268,17 +274,40 @@ sekarang ditegakkan Postgres.
 | `ad_events.user_id` | tetap tanpa FK | `text` (bukan `uuid`) dan kejadian iklan harus tetap terhitung setelah akun dihapus. |
 | `tournaments.bank_ids` | tetap tanpa FK | `jsonb` array; FK tidak menjangkau elemen array. Validasi id bank di Function arena. |
 | `app.limiter` | berdiri sendiri | tidak terhubung siapa pun — disengaja. |
-| `sessions.user_id` → `users.id` | FK inline di CREATE TABLE, TANPA `ON DELETE` = RESTRICT diam-diam (`0001_identity.sql:12`) | Keputusan ini TIDAK tercatat di tabel atas dan penjaga tidak bisa melihatnya. `dev/schema.mjs` hanya memetakan `foreignKeys` dari bentuk `ALTER TABLE … ADD CONSTRAINT … FOREIGN KEY` (regex di `:110`, pushed di `:131`); `REFERENCES` inline disimpan sebagai `column.references` (`:64`, `:74`) dan tidak pernah diuji aturan ON DELETE. Bukti: `parseMigrations('migrations')` → `sessions.foreignKeys = []`, `sessions.user_id.references = {users,id}`, `problems = 0`, dan daftar yang dijaga tepat 5 FK. Hitungan mentah `grep -rn "REFERENCES app\." migrations/` = 31 baris: 5 ALTER + 26 inline. RESTRICT di kolom ini tidak menghalangi pembersihan sesi karena yang dihapus baris `sessions` (anak), bukan baris `users` (induk). Perlu diputuskan pemilik: perluas penjaga ke bentuk inline, atau tulis alasannya di sini. |
+| `sessions.user_id` → `users.id` | FK inline di CREATE TABLE, TANPA `ON DELETE` = default NO ACTION (`confdeltype 'a'`, `0001_identity.sql:12`) | Keputusan ini TIDAK tercatat di tabel atas dan penjaga tidak bisa melihatnya. `dev/schema.mjs` hanya memetakan `foreignKeys` dari bentuk `ALTER TABLE … ADD CONSTRAINT … FOREIGN KEY` (regex di `:110`, pushed di `:131`); `REFERENCES` inline disimpan sebagai `column.references` (`:64`, `:74`) dan tidak pernah diuji aturan ON DELETE. Bukti: `parseMigrations('migrations')` → `sessions.foreignKeys = []`, `sessions.user_id.references = {users,id}`, `problems = 0`, dan daftar yang dijaga tepat 5 FK. Hitungan mentah `grep -rn "REFERENCES app\." migrations/` = 31 baris: 5 ALTER + 26 inline. RESTRICT di kolom ini tidak menghalangi pembersihan sesi karena yang dihapus baris `sessions` (anak), bukan baris `users` (induk). Perlu diputuskan pemilik: perluas penjaga ke bentuk inline, atau tulis alasannya di sini. |
 
 `dev/schema.test.mjs` mengunci isi tabel ini: setiap FK harus membawa `ON DELETE` eksplisit, sasarannya
 harus `UNIQUE`, `SET NULL` ditolak pada kolom `NOT NULL`, dan `votes.post_id` diawasi agar tidak diam-diam
-diberi FK. Cakupan penjaga itu selebar tabel `harapan` di `dev/schema.test.mjs:192-198` — yaitu 5 FK
-bentukan `ALTER` saja, jadi 26 `REFERENCES` inline (termasuk `sessions.user_id`) tidak diuji sama sekali.
+diberi FK. Nama tes itu sudah diperbaiki (`dev/schema.test.mjs:191`) supaya tidak lagi menjanjikan cakupan
+yang tidak diberikan: penjaganya hanya selebar tabel `harapan` di `:195` — 5 FK bentukan `ALTER` — dan
+`assert.equal(bentukAlter, 5)` + `assert.equal(inline, 26)` di `:230-231` mengunci angka itu, sehingga
+menambah menambah `REFERENCES` inline tanpa keputusan tercatat membuat tes gagal, bukan lolos diam-diam.
 
 Catatan penerapan: sampai `5d82001` `grep -rn "DELETE FROM" functions netlify` = 0 dan API store hanya punya
-`list/one/all/insert/insertAbsent/patch` — tidak ada jalur aplikasi yang menghapus baris. Karena itu tidak
-ada baris yatim yang bisa membuat `ADD CONSTRAINT` gagal di database yang isinya hanya ditulis aplikasi.
-Kalau database Anda pernah diisi manual, jalankan dulu pemeriksaan yatim per kolom sebelum menerapkan 0010.
+`list/one/all/insert/insertAbsent/patch` — tidak ada jalur aplikasi yang menghapus baris sama sekali. Sejak
+`d77a555` ada metode ketujuh, `remove`, dan pembangun SQL-nya menolak `delete` tanpa filter
+(`functions/pg-store.mjs:85-91`); karena itu tidak ada baris yatim yang bisa membuat `ADD CONSTRAINT` gagal
+di database yang isinya hanya ditulis aplikasi. Kalau database Anda pernah diisi manual, jalankan dulu
+pemeriksaan yatim per kolom sebelum menerapkan 0010.
+
+## Konsekuensi gabungan yang belum diputuskan pemilik: "Hapus akun"
+
+Dua fakta yang berdiri sendiri tampak biasa; digabung, mereka menutup satu jalur produk.
+
+1. Store punya jalur hapus sejak `d77a555`, tapi hanya satu call site di seluruh backend:
+   `store.remove('sessions', …)` di `functions/src/identity.mjs:111` (logout) —
+   `grep -rn "store.remove(" functions/src` = 1. Tidak ada satu pun kode yang menghapus baris `users`.
+2. 13 FK menunjuk `app.users`; 12 di antaranya ber-aksi NO ACTION dan hanya `flags.resolved_by` yang
+   SET NULL — terukur dari `pg_constraint` di Neon produksi 2026-11-14.
+
+Akibatnya **baris pengguna tidak bisa dihapus selama ia punya anak** (sesi, attempts, downloads, entries,
+`flags.reporter_id`, playground_runs, posts, progress, threads, user_state, votes, xp_events), dan tidak ada
+rute yang mencoba: `grep -cniE "hapus.?akun|delete.?account|account.*delet" functions/src/application.mjs` = 0.
+Yang berjanji justru halaman kebijakan privasi — `src/pages/privacy.tsx:82` dan `:222` menulis permintaan
+penghapusan akun disampaikan kepada pengelola, dengan pengakuan sendiri di `:82` bahwa "portal ini belum
+menyediakan tombol hapus diri" (`grep -c "hapus diri" src/pages/privacy.tsx` = 1). Jadi janji itu hari ini
+hanya bisa ditepati lewat DELETE manual ber-urutan di database. Retensi + urutan penghapusan mana yang
+ikut hilang adalah keputusan produk/privasi pemilik, dan itu DDL tidak saya sentuh.
 
 ## Lab koding di skema
 
