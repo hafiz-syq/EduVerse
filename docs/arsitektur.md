@@ -197,14 +197,16 @@ Sepuluh batas yang sering salah dibaca:
     `expires_at` ke masa lalu dan `git grep -nw delete 5d82001 -- functions` = 0 — tidak ada satu pun
     jalur DELETE, `makeStore` hanya punya 6 metode, dan `vercel.json` tidak punya `crons`
     (`grep -c crons vercel.json` = 0). Angka 0 dan "6 metode" itu snapshot `5d82001`; di `d77a555`
-    keduanya sudah tidak berlaku (`git grep -nw delete HEAD -- functions` = 4 baris, `makeStore` 7
-    metode). Yang ditutup sekarang: mode `delete` di
-    `functions/pg-store.mjs:85-91` + `:131`, dijaga agar DELETE tanpa filter melempar `TypeError`
-    sebelum SQL dikirim (`dev/pg-store.test.mjs`), dipakai di `identity.mjs:111` untuk logout.
-    Yang MASIH terbuka: baris yang kedaluwarsa tanpa logout (pengguna tutup tab) tidak punya
-    pembersih — dua kandidat sudah diusulkan ke pemilik (purge oportunistik di `startSession()`
-    vs `crons` di `vercel.json`) dan belum dipilih; lihat §7. Tidak ada DDL baru, tidak ada
-    migration, tidak ada penulisan ke Neon untuk perubahan ini.
+    keduanya sudah tidak berlaku (`git grep -nw delete d77a555 -- functions` = 4 baris, `makeStore` 7
+    metode saat itu, kini 8 setelah §6 putaran 8). Kedua angka ditulis dengan sha, bukan `HEAD`,
+    supaya nilainya tetap sama ketika perintahnya diketik ulang besok. Yang ditutup `d77a555`: mode
+    `delete` di `functions/pg-store.mjs:92-96` (penjaga di `:95`), dijaga agar DELETE tanpa filter
+    melempar `TypeError` sebelum SQL dikirim (`dev/pg-store.test.mjs`), dipakai di
+    `functions/src/identity.mjs:115` untuk logout. Yang ditutup putaran 8 §6: baris yang kedaluwarsa
+    tanpa logout kini disapu oportunistik di `startSession()` — `functions/src/identity.mjs:88`,
+    murni lewat jalur hapus yang sama, tanpa DDL, tanpa migration, tanpa penulisan ke Neon. Nomor baris
+    di tiga paragraf ini snapshot working copy 2026-11-14 sebelum commit putaran 8; setelah file ini
+    masuk git, angkanya mengikat ke commit tempat ia ditulis, bukan ke `HEAD`.
 
 ## 6. KOREKSI angka yang pernah saya kutip di dokumen ini
 
@@ -221,37 +223,66 @@ Sepuluh batas yang sering salah dibaca:
   Sekarang keduanya ditulis UTC dengan padanan +07-nya.
 - "Default Postgres (RESTRICT)" untuk FK tanpa `ON DELETE` adalah nama yang salah; defaultnya
   **NO ACTION** (`pg_constraint.confdeltype = 'a'`, terukur 26 dari 31 FK skema ini di Neon produksi
-  2026-11-14). Kalimat itu tertulis di tiga tempat: `migrations/0010_key_integrity.sql:3` (tidak bisa
-  diperbaiki di sini — lihat §7), `docs/erd.md` catatan relasi (sudah dikoreksi), dan komentar
-  penjaga di `dev/schema.test.mjs:185-190` (sudah dikoreksi bersama nama tesnya). Efeknya untuk
-  skema ini nol — `condeferrable = true` = 0 dari 31, jadi NO ACTION dan RESTRICT tidak bisa
-  dibedakan — tapi tulisannya menyesatkan siapa pun yang menambahkan FK DEFERRABLE nanti.
+  2026-11-14). Kalimat itu tertulis di tiga tempat: `migrations/0010_key_integrity.sql:3`,
+  `docs/erd.md` catatan relasi (baris `sessions` ikut, karena di sana nama yang salah masih terulang),
+  dan komentar penjaga di `dev/schema.test.mjs:185-190`. Ketiganya sudah dikoreksi pada putaran 8;
+  yang perlu diingat dari koreksi pertama: suntingan di berkas migrasi memindahkan checksum ledger,
+  jadi ada satu UPDATE operator yang menggantung — lihat §7. Efek perilaku dari koreksi ini nol —
+  `condeferrable = true` = 0 dari 31, jadi NO ACTION dan RESTRICT tidak bisa dibedakan di skema
+  sekarang — tapi tulisannya menyesatkan siapa pun yang menambahkan FK DEFERRABLE nanti.
+- Judul `migrations/0010_key_integrity.sql:1` pernah menulis "Delapan referensi". Hitungan dari
+  isinya sendiri: `grep -c "^ALTER TABLE"` = 5 dan `grep -cE "^--   [a-z_.].* -> "` = 4, jadi **9**.
+  Angka 8 itu tidak pernah tercetak oleh perintah apa pun; judul sekarang menyebut keduanya.
 
 ## 7. Keputusan yang masih di tangan pemilik
 
-- **Mekanisme pembersihan baris sesi kedaluwarsa.** Setelah logout ikut menghapus barisnya, satu
-  jalur tersisa tidak terersihkan: sesi yang mati karena `expires_at` terlewati tanpa pemiliknya
-  menekan "keluar". Dua opsi, keduanya punya konsekuensi berbeda dan saya tidak memilih:
-  1. **Purge oportunistik di `startSession()`** — sebelum menulis baris baru, hapus baris
-     `expires_at < now()` milik akun itu. Tidak butuh berkas baru, tidak menambah rute, tidak
-     menambah invocation, jadi tidak menyentuh kuota apa pun; bayarannya pembersihan hanya terjadi
-     ketika ada yang login, jadi tabel tetap membengkak di situs sepi dan sesi milik akun lain
-     tidak pernah tersentuh.
-  2. **`crons` di `vercel.json`** — satu jalur `/api/sweep` terjadwal (mis. `0 5 * * *`) menghapus
-     semua baris kedaluwarsa. Bersih dan bisa diaudit, tapi menurut dokumen resmi (diakses
-     2026-11-14): paket Hobby dibatasi **satu jalan per hari** — "Hobby accounts are limited to cron
-     jobs that run once per day. Cron expressions that would run more frequently will fail during
-     deployment" (`vercel.com/docs/schedules/cron-jobs/usage-and-pricing`, diperbarui 2026-07-15),
-     pemanggilannya bisa mendarat di mana saja dalam jam itu (presisi per-hour ±59 menit),
-     "Cron jobs invoke Vercel Functions. This means the same usage and pricing limits will apply",
-     "Cron jobs run only on production deployments" jadi tidak teruji di preview
-     (`.../manage-cron-jobs`, diperbarui 2026-08-11), pengirimannya best effort — bisa hilang dan
-     bisa dobel, jadi sapuan wajib idempoten, dan perlu `CRON_SECRET` (variabel env baru, di luar
-     daftar env yang ada sekarang). Halaman yang sama menyebut Cron Jobs sebagai "a legacy feature
-     and will be migrated to Schedules". Rewrite `/api/(.*)` → `/api` sudah ada di `vercel.json`
-     (14 rewrite), jadi tidak perlu rewrite baru — tapi perlu satu entri rute di
-     `functions/src/application.mjs` dan penjaga aslinya.
-  Putuskan: opsi 1, opsi 2, keduanya, atau biarkan menumpuk dan terima konsekuensinya.
+- **Mekanisme pembersihan baris sesi kedaluwarsa — SUDAH DIPUTUSKAN pemilik 2026-11-14: OPSI 1,
+  purge oportunistik di `startSession()`.** Bukan lagi pertanyaan, catatan ini tinggal sebagai jejak
+  keputusan dan tempat bayarannya ditulis. Yang dipilih: sebelum `INSERT` baris sesi baru, hapus baris
+  `expires_at` sudah lewat milik akun yang sama (`functions/src/identity.mjs:88`). Jalan lain yang
+  pemilik tolak secara eksplisit pada putaran yang sama: `crons` di `vercel.json`, rute `/api/sweep`,
+  dan variabel env baru — jadi ketiganya tidak boleh "dipermudah" nanti tanpa keputusan pemilik.
+  Alasan penolakan `crons` tetap layak dibaca kalau keputusan ini dibuka lagi: dokumen resmi (diakses
+  2026-11-14) membatasi paket Hobby pada **satu jalan per hari** — "Hobby accounts are limited to cron
+  jobs that run once per day. Cron expressions that would run more frequently will fail during
+  deployment" (`vercel.com/docs/schedules/cron-jobs/usage-and-pricing`, diperbarui 2026-07-15),
+  pemanggilannya mendarat di mana saja dalam jam itu (presisi per-hour ±59 menit), "Cron jobs invoke
+  Vercel Functions. This means the same usage and pricing limits will apply", "Cron jobs run only on
+  production deployments" jadi tidak teruji di preview (`.../manage-cron-jobs`, diperbarui 2026-08-11),
+  pengirimannya best effort sehingga sapuan wajib idempoten, dan perlu `CRON_SECRET` (env baru).
+  Yang dibutuhkan opsi 1 dan tidak ada di kontrak store sebelumnya: operator perbandingan waktu.
+  Kontrak lama hanya menyatakan kesamaan nilai — `makeStore` mereduksi filter dengan `.eq`
+  (`functions/src/core.mjs:176-179`) dan `expires_at < now()` tidak bisa diekspresikan. Diputuskan
+  menambah operator, bukan menyapu lewat banyak baca: `lt()` di pembangun
+  (`functions/pg-store.mjs:124`), pembangun `WHERE` tunggal yang selalu menaruh kesamaan nilai sebelum
+  kurungan waktu supaya nomor placeholder tetap deterministik (`:63-69`), penjaga tanpa-filter
+  diperlebar (`:95`, DELETE tanpa `eq` **dan** tanpa `lt` tetap melempar `TypeError`), dan metode
+  facade `removeOlder(table, filters, column, before)` yang mewajibkan cakupan akun
+  (`functions/src/core.mjs:182-185`) supaya panggilan yang lupa filter tidak jadi sapuan lintas akun.
+  Hitungan sesudah perubahan, masing-masing dengan perintah yang mencetaknya. Pemanggilan:
+  `grep -rnoE "store\.[a-zA-Z]+\(" functions/src | wc -l` = 163 (sebelumnya 162, dan 162 itu snapshot
+  commit `5d82001`); dipecah per metode dengan `grep -oE "store\.[a-zA-Z]+" | sort | uniq -c` atas
+  keluaran yang sama → one 50, list 29, all 28, patch 24, insert 17, insertAbsent 13, removeOlder 1,
+  remove 1. Facade dan pembangun dihitung dari objek yang benar-benar dikembalikan, bukan dari pola
+  indentasi (grep tidak bisa diandalkan untuk itu):
+  `node --input-type=module -e 'const {makeStore}=await import("./functions/src/core.mjs");console.log(Object.keys(makeStore({from(){return{};}})).length)'`
+  = 8 (`all,insert,insertAbsent,list,one,patch,remove,removeOlder`) dan
+  `node --input-type=module -e 'const {createPgStore}=await import("./functions/pg-store.mjs");console.log(Object.keys(createPgStore({query:async()=>({rows:[]})}).from("sessions")).length)'`
+  = 10 (`select,eq,lt,order,limit,insert,insertIfAbsent,update,delete,then`). Penjaga drift SQL persis
+  ikut ditulis di `dev/pg-store.test.mjs` dan perilaku lintas akun dijaga tes di `dev/function.test.mjs`.
+  Bayaran yang diterima sadar dan masih benar sampai hari ini: pembersihan hanya terjadi saat ada yang
+  login, jadi baris milik akun yang tidak pernah masuk lagi tidak pernah tersentuh — itu persis satu
+  baris mati yang masih terhitung di `app.sessions` produksi (lihat butir 10 di atas), dan ia akan tetap
+  ada setelah perubahan ini naik ke produksi. Opsi 1 juga tidak membuat tabel menyusut di situs sepi.
+- **Retensi baris `app.limiter`** — `functions/src/core.mjs:190` merujuk butir ini, jadi ia ditulis
+  dengan nomor yang benar. `app.limiter` (`migrations/0008_ads.sql:24`) menyimpan satu baris per kunci
+  `action:principal`, bukan per jendela waktu: barisnya di-upsert (`insertAbsent` lalu `patch` CAS),
+  dan setelah suatu tindakan pernah dibatasi satu kali, barisnya tinggal selamanya walau jendelanya
+  sudah lama lewat. Belum ada jalur hapus untuknya — `grep -rn "remove('limiter'" functions/src` = 0 —
+  dan tidak ada DDL yang membatasi umurnya. Ini bukan bug yang bisa saya putuskan sendiri: mengecilkan
+  tabel berarti menghapus catatan pembatas laju, yang justru dipakai untuk menahan penyalahgunaan.
+  Putuskan: biarkan (satu baris kecil per (aksi, pengguna) — tumbuhnya lambat dan terbatas), atau
+  ikut sapu oportunistik seperti sesi tapi dengan kunci berbeda.
 - **`__Host-` untuk cookie state OAuth** (butir 9) — belum diputuskan.
 - **26 `REFERENCES` inline di `migrations/` tidak diuji penjaga FK**, termasuk `sessions.user_id`
   (`0001_identity.sql:12`) — perluas penjaga atau tulis alasannya; lihat `docs/erd.md` catatan relasi.
@@ -263,21 +294,41 @@ Sepuluh batas yang sering salah dibaca:
   ber-urutan (12 FK NO ACTION ke `app.users` harus dibongkar duluan lewat anak-anaknya), (b) tambahkan
   `ON DELETE` per keputusan lewat migrasi baru, atau (c) sunting janji di `src/pages/privacy.tsx:82,222`
   supaya sesuai kenyataan. Tidak ada yang saya pilih; tidak ada DDL yang saya sentuh.
-- **Dua kalimat salah di `migrations/0010_key_integrity.sql` tidak bisa saya perbaiki tanpa merusak
-  penjaga drift.** Yang salah: `:3` "default Postgres (RESTRICT)" (seharusnya NO ACTION) dan `:1`
-  "Delapan referensi" sementara isinya `grep -c "^ALTER TABLE"` = 5 ditambah `grep -cE "^--   [a-z_.].* -> "`
-  = 4 butir penolakan = **9**. Kenapa tidak diedit: `scripts/apply-migrations.mjs:46-52` menghitung
-  `sha256` atas **seluruh isi berkas**, termasuk komentar, dan menolak jalan kalau checksum berbeda dari
-  baris ledger. Bukti terukur 2026-11-14: sha256 lokal ke-10 berkas sama persis dengan
-  `app.ev_schema_migrations.checksum`, termasuk `0010_key_integrity.sql` =
-  `22cb8f59b99310bf72be07ed6dbbcec34453ff924eced4e240a2ecd9d5f20272`. Satu karakter berubah di komentar →
-  skrip berhenti dengan `0010_key_integrity.sql diubah setelah pernah diterapkan`, dan karena ia melempar
-  (bukan continue), migrasi 0011 di belakangnya tidak akan pernah diterapkan lagi sampai ledger ditambal
-  manual — itu tulis ke Neon, dan putaran ini dilarang menulis ke Neon. KOREKSI yang sama sudah saya
-  tulis di dua tempat yang tidak dikunci checksum (`docs/erd.md` catatan relasi + `dev/schema.test.mjs`).
-  Putuskan: (a) biarkan berkas 0010 apa adanya dan dokumen yang jadi sumber kebenaran, (b) sunting
-  komentarnya lalu update baris ledger 0010 lewat satu UPDATE sadar, atau (c) catat koreksinya di
-  migrasi 0011 yang hanya berisi komentar.
+- **Jejak pencabutan token ikut hilang sejak logout menghapus baris** — ini konsekuensi, bukan
+  permintaan. Sebelum `d77a555`, `endSession()` hanya menggeser `expires_at` ke masa lalu sehingga
+  barisnya tetap ada dan menyimpan kapan sebuah token berhenti berlaku; sekarang logout memanggil
+  `store.remove('sessions', …)` (`functions/src/identity.mjs:115`) dan purge putaran 8 melakukan
+  hal yang sama untuk baris kedaluwarsa, jadi tidak ada lagi tempat menjawab "token ini dicabut jam
+  berapa". Kalau nanti pertanyaan itu perlu dijawab (audit, sengketa akses), jawabannya bukan
+  mengembalikan perilaku lama tapi menambahkan jejak yang memang untuk itu — dan itu keputusan
+  pemilik, bukan sesuatu yang saya tambahkan diam-diam. Detailnya ada di `docs/erd.md` bagian
+  "Konsekuensi gabungan".
+- **Dua kalimat salah di `migrations/0010_key_integrity.sql` SUDAH dikoreksi (putaran 8 §2–§3), dan
+  koreksinya meninggalkan satu pekerjaan operator yang bukan milik saya.** Yang salah: `:3`
+  "default Postgres (RESTRICT)" — salah nama, default Postgres adalah NO ACTION (`confdeltype 'a'`),
+  diukur 2026-11-14 dari `pg_constraint`: `SELECT confdeltype, count(*) FROM pg_constraint c JOIN
+  pg_class r ON r.oid = c.conrelid JOIN pg_namespace n ON n.oid = r.relnamespace WHERE c.contype = 'f'
+  AND n.nspname = 'app' GROUP BY 1;` → `a`=26, `r`=3, `n`=2, total 31; dan `:1` "Delapan referensi"
+  sementara isinya `grep -c "^ALTER TABLE"` = 5 ditambah `grep -cE "^--   [a-z_.].* -> "` = 4 butir
+  penolakan = **9**. Keduanya sudah tidak begitu di berkas sekarang, dan bedanya NO ACTION vs RESTRICT
+  ikut ditulis di komentar supaya tidak muncul lagi sebagai "sama saja": yang pertama diperiksa pada
+  akhir pernyataan dan bisa DEFERRABLE, yang kedua seketika dan tidak bisa — untuk 31 FK di skema ini
+  tidak teramati bedanya karena `condeferrable = true` = 0 dari 31, jadi yang salah memang namanya.
+  Kenapa ini pernah saya tahan: `scripts/apply-migrations.mjs:45-51` menghitung `sha256` atas
+  **seluruh isi berkas**, termasuk komentar, dan menolak jalan (melempar, bukan continue) kalau
+  checksumnya berbeda dari baris ledger. Karena itu sunting komentar ini MEMINDAHKAN checksum:
+  ledger masih `22cb8f59b99310bf72be07ed6dbbcec34453ff924eced4e240a2ecd9d5f20272`, berkas sekarang
+  `48d376c9b7c7160d0203429effd07a9cb424fa26735a0e2734f0ae1dcbb18876`. Sampai ledger ditambal,
+  `node scripts/apply-migrations.mjs` berhenti di `0010_key_integrity.sql diubah setelah pernah
+  diterapkan` dan migrasi 0011 apa pun di belakangnya tidak akan pernah jalan. Yang saya BUKTIKAN
+  tetap nol perubahan perilaku: editnya hanya komentar — sha256 atas `grep "^ALTER TABLE"` identik
+  sebelum dan sesudah (`8f348e321291e24c8fb3ef79d6da5f6d6780957029e74af0c4256199e5ebc124` di kedua
+  sisi) dan baris non-komentar tetap 5 = 5. Yang MENJADI TANGAN PEMILIK (saya tidak menulis Neon):
+  satu UPDATE sadar, dijalankan sendiri,
+  `UPDATE app.ev_schema_migrations SET checksum = '48d376c9b7c7160d0203429effd07a9cb424fa26735a0e2734f0ae1dcbb18876' WHERE name = '0010_key_integrity.sql';`
+  — dan angka `48d3…` itu hanya sah selama isi berkas tidak berubah lagi, jadi jalankan perintah sha
+  di atas tepat sebelum UPDATE. Koreksi yang sama juga ada di dua tempat yang tidak dikunci checksum
+  (`docs/erd.md` catatan relasi + `dev/schema.test.mjs:185-190`).
 - **Rambatan yang ditemukan saat mengukur butir di atas: `core.autocrlf = true` tanpa `.gitattributes`
   membuat penjaga drift salah tuduh di mesin ini.** Working copy hari ini masih LF (CRLF = 0 di
   kedua berkas yang diuji), jadi checksumnya sama dengan ledger. Tapi satu checkout bersih sudah cukup

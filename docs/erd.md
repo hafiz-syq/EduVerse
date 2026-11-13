@@ -274,14 +274,14 @@ bukan soal perilaku. Keputusan di bawah ini ditulis sadar, satu per satu untuk 5
 | `ad_events.user_id` | tetap tanpa FK | `text` (bukan `uuid`) dan kejadian iklan harus tetap terhitung setelah akun dihapus. |
 | `tournaments.bank_ids` | tetap tanpa FK | `jsonb` array; FK tidak menjangkau elemen array. Validasi id bank di Function arena. |
 | `app.limiter` | berdiri sendiri | tidak terhubung siapa pun — disengaja. |
-| `sessions.user_id` → `users.id` | FK inline di CREATE TABLE, TANPA `ON DELETE` = default NO ACTION (`confdeltype 'a'`, `0001_identity.sql:12`) | Keputusan ini TIDAK tercatat di tabel atas dan penjaga tidak bisa melihatnya. `dev/schema.mjs` hanya memetakan `foreignKeys` dari bentuk `ALTER TABLE … ADD CONSTRAINT … FOREIGN KEY` (regex di `:110`, pushed di `:131`); `REFERENCES` inline disimpan sebagai `column.references` (`:64`, `:74`) dan tidak pernah diuji aturan ON DELETE. Bukti: `parseMigrations('migrations')` → `sessions.foreignKeys = []`, `sessions.user_id.references = {users,id}`, `problems = 0`, dan daftar yang dijaga tepat 5 FK. Hitungan mentah `grep -rn "REFERENCES app\." migrations/` = 31 baris: 5 ALTER + 26 inline. RESTRICT di kolom ini tidak menghalangi pembersihan sesi karena yang dihapus baris `sessions` (anak), bukan baris `users` (induk). Perlu diputuskan pemilik: perluas penjaga ke bentuk inline, atau tulis alasannya di sini. |
+| `sessions.user_id` → `users.id` | FK inline di CREATE TABLE, TANPA `ON DELETE` = default NO ACTION (`confdeltype 'a'`, `0001_identity.sql:12`) | Keputusan ini TIDAK tercatat di tabel atas dan penjaga tidak bisa melihatnya. `dev/schema.mjs` hanya memetakan `foreignKeys` dari bentuk `ALTER TABLE … ADD CONSTRAINT … FOREIGN KEY` (regex di `:110`, pushed di `:131`); `REFERENCES` inline disimpan sebagai `column.references` (`:64`, `:74`) dan tidak pernah diuji aturan ON DELETE. Bukti: `parseMigrations('migrations')` → `sessions.foreignKeys = []`, `sessions.user_id.references = {users,id}`, `problems = 0`, dan daftar yang dijaga tepat 5 FK. Hitungan mentah `grep -rn "REFERENCES app\." migrations/` = 31 baris: 5 ALTER + 26 inline. NO ACTION di kolom ini tidak menghalangi pembersihan sesi karena yang dihapus baris `sessions` (anak), bukan baris `users` (induk) — itu hanya menjawab sudut sapuan sesi. Sudut yang belum terjawab ada di bawah tabel ini: FK yang SAMA membuat baris `users` tidak bisa dihapus selama anak-anaknya masih ada. Perlu diputuskan pemilik: perluas penjaga ke bentuk inline, atau tulis alasannya di sini. |
 
 `dev/schema.test.mjs` mengunci isi tabel ini: setiap FK harus membawa `ON DELETE` eksplisit, sasarannya
 harus `UNIQUE`, `SET NULL` ditolak pada kolom `NOT NULL`, dan `votes.post_id` diawasi agar tidak diam-diam
 diberi FK. Nama tes itu sudah diperbaiki (`dev/schema.test.mjs:191`) supaya tidak lagi menjanjikan cakupan
 yang tidak diberikan: penjaganya hanya selebar tabel `harapan` di `:195` — 5 FK bentukan `ALTER` — dan
 `assert.equal(bentukAlter, 5)` + `assert.equal(inline, 26)` di `:230-231` mengunci angka itu, sehingga
-menambah menambah `REFERENCES` inline tanpa keputusan tercatat membuat tes gagal, bukan lolos diam-diam.
+menambah `REFERENCES` inline tanpa keputusan tercatat membuat tes gagal, bukan lolos diam-diam.
 
 Catatan penerapan: sampai `5d82001` `grep -rn "DELETE FROM" functions netlify` = 0 dan API store hanya punya
 `list/one/all/insert/insertAbsent/patch` — tidak ada jalur aplikasi yang menghapus baris sama sekali. Sejak
@@ -294,9 +294,11 @@ pemeriksaan yatim per kolom sebelum menerapkan 0010.
 
 Dua fakta yang berdiri sendiri tampak biasa; digabung, mereka menutup satu jalur produk.
 
-1. Store punya jalur hapus sejak `d77a555`, tapi hanya satu call site di seluruh backend:
-   `store.remove('sessions', …)` di `functions/src/identity.mjs:111` (logout) —
-   `grep -rn "store.remove(" functions/src` = 1. Tidak ada satu pun kode yang menghapus baris `users`.
+1. Store punya jalur hapus sejak `d77a555`, dan setelah purge putaran 8 ada dua call site di backend:
+   `store.remove('sessions', …)` di `functions/src/identity.mjs:115` (logout) dan
+   `store.removeOlder('sessions', …)` di `:88` (sapuan oportunistik saat login) —
+   `grep -rn "store\.remove" functions/src` = 2 baris, keduanya ke `sessions`. Tidak ada satu pun kode
+   yang menghapus baris `users`: `grep -rn "remove('users'" functions/src` = 0.
 2. 13 FK menunjuk `app.users`; 12 di antaranya ber-aksi NO ACTION dan hanya `flags.resolved_by` yang
    SET NULL — terukur dari `pg_constraint` di Neon produksi 2026-11-14.
 
@@ -308,6 +310,13 @@ penghapusan akun disampaikan kepada pengelola, dengan pengakuan sendiri di `:82`
 menyediakan tombol hapus diri" (`grep -c "hapus diri" src/pages/privacy.tsx` = 1). Jadi janji itu hari ini
 hanya bisa ditepati lewat DELETE manual ber-urutan di database. Retensi + urutan penghapusan mana yang
 ikut hilang adalah keputusan produk/privasi pemilik, dan itu DDL tidak saya sentuh.
+
+Satu bayaran lagi dari jalur hapus yang sudah ada, tercatat sebagai konsekuensi — bukan sebagai permintaan:
+logout yang menghapus baris sesi juga menghapus jejak kapan sebuah token dicabut. Sebelum `d77a555`
+`endSession()` hanya menggeser `expires_at` ke masa lalu, jadi barisnya tetap ada dan menyimpan waktu
+pencabutan; sekarang tidak ada satu pun tempat yang mencatatnya (`grep -c crons vercel.json` = 0 dan tidak
+ada tabel audit — `app.sessions` satu-satunya penyimpan sesi). Kalau nanti perlu membuktikan "token ini
+sudah dicabut pada jam X", itu tidak bisa dijawab dari basis data hari ini.
 
 ## Lab koding di skema
 
