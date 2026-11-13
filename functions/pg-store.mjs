@@ -1,7 +1,7 @@
 // Adapter Postgres untuk kontrak builder satu tabel yang dipakai functions/src/*.
 // Nilai selalu jadi parameter ($1, $2); nama tabel/kolom divalidas identifier dan tidak
 // pernah diterima dari input pengguna. Builder lazy: SQL dibangun saat diawait, sama seperti
-// dev/fake-db.mjs, supaya 162 pemanggilan store di functions/src tidak perlu diubah
+// dev/fake-db.mjs, supaya 163 pemanggilan store di functions/src tidak perlu diubah
 // (`grep -rnoE "store\.[a-zA-Z]+\(" functions/src | wc -l`, terukur 2026-11-14).
 
 const IDENT = /^[a-z_][a-z0-9_]*$/;
@@ -47,7 +47,7 @@ export function createPgStore(pool, { schema = 'app' } = {}) {
 
   function from(table) {
     const namaTabel = `${namaSkema}.${quote(table, 'tabel')}`;
-    const state = { columns: null, filters: [], order: [], limit: null, mode: 'read', values: null, conflict: null };
+    const state = { columns: null, filters: [], lower: [], order: [], limit: null, mode: 'read', values: null, conflict: null };
     let berjalan = null;
 
     const build = () => {
@@ -57,6 +57,15 @@ export function createPgStore(pool, { schema = 'app' } = {}) {
       const arg = (value) => {
         params.push(value);
         return `$${params.length}`;
+      };
+      // Kesamaan nilai dulu, baru kurungan waktu: urutan ini yang dijanjikan tes SQL persis,
+      // dan ia menentukan nomor placeholder.
+      const saring = () => {
+        const bagian = [
+          ...state.filters.map(([key, value]) => `${quote(key, 'kolom')} = ${arg(value)}`),
+          ...state.lower.map(([key, value]) => `${quote(key, 'kolom')} < ${arg(value)}`),
+        ];
+        return bagian.length ? ` WHERE ${bagian.join(' AND ')}` : '';
       };
       const kembalikan = state.columns ? daftarKolom(state.columns) : '*';
 
@@ -76,23 +85,18 @@ export function createPgStore(pool, { schema = 'app' } = {}) {
         if (!row.columns.length) throw new TypeError('update tanpa kolom');
         const set = row.columns.map((kolom, index) => `${kolom} = $${index + 1}`).join(',');
         params.push(...row.params);
-        const where = state.filters.length
-          ? ` WHERE ${state.filters.map(([key, value]) => `${quote(key, 'kolom')} = ${arg(value)}`).join(' AND ')}`
-          : '';
+        const where = saring();
         return { text: `UPDATE ${namaTabel} SET ${set}${where} RETURNING ${kembalikan}`, params };
       }
 
       if (state.mode === 'delete') {
         // Tanpa filter, DELETE berarti mengosongkan seluruh tabel. Penjaga ini duduk di
         // pembangun SQL sehingga panggilan yang salah tidak pernah dikirim ke pool.
-        if (!state.filters.length) throw new TypeError('delete tanpa filter');
-        const saring = state.filters.map(([key, value]) => `${quote(key, 'kolom')} = ${arg(value)}`).join(' AND ');
-        return { text: `DELETE FROM ${namaTabel} WHERE ${saring} RETURNING ${kembalikan}`, params };
+        if (!state.filters.length && !state.lower.length) throw new TypeError('delete tanpa filter');
+        return { text: `DELETE FROM ${namaTabel}${saring()} RETURNING ${kembalikan}`, params };
       }
 
-      const where = state.filters.length
-        ? ` WHERE ${state.filters.map(([key, value]) => `${quote(key, 'kolom')} = ${arg(value)}`).join(' AND ')}`
-        : '';
+      const where = saring();
       const urutan = state.order.length
         ? ` ORDER BY ${state.order.map(([key, ascending]) => `${quote(key, 'kolom')} ${ascending ? 'ASC' : 'DESC'}`).join(',')}`
         : '';
@@ -117,6 +121,7 @@ export function createPgStore(pool, { schema = 'app' } = {}) {
     const builder = {
       select(columns) { state.columns = columns; return builder; },
       eq(key, value) { state.filters.push([key, value]); return builder; },
+      lt(key, value) { state.lower.push([key, value]); return builder; },
       order(key, options = {}) { state.order.push([key, options.ascending !== false]); return builder; },
       limit(value) { state.limit = value; return builder; },
       insert(values) { state.mode = 'insert'; state.values = values; return builder; },

@@ -1,6 +1,8 @@
 // DB tiruan untuk verifikasi lokal: meniru builder satu tabel platform
-// (from/select/eq/order/limit/insert/insertIfAbsent/update/delete) dengan kunci unik,
-// DEFAULT, dan NOT NULL yang dibaca langsung dari migrations/*.sql.
+// (from/select/eq/lt/order/limit/insert/insertIfAbsent/update/delete/then) dengan kunci unik,
+// DEFAULT, dan NOT NULL yang dibaca langsung dari migrations/*.sql. `lt` dipakai purge sesi
+// (pg-store.mjs: saring() = kesamaan nilai lalu kurungan waktu) dan keduanya harus dimodelkan
+// sama persis, karena tes SQL di dev/pg-store.test.mjs adalah satu-satunya bukti kesamaan itu.
 // File ini TIDAK pernah ikut paket publikasi (dev/ di luar webDirectory & functionDirectory).
 import { applyDefaults, uniqueGroups } from './schema.mjs';
 
@@ -22,7 +24,7 @@ export function createFakeDb(schema, seedRows = {}) {
   const conflicts = (name, row, keys) => rowsOf(name).some((existing) => keys.every((key) => existing[key] === row[key]));
 
   function query(name) {
-    const state = { columns: null, filters: [], order: [], limit: 1000, mode: 'read', values: null, conflict: null };
+    const state = { columns: null, filters: [], lower: [], order: [], limit: 1000, mode: 'read', values: null, conflict: null };
     const project = (result, columns) => (columns
       ? result.map((row) => Object.fromEntries(columns.split(',').map((key) => [key, row[key]])))
       : result.map((row) => ({ ...row })));
@@ -43,9 +45,10 @@ export function createFakeDb(schema, seedRows = {}) {
         rowsOf(name).push(row);
         return { data: project([row], state.columns), error: null };
       }
-      let result = rowsOf(name).filter((row) => state.filters.every(([key, value]) => row[key] === value));
+      let result = rowsOf(name).filter((row) => state.filters.every(([key, value]) => row[key] === value)
+        && state.lower.every(([key, value]) => row[key] < value));
       if (state.mode === 'delete') {
-        if (!state.filters.length) throw new TypeError('delete tanpa filter');
+        if (!state.filters.length && !state.lower.length) throw new TypeError('delete tanpa filter');
         const tabel = rowsOf(name);
         for (const row of result) tabel.splice(tabel.indexOf(row), 1);
         persist();
@@ -69,6 +72,7 @@ export function createFakeDb(schema, seedRows = {}) {
     const builder = {
       select(columns) { state.columns = columns; return builder; },
       eq(key, value) { state.filters.push([key, value]); return builder; },
+      lt(key, value) { state.lower.push([key, value]); return builder; },
       order(key, options = {}) { state.order.push([key, options.ascending !== false]); return builder; },
       limit(value) { state.limit = value; return builder; },
       insert(values) { state.mode = 'insert'; state.values = values; return builder; },

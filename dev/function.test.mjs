@@ -690,3 +690,57 @@ test('sesi kedaluwarsa ditolak dan logout menghapus barisnya dari tabel', async 
     globalThis.fetch = asli;
   }
 });
+
+// Keputusan pemilik 2026-11-14, Opsi 1: sebelum INSERT baris sesi, hapus baris kedaluwarsa milik
+// akun yang sama. Yang TIDAK tersapu adalah baris milik akun yang tidak pernah login lagi — itu
+// bayaran yang diterima sadar, dan separuh kedua tes ini menjaganya supaya keputusan itu tidak
+// diam-diam meluas menjadi sapuan lintas akun. Ditulis LEBIH DULU, wajib gagal.
+test('login menyapu sesi kedaluwarsa milik akunnya sendiri dan tidak menyentuh akun lain', async () => {
+  const asli = globalThis.fetch;
+  let email = 'Akun.Satu@Kampus.test';
+  globalThis.fetch = async (url) => {
+    const teks = String(url);
+    if (teks.endsWith('/token')) return Response.json({ access_token: 'token-akses' });
+    if (teks.includes('userinfo')) return Response.json({ email, name: 'Akun Sapu', picture: 'https://contoh.test/c.png' });
+    return new Response('tidak distub', { status: 500 });
+  };
+  const masuk = async (klien) => {
+    const alih = await klien.call('GET', '/api/auth/start?provider=google');
+    const state = alih.headers.get('set-cookie').match(/ev_oauth=([^;]+)/)[1];
+    const cb = await klien.call('GET', `/api/auth/callback?provider=google&code=abc&state=${state}`, { cookie: `ev_oauth=${state}` });
+    // Callback OAuth menjawab 302 ke halaman aplikasi, bukan 200 (lihat kontrak rute di
+    // application.mjs dan tes sesi di atas yang membaca cookie langsung dari respons 302).
+    assert.equal(cb.status, 302, `login harus 302 ke aplikasi, dapat ${cb.status} ${JSON.stringify(cb.json)}`);
+    return cb.headers.getSetCookie().find((satu) => satu.startsWith('__Host-ev_session=')).split(';')[0].slice('__Host-ev_session='.length);
+  };
+  const sesi = async (klien) => (await klien.db.from('sessions').select('id,user_id,expires_at').limit(10)).data;
+
+  try {
+    const klien = createClient({ APP_GOOGLE_CLIENT_ID: 'klien', APP_GOOGLE_CLIENT_SECRET: 'rahasia' });
+    email = 'Akun.Satu@Kampus.test';
+    await masuk(klien);
+    const barisSatu = (await sesi(klien))[0];
+    email = 'Akun.Dua@Kampus.test';
+    await masuk(klien);
+    const barisDua = (await sesi(klien)).find((baris) => baris.user_id !== barisSatu.user_id);
+    assert.ok(barisDua, 'premis: akun kedua harus punya baris sesinya sendiri');
+    assert.equal((await sesi(klien)).length, 2, 'premis: dua akun, dua baris sesi');
+
+    await klien.db.from('sessions').update({ expires_at: '2020-01-01T00:00:00.000Z' });
+    email = 'Akun.Satu@Kampus.test';
+    const tokenBaru = await masuk(klien);
+
+    const sesudah = await sesi(klien);
+    assert.ok(!sesudah.some((baris) => baris.id === barisSatu.id), 'baris kedaluwarsa milik akun yang login lagi harus tersapu');
+    const sisa = sesudah.find((baris) => baris.id === barisDua.id);
+    assert.ok(sisa, 'baris akun yang TIDAK login lagi harus tetap ada — itu bayaran yang diterima pemilik');
+    assert.equal(sisa.expires_at, '2020-01-01T00:00:00.000Z', 'purge tidak boleh mengubah baris akun lain');
+    assert.equal(sesudah.length, 2, 'satu baris lama tersapu, satu baris baru ditulis');
+    assert.ok(new Date(sesudah.find((baris) => baris.id !== barisDua.id).expires_at).getTime() > Date.now(), 'sesi baru harus hidup');
+    const pakaiBaru = { cookie: `__Host-ev_session=${tokenBaru}` };
+    const sesiBaru = await klien.call('GET', '/api/session', pakaiBaru);
+    assert.equal(sesiBaru.json.user?.id, barisSatu.user_id, `login hasil purge harus langsung dipakai akun itu sendiri, dapat ${JSON.stringify(sesiBaru.json.user)}`);
+  } finally {
+    globalThis.fetch = asli;
+  }
+});

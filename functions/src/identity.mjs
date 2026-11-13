@@ -82,6 +82,10 @@ export function createIdentity({ store, env, userFromContext }) {
     const token = randomToken();
     const hashed = await hashToken(token, secret);
     const expires = new Date(Date.now() + SESSION_TTL * 1000);
+    // Keputusan pemilik 2026-11-14 (Opsi 1): sapu lebih dulu baris kedaluwarsa milik akun ini,
+    // sebelum INSERT. Yang tersisa adalah baris milik akun yang tidak pernah login lagi — bayaran
+    // yang diterima sadar; lihat docs/arsitektur.md §7.
+    await store.removeOlder('sessions', [['user_id', user.id]], 'expires_at', new Date().toISOString());
     await store.insert('sessions', {
       id: hashed,
       user_id: user.id,

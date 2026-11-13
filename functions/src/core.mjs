@@ -177,11 +177,18 @@ export function makeStore(db) {
       if (!filters.length) throw new TypeError('remove tanpa filter');
       return rows(await filters.reduce((q, [k, v]) => q.eq(k, v), db.from(table).delete()).select(columns));
     },
+    // Purge oportunistik (keputusan pemilik 2026-11-14): selalu punya kunci akun. Tanpa itu
+    // panggilan ini jadi sapuan lintas akun, dan pemilik sudah menolak bentuk itu secara sadar.
+    removeOlder: async (table, filters, column, before, columns = 'id') => {
+      if (!filters.length) throw new TypeError('removeOlder tanpa cakupan akun');
+      return rows(await filters.reduce((q, [k, v]) => q.eq(k, v), db.from(table).delete()).lt(column, before).select(columns));
+    },
   };
 }
 
 /** Pembatas laju CAS: baris per (action, principal, window). Baris lama tetap tersimpan; lihat
- *  keputusan retensi di docs/arsitektur.md §7 (satu baris per kunci, bukan per window). */
+ *  butir "Retensi baris app.limiter" di docs/arsitektur.md §7 (satu baris per kunci, bukan per
+ *  window, dan belum ada jalur hapusnya — keputusan pemilik, bukan rahasia yang terselip). */
 export async function rateLimit(store, { action, principal, limit, windowSeconds }) {
   const now = Date.now();
   const key = `${action}:${principal}`;

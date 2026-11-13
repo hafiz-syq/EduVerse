@@ -1,5 +1,6 @@
 // Kontrak adapter Postgres: SQL dan urutan parameter harus sama persis dengan yang
-// dijanjikan dev/fake-db.mjs, karena 162 pemanggilan store di functions/src tidak diubah.
+// dijanjikan dev/fake-db.mjs, karena 163 pemanggilan store di functions/src tidak diubah
+// (`grep -rnoE "store\.[a-zA-Z]+\(" functions/src | wc -l`, terukur 2026-11-14).
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
@@ -151,4 +152,28 @@ test('hapus menghasilkan DELETE berkondisi dan menolak hapus tanpa filter', asyn
   await assert.rejects(() => store.remove('sessions', []), TypeError, 'tanpa filter, DELETE berarti menghapus seluruh tabel');
   await assert.rejects(() => store.remove('sessions', [['id FROM sessions; DROP TABLE users; --', 'x']]), TypeError);
   assert.equal(pool.log.length, 1, 'percobaan hapus tanpa filter / berisi injeksi tidak boleh dikirim ke server');
+});
+
+// Keputusan pemilik 2026-11-14 (Opsi 1): sapu baris kedaluwarsa milik akun yang sama sebelum
+// INSERT sesi baru. Kontrak lama hanya bisa mengekspresikan kesamaan nilai (core.mjs eq, dan
+// builder pg-store: select/eq/order/limit/insert/insertIfAbsent/update/delete/then), jadi
+// `expires_at < now()` tidak ada di dalamnya sama sekali. Tes ini ditulis LEBIH DULU.
+test('purge per akun menghasilkan DELETE dengan kesamaan nilai plus kurungan waktu', async () => {
+  const { pool, store } = satu([{ id: 'sesi-lama' }]);
+  const hilang = await store.removeOlder('sessions', [['user_id', 'u-1']], 'expires_at', '2026-11-14T00:00:00.000Z');
+
+  assert.deepEqual(hilang, [{ id: 'sesi-lama' }], 'RETURNING melaporkan baris yang benar-benar tersapu');
+  assert.deepEqual(
+    pool.log,
+    [{
+      text: 'DELETE FROM "app"."sessions" WHERE "user_id" = $1 AND "expires_at" < $2 RETURNING "id"',
+      params: ['u-1', '2026-11-14T00:00:00.000Z'],
+    }],
+    'kurungan waktu harus diparameter dan duduk SETELAH kesamaan nilai, bukan disisipkan duluan',
+  );
+
+  // Penjaga tanpa filter tetap hidup, dan ia tidak boleh melonggarkan purge lintas akun.
+  await assert.rejects(() => store.removeOlder('sessions', [], 'expires_at', '2026-11-14T00:00:00.000Z'), TypeError);
+  await assert.rejects(() => store.removeOlder('sessions', [['user_id', 'u-1']], 'expires_at; DROP TABLE users; --', 'x'), TypeError);
+  assert.equal(pool.log.length, 1, 'purge tanpa cakupan akun dan kolom injeksi tidak boleh dikirim ke server');
 });
