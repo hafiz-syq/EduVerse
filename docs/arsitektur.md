@@ -278,3 +278,15 @@ Sepuluh batas yang sering salah dibaca:
   Putuskan: (a) biarkan berkas 0010 apa adanya dan dokumen yang jadi sumber kebenaran, (b) sunting
   komentarnya lalu update baris ledger 0010 lewat satu UPDATE sadar, atau (c) catat koreksinya di
   migrasi 0011 yang hanya berisi komentar.
+- **Rambatan yang ditemukan saat mengukur butir di atas: `core.autocrlf = true` tanpa `.gitattributes`
+  membuat penjaga drift salah tuduh di mesin ini.** Working copy hari ini masih LF (CRLF = 0 di
+  kedua berkas yang diuji), jadi checksumnya sama dengan ledger. Tapi satu checkout bersih sudah cukup
+  untuk mengubah seluruh byte: diukur dengan `git worktree add --detach` ke direktori sementara lalu
+  `sha256` atas isi hasil checkout — **10 dari 10** berkas `migrations/*.sql` berubah menjadi CRLF,
+  `0001_identity.sql` = 37 CRLF → `7837da6983a1…` (ledger `c20402752088…`) dan `0010_key_integrity.sql`
+  = 32 CRLF → `7f1604fde34f…` (ledger `22cb8f59b993…`). Karena skrip berjalan urut dan melempar pada
+  kecocokan pertama, `node scripts/apply-migrations.mjs` dari clone baru — atau setelah
+  `git checkout -- migrations` — berhenti di `0001_identity.sql diubah setelah pernah diterapkan`,
+  sebelum satu DDL pun jalan. Belum ada yang diperbaiki: ini konfigurasi checkout, jadi milik pemilik.
+  Usul satu baris di `.gitattributes` (narrow, tidak menormalisasi seluruh repo):
+  `migrations/*.sql text eol=lf`.
