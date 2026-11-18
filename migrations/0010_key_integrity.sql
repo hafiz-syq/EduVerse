@@ -1,16 +1,8 @@
--- 0010 — Sembilan referensi yang selama ini hanya relasi logika, diputuskan satu per satu:
--- 5 menjadi FK (jumlah baris `^ALTER TABLE` di bawah) dan 4 sengaja tetap tanpa FK (butir butir
--- di bagian "Sengaja TIDAK diberi FK"). KOREKSI 2026-11-14: judul lama menulis "Delapan",
--- yang sembilan itu tidak pernah menghasilkan delapan.
+-- 0010 — Delapan referensi yang selama ini hanya relasi logika, diputuskan satu per satu.
 --
--- Tidak ada ON DELETE di 0001..0009, jadi default Postgres — NO ACTION, `confdeltype 'a'` di
--- pg_constraint, dan BUKAN RESTRICT — akan berlaku diam-diam kalau FK ditulis tanpa aksi.
--- Bedanya nyata: NO ACTION diperiksa pada akhir pernyataan dan bisa dibuat DEFERRABLE supaya
--- ditunda sampai akhir transaksi, sedangkan RESTRICT diperiksa seketika dan tidak bisa
--- ditunda. Untuk constraint yang TIDAK DEFERRABLE — semua 31 FK di skema ini, terukur
--- `condeferrable = true` = 0 — perilakunya identik, jadi yang salah di sini namanya, bukan
--- akibatnya. 26 dari 31 FK memakai default itu (lihat catatan relasi di docs/erd.md).
--- Penjaga subset DDL (dev/schema.mjs) menolak FK tanpa ON DELETE eksplisit, sehingga setiap baris di bawah membawa keputusannya sendiri:
+-- Tidak ada ON DELETE di 0001..0009, jadi default Postgres (RESTRICT) akan berlaku diam-diam
+-- kalau FK ditulis tanpa aksi. Penjaga subset DDL (dev/schema.mjs) menolak FK tanpa ON DELETE
+-- eksplisit, sehingga setiap baris di bawah membawa keputusannya sendiri:
 --   RESTRICT  = sasaran tidak bisa dihapus selama masih dirujuk; pemegang akun harus
 --               memindahkan rujukannya lebih dulu. Dipilih untuk data yang jadi hak pengguna.
 --   SET NULL  = rujukan dilepas, baris penunjuk tetap utuh; kolom wajib nullable.

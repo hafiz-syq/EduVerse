@@ -1,0 +1,44 @@
+-- 0011 — Berkas catatan: TIDAK ada satu pun pernyataan DDL di sini, sengaja.
+--
+-- Kenapa bentuknya begini: keputusan pemilik 2026-11-18 untuk koreksi dua kalimat di
+-- 0010_key_integrity.sql adalah "(a) 0011 komentar-only", bukan menyunting 0010. Alasannya
+-- mekanis, bukan selera: scripts/apply-migrations.mjs:44-52 menghitung sha256 atas SELURUH
+-- isi berkas — termasuk komentar — dan melempar (bukan continue) kalau beda dari baris
+-- ledger app.ev_schema_migrations. Menyunting 0010 memindahkan checksumnya, dan selama
+-- ledger tidak ditambal skrip berhenti di 0010 sehingga migrasi apa pun di belakangnya
+-- tidak pernah jalan. Pemilik memilih tidak menambal ledger (tidak ada penulisan Neon),
+-- jadi 0010 dikembalikan ke byte yang sama dengan ledger dan koreksinya pindah ke mari.
+--
+-- 0010 sudah pada byte ledger: sha256 = 22cb8f59b99310bf72be07ed6dbbcec34453ff924eced4e240a2ecd9d5f20272
+-- (terukur ulang 2026-11-18, sama dengan app.ev_schema_migrations.checksum baris 0010;
+-- penjaga `dev/schema.test.mjs` memaku ini supaya suntingan berikutnya tertangkap tes, bukan
+-- tertangkap skrip migrasi di produksi).
+--
+-- KOREKSI 1 — nama aksi default Postgres. 0010_key_integrity.sql:3 menulis "default Postgres
+-- (RESTRICT)". Itu salah nama. Default FK Postgres tanpa ON DELETE adalah NO ACTION, dan yang
+-- dipakai 26 dari 31 FK skema ini:
+--   SELECT confdeltype, count(*) FROM pg_constraint c JOIN pg_class r ON r.oid = c.conrelid
+--     JOIN pg_namespace n ON n.oid = r.relnamespace
+--    WHERE c.contype = 'f' AND n.nspname = 'app' GROUP BY 1;
+--   -> a = 26, r = 3, n = 2   (total 31; terukur di Neon produksi 2026-11-14 dan 2026-11-18)
+-- Bedanya nyata: NO ACTION diperiksa pada akhir pernyataan dan bisa dibuat DEFERRABLE supaya
+-- ditunda sampai akhir transaksi; RESTRICT diperiksa seketika dan tidak bisa ditunda. Di skema
+-- ini bedanya tidak teramati — `SELECT count(*) FROM pg_constraint WHERE contype='f' AND
+-- condeferrable` = 0 dari 31 — jadi yang salah adalah namanya, bukan akibatnya. Kalimat itu
+-- tetap salah di dalam 0010 dan tidak akan pernah bisa dibetulkan di sana tanpa menambal
+-- ledger; dokumen yang jadi sumber kebenaran: docs/erd.md catatan relasi dan docs/arsitektur.md §6.
+--
+-- KOREKSI 2 — angka pada judul 0010. Judulnya "Delapan referensi yang selama ini hanya relasi
+-- logika, diputuskan satu per satu", padahal isinya sembilan keputusan, dan "delapan" tidak
+-- pernah tercetak oleh perintah apa pun:
+--   grep -c "^ALTER TABLE" migrations/0010_key_integrity.sql                = 5  (FK yang jadi)
+--   grep -cE "^--   [a-z_.].* -> " migrations/0010_key_integrity.sql          = 4  (butir yang sengaja tanpa FK)
+--   jumlah                                                                   = 9
+-- Yang empat itu: flags.target_kind+target_id (polimorfik), votes.post_id (berisi id thread
+-- untuk pertanyaan ATAU id post — FK ke app.posts akan menolak 23503 suara pada pertanyaan),
+-- ad_events.user_id (text, harus tetap terhitung setelah akun hilang), tournaments.bank_ids
+-- (elemen array jsonb tidak dijangkau FK).
+--
+-- Kenapa file kosong-pernyataan ini aman dijalankan: Postgres membalas komentar belaka dengan
+-- EmptyQueryResponse tanpa galat — terukur 2026-11-18 lewat satu query isi-komentar saja di
+-- Neon produksi. Skrip akan mencatat checksum berkas ini di ledger seperti berkas lain.

@@ -2,6 +2,7 @@
 // harus memuat setiap tabel/kolom yang benar-benar dipakai Function.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
@@ -144,8 +145,10 @@ const POSITIONS = {
 test('migrations masuk subset DDL yang didukung AppHub', () => {
   const { problems, files, tables } = parseMigrations(MIGRATIONS);
   assert.deepEqual(problems, [], `ditemukan ${problems.length} masalah DDL: ${problems.join(' | ')}`);
-  assert.equal(files.length, 10);
-  assert.equal(tables.size, 24);
+  // 11 berkas sejak 2026-11-18: sepuluh yang sudah diterapkan + 0011 yang sengaja nol pernyataan.
+  // Angka ini naik hanya lewat keputusan pemilik, jadi menambah berkas = menyentuh tes ini.
+  assert.equal(files.length, 11, `berkas migrations berubah jumlahnya: ${files.join(', ')}`);
+  assert.equal(tables.size, 24, '0011 tidak boleh menambah tabel — ia berkas catatan');
 });
 
 test('setiap tabel yang dipakai Function ada di skema, dan tidak ada tabel yatim', () => {
@@ -264,5 +267,51 @@ test('penjaga DDL menolak FK tanpa ON DELETE, sasaran tak dikenal, dan SET NULL 
     assert.ok(!ikut('anak_sasaran_fkey'), 'FK yang benar ikut ditolak');
   } finally {
     rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+// Ledger app.ev_schema_migrations adalah pemilik checksum, bukan kita. Nilainya di bawah saya
+// salin dari `SELECT name, checksum FROM app.ev_schema_migrations ORDER BY name` di Neon produksi
+// (read-only, terukur 2026-11-18). Penjaga ini ada supaya satu suntingan komentar tidak lagi
+// ketahuan lewat skrip migrasi yang mati di depan produksi, melainkan lewat tes yang gagal di CI
+// lokal — dan supaya rambatan core.autocrlf tidak bisa menyelinap sebagai "berkas berubah".
+const LEDGER = {
+  '0001_identity.sql': 'c204027520882a6c864b4981b8d4e99cdc1fc23f1622227e2188506acd57d45a',
+  '0002_catalog.sql': '1001a58d4a1a32fdb9ee5335964b55f567ad13fac7941456b8686a3eeaf0e82c',
+  '0003_progress.sql': '9634a1a0837fb11a5bc2bdd889eba8a938f058ad6e4f8f7bec94721f6a05aa17',
+  '0004_arena.sql': '86fe46547c8fab64a9bd0edee5ee13983efff85abe1987220343095c9a888048',
+  '0005_quiz.sql': '5184659224e25554ba9a8e56696104d443c0f3594cc9a2ba9abdb419f71f865e',
+  '0006_xp.sql': '37f2f304db1cacce00356dc20b54a95e456b5e34ca69d50cc8fc556665c7cdab',
+  '0007_discussion.sql': '2cdcfae87283bc9f5a0729aaa74602a69a30402fa5fe979d577d4522286eb711',
+  '0008_ads.sql': '376cecc64c78b3ee879b85949f33c311325342eb1b18bb09e087d3ac94e48558',
+  '0009_playground.sql': 'a847a68c17f8fc7f50881992baf9b6b2023c6fe52f2d1b59f4c71a7ca4d6917e',
+  '0010_key_integrity.sql': '22cb8f59b99310bf72be07ed6dbbcec34453ff924eced4e240a2ecd9d5f20272',
+};
+
+test('sepuluh berkas yang sudah diterapkan cocok byte-per-byte dengan checksum ledger', () => {
+  for (const [nama, checksum] of Object.entries(LEDGER)) {
+    const isi = readFileSync(join(MIGRATIONS, nama), 'utf8');
+    assert.equal(
+      createHash('sha256').update(isi).digest('hex'),
+      checksum,
+      `${nama} diubah setelah pernah diterapkan — scripts/apply-migrations.mjs:45-51 akan melempar ` +
+        'dan menolak seluruh jalur migrasi sesudahnya. Tulis berkas baru, jangan sunting yang lama.',
+    );
+  }
+});
+
+test('0011 adalah berkas catatan: nol pernyataan, dan ia satu-satunya yang belum dibekukan', () => {
+  const nama = readdirSync(MIGRATIONS).filter((f) => f.endsWith('.sql')).sort();
+  assert.deepEqual(
+    nama.filter((f) => !(f in LEDGER)),
+    ['0011_integrity_catatan.sql'],
+    'berkas di luar ledger harus persatu: 0011 catatan; migrasi DDL baru wajib lewat keputusan pemilik',
+  );
+  const isi = readFileSync(join(MIGRATIONS, '0011_integrity_catatan.sql'), 'utf8');
+  const pernyataan = isi.split(/\r?\n/).filter((baris) => !baris.startsWith('--') && baris.trim() !== '');
+  assert.deepEqual(pernyataan, [], '0011 tidak boleh berisi DDL — ia hanya catatan koreksi 0010');
+  assert.ok(!isi.includes('\r'), 'berkas migrasi harus LF; .gitattributes memegang aturan ini');
+  for (const butir of ['NO ACTION', 'confdeltype', 'Delapan']) {
+    assert.ok(isi.includes(butir), `koreksi "${butir}" hilang dari catatan 0011`);
   }
 });

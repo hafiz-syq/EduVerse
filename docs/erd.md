@@ -4,6 +4,9 @@ Sumber kebenaran: `migrations/0001_identity.sql` … `0010_key_integrity.sql` (2
 Garis solid `--` = FK nyata di DDL. Garis putus `..` = relasi logika tanpa FK (debt yang harus disadari).
 `0010_key_integrity.sql` menutup lima di antaranya dengan FK + ON DELETE yang dipilih sadar; sisanya
 tinggal relasi logika karena tidak bisa diekspresikan sebagai FK tunggal — alasannya di catatan bawah.
+`0011_integrity_catatan.sql` bukan migrasi skema: nol pernyataan, hanya komentar, dan isinya dua
+koreksi atas kalimat di dalam 0010 yang tidak boleh disunting lagi (berkasnya beku oleh checksum
+ledger — lihat `docs/arsitektur.md` §7).
 
 ```mermaid
 erDiagram

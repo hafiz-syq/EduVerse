@@ -226,18 +226,32 @@ Sepuluh batas yang sering salah dibaca:
   Sekarang keduanya ditulis UTC dengan padanan +07-nya.
 - "Default Postgres (RESTRICT)" untuk FK tanpa `ON DELETE` adalah nama yang salah; defaultnya
   **NO ACTION** (`pg_constraint.confdeltype = 'a'`, terukur 26 dari 31 FK skema ini di Neon produksi
-  2026-11-14). Kalimat itu tertulis di tiga tempat: `migrations/0010_key_integrity.sql:3`,
-  `docs/erd.md` catatan relasi (baris `sessions` ikut, karena di sana nama yang salah masih terulang),
-  dan komentar penjaga di `dev/schema.test.mjs:185-190`. Ketiganya sudah dikoreksi pada putaran 8;
-  yang perlu diingat dari koreksi pertama: suntingan di berkas migrasi memindahkan checksum ledger,
-  jadi ada satu UPDATE operator yang menggantung — lihat §7. Efek perilaku dari koreksi ini nol —
-  `condeferrable = true` = 0 dari 31, jadi NO ACTION dan RESTRICT tidak bisa dibedakan di skema
-  sekarang — tapi tulisannya menyesatkan siapa pun yang menambahkan FK DEFERRABLE nanti.
-- Judul `migrations/0010_key_integrity.sql:1` pernah menulis "Delapan referensi". Hitungan dari
-  isinya sendiri: `grep -c "^ALTER TABLE"` = 5 dan `grep -cE "^--   [a-z_.].* -> "` = 4, jadi **9**.
-  Angka 8 itu tidak pernah tercetak oleh perintah apa pun; judul sekarang menyebut keduanya.
+  2026-11-14, diukur ulang 2026-11-18). Kalimat itu tertulis di tiga tempat:
+  `migrations/0010_key_integrity.sql:3`, `docs/erd.md` catatan relasi (baris `sessions` ikut, karena
+  di sana nama yang salah masih terulang), dan komentar penjaga di `dev/schema.test.mjs:185-190`.
+  Dua yang terakhir sudah dikoreksi. Yang pertama TIDAK dikoreksi di tempatnya dan tidak akan pernah:
+  pemilik menunjuk jalur "0011 komentar-only" pada 2026-11-18, karena suntingan 0010 memindahkan
+  checksum ledger dan satu-satunya alternatifnya adalah UPDATE ke Neon. Jadi 0010 tetap menulis
+  "RESTRICT" dan "Delapan", koreksinya hidup di `migrations/0011_integrity_catatan.sql` + dokumen
+  ini, dan penjaga checksum di `dev/schema.test.mjs` yang memastikan tidak ada yang menyelinap balik.
+  Efek perilaku dari koreksi ini nol — `condeferrable = true` = 0 dari 31, jadi NO ACTION dan RESTRICT
+  tidak bisa dibedakan di skema sekarang — tapi tulisannya menyesatkan siapa pun yang menambahkan FK
+  DEFERRABLE nanti, dan nama yang salah itu sekarang tercatat di berkas yang dibaca orang sebagai
+  keputusan.
+- Judul `migrations/0010_key_integrity.sql:1` menulis "Delapan referensi". Hitungan dari isinya
+  sendiri: `grep -c "^ALTER TABLE" migrations/0010_key_integrity.sql` = 5 dan
+  `grep -cE "^--   [a-z_.].* -> " migrations/0010_key_integrity.sql` = 4, jadi **9**. Angka 8 itu tidak
+  pernah tercetak oleh perintah apa pun. Judul 0010 tetap begitu (beku oleh ledger); yang menyebut 5
+  dan 4 secara terpisah adalah `migrations/0011_integrity_catatan.sql`.
 
-## 7. Keputusan yang masih di tangan pemilik
+## 7. Catatan keputusan — yang SUDAH dipilih pemilik (besarkan bayarannya) dan yang MASIH di tangannya
+
+Judul bagian ini pernah "Keputusan yang masih di tangan pemilik", padahal sejak putaran 8 isinya
+campuran: ada yang sudah diputus dan dijalankan, ada yang masih terbuka. Karena
+`functions/src/core.mjs:190` dan `docs/erd.md` menunjuk ke nomor bagian (`§7`), nomornya tidak
+diubah — hanya judulnya dibuat jujur, dan setiap butir diberi label SUDAH atau MASIH di barisnya
+sendiri. Yang MASIH terbuka: retensi `app.limiter`, `__Host-` untuk `ev_oauth`, 26 `REFERENCES`
+inline tanpa penjaga aksi, "hapus akun", dan keputusan push.
 
 - **Mekanisme pembersihan baris sesi kedaluwarsa — SUDAH DIPUTUSKAN pemilik 2026-11-14: OPSI 1,
   purge oportunistik di `startSession()`.** Bukan lagi pertanyaan, catatan ini tinggal sebagai jejak
@@ -306,41 +320,44 @@ Sepuluh batas yang sering salah dibaca:
   mengembalikan perilaku lama tapi menambahkan jejak yang memang untuk itu — dan itu keputusan
   pemilik, bukan sesuatu yang saya tambahkan diam-diam. Detailnya ada di `docs/erd.md` bagian
   "Konsekuensi gabungan".
-- **Dua kalimat salah di `migrations/0010_key_integrity.sql` SUDAH dikoreksi (putaran 8 §2–§3), dan
-  koreksinya meninggalkan satu pekerjaan operator yang bukan milik saya.** Yang salah: `:3`
-  "default Postgres (RESTRICT)" — salah nama, default Postgres adalah NO ACTION (`confdeltype 'a'`),
-  diukur 2026-11-14 dari `pg_constraint`: `SELECT confdeltype, count(*) FROM pg_constraint c JOIN
-  pg_class r ON r.oid = c.conrelid JOIN pg_namespace n ON n.oid = r.relnamespace WHERE c.contype = 'f'
-  AND n.nspname = 'app' GROUP BY 1;` → `a`=26, `r`=3, `n`=2, total 31; dan `:1` "Delapan referensi"
-  sementara isinya `grep -c "^ALTER TABLE"` = 5 ditambah `grep -cE "^--   [a-z_.].* -> "` = 4 butir
-  penolakan = **9**. Keduanya sudah tidak begitu di berkas sekarang, dan bedanya NO ACTION vs RESTRICT
-  ikut ditulis di komentar supaya tidak muncul lagi sebagai "sama saja": yang pertama diperiksa pada
-  akhir pernyataan dan bisa DEFERRABLE, yang kedua seketika dan tidak bisa — untuk 31 FK di skema ini
-  tidak teramati bedanya karena `condeferrable = true` = 0 dari 31, jadi yang salah memang namanya.
-  Kenapa ini pernah saya tahan: `scripts/apply-migrations.mjs:45-51` menghitung `sha256` atas
-  **seluruh isi berkas**, termasuk komentar, dan menolak jalan (melempar, bukan continue) kalau
-  checksumnya berbeda dari baris ledger. Karena itu sunting komentar ini MEMINDAHKAN checksum:
-  ledger masih `22cb8f59b99310bf72be07ed6dbbcec34453ff924eced4e240a2ecd9d5f20272`, berkas sekarang
-  `48d376c9b7c7160d0203429effd07a9cb424fa26735a0e2734f0ae1dcbb18876`. Sampai ledger ditambal,
-  `node scripts/apply-migrations.mjs` berhenti di `0010_key_integrity.sql diubah setelah pernah
-  diterapkan` dan migrasi 0011 apa pun di belakangnya tidak akan pernah jalan. Yang saya BUKTIKAN
-  tetap nol perubahan perilaku: editnya hanya komentar — sha256 atas `grep "^ALTER TABLE"` identik
-  sebelum dan sesudah (`8f348e321291e24c8fb3ef79d6da5f6d6780957029e74af0c4256199e5ebc124` di kedua
-  sisi) dan baris non-komentar tetap 5 = 5. Yang MENJADI TANGAN PEMILIK (saya tidak menulis Neon):
-  satu UPDATE sadar, dijalankan sendiri,
-  `UPDATE app.ev_schema_migrations SET checksum = '48d376c9b7c7160d0203429effd07a9cb424fa26735a0e2734f0ae1dcbb18876' WHERE name = '0010_key_integrity.sql';`
-  — dan angka `48d3…` itu hanya sah selama isi berkas tidak berubah lagi, jadi jalankan perintah sha
-  di atas tepat sebelum UPDATE. Koreksi yang sama juga ada di dua tempat yang tidak dikunci checksum
-  (`docs/erd.md` catatan relasi + `dev/schema.test.mjs:185-190`).
-- **Rambatan yang ditemukan saat mengukur butir di atas: `core.autocrlf = true` tanpa `.gitattributes`
-  membuat penjaga drift salah tuduh di mesin ini.** Working copy hari ini masih LF (CRLF = 0 di
-  kedua berkas yang diuji), jadi checksumnya sama dengan ledger. Tapi satu checkout bersih sudah cukup
-  untuk mengubah seluruh byte: diukur dengan `git worktree add --detach` ke direktori sementara lalu
-  `sha256` atas isi hasil checkout — **10 dari 10** berkas `migrations/*.sql` berubah menjadi CRLF,
-  `0001_identity.sql` = 37 CRLF → `7837da6983a1…` (ledger `c20402752088…`) dan `0010_key_integrity.sql`
-  = 32 CRLF → `7f1604fde34f…` (ledger `22cb8f59b993…`). Karena skrip berjalan urut dan melempar pada
-  kecocokan pertama, `node scripts/apply-migrations.mjs` dari clone baru — atau setelah
-  `git checkout -- migrations` — berhenti di `0001_identity.sql diubah setelah pernah diterapkan`,
-  sebelum satu DDL pun jalan. Belum ada yang diperbaiki: ini konfigurasi checkout, jadi milik pemilik.
-  Usul satu baris di `.gitattributes` (narrow, tidak menormalisasi seluruh repo):
-  `migrations/*.sql text eol=lf`.
+- **Dua kalimat salah di `migrations/0010_key_integrity.sql` TETAP salah di dalam berkas itu, dan itu
+  keputusan pemilik 2026-11-18 — bukan kelalaian.** Yang salah: `:3` "default Postgres (RESTRICT)" —
+  salah nama; default Postgres adalah NO ACTION (`confdeltype 'a'`), diukur dari `pg_constraint`:
+  `SELECT confdeltype, count(*) FROM pg_constraint c JOIN pg_class r ON r.oid = c.conrelid JOIN
+  pg_namespace n ON n.oid = r.relnamespace WHERE c.contype = 'f' AND n.nspname = 'app' GROUP BY 1;`
+  → `a`=26, `r`=3, `n`=2, total 31. Dan `:1` "Delapan referensi", sementara isinya
+  `grep -c "^ALTER TABLE"` = 5 ditambah `grep -cE "^--   [a-z_.].* -> "` = 4 butir penolakan = **9**.
+  Bedanya nyata tapi tidak teramati di skema ini: NO ACTION diperiksa pada akhir pernyataan dan bisa
+  dibuat DEFERRABLE, RESTRICT diperiksa seketika dan tidak bisa — `condeferrable` = 0 dari 31, jadi
+  yang salah memang NAMANYA, bukan akibatnya. Kenapa tidak boleh disunting di tempatnya:
+  `scripts/apply-migrations.mjs:44-52` meng-hash SELURUH isi berkas, komentar termasuk, dan melempar
+  (bukan `continue`) saat checksum berbeda dari ledger — satu karakter berubah di 0010 membuat skrip
+  berhenti di sana dan menolak setiap migrasi setelahnya sampai ledger ditambal lewat Neon. Pemilik
+  memilih jalur yang tidak menulis apa pun ke Neon: suntingan putaran 8 DIKEMBALIKAN
+  (`git checkout f6d125a -- migrations/0010_key_integrity.sql`; sha256 berkas sekarang
+  `22cb8f59b99310bf72be07ed6dbbcec34453ff924eced4e240a2ecd9d5f20272`, sama dengan
+  `app.ev_schema_migrations.checksum` baris 0010, terukur ulang 2026-11-18) dan koreksinya pindah ke
+  `migrations/0011_integrity_catatan.sql` — berkas yang sengaja berisi NOL pernyataan
+  (`grep -vE "^(-|$)" migrations/0011_integrity_catatan.sql | wc -l` = 0), jadi ia tidak menyentuh
+  skema; Postgres membalas query isi-komentar-saja dengan EmptyQueryResponse tanpa galat (terukur
+  2026-11-18 di Neon produksi, read-only). **UPDATE ledger tidak lagi diperlukan dan jangan
+  dijalankan** — checksum `22cb8f59…` untuk 0010 memang harus tetap begitu. Yang membuat keputusan
+  ini tidak bisa dibatalkan diam-diam: `dev/schema.test.mjs` kini memaku sha256 kesepuluh berkas yang
+  sudah diterapkan terhadap nilai ledger-nya dan menolak satu pernyataan pun di dalam 0011, jadi
+  suntingan komentar 0010 berikutnya gagal di `npm run test:function` — bukan di depan produksi.
+- **Rambatan `core.autocrlf = true` — SUDAH ditutup 2026-11-18 dengan `.gitattributes` satu baris.**
+  Gejala aslinya: `git config core.autocrlf` = `true` dan tidak ada `.gitattributes`, sehingga satu
+  checkout bersih mengubah **10 dari 10** berkas `migrations/*.sql` menjadi CRLF. Diukur dengan
+  `git worktree add --detach` ke direktori sementara (lalu `git worktree remove`): `0001_identity.sql`
+  = 1212 byte / 37 CR → sha256 `7837da6983a12244751d03fac27f940d1214cea92a316d59245a01a4eda5b02a`
+  (ledger `c20402752088…`) dan `0010_key_integrity.sql` = 32 CR →
+  `7f1604fde34f2490f820e1c9b89f51f782954a28d6c0dbd62b933053059e367a` (ledger `22cb8f59b993…`).
+  Karena skrip berjalan urut dan melempar pada kecocokan pertama, clone baru mati di
+  `0001_identity.sql diubah setelah pernah diterapkan` sebelum satu DDL pun jalan. Peringatan untuk
+  yang mengukur ulang: `grep -c $'\r'` pada berkas di Git Bash returns 0 untuk berkas yang benar-benar
+  CRLF — instrumennya borong; yang sah adalah `git ls-files --eol` (`i/lf w/crlf`), selisih byte, dan
+  sha256. Perbaikannya `migrations/*.sql text eol=lf` (narrow; blob di indeks memang sudah LF, jadi
+  tidak ada satu byte pun yang dinormalisasi ulang). Bukti sesudah: `git checkout-index -a` ke
+  direktori kosong dengan aturan itu ada di indeks → **11 berkas, 0 berkas ber-CR**, dan
+  `0001`/`0010`/`0011` sha256-nya sama dengan ledger. Ini bukan keputusan yang bisa diambil agen:
+  konfigurasi checkout mesin pemilik, dan pemilik menyetujui satu baris itu pada 2026-11-18.
