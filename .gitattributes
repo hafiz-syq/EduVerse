@@ -1,0 +1,7 @@
+# Git menyimpan migrations/*.sql sebagai LF (terukur 2026-11-14: `git ls-files --eol
+# migrations/` = i/lf untuk 10 berkas) sementara mesin ini memakai core.autocrlf = true,
+# sehingga satu checkout bersih mengubah 10 dari 10 berkas menjadi CRLF. Karena
+# scripts/apply-migrations.mjs:44-52 meng-hash SELURUH isi berkas dan melempar saat beda,
+# rambatan itu membuat skrip berhenti di 0001_identity.sql sebelum satu DDL pun jalan.
+# Aturan ini memaksa eol=lf saat checkout tanpa menormalisasi sisa repo.
+migrations/*.sql text eol=lf
