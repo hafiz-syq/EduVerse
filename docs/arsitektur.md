@@ -190,8 +190,8 @@ Sepuluh batas yang sering salah dibaca:
    bertahan 600 detik dan hanya dipakai untuk membandingkan `state` callback, tetapi tanpa
    `__Host-` ia bisa disetel oleh subdomain lain dan tidak diikat ke Path=/. Perubahan ini
    menyentuh `oauth.mjs` + `core.mjs` dan perlu tes sendiri — pemilik belum memutuskan.
-10. **Baris sesi yang sudah mati dulu tidak pernah dihapus — sekarang logout menghapusnya, tapi
-    pembersihan massal masih keputusan pemilik.** Bukti lamanya: satu baris dengan `created_at
+10. **Baris sesi yang sudah mati dulu tidak pernah dihapus — logout menghapusnya sejak `d77a555`,
+    dan sapuan yang kedaluwarsa tanpa logout diputuskan pemilik 2026-11-14.** Bukti lamanya: satu baris dengan `created_at
     2026-11-08T21:48:15Z` dan `expires_at 2026-11-08T21:49:55Z` (umur 416,456 detik pada
     2026-11-14) masih terhitung di `app.sessions`, karena `endSession()` hanya menggeser
     `expires_at` ke masa lalu dan `git grep -nw delete 5d82001 -- functions` = 0 — tidak ada satu pun
@@ -205,8 +205,11 @@ Sepuluh batas yang sering salah dibaca:
     `functions/src/identity.mjs:115` untuk logout. Yang ditutup putaran 8 §6: baris yang kedaluwarsa
     tanpa logout kini disapu oportunistik di `startSession()` — `functions/src/identity.mjs:88`,
     murni lewat jalur hapus yang sama, tanpa DDL, tanpa migration, tanpa penulisan ke Neon. Nomor baris
-    di tiga paragraf ini snapshot working copy 2026-11-14 sebelum commit putaran 8; setelah file ini
-    masuk git, angkanya mengikat ke commit tempat ia ditulis, bukan ke `HEAD`.
+    di tiga paragraf ini diukur pada commit kode `20a6f0f` dan ditulis ke dokumen di commit berikut-
+    nya, jadi perintahnya bisa direproduksi sampai sekarang: `git show 20a6f0f:functions/src/identity.mjs`
+    baris 88 = `store.removeOlder(...)` dan baris 115 = `store.remove(...)`; `git show
+    20a6f0f:functions/pg-store.mjs` baris 63 = `const saring = () => {`, 95 = penjaga `delete tanpa
+    filter`, 124 = `lt(key, value)`. Angkanya mengikat ke sha itu, bukan ke `HEAD`.
 
 ## 6. KOREKSI angka yang pernah saya kutip di dokumen ini
 
