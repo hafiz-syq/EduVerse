@@ -18,7 +18,7 @@
   scrollbar-gutter: stable;
 }
 
-/* EduVerse — palet 5 (Biru & Pink Soft). Biru untuk aksi/belajar, pink untuk komunitas & peringkat. */
+/* EduVerse - palet 5 (Biru & Pink Soft). Biru untuk aksi/belajar, pink untuk komunitas & peringkat. */
 :root {
   --background: #ffffff;
   --foreground: #14243b;
@@ -227,7 +227,6 @@ code {
   overflow-x: auto;
 }
 
-/* Blok kode berbingkai (Salin / Coba): bingkai milik <figure>, jangan dobel. */
 .prose-lesson figure {
   margin-block: 1.1em;
   border-radius: var(--radius-md);
