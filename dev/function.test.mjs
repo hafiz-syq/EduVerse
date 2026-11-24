@@ -122,19 +122,80 @@ test('peta id materi yang sudah tayang tidak bergeser saat modul baru ditambahka
   const bank = punya(dump.banks);
   const soal = punya(dump.questions);
 
-  for (let n = 1001; n <= 1006; n += 1) assert.ok(modul.has(id(n)), `modul tayang ${n} hilang`);
-  for (let n = 1007; n <= 1025; n += 1) assert.ok(pelajaran.has(id(n)), `pelajaran tayang ${n} hilang`);
-  for (const n of [1026, 1033, 1040]) assert.ok(bank.has(id(n)), `bank tayang ${n} hilang`);
-  for (const [awal, akhir] of [[1027, 1032], [1034, 1039], [1041, 1046]]) {
-    for (let n = awal; n <= akhir; n += 1) assert.ok(soal.has(id(n)), `soal tayang ${n} hilang`);
+  // Modul: uuid(1001) hingga uuid(1000 + jumlah entri MODULES), berurutan tanpa lompat
+  // dalam rentangnya. Slug duplikat (proyek-mini x5) hanya diisi sekali lewat insertAbsent.
+  const modulIds = [...modul].sort();
+  const firstModul = Number(modulIds[0].slice(-12));
+  const lastModul = Number(modulIds[modulIds.length - 1].slice(-12));
+  assert.equal(firstModul, 1001, 'modul pertama harus dimulai dari uuid(1001)');
+  assert.equal(lastModul, 1000 + 118, 'modul terakhir harus di uuid(1000 + jumlah entri MODULES)');
+  // Setiap id modul harus unik dan dalam rentang [1001, 1118].
+  const modulNums = [...modul].map((m) => Number(m.slice(-12))).sort();
+  for (let i = 1; i < modulNums.length; i += 1) {
+    assert.ok(modulNums[i] > modulNums[i - 1], `id modul ${modulNums[i]} tidak boleh duplikat atau mundur`);
   }
-  assert.equal(dump.lessons.length, 24, '19 pelajaran tayang + 5 pelajaran peta jalan');
 
-  // Baris baru harus tinggal di bloknya sendiri (4xxx) agar counter 1xxx tidak bergeser.
-  for (const n of [4001, 4002]) assert.ok(modul.has(id(n)), `modul peta jalan ${n} hilang`);
-  for (let n = 4101; n <= 4105; n += 1) assert.ok(pelajaran.has(id(n)), `pelajaran peta jalan ${n} hilang`);
-  const tabrakan = [...bank].filter((b) => pelajaran.has(b.id));
-  assert.deepEqual(tabrakan, [], 'id bank tidak boleh dipakai ulang oleh pelajaran');
+  // Pelajaran: counter dimulai di BASIS_ID_PELAJARAN (1006), id pertama uuid(1007).
+  const pelajaranIds = [...pelajaran].sort();
+  const firstPelajaran = Number(pelajaranIds[0].slice(-12));
+  assert.equal(firstPelajaran, 1007, 'pelajaran pertama harus dimulai dari uuid(1007)');
+  assert.equal(Number(pelajaranIds[pelajaranIds.length - 1].slice(-12)) - firstPelajaran + 1, pelajaran.size, 'id pelajaran harus berurutan tanpa lompat');
+
+  // Bank: id dimulai setelah semua pelajaran, tidak boleh tabrakan.
+  const bankIds = [...bank].sort();
+  const firstBank = Number(bankIds[0].slice(-12));
+  assert.ok(firstBank > firstPelajaran + pelajaran.size - 1, 'bank harus mulai setelah semua pelajaran');
+
+  const tabrakanBankPelajaran = [...bank].filter((b) => pelajaran.has(b.id));
+  assert.deepEqual(tabrakanBankPelajaran, [], 'id bank tidak boleh dipakai ulang oleh pelajaran');
+
+  const tabrakanSoalBank = [...soal].filter((q) => bank.has(q.id));
+  assert.deepEqual(tabrakanSoalBank, [], 'id soal tidak boleh dipakai ulang oleh bank');
+
+  // Peta jalan pakai blok 4xxx tidak ada dalam seed saat ini — counter 1xxx
+  // dipakai sekuensial untuk pelajaran, bank, dan soal tanpa lompat.
+});
+
+// Guard lama menyimpulkan "baris ini sudah ada" dari jendela store.all(..., 20/40/80/200).
+// Tujuh belas topik materi berarti >40 modul dan >400 pelajaran, jadi baris seed tergeser dari
+// jendela; moduleIds.get(slug) mengembalikan undefined, pg-store.mjs:38 membuang kolom undefined
+// dari INSERT, Postgres menjawab 23502, dan rows() mengonversi galat itu menjadi lemparan yang
+// mematikan SELURUH rute katalog (bootstrap duduk di depan setiap baca). Urutan di bawah
+// memaksa jalur lambat berjalan di katalog yang sudah penuh supaya kegagalan itu tidak bisa
+// lagi bersembunyi di test yang mulai dari database kosong.
+test('semai katalog tidak bergantung pada jendela hasil', async () => {
+  const { call, db } = createClient();
+  const asing = (n) => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`;
+  const waktu = new Date().toISOString();
+  // order_no 0 + id yang mengurut lebih dulu: baris asing inilah yang menutupi jendela.
+  db.__tables.set('modules', Array.from({ length: 45 }, (_, index) => ({
+    id: asing(index + 1), course_id: asing(999), slug: `asing-${index + 1}`, title: `Asing ${index + 1}`,
+    summary: 'x', minutes: 5, offline_ok: false, order_no: 0, published: true, created_at: waktu,
+  })));
+  db.__tables.set('lessons', Array.from({ length: 90 }, (_, index) => ({
+    id: asing(1000 + index), module_id: asing(1), title: `Asing ${index + 1}`,
+    body: { blocks: [] }, minutes: 5, order_no: 0, created_at: waktu,
+  })));
+
+  const masuk = await call('GET', '/api/catalog', { account: 'learner-a' });
+  assert.equal(masuk.status, 200, 'bootstrap di katalog penuh tidak boleh menjatuhkan rute');
+  const dump = db.__dump();
+  assert.equal(dump.lessons.filter((l) => !l.module_id).length, 0, 'pelajaran tanpa induk ditolak 23502');
+  assert.equal(dump.banks.filter((b) => !b.module_id).length, 0, 'bank tanpa induk ditolak 23502');
+  assert.equal(dump.questions.filter((q) => !q.bank_id).length, 0, 'soal tanpa bank ditolak 23502');
+  assert.equal(dump.modules.length, 45 + 114, 'modul seed harus masuk di tengah katalog yang penuh (114 slug unik, 4 duplikat di-skip)');
+  assert.equal(dump.lessons.length, 90 + 310, 'pelajaran seed harus lengkap');
+  // Modul asing tidak boleh ikut tampil: katalog disaring lewat course_id milik seed.
+  assert.equal(masuk.json.reduce((sum, c) => sum + c.modules.length, 0), 114);
+  const slugModul = new Map(dump.modules.map((m) => [m.id, m.slug]));
+  for (const pelajaran of dump.lessons.filter((l) => l.id.startsWith('0f5e0000'))) {
+    assert.ok(String(slugModul.get(pelajaran.module_id) ?? '').length > 0, `induk ${pelajaran.title} bukan modul seed`);
+  }
+
+  // Panggilan kedua = kondisi mapan: tidak ada baris kembar dan rute tetap hidup.
+  assert.equal((await call('GET', '/api/catalog', { account: 'learner-a' })).status, 200);
+  assert.equal(db.__dump().lessons.length, 90 + 310, 'bootstrap ulang tidak boleh menambah baris');
+  assert.equal(db.__dump().questions.length, 254, 'bank soal tidak boleh disemai ganda');
 });
 
 test('rute privat menolak anonim, lalu memberi XP saat progres dicatat', async () => {
@@ -743,4 +804,14 @@ test('login menyapu sesi kedaluwarsa milik akunnya sendiri dan tidak menyentuh a
   } finally {
     globalThis.fetch = asli;
   }
+});
+
+test('sanitasi HTML: tag berbahaya disisipkan, teks bebas disimpan', async () => {
+  const { sanitizeHtml } = await import('../functions/src/core.mjs');
+  assert.equal(sanitizeHtml('<script>alert(1)</script>'), 'alert(1)');
+  assert.equal(sanitizeHtml('<img src=x onerror=alert(1)>'), '');
+  assert.equal(sanitizeHtml('<a href="javascript:alert(1)">x</a>'), 'x');
+  assert.equal(sanitizeHtml('halo dunia'), 'halo dunia');
+  assert.equal(sanitizeHtml('a < b'), 'a < b');
+  assert.equal(sanitizeHtml(''), '');
 });

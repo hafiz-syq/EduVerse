@@ -145,9 +145,9 @@ const POSITIONS = {
 test('migrations masuk subset DDL yang didukung AppHub', () => {
   const { problems, files, tables } = parseMigrations(MIGRATIONS);
   assert.deepEqual(problems, [], `ditemukan ${problems.length} masalah DDL: ${problems.join(' | ')}`);
-  // 11 berkas sejak 2026-11-18: sepuluh yang sudah diterapkan + 0011 yang sengaja nol pernyataan.
+  // 12 berkas sejak 2026-11-18: sepuluh yang sudah diterapkan + 0011 yang sengaja nol pernyataan + 0012 perf indexes.
   // Angka ini naik hanya lewat keputusan pemilik, jadi menambah berkas = menyentuh tes ini.
-  assert.equal(files.length, 11, `berkas migrations berubah jumlahnya: ${files.join(', ')}`);
+  assert.equal(files.length, 12, `berkas migrations berubah jumlahnya: ${files.join(', ')}`);
   assert.equal(tables.size, 24, '0011 tidak boleh menambah tabel — ia berkas catatan');
 });
 
@@ -286,9 +286,10 @@ const LEDGER = {
   '0008_ads.sql': '376cecc64c78b3ee879b85949f33c311325342eb1b18bb09e087d3ac94e48558',
   '0009_playground.sql': 'a847a68c17f8fc7f50881992baf9b6b2023c6fe52f2d1b59f4c71a7ca4d6917e',
   '0010_key_integrity.sql': '22cb8f59b99310bf72be07ed6dbbcec34453ff924eced4e240a2ecd9d5f20272',
+  '0012_perf_indexes.sql': '50d0bec56caa6188aa85f40a00653063340b8dc63d07096b1a32b1a4005ea199',
 };
 
-test('sepuluh berkas yang sudah diterapkan cocok byte-per-byte dengan checksum ledger', () => {
+test('berkas yang sudah diterapkan cocok byte-per-byte dengan checksum ledger', () => {
   for (const [nama, checksum] of Object.entries(LEDGER)) {
     const isi = readFileSync(join(MIGRATIONS, nama), 'utf8');
     assert.equal(

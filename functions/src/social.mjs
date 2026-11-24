@@ -1,7 +1,7 @@
 // Diskusi per modul: tanya, jawab, pilih jawaban terbaik, upvote, dan laporkan.
 // Nama penulis diambil satu per satu karena query satu tabel tidak mendukung JOIN.
 
-import { fail, isUuid, text, rateLimit } from './core.mjs';
+import { fail, isUuid, sanitizeHtml, text, rateLimit } from './core.mjs';
 import { XP } from './xp.mjs';
 
 export function createSocial({ store, xp, identity }) {
@@ -64,7 +64,19 @@ export function createSocial({ store, xp, identity }) {
     if (!module) fail('not_found', 404);
     const now = new Date().toISOString();
     const id = crypto.randomUUID();
-    await store.insert('threads', { id, module_id: module.id, user_id: user.id, title: body.title.trim(), body: body.body.trim(), created_at: now, last_activity_at: now, accepted_post_id: null, pinned: false, locked: false, answer_count: 0 });
+    await store.insert('threads', {
+      id,
+      module_id: module.id,
+      user_id: user.id,
+      title: body.title.trim(),
+      body: sanitizeHtml(body.body),
+      created_at: now,
+      last_activity_at: now,
+      accepted_post_id: null,
+      pinned: false,
+      locked: false,
+      answer_count: 0,
+    });
     await xp.touchStreak(user);
     return { thread_id: id, module_slug: module.slug };
   }
@@ -77,7 +89,14 @@ export function createSocial({ store, xp, identity }) {
     if (!thread) fail('not_found', 404);
     if (thread.locked) fail('thread_locked', 409);
     const id = crypto.randomUUID();
-    await store.insert('posts', { id, thread_id: thread.id, user_id: user.id, body: body.body.trim(), created_at: new Date().toISOString(), accepted: false });
+    await store.insert('posts', {
+      id,
+      thread_id: thread.id,
+      user_id: user.id,
+      body: sanitizeHtml(body.body),
+      created_at: new Date().toISOString(),
+      accepted: false,
+    });
     await store.patch('threads', { answer_count: thread.answer_count + 1, last_activity_at: new Date().toISOString() }, [['id', thread.id]], 'id');
     const posted = await xp.award(user, 'answer_post', id, XP.answer_post);
     const streak = await xp.touchStreak(user);
@@ -124,7 +143,15 @@ export function createSocial({ store, xp, identity }) {
 
   async function flag(user, body) {
     if (!isUuid(body?.target_id) || !text(body?.reason, 3, 300)) fail('invalid_input', 400);
-    await store.insert('flags', { id: crypto.randomUUID(), target_kind: body.target_kind === 'thread' ? 'thread' : 'post', target_id: body.target_id, reporter_id: user.id, reason: body.reason.trim(), status: 'open', created_at: new Date().toISOString() });
+    await store.insert('flags', {
+      id: crypto.randomUUID(),
+      target_kind: body.target_kind === 'thread' ? 'thread' : 'post',
+      target_id: body.target_id,
+      reporter_id: user.id,
+      reason: sanitizeHtml(body.reason),
+      status: 'open',
+      created_at: new Date().toISOString(),
+    });
     return { ok: true };
   }
 

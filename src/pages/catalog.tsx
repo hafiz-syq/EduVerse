@@ -10,6 +10,8 @@ import { AdSlot } from "@/components/ad-slot";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Clock, Lock, WifiOff } from "lucide-react";
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
 
 const LEVEL_LABEL: Record<string, string> = {
   dasar: "Dasar",
@@ -58,6 +60,7 @@ function ModulBaris({ modul }: { modul: Course["modules"][number] }) {
 export function CatalogPage() {
   const { online } = useApp();
   const state = useData("catalog", () => apiGet<Course[]>("/catalog"), []);
+  const [kata, setKata] = useState("");
 
   const wadah = gunakanAnimasi<HTMLDivElement>([state.data], (motion, root) => {
     motion.munculkanKisi(anakDari(root, "[data-gerak='kartu']"), 1, 70);
@@ -70,6 +73,12 @@ export function CatalogPage() {
         <p className="text-sm text-muted-foreground">
           Semua modul gratis. Simpan paket luring kalau Anda akan belajar tanpa koneksi.
         </p>
+        <Input
+          value={kata}
+          onChange={(event) => setKata(event.target.value)}
+          placeholder="Cari modul atau pelajaran..."
+          className="max-w-sm"
+        />
       </header>
 
       {!online && (
@@ -79,36 +88,48 @@ export function CatalogPage() {
       )}
 
       <AsyncBlock state={state} rows={4}>
-        {(courses) => (
-          <div ref={wadah} className="flex flex-col gap-6">
-            {courses.map((course, index) => (
-              <section className="flex flex-col gap-3" key={course.id}>
-                <Card data-gerak="kartu">
-                  <CardHeader className="flex flex-row items-center justify-between gap-3 space-y-0">
-                    <div className="min-w-0">
-                      <CardTitle className="text-base">{course.title}</CardTitle>
-                      <p className="mt-1 text-xs text-muted-foreground">{course.summary}</p>
-                    </div>
-                    <Badge variant="outline">{LEVEL_LABEL[course.level] ?? course.level}</Badge>
-                  </CardHeader>
-                  <CardContent className="flex flex-col gap-1 text-xs text-muted-foreground">
-                    <span>
-                      {course.modules.length} modul · {course.lesson_count} pelajaran · {course.percent}% selesai
-                    </span>
-                  </CardContent>
-                </Card>
+        {(semua) => {
+          const daftar = (semua ?? []).filter((course) => {
+            const q = kata.trim().toLowerCase();
+            if (!q) return true;
+            const teks = [course.title, course.summary, ...course.modules.flatMap((m) => [m.title, m.summary])].join(" ").toLowerCase();
+            return teks.includes(q);
+          });
+          return (
+            <div ref={wadah} className="flex flex-col gap-6">
+              {daftar.map((course, index) => (
+                <section className="flex flex-col gap-3" key={course.id}>
+                  <Card data-gerak="kartu">
+                    <CardHeader className="flex flex-row items-center justify-between gap-3 space-y-0">
+                      <div className="min-w-0">
+                        <CardTitle className="text-base">{course.title}</CardTitle>
+                        <p className="mt-1 text-xs text-muted-foreground">{course.summary}</p>
+                      </div>
+                      <Badge variant="outline">{LEVEL_LABEL[course.level] ?? course.level}</Badge>
+                    </CardHeader>
+                    <CardContent className="flex flex-col gap-1 text-xs text-muted-foreground">
+                      <span>
+                        {course.modules.length} modul · {course.lesson_count} pelajaran · {course.percent}% selesai
+                      </span>
+                    </CardContent>
+                  </Card>
 
-                {index === 1 && <AdSlot slot="in-feed" />}
+                  {index === 1 && <AdSlot slot="in-feed" />}
 
-                <ul className="flex flex-col gap-0 px-1">
-                  {course.modules.map((modul) => (
-                    <ModulBaris key={modul.id} modul={modul} />
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </div>
-        )}
+                  <ul className="flex flex-col gap-0 px-1">
+                    {course.modules.map((modul) => (
+                      <ModulBaris key={modul.id} modul={modul} />
+                    ))}
+                  </ul>
+                </section>
+              ))}
+
+              {semua && daftar.length === 0 && (
+                <p className="text-sm text-muted-foreground">Tidak ada modul yang cocok dengan pencarian.</p>
+              )}
+            </div>
+          );
+        }}
       </AsyncBlock>
     </div>
   );

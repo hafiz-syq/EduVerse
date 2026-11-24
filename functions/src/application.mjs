@@ -49,8 +49,8 @@ export function application({ db, storage, env = {}, contextUser }) {
   async function overview(admin) {
     const [courses, modules, lessons, banks, questions, tournaments, flags, attempts] = await Promise.all([
       store.all('courses', 'id,slug,title', { column: 'order_no', ascending: true }, 30),
-      store.all('modules', 'id,slug,title,course_id', { column: 'order_no', ascending: true }, 120),
-      store.all('lessons', 'id,module_id,title,order_no', { column: 'order_no', ascending: true }, 400),
+      store.all('modules', 'id,slug,title,course_id', { column: 'order_no', ascending: true }, 200),
+      store.all('lessons', 'id,module_id,title,order_no', { column: 'order_no', ascending: true }, 600),
       store.all('banks', 'id,module_id,title', { column: 'created_at', ascending: true }, 120),
       store.all('questions', 'id,bank_id,prompt,order_no', { column: 'order_no', ascending: true }, 400),
       store.all('tournaments', 'id,key,title,starts_at,ends_at', { column: 'starts_at', ascending: false }, 20),

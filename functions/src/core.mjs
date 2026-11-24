@@ -45,7 +45,15 @@ export const fail = (code, status, detail) => {
 export const json = (value, status = 200, headers = {}) =>
   new Response(JSON.stringify(value), {
     status,
-    headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...headers },
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': 'no-store',
+      'x-content-type-options': 'nosniff',
+      'x-frame-options': 'DENY',
+      'content-security-policy': "default-src 'self'",
+      'strict-transport-security': 'max-age=31536000; includeSubDomains',
+      ...headers,
+    },
   });
 
 export const errorJson = (code, status, requestId) =>
@@ -63,6 +71,10 @@ export const text = (value, min, max) =>
 
 export const clampInt = (value, min, max) =>
   Number.isInteger(value) && value >= min && value <= max;
+
+/** Sanitasi dasar: hapus tag HTML untuk mencegah XSS di kolom teks bebas. */
+export const sanitizeHtml = (value) =>
+  typeof value === 'string' ? value.replace(/<[^>]*>/g, '') : '';
 
 export const isoWeekKey = (date) => {
   const d = new Date(date);
