@@ -3175,21 +3175,31 @@ async function ensureCatalog(store) {
     return baru.id;
   };
 
+  const courseIdBySlug = new Map();
   for (const course of COURSES) {
-    await store.insertAbsent('courses', { ...course, id: course.id, published: true, created_at: createdAt }, 'slug');
+    const ada = await store.one('courses', 'id', [['slug', course.slug]]);
+    if (ada) {
+      courseIdBySlug.set(course.slug, ada.id);
+      continue;
+    }
+    // Id historis bergeser antar versi katalog (uuid(1) milik web-dasar jadi milik logika-algoritma),
+    // jadi baris baru wajib pakai id yang belum terpakai; id kolom tetap course.id untuk baris lama.
+    const courseId = uuid(900000000000 + COURSES.indexOf(course));
+    await store.insertAbsent('courses', { ...course, id: courseId, published: true, created_at: createdAt }, 'slug');
+    courseIdBySlug.set(course.slug, courseId);
   }
   const moduleIds = new Map();
   for (const [courseSlug, moduleSlug, title, minutes, offline, idKhusus] of MODULES) {
-    const course = COURSES.find((c) => c.slug === courseSlug);
+    const courseId = courseIdBySlug.get(courseSlug);
     const siblings = MODULES.filter((m) => m[0] === courseSlug);
     moduleIds.set(moduleSlug, await idModul(moduleSlug, () => store.insertAbsent(
       'modules',
       {
         id: idKhusus ?? uuid(1000 + MODULES.findIndex((m) => m[1] === moduleSlug) + 1),
-        course_id: course.id,
+        course_id: courseId,
         slug: moduleSlug,
         title,
-        summary: `${title} — bagian dari ${course.title}.`,
+        summary: `${title} — bagian dari ${COURSES.find((c) => c.slug === courseSlug).title}.`,
         order_no: siblings.findIndex((m) => m[1] === moduleSlug) + 1,
         minutes,
         offline_ok: Boolean(offline),
