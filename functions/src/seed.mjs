@@ -1,6 +1,8 @@
 // Bootstrap konten pertama EduVerse. Idempoten lewat insertIfAbsent dengan UUID tetap,
 // dijalankan malas (saat katalog pertama dibaca), bukan sebagai DML migrasi.
 
+import { hashPassword } from './core.mjs';
+
 const uuid = (n) => `0f5e0000-0000-4000-8000-${String(n).padStart(12, '0')}`;
 
 const COURSES = [
@@ -3305,10 +3307,30 @@ async function ensureAdSlots(store) {
   }
 }
 
+async function ensureAdmin(store) {
+  const hash = await hashPassword('12345678');
+  await store.insertAbsent(
+    'users',
+    {
+      id: '0f5e0000-0000-4000-8000-000000000001',
+      identity: 'qoder:dev-admin',
+      username: 'AdminHafiz',
+      password_hash: hash,
+      email: 'admin@eduverse.dev',
+      name: 'Hafiz',
+      picture: '',
+      role: 'admin',
+      created_at: new Date().toISOString(),
+    },
+    'identity'
+  );
+}
+
 /** Dipanggil sebelum permintaan baca katalog; setiap ensure memeriksa kehadiran baris lebih dulu. */
 export async function bootstrap(store) {
   await ensureRanks(store);
   await ensureCatalog(store);
   await ensureTournaments(store);
   await ensureAdSlots(store);
+  await ensureAdmin(store);
 }

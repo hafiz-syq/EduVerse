@@ -145,9 +145,9 @@ const POSITIONS = {
 test('migrations masuk subset DDL yang didukung AppHub', () => {
   const { problems, files, tables } = parseMigrations(MIGRATIONS);
   assert.deepEqual(problems, [], `ditemukan ${problems.length} masalah DDL: ${problems.join(' | ')}`);
-  // 12 berkas sejak 2026-11-18: sepuluh yang sudah diterapkan + 0011 yang sengaja nol pernyataan + 0012 perf indexes.
+  // 13 berkas sejak 2026-11-18: sepuluh yang sudah diterapkan + 0011 catatan + 0012 perf indexes + 0013 login manual.
   // Angka ini naik hanya lewat keputusan pemilik, jadi menambah berkas = menyentuh tes ini.
-  assert.equal(files.length, 12, `berkas migrations berubah jumlahnya: ${files.join(', ')}`);
+  assert.equal(files.length, 13, `berkas migrations berubah jumlahnya: ${files.join(', ')}`);
   assert.equal(tables.size, 24, '0011 tidak boleh menambah tabel — ia berkas catatan');
 });
 
@@ -287,6 +287,7 @@ const LEDGER = {
   '0009_playground.sql': 'a847a68c17f8fc7f50881992baf9b6b2023c6fe52f2d1b59f4c71a7ca4d6917e',
   '0010_key_integrity.sql': '22cb8f59b99310bf72be07ed6dbbcec34453ff924eced4e240a2ecd9d5f20272',
   '0012_perf_indexes.sql': '50d0bec56caa6188aa85f40a00653063340b8dc63d07096b1a32b1a4005ea199',
+  '0013_users_manual_login.sql': 'c1ae7a8a5ea5a04a0e9d60db8441ed544e281ff3847ff096b07a47a072c26bb7',
 };
 
 test('berkas yang sudah diterapkan cocok byte-per-byte dengan checksum ledger', () => {

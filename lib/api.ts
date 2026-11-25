@@ -18,6 +18,7 @@ const PESAN: Record<string, string> = {
   login_required: "Masuk dulu untuk membuka bagian ini.",
   forbidden: "Akun Anda tidak punya akses ke tindakan ini.",
   invalid_input: "Periksa lagi isian yang diminta.",
+  invalid_credentials: "Username atau password salah. Coba lagi.",
   not_found: "Data yang dicari tidak ada.",
   method_not_allowed: "Cara permintaan tidak didukung.",
   window_closed: "Jendela tantangan sedang tidak dibuka.",

@@ -815,3 +815,26 @@ test('sanitasi HTML: tag berbahaya disisipkan, teks bebas disimpan', async () =>
   assert.equal(sanitizeHtml('a < b'), 'a < b');
   assert.equal(sanitizeHtml(''), '');
 });
+
+test('login manual: AdminHafiz mengambil sesi, admin membuka dasbor, password salah ditolak', async () => {
+  const { call } = createClient();
+
+  const antek = await call('POST', '/api/auth/login', { body: { username: 'AdminHafiz', password: '12345678' } });
+  assert.equal(antek.status, 200, `login admin default harus berhasil, dapat ${antek.status} ${JSON.stringify(antek.json)}`);
+  assert.equal(antek.json.ok, true);
+  assert.match(antek.headers.get('set-cookie') ?? '', /__Host-ev_session=/, 'sesi cookie harus jatuh di header set-cookie');
+
+  const kunci = (antek.headers.get('set-cookie') ?? '').split(';')[0].slice('__Host-ev_session='.length);
+  const pakai = { cookie: `__Host-ev_session=${kunci}` };
+
+  const sesi = await call('GET', '/api/session', pakai);
+  assert.equal(sesi.status, 200);
+  assert.equal(sesi.json.user?.role, 'admin');
+
+  const bacaAdmin = await call('GET', '/api/admin/overview', pakai);
+  assert.equal(bacaAdmin.status, 200, 'admin lewat sesi login manual bisa membuka /api/admin/overview');
+
+  const salah = await call('POST', '/api/auth/login', { body: { username: 'AdminHafiz', password: 'bukan-password' } });
+  assert.equal(salah.status, 401);
+  assert.equal(salah.json.error, 'invalid_credentials');
+});

@@ -1,8 +1,10 @@
+import { useState, type FormEvent } from "react";
 import { useApp } from "@/lib/app-context";
-import { API_BASE } from "@/lib/api";
+import { API_BASE, messageFor } from "@/lib/api";
 import { Link, useRouter } from "@/lib/router";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertDescription, Alert } from "@/components/ui/alert";
 import { Info, LogOut, ShieldCheck } from "lucide-react";
@@ -43,10 +45,29 @@ export function SignInPage() {
     );
   }
 
-  const { query } = useRouter();
+  const { query, navigate } = useRouter();
   // Alamat asal dikirim penjaga rute di App.tsx. Hanya dibaca untuk ditampilkan, tidak
   // pernah dipakai sebagai tujuan redirect — halaman setelah login ditentukan server.
   const asal = query.get("dari");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [galat, setGalat] = useState<string | null>(null);
+  const { signInPassword } = useApp();
+
+  const kirim = async (event: FormEvent) => {
+    event.preventDefault();
+    setBusy(true);
+    setGalat(null);
+    try {
+      await signInPassword(username.trim(), password);
+      navigate("/dashboard");
+    } catch (error) {
+      setGalat(messageFor(error));
+    } finally {
+      setBusy(false);
+    }
+  };
   const tersedia = PENYEDIA.filter((item) => providers[item.key]);
 
   return (
@@ -97,6 +118,53 @@ export function SignInPage() {
             Setelah berhasil, Anda diarahkan ke dasbor dan sesi disimpan sebagai cookie tersegel di
             peramban ini.
           </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base">Login dengan username &amp; password</CardTitle>
+          <CardDescription>
+            Untuk admin atau akun platform tanpa provider. Akun admin default: AdminHafiz / 12345678. Password
+            disimpan sebagai hash, dan ganti atau lupa bisa lewat halaman akun.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form className="flex flex-col gap-3" onSubmit={(event) => void kirim(event)}>
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-medium" htmlFor="username">
+                Username
+              </label>
+              <Input
+                id="username"
+                value={username}
+                onChange={(event) => setUsername(event.target.value)}
+                autoComplete="username"
+                required
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-medium" htmlFor="password">
+                Password
+              </label>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                autoComplete="current-password"
+                required
+              />
+            </div>
+            {galat && (
+              <Alert variant="destructive">
+                <AlertDescription>{galat}</AlertDescription>
+              </Alert>
+            )}
+            <Button type="submit" disabled={busy} className="min-h-11 w-full justify-center">
+              Masuk
+            </Button>
+          </form>
         </CardContent>
       </Card>
 

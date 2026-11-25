@@ -174,6 +174,10 @@ export function application({ db, storage, env = {}, contextUser }) {
   const routes = [
     { method: 'GET', path: /^\/api\/health$/, auth: false, run: () => ({ ok: true, server_time: new Date().toISOString(), providers: auth }) },
     { method: 'GET', path: /^\/api\/session$/, auth: false, run: (_c, user) => ({ user, providers: auth }) },
+    { method: 'POST', path: /^\/api\/auth\/login$/, auth: false, run: async (c, user) => {
+      const { session } = await identity.login(c.body);
+      return json({ ok: true, token: session.token, expires_at: session.expires_at }, 200, { 'set-cookie': session.cookie });
+    } },
     { method: 'POST', path: /^\/api\/auth\/logout$/, auth: true, run: async (_c, user) => {
       const cookie = await identity.endSession(_c.request);
       return json({ ok: true, signed_out: user.name }, 200, { 'set-cookie': cookie });

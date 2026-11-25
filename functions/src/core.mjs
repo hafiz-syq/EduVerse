@@ -244,3 +244,31 @@ export const nextRank = (rankKey) => {
   const index = RANK_LADDER.findIndex((rank) => rank.rank_key === rankKey);
   return index >= 0 && index < RANK_LADDER.length - 1 ? RANK_LADDER[index + 1] : null;
 };
+
+const PBKDF2_ITERATIONS = 310000;
+
+const bytesToHex = (bytes) => Array.from(new Uint8Array(bytes), (b) => b.toString(16).padStart(2, '0')).join('');
+
+const hexToBytes = (hex) => {
+  const out = new Uint8Array(Math.floor(hex.length / 2));
+  for (let index = 0; index < out.length; index += 1) out[index] = Number.parseInt(hex.slice(index * 2, index * 2 + 2), 16);
+  return out;
+};
+
+const randomSalt = () => bytesToHex(crypto.getRandomValues(new Uint8Array(16)));
+
+export const hashPassword = async (password, saltHex = randomSalt()) => {
+  const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), { name: 'PBKDF2', hash: 'SHA-256' }, false, ['deriveBits']);
+  const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: hexToBytes(saltHex), iterations: PBKDF2_ITERATIONS }, key, 256);
+  const hashHex = bytesToHex(bits);
+  return `${PBKDF2_ITERATIONS}:${saltHex}:${hashHex}`;
+};
+
+export const verifyPassword = async (password, stored) => {
+  const [iterations, saltHex, hashHex] = String(stored ?? '').split(':');
+  const expected = `${iterations ?? ''}:${saltHex ?? ''}:${hashHex ?? ''}`;
+  const candidate = await hashPassword(password, saltHex);
+  let selisih = 0;
+  for (let index = 0; index < expected.length; index += 1) selisih |= expected.charCodeAt(index) ^ candidate.charCodeAt(index);
+  return selisih === 0;
+};

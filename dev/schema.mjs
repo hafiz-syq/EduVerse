@@ -107,6 +107,30 @@ export function parseMigrations(dir) {
         table.indexes.push({ name: simple[2], columns });
         continue;
       }
+      const addColumn = /^ALTER TABLE app\.([a-z_]+) ADD COLUMN ([a-z_]+) ([a-z_]+)(?: (.*))?$/.exec(statement);
+      if (addColumn) {
+        const [, nama, kolom, tipe, flagsRaw] = addColumn;
+        const table = tables.get(nama);
+        if (!table) problems.push(`ALTER ke tabel yang belum dibuat: ${nama}`);
+        else {
+          if (table.columns.has(kolom)) problems.push(`kolom sudah ada: ${nama}.${kolom}`);
+          else if (!ALLOWED_TYPES.has(tipe)) problems.push(`kolom di luar subset: ${nama}.${kolom} ${tipe}`);
+          const flags = flagsRaw ?? '';
+          const isPk = flags.includes('PRIMARY KEY');
+          const notNull = isPk || flags.includes('NOT NULL');
+          const rawDefault = flags.includes('DEFAULT') ? flags.slice(flags.indexOf('DEFAULT') + 7).trim() : undefined;
+          table.columns.set(kolom, {
+            name: kolom,
+            type: tipe,
+            pk: isPk,
+            notNull,
+            unique: flags.includes('UNIQUE'),
+            default: rawDefault === undefined ? undefined : resolveDefault(rawDefault, `${nama}.${kolom}`, problems),
+            references: null,
+          });
+        }
+        continue;
+      }
       const fk = /^ALTER TABLE app\.([a-z_]+) ADD CONSTRAINT ([a-z0-9_]+) FOREIGN KEY \(([a-z_]+)\) REFERENCES app\.([a-z_]+) \(([a-z_]+)\)( ON DELETE (RESTRICT|CASCADE|SET NULL))?$/.exec(statement);
       if (fk) {
         const [, nama, kunci, kolom, targetTabel, targetKolom, , aksi] = fk;

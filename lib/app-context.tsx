@@ -28,6 +28,7 @@ interface AppValue {
   downloadPack: (slug: string) => Promise<StoredPack | null>;
   forgetPack: (slug: string) => Promise<void>;
   packFor: (slug: string) => Promise<StoredPack | undefined>;
+  signInPassword: (username: string, password: string) => Promise<void>;
 }
 
 const AppContext = createContext<AppValue | null>(null);
@@ -132,6 +133,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
   }, [refresh]);
 
+  const signInPassword = useCallback(async (username: string, password: string) => {
+    await apiPost("/auth/login", { username, password });
+    await refresh();
+  }, [refresh]);
+
   const downloadPack = useCallback(
     async (slug: string) => {
       const payload = await apiGet<PackPayload>(`/pack/${slug}`);
@@ -162,11 +168,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setConsent,
       refresh,
       signOut,
+      signInPassword,
       downloadPack,
       forgetPack,
       packFor: (slug: string) => (idbSupported ? readPack(slug) : Promise.resolve(undefined)),
     }),
-    [ready, session, online, consent, packs, setConsent, refresh, signOut, downloadPack, forgetPack],
+    [ready, session, online, consent, packs, setConsent, refresh, signOut, signInPassword, downloadPack, forgetPack],
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

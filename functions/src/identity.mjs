@@ -1,7 +1,7 @@
 // Identitas aplikasi: sesi cookie milik EduVerse, atau identitas platform Qoder dari gateway.
 // Browser tidak pernah mengirim user id sebagai bukti; selalu diturunkan dari server.
 
-import { AppError, cookieValue, hashToken, isUuid, randomToken, sessionCookie, clearCookie, RANK_LADDER } from './core.mjs';
+import { AppError, clearCookie, cookieValue, fail, hashToken, isUuid, randomToken, sessionCookie, text, verifyPassword, RANK_LADDER } from './core.mjs';
 
 const COOKIE = '__Host-ev_session';
 const SESSION_TTL = 30 * 24 * 3600;
@@ -146,7 +146,24 @@ export function createIdentity({ store, env, userFromContext }) {
     });
   }
 
-  return { COOKIE, attachState, ensureState, endSession, fromCookie, projection, require, requireAdmin, resolve, startSession, upsert };
+  async function findByUsername(username) {
+    const value = typeof username === 'string' ? username.trim() : '';
+    if (!text(value, 3, 60)) return null;
+    return store.one('users', 'id,username,password_hash,identity,role', [['username', value]]);
+  }
+
+  async function login(body) {
+    const username = typeof body?.username === 'string' ? body.username.trim() : '';
+    const password = typeof body?.password === 'string' ? body.password : '';
+    if (!text(username, 3, 60) || !text(password, 8, 72)) fail('invalid_input', 400, 'Username atau password tidak valid.');
+    const user = await findByUsername(username);
+    if (!user || !(await verifyPassword(password, user.password_hash))) fail('invalid_credentials', 401, 'Username atau password salah.');
+    const session = await startSession(user);
+    const full = await attachState(user);
+    return { user: full, session };
+  }
+
+  return { COOKIE, attachState, ensureState, endSession, findByUsername, fromCookie, login, projection, require, requireAdmin, resolve, startSession, upsert };
 }
 
 export const identityShapeOk = (value) => Boolean(value) && isUuid(value.id);
