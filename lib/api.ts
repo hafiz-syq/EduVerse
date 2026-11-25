@@ -40,6 +40,7 @@ const PESAN: Record<string, string> = {
   storage_not_configured: "Penyimpanan gambar iklan belum disiapkan di situs ini.",
   session_secret_missing: "Server belum punya rahasia sesi. Hubungi pengelola situs.",
   unreachable: "Layanan sedang tidak merespons. Coba beberapa menit lagi, atau lanjutkan lewat paket luring Anda.",
+  database_unavailable: "Layanan sedang tidak merespons. Basis data belajar sedang tidak tersedia. Coba beberapa menit lagi, atau hubungi pengelola situs.",
 };
 
 /** Galat yang berarti permintaan tidak sampai ke server, jadi aman ditahan untuk dikirim ulang. */
