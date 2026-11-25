@@ -2,6 +2,7 @@ import { useApp } from "@/lib/app-context";
 import { Link, matchRoute, useRouter } from "@/lib/router";
 import { AdSlot } from "./ad-slot";
 import { RankBadge } from "./rank-badge";
+import { ThemeToggle } from "./theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
   BookOpen,
@@ -106,6 +107,7 @@ function KulitPublik({ children }: { children: React.ReactNode }) {
                 <WifiOff className="size-3.5" /> luring
               </span>
             )}
+            <ThemeToggle />
             <Button size="sm" asChild className="min-h-11 px-4">
               <Link to="/masuk">Masuk</Link>
             </Button>
@@ -153,6 +155,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           )}
         </nav>
         <div className="mt-auto flex flex-col gap-3">
+          <ThemeToggle />
           <AdSlot slot="sidebar" />
           <div className="rounded-xl border border-sidebar-border bg-card p-3 text-sm">
             {ready && !user ? (
@@ -190,6 +193,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 <WifiOff className="size-3.5" /> luring
               </span>
             )}
+            <ThemeToggle />
             {user && <RankBadge rankKey={user.rank_key} title={user.rank_title} />}
           </div>
         </header>

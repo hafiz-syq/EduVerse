@@ -13,6 +13,19 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icon.png" />
     <title>EduVerse — Belajar Pemrograman Gratis</title>
+    <!-- Clickadu: tag iklan dari dashboard publisher (Sites and Zones -> Get code). -->
+    <script data-cfasync="false" type="text/javascript" src="//libedgolart.com/t/9/fret/mew4/1758705/brt.js"></script>
+    <script>
+      (function () {
+        try {
+          var tersimpan = localStorage.getItem("ev_theme");
+          var gelap = tersimpan ? tersimpan === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.classList.toggle("dark", gelap);
+        } catch (err) {
+          document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

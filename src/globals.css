@@ -18,6 +18,8 @@
   scrollbar-gutter: stable;
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* EduVerse - palet 5 (Biru & Pink Soft). Biru untuk aksi/belajar, pink untuk komunitas & peringkat. */
 :root {
   --background: #ffffff;
@@ -123,8 +125,7 @@
     "Liberation Mono", "Courier New", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+.dark {
     --background: #0e1626;
     --foreground: #e8eef7;
     --card: #142033;
@@ -173,7 +174,6 @@
     --rank-madya: #4ed0a0;
     --rank-maha: #5ea0f5;
     --rank-master: #f289ae;
-  }
 }
 
 body {
