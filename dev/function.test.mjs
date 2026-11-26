@@ -184,7 +184,7 @@ test('semai katalog tidak bergantung pada jendela hasil', async () => {
   assert.equal(dump.banks.filter((b) => !b.module_id).length, 0, 'bank tanpa induk ditolak 23502');
   assert.equal(dump.questions.filter((q) => !q.bank_id).length, 0, 'soal tanpa bank ditolak 23502');
   assert.equal(dump.modules.length, 45 + 114, 'modul seed harus masuk di tengah katalog yang penuh (114 slug unik, 4 duplikat di-skip)');
-  assert.equal(dump.lessons.length, 90 + 310, 'pelajaran seed harus lengkap');
+  assert.equal(dump.lessons.length, 90 + 397, 'pelajaran seed harus lengkap');
   // Modul asing tidak boleh ikut tampil: katalog disaring lewat course_id milik seed.
   assert.equal(masuk.json.reduce((sum, c) => sum + c.modules.length, 0), 114);
   const slugModul = new Map(dump.modules.map((m) => [m.id, m.slug]));
@@ -194,7 +194,7 @@ test('semai katalog tidak bergantung pada jendela hasil', async () => {
 
   // Panggilan kedua = kondisi mapan: tidak ada baris kembar dan rute tetap hidup.
   assert.equal((await call('GET', '/api/catalog', { account: 'learner-a' })).status, 200);
-  assert.equal(db.__dump().lessons.length, 90 + 310, 'bootstrap ulang tidak boleh menambah baris');
+  assert.equal(db.__dump().lessons.length, 90 + 397, 'bootstrap ulang tidak boleh menambah baris');
   assert.equal(db.__dump().questions.length, 254, 'bank soal tidak boleh disemai ganda');
 });
 

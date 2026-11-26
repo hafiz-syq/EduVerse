@@ -394,7 +394,93 @@ const LESSONS = [
     { t: 'list', items: ['O(1): waktu sama, tidak peduli seberapa besar data', 'O(n): waktu tumbuh sebanding dengan jumlah data', 'O(n^2): waktu tumbuh sangat cepat, biasanya karena dua perulangan bersarang'] },
     { t: 'tip', x: 'Pilih algoritma yang cepat saat data besar. Untuk data kecil, yang penting kode mudah dibaca.' },
   ], 4],
-  // --- struktur-data ---
+
+// --- alur-dan-pseudocode ---
+['alur-dan-pseudocode', 'Apa itu Alur dan Pseudocode', [
+    { t: 'p', x: 'Alur adalah langkah-langkah yang harus diikuti untuk menyelesaikan masalah. Pseudocode adalah cara menulis alur tersebut dengan bahasa sehari-hari, campuran antara bahasa manusia dan logika komputer.' },
+    { t: 'list', items: ['Alur membantu pecah masalah menjadi langkah-langkah kecil', 'Pseudocode tidak perlu berjalan di komputer', 'Pseudocode memudahkan perencanaan sebelum menulis kode'] },
+    { t: 'tip', x: 'Tulis pseudocode sebelum mengetik kode agar tidak bingung di tengah jalan.' },
+], 4],
+['alur-dan-pseudocode', 'Menulis Pseudocode Pertama', [
+    { t: 'p', x: 'Pseudocode ditulis dengan kata-kata sederhana yang mudah dipahami. Gunakan kata kunci seperti MULAI, SELESAI, JIKA, MAKA, SAMBAI, UNTUK SETIAP.' },
+    { t: 'code', lang: 'text', x: 'MULAI\\\\n  Masukkan angka pertama\\\\n  Masukkan angka kedua\\\\n  Jumlahkan keduanya\\\\n  Tampilkan hasil\\\\nSELESAI' },
+    { t: 'tip', x: 'Jangan khawatir tentang sintaks yang sempurna. Yang penting alur logikanya jelas.' },
+], 4],
+['alur-dan-pseudocode', 'Struktur Dasar Pseudocode', [
+    { t: 'p', x: 'Pseudocode biasanya punya struktur awal, proses, dan akhir. Awal untuk memulai, proses untuk mengolah data, dan akhir untuk menyelesaikan.' },
+    { t: 'list', items: ['MULAI: tanda awal pseudocode', 'SELESAI: tanda akhir pseudocode', 'JIKA...MAKA: percabangan', 'SAMBAI: perulangan dengan kondisi'] },
+    { t: 'tip', x: 'Struktur yang konsisten membuat pseudocode mudah dibaca orang lain.' },
+], 4],
+['alur-dan-pseudocode', 'Kesalahan Umum dalam Pseudocode', [
+    { t: 'p', x: 'Pemula sering lupa menentukan kondisi berhenti dalam perulangan atau menulis langkah yang tidak berurutan.' },
+    { t: 'list', items: ['Lupa menentukan kondisi berhenti', 'Langkah tidak berurutan', 'Menggunakan istilah yang tidak jelas', 'Melewati langkah penting'] },
+    { t: 'tip', x: 'Bacakan pseudocode Anda dengan nyaring untuk memastikan setiap langkah masuk akal.' },
+  ], 4],
+ // --- percabangan-dan-perulangan ---
+ ['percabangan-dan-perulangan', 'Percabangan: Jika dan Jika Tidak', [
+    { t: 'p', x: 'Percabangan adalah mengambil keputusan dalam program: lakukan hal ini JIKA kondisi terpenuhi, MAKA lakukan hal lain.' },
+    { t: 'list', items: ['JIKA kondisi benar → jalankan blok A', 'JIKA tidak benar → jalankan blok B', 'Program tidak mengeksekusi kedua blok sekaligus'] },
+    { t: 'tip', x: 'Percabangan membuat program bisa bereaksi berbeda-beda tergantung situasi.' },
+ ], 4],
+ ['percabangan-dan-perulangan', 'Perulangan: Sambil dan Untuk Setiap', [
+    { t: 'p', x: 'Perulangan adalah mengulang tugas yang sama banyak kali. SAMBAI kondisi terpenuhi atau UNTUK SETIAP item dalam daftar.' },
+    { t: 'code', lang: 'text', x: 'UNTUK SETIAP angka dari 1 sampai 5:\\\\n  tampilkan angka\\\\nSELESAI UNTUK SETIAP' },
+    { t: 'list', items: ['SAMBAI: ulangi selama kondisi benar', 'UNTUK SETIAP: ulangi setiap item daftar'] },
+    { t: 'tip', x: 'Perulangan cocok untuk tugas berulang, misal mencetak 100 sertifikat.' },
+ ], 4],
+ ['percabangan-dan-perulangan', 'Gabungan Percabangan dan Perulangan', [
+    { t: 'p', x: 'Percabangan dan perulangan bisa digabungkan: di dalam perulangan boleh ada percabangan, dan sebaliknya.' },
+    { t: 'list', items: ['Perulangan dengan percabangan di dalamnya', 'Percabangan dengan perulangan di dalamnya', 'Cocok untuk logika yang lebih kompleks'] },
+    { t: 'tip', x: 'Jangan buat perulangan di dalam perulangan terlalu dalam, program jadi lambat.' },
+ ], 4],
+ ['percabangan-dan-perulangan', 'Kesalahan Umum: Perulangan Tak Terbatas', [
+    { t: 'p', x: 'Perulangan tak terbatas (infinite loop) terjadi bila kondisi berhenti tidak pernah terpenuhi, program jadi macet.' },
+    { t: 'list', items: ['Kondisi berhenti tidak pernah tercapai', 'Variabel penambah lupa ditambah', 'Program jadi tidak responsif'] },
+    { t: 'tip', x: 'Selalu pastikan ada cara untuk keluar dari perulangan.' },
+ ], 4],
+ // --- fungsi-dan-rekursi ---
+ ['fungsi-dan-rekursi', 'Apa itu Fungsi', [
+    { t: 'p', x: 'Fungsi adalah sekumpulan instruksi yang diberi nama, dipanggil berkali-kali tanpa menulis ulang dari awal.' },
+    { t: 'list', items: ['Memberi nama pada sekumpulan instruksi', 'Dipanggil berkali-kali', 'Membuat kode lebih rapi dan terorganisir'] },
+    { t: 'tip', x: 'Jika instruksi sama ditulis lebih dari dua kali, jadikan fungsi.' },
+ ], 4],
+ ['fungsi-dan-rekursi', 'Fungsi dengan Input dan Output', [
+    { t: 'p', x: 'Fungsi bisa menerima input (parameter) dan mengembalikan output (nilai kembali). Input bervariasi, output sesuai pemrosesan.' },
+    { t: 'code', lang: 'text', x: 'fungsi luasPersegi(panjang, lebar):\\\\n  kembalikan panjang * lebar\\\\nSELESAI FUNGSI\\\\n\\\\nhasil = luasPersegi(5, 3)  // hasil: 15' },
+    { t: 'tip', x: 'Input dan output membuat fungsi fleksibel untuk berbagai data.' },
+ ], 4],
+ ['fungsi-dan-rekursi', 'Rekursi: Fungsi yang Memanggil Diri Sendiri', [
+    { t: 'p', x: 'Rekursi adalah fungsi yang memanggil dirinya sendiri untuk menyelesaikan versi lebih kecil dari masalah yang sama.' },
+    { t: 'list', items: ['Fungsi memanggil dirinya sendiri', 'Setiap pemanggilan lebih kecil dari sebelumnya', 'Butuh kondisi berhenti agar tidak macet'] },
+    { t: 'tip', x: 'Rekursi berguna untuk struktur berulang, misal pohon direktori atau faktorial.' },
+ ], 4],
+ ['fungsi-dan-rekursi', 'Kapan Menggunakan Fungsi dan Rekursi', [
+    { t: 'p', x: 'Gunakan fungsi untuk tugas yang berulang. Gunakan rekursi untuk masalah yang pecah menjadi sub-masalah sama. Jangan memaksa rekursi jika loop lebih sederhana.' },
+    { t: 'list', items: ['Fungsi: tugas umum yang berulang', 'Rekursi: sub-masalah sama secara berulang', 'Loop lebih sederhana untuk perulangan biasa'] },
+    { t: 'tip', x: 'Mulai dengan fungsi biasa, coba rekursi jika masalah memang cocok.' },
+ ], 4],
+ // --- kompleksitas-waktu ---
+ ['kompleksitas-waktu', 'Apa itu Kompleksitas Waktu', [
+    { t: 'p', x: 'Kompleksitas waktu mengukur seberapa lama program berjalan seiring bertambahnya data. Ini bukan detik, melainkan jumlah operasi.' },
+    { t: 'list', items: ['Ukuran seberapa lama program berjalan', 'Bukan detik, tapi jumlah operasi', 'Berkaitan dengan banyaknya data'] },
+    { t: 'tip', x: 'Kompleksitas waktu membandingkan efisiensi algoritma, bukan kecepatan komputer.' },
+ ], 4],
+ ['kompleksitas-waktu', 'Notasi Big O Dasar', [
+    { t: 'p', x: 'Big O adalah cara menulis kompleksitas waktu. O(1) artinya waktu konstan, O(n) artinya waktu bertambah seiring data bertambah.' },
+    { t: 'list', items: ['O(1): waktu konstan, tidak terpengaruh data', 'O(n): waktu naik seiring bertambahnya data', 'O(n^2): waktu naik dua kali lipat perpangkatan'] },
+    { t: 'tip', x: 'Semakin kecil angka di belakang O, semakin cepat biasanya algoritma.' },
+ ], 4],
+ ['kompleksitas-waktu', 'Kompleksitas Ruang', [
+    { t: 'p', x: 'Kompleksitas ruang mengukur seberapa banyak memori yang dibutuhkan program. Seperti waktu, diukur dalam operasi atau unit memori.' },
+    { t: 'list', items: ['Mengukur kebutuhan memori', 'Bukan ukuran file, tapi memori saat berjalan', 'Penting untuk data besar'] },
+    { t: 'tip', x: 'Pilih algoritma yang efisien waktu dan ruang jika data sangat besar.' },
+ ], 4],
+ ['kompleksitas-waktu', 'Memilih Algoritma yang Tepat', [
+    { t: 'p', x: 'Bandingkan algoritma dengan kompleksitas waktu. Untuk data kecil, algoritma sederhana cukup. Untuk data besar, pilih algoritma dengan O lebih kecil.' },
+    { t: 'list', items: ['Data kecil: algoritma sederhana cukup', 'Data besar: pilih O lebih kecil', 'Uji dengan data nyata sebelum pilih'] },
+    { t: 'tip', x: 'Jangan dioptimasi terlalu awal. Buat berjalan dulu, baru buat cepat.' },
+ ], 4],
+ // --- struktur-data ---
   ['array-dan-list', 'Array dan List', [
     { t: 'p', x: 'Array adalah kotak-kotak berurutan yang masing-masing menampung satu nilai. Kamu dapat mengakses isinya dengan nomor urut (indeks), dimulai dari 0.' },
     { t: 'code', lang: 'text', x: 'daftarBelanja = [\"beras\", \"minyak\", \"gula\", \"garam\"]\\n// indeks 0 = \"beras\", indeks 1 = \"minyak\", dst.' },
@@ -411,7 +497,95 @@ const LESSONS = [
     { t: 'list', items: ['Menggunakan indeks 1 untuk elemen pertama (harus 0)', 'Mengakses indeks di luar panjang array (undefined)', 'Mengubah array sambil mengiterasi (akan melewati elemen)'] },
     { t: 'tip', x: 'Selalu periksa panjang array sebelum mengakses elemen dengan indeks tertentu.' },
   ], 3],
-  // --- oop-dasar ---
+
+// --- stack-dan-queue ---
+['stack-dan-queue', 'Apa itu Stack', [
+    { t: 'p', x: 'Stack adalah struktur data yang mengikuti prinsip LIFO (Last In, First Out). Artinya item yang terakhir dimasukkan akan pertama kali dikeluarkan. Bayangkan tumpukan piring: piring yang diletakkan paling atas akan pertama diambil.' },
+    { t: 'list', items: ['LIFO: yang terakhir masuk pertama keluar', 'Hanya dapat mengakses item teratas', 'Cocok untuk membatalkan tindakan (undo)'] },
+    { t: 'tip', x: 'Stack seperti tumpukan buku di meja. Buku yang diletakkan terakhir akan pertama kali diambil.' },
+], 3],
+['stack-dan-queue', 'Operasi Stack: Push dan Pop', [
+    { t: 'p', x: 'Push adalah menambah item ke atas stack. Pop adalah mengambil item teratas dari stack. Jika stack kosong dan melakukan pop, akan terjadi error.' },
+    { t: 'code', lang: 'text', x: 'stack = []\\\\nstack.push(\\\"belajar\\\")   // stack: [\\\"belajar\\\"]\\\\nstack.push(\\\"latihan\\\")   // stack: [\\\"belajar\\\", \\\"latihan\\\"]\\\\nstack.pop()              // stack: [\\\"belajar\\\"]' },
+    { t: 'tip', x: 'Selalu periksa apakah stack kosong sebelum melakukan pop untuk menghindari error.' },
+], 3],
+['stack-dan-queue', 'Apa itu Queue', [
+    { t: 'p', x: 'Queue adalah struktur data yang mengikuti prinsip FIFO (First In, First Out). Artinya item yang pertama dimasukkan akan pertama kali dikeluarkan. Bayangkan antrian di kantin: orang yang pertama datang akan pertama kali dilayani.' },
+    { t: 'list', items: ['FIFO: yang pertama masuk pertama keluar', 'Item ditambahkan di belakang, diambil dari depan', 'Cocok untuk antrian cetak dan antrian pelanggan'] },
+    { t: 'tip', x: 'Queue seperti antrian di tempat makan. Orang yang pertama datang akan pertama kali receive layanan.' },
+], 3],
+['stack-dan-queue', 'Operasi Queue: Enqueue dan Dequeue', [
+    { t: 'p', x: 'Enqueue adalah menambah item di belakang queue. Dequeue adalah mengambil item dari depan queue. Jika queue kosong dan melakukan dequeue, akan terjadi error.' },
+    { t: 'code', lang: 'text', x: 'queue = []\\\\nqueue.enqueue(\\\"pelanggan 1\\\")  // antrian: [\\\"pelanggan 1\\\"]\\\\nqueue.enqueue(\\\"pelanggan 2\\\")  // antrian: [\\\"pelanggan 1\\\", \\\"pelanggan 2\\\"]\\\\nqueue.dequeue()         // antrian: [\\\"pelanggan 2\\\"]' },
+    { t: 'tip', x: 'Enqueue di belakang, dequeue dari depan. Jangan terbalikkan.' },
+], 3],
+
+// --- linked-list ---
+['linked-list', 'Apa itu Linked List', [
+    { t: 'p', x: 'Linked List adalah kumpulan node di mana setiap node menyimpan data dan alamat ke node berikutnya. Tidak seperti array, node dalam linked list tidak perlu ada di tempat yang berdekatan di memori.' },
+    { t: 'list', items: ['Setiap node punya data dan pointer ke node berikutnya', 'Node pertama disebut head', 'Node terakhir menunjuk ke null'] },
+    { t: 'tip', x: 'Linked List cocok jika Anda sering menambah atau menghapus item di tengah-tengah.' },
+], 3],
+['linked-list', 'Node dan Pointer', [
+    { t: 'p', x: 'Node adalah bangunan dasar linked list. Setiap node memiliki dua bagian: data yang disimpan dan pointer yang menyimpan alamat ke node berikutnya.' },
+    { t: 'code', lang: 'text', x: 'Node:\\\\n  data: \\\"Rafi\\\"\\\\n  next: alamat ke node berikutnya\\\\n\\\\nHead --> [Rafi | *] --> [Kanaya | *] --> [Budi | null]' },
+    { t: 'tip', x: 'Pointer adalah seperti nomor rumah yang menunjukkan di mana node berikutnya berada.' },
+], 3],
+['linked-list', 'Menambah dan Menghapus Node', [
+    { t: 'p', x: 'Untuk menambah node, ubah pointer node sebelumnya agar menunjuk ke node baru. Untuk menghapus, ubah pointer agar melewati node yang akan dihapus.' },
+    { t: 'list', items: ['Tambah di awal: ubah head menunjuk ke node baru', 'Tambah di akhir: cari node terakhir, ubah pointernya', 'Hapus: ubah pointer agar melewati node yang dihapus'] },
+    { t: 'tip', x: 'Menambah node di awal linked list lebih cepat dari di akhir.' },
+], 3],
+['linked-list', 'Linked List vs Array', [
+    { t: 'p', x: 'Array memungkinkan akses langsung dengan indeks, sedangkan linked list harus melintasi setiap node dari awal. Linked List lebih cepat untuk menambah/menghapus, Array lebih cepat untuk mengakses.' },
+    { t: 'list', items: ['Array: akses cepat dengan indeks, tambah/ hapus lambat di tengah', 'Linked List: akses lambat harus melintasi, tambah/hapus cepat di awal'] },
+    { t: 'tip', x: 'Pilih Array jika sering mengakses data. Pilih Linked List jika sering menambah atau menghapus.' },
+], 3],
+
+// --- hash-map ---
+['hash-map', 'Apa itu Hash Map', [
+    { t: 'p', x: 'Hash Map adalah struktur data yang menyimpan pasangan kunci-nilai. Setiap kunci dipetakan ke sebuah nilai melalui fungsi hash, sehingga pencarian data menjadi sangat cepat.' },
+    { t: 'list', items: ['Menyimpan pasangan kunci-nilai', 'Setiap kunci harus unik', 'Pencarian berdasarkan kunci sangat cepat'] },
+    { t: 'tip', x: 'Hash Map seperti kamus: cari kata (kunci), lalu lihat artinya (nilai).' },
+], 3],
+['hash-map', 'Cara Kerja Hash Map', [
+    { t: 'p', x: 'Fungsi hash mengubah kunci menjadi indeks di dalam array. Jika dua kunci menghasilkan indeks yang sama (collision), hash map menggunakan teknik seperti chaining untuk menangani.' },
+    { t: 'code', lang: 'text', x: 'hashMap = {\\\"nama\\\": \\\"Rafi\\\", \\\"umur\\\": 20}\\\\n// kunci \\\"nama\\\" → nilai \\\"Rafi\\\"\\\\n// kunci \\\"umur\\\" → nilai 20' },
+    { t: 'tip', x: 'Kunci dalam hash map harus unik. Jika kunci sama, nilai lama akan ditimpa.' },
+], 3],
+['hash-map', 'Apa itu Set', [
+    { t: 'p', x: 'Set adalah kumpulan nilai yang unik, tanpa duplikasi. Set mirip dengan hash map tapi hanya menyimpan kunci tanpa nilai.' },
+    { t: 'list', items: ['Setiap nilai hanya muncul sekali', 'Tidak ada urutan yang dijamin', 'Pengecekan keanggotaan sangat cepat'] },
+    { t: 'tip', x: 'Gunakan Set jika Anda hanya perlu tahu apakah suatu nilai sudah ada atau belum.' },
+], 3],
+['hash-map', 'Kapan Menggunakan Hash Map dan Set', [
+    { t: 'p', x: 'Gunakan Hash Map jika Anda perlu menyimpan data dengan kunci untuk pencarian cepat. Gunakan Set jika Anda hanya perlu daftar nilai unik tanpa duplikasi.' },
+    { t: 'list', items: ['Hash Map: menyimpan data profil pengguna dengan username sebagai kunci', 'Set: menyimpan daftar tag yang unik dari artikel'] },
+    { t: 'tip', x: 'Pilih Hash Map untuk data yang perlu dicari dengan kunci, Set untuk daftar nilai unik.' },
+], 3],
+
+// --- pemilihan-struktur ---
+['pemilihan-struktur', 'Mengenali Kebutuhan Aplikasi', [
+    { t: 'p', x: 'Sebelum memilih struktur data, pahami dulu apa yang akan dilakukan aplikasi. Apakah data sering diakses? Apakah sering ditambah atau dihapus? Apakah urutan data penting?' },
+    { t: 'list', items: ['Apakah data sering diakses dengan indeks?', 'Apakah data sering ditambah atau dihapus?', 'Apakah urutan data penting?', 'Apakah perlu pencarian cepat berdasarkan kunci?'] },
+    { t: 'tip', x: 'Jangan memilih struktur data hanya karena populer. Pilih yang sesuai kebutuhan aplikasi.' },
+], 3],
+['pemilihan-struktur', 'Bandingkan Array, Stack, Queue', [
+    { t: 'p', x: 'Array untuk akses langsung dengan indeks. Stack untuk urutan LIFO (terakhir masuk pertama keluar). Queue untuk urutan FIFO (pertama masuk pertama keluar).' },
+    { t: 'list', items: ['Array: akses cepat dengan nomor urut', 'Stack: untuk membatalkan tindakan (undo)', 'Queue: untuk antrian pelanggan'] },
+    { t: 'tip', x: 'Jika perlu undo, pakai Stack. Jika perlu antrian, pakai Queue. Jika perlu akses cepat, pakai Array.' },
+], 3],
+['pemilihan-struktur', 'Bandingkan Linked List dan Hash Map', [
+    { t: 'p', x: 'Linked List untuk menambah dan menghapus dengan cepat di awal atau tengah. Hash Map untuk pencarian data sangat cepat berdasarkan kunci.' },
+    { t: 'list', items: ['Linked List: tambah/hapus cepat, akses lambat', 'Hash Map: pencarian cepat dengan kunci, tidak terurut'] },
+    { t: 'tip', x: 'Pilih Linked List untuk operasi tambah/hapus, Hash Map untuk pencarian berdasarkan kunci.' },
+], 3],
+['pemilihan-struktur', 'Studi Kasus: Memilih Struktur Data', [
+    { t: 'p', x: 'Contoh: Anda membuat aplikasi daftar tugas. Jika tugas ditambah selalu di akhir dan dihapus dari depan, gunakan Queue. Jika perlu mencari tugas berdasarkan ID, gunakan Hash Map.' },
+    { t: 'list', items: ['Daftar tugas antrian: gunakan Queue', 'Data profil pengguna: gunakan Hash Map', 'Riwayat undo: gunakan Stack', 'Daftar kontak: gunakan Array'] },
+    { t: 'tip', x: 'Tidak ada struktur data yang terbaik untuk semua situasi. Sesuaikan dengan kebutuhan.' },
+], 3],
+ // --- oop-dasar ---
   ['kelas-dan-objek', 'Kelas dan Objek', [
     { t: 'p', x: 'Kelas adalah cetak biru, objek adalah hasil cetaknya. Bayangkan kelas adalah cetak biru rumah, dan objek adalah rumah yang sudah dibangun dari cetak biru itu.' },
     { t: 'code', lang: 'text', x: 'KELAS Hewan:\\n  properti nama\\n  properti jenis\\n  fungsi bersuara():\\n    tampilkan nama + \" berbicara\"\\nSELESAI KELAS\\n\\nkucing = Hewan()\\nkucing.nama = \"Milo\"\\nkucing.bersuara()  // Milo berbicara' },
@@ -428,7 +602,95 @@ const LESSONS = [
     { t: 'list', items: ['Selalu pakai new saat memanggil konstruktor kelas', 'Periksa apakah objek berhasil dibuat dengan mencetaknya', 'Gunakan nama variabel yang jelas untuk setiap objek'] },
     { t: 'tip', x: 'Beberapa bahasa modern tidak perlu new, tetapi pelajari aturan bahasa yang kamu pakai.' },
   ], 3],
-  // --- vcs-dasar ---
+
+// --- enkapsulasi ---
+['enkapsulasi', 'Apa itu Enkapsulasi', [
+    { t: 'p', x: 'Enkapsulasi adalah menyembunyikan detail dalam sebuah kelas dan hanya membuka akses yang diperlukan. Bayangkan kapsul obat: isinya tersembunyi, Anda hanya perlu menelan kapsulnya.' },
+    { t: 'list', items: ['Menyembunyikan detail implementasi', 'Hanya membuka akses yang diperlukan', 'Melindungi data dari perubahan yang tidak diinginkan'] },
+    { t: 'tip', x: 'Enkapsulasi membuat kode lebih aman dan mudah dipelihara.' },
+], 3],
+['enkapsulasi', 'Mengakses Data dengan Getter dan Setter', [
+    { t: 'p', x: 'Getter adalah method untuk membaca data private, setter adalah method untuk mengubah data private. Kedua method ini memungkinkan kontrol atas data yang diakses atau diubah.' },
+    { t: 'code', lang: 'text', x: 'KELAS Rekening:\\\\n  private saldo\\\\n  fungsi ambilSaldo():\\\\n    kembalikan saldo\\\\n  fungisi isiSaldo(jumlah):\\\\n    jika jumlah > 0:\\\\n      saldo = saldo + jumlah\\\\nSELESAI KELAS' },
+    { t: 'tip', x: 'Gunakan getter dan setter agar data private tetap terlindungi tapi tetap dapat diakses dengan aman.' },
+], 3],
+['enkapsulasi', 'Melindungi Data Dalam Kelas', [
+    { t: 'p', x: 'Data private hanya dapat diakses di dalam kelas itu sendiri. Kelas lain tidak dapat mengubah data secara langsung, harus melalui method yang disediakan.' },
+    { t: 'list', items: ['Data private tersembunyi dari kelas lain', 'Akses hanya melalui method publik', 'Mencegah perubahan data yang tidak diinginkan'] },
+    { t: 'tip', x: 'Jangan buat semua data publik. Hanya ekspos yang benar-benar diperlukan.' },
+], 3],
+['enkapsulasi', 'Manfaat Enkapsulasi', [
+    { t: 'p', x: 'Enkapsulasi membuat kode lebih modular, mudah diuji, dan tidak mudah rusak saat ada perubahan. Perubahan di dalam kelas tidak mempengaruhi kelas lain.' },
+    { t: 'list', items: ['Kode lebih modular dan terorganisir', 'Mudah diuji secara terpisah', 'Perubahan tidak merambat ke kelas lain'] },
+    { t: 'tip', x: 'Enkapsulasi adalah salah satu pilar utama OOP yang membuat kode lebih berkualitas.' },
+], 3],
+
+// --- pewarisan ---
+['pewarisan', 'Apa itu Pewarisan', [
+    { t: 'p', x: 'Pewarisan adalah kemampuan sebuah kelas untuk mewarisi properti dan method dari kelas lain. Kelas yang mewarisi disebut kelas anak, kelas yang diwarisi disebut kelas induk.' },
+    { t: 'list', items: ['Kelas anak mewarisi dari kelas induk', 'Kelas anak bisa menambahkan properti baru', 'Kelas anak bisa menimpa method dari kelas induk'] },
+    { t: 'tip', x: 'Pewarisan menghindari duplikasi kode karena kelas anak bisa reuse method dari kelas induk.' },
+], 3],
+['pewarisan', 'Kelas Induk dan Kelas Anak', [
+    { t: 'p', x: 'Kelas induk adalah kelas yang menjadi sumber, kelas anak adalah kelas yang mewarisi. Contoh: kelas induk Hewan, kelas anak Kucing dan Anjing.' },
+    { t: 'code', lang: 'text', x: 'KELAS Hewan:\\\\n  fungsi bersuara():\\\\n    tampilkan \\\"Suara hewan\\\"\\\\nSELESAI KELAS\\\\n\\\\nKELAS Kucing MEWARISI Hewan:\\\\n  fungsi bersuara():\\\\n    tampilkan \\\"Miaw\\\"\\\\nSELESAI KELAS' },
+    { t: 'tip', x: 'Kelas anak otomatis punya semua properti dan method dari kelas induk.' },
+], 3],
+['pewarisan', 'Menggunakan Method dari Kelas Induk', [
+    { t: 'p', x: 'Kelas anak bisa menggunakan method yang didefinisikan di kelas induk tanpa menuliskannya lagi. Ini disebut reuse kode.' },
+    { t: 'list', items: ['Kelas anak bisa memanggil method kelas induk', 'Kelas anak bisa menambahkan method baru', 'Kelas anak bisa mengubah method kelas induk'] },
+    { t: 'tip', x: 'Jika banyak kelas punya perilaku sama, taruh di kelas induk agar tidak duplikasi.' },
+], 3],
+['pewarisan', 'Kapan Menggunakan Pewarisan', [
+    { t: 'p', x: 'Gunakan pewarisan jika ada hubungan \"adalah\" antara kelas. Contoh: Kucing adalah Hewan, Mobil adalah Kendaraan. Jangan gunakan jika hubungan tidak masuk akal.' },
+    { t: 'list', items: ['Gunakan jika hubungan adalah (Kucing adalah Hewan)', 'Jangan gunakan jika hubungan bukan adalah', 'Pewarisan terlalu dalam bisa membuat kode rumit'] },
+    { t: 'tip', x: 'Jangan mewarisi terlalu banyak generasi. Maksimal 2-3 level cukup untuk sebagian besar kasus.' },
+], 3],
+
+// --- polimorfisme ---
+['polimorfisme', 'Apa itu Polimorfisme', [
+    { t: 'p', x: 'Polimorfisme adalah kemampuan objek berbeda untuk treated sebagai tipe yang sama. Artinya satu method bisa bekerja dengan berbagai jenis objek.' },
+    { t: 'list', items: ['Satu antarmuka untuk berbagai jenis objek', 'Method yang sama bisa berperilaku berbeda', 'Objek berbeda treated sebagai tipe yang sama'] },
+    { t: 'tip', x: 'Polimorfisme berasal dari bahasa Yunani yang berarti \"banyak bentuk\".' },
+], 3],
+['polimorfisme', 'Overloading dan Overriding', [
+    { t: 'p', x: 'Overloading adalah method dengan nama sama tapi parameter berbeda. Overriding adalah method di kelas anak yang menimpa method di kelas induk.' },
+    { t: 'code', lang: 'text', x: 'KELAS Kalkulator:\\\\n  fungsi tambah(a, b):\\\\n    kembalikan a + b\\\\n  fungsi tambah(a, b, c):\\\\n    kembalikan a + b + c\\\\nSELESAI KELAS' },
+    { t: 'tip', x: 'Overloading beda parameter, overriding beda isi method di kelas anak.' },
+], 3],
+['polimorfisme', 'Polimorfisme dalam Praktik', [
+    { t: 'p', x: 'Dengan polimorfisme, Anda bisa membuat daftar objek berbeda tapi memanggil method yang sama pada setiap objek. Setiap objek akan menanggapi sesuai dengan caranya sendiri.' },
+    { t: 'list', items: ['Daftar Hewan: Kucing, Anjing, Burung', 'Panggil bersuara() pada setiap hewan', 'Setiap hewan bersuara berbeda'] },
+    { t: 'tip', x: 'Polimorfisme membuat kode fleksibel karena tidak perlu tahu tipe objek pasti.' },
+], 3],
+['polimorfisme', 'Manfaat Polimorfisme', [
+    { t: 'p', x: 'Polimorfisme membuat kode lebih fleksibel dan mudah ditambahkan fitur baru. Anda bisa menambahkan jenis objek baru tanpa mengubah kode yang sudah ada.' },
+    { t: 'list', items: ['Kode lebih fleksibel', 'Mudah menambahkan fitur baru', 'Tidak perlu mengubah kode lama'] },
+    { t: 'tip', x: 'Polimorfisme adalah salah satu alasan OOP populer untuk pengembangan skala besar.' },
+], 3],
+
+// --- abstraksi-dan-interface ---
+['abstraksi-dan-interface', 'Apa itu Abstraksi', [
+    { t: 'p', x: 'Abstraksi adalah menyembunyikan detail kompleks dan hanya menunjukkan yang penting bagi pengguna. Bayangkan rem mobil: Anda hanya perlu menekan pedal, tidak perlu tahu cara kerja rem secara detail.' },
+    { t: 'list', items: ['Sembunyikan detail kompleks', 'Tampilkan hanya yang penting', 'Mudah digunakan oleh pengguna'] },
+    { t: 'tip', x: 'Abstraksi membantu pengguna fokus pada apa yang dilakukan, bukan bagaimana itu dilakukan.' },
+], 3],
+['abstraksi-dan-interface', 'Kelas Abstrak', [
+    { t: 'p', x: 'Kelas abstrak adalah kelas yang tidak dapat dibuat objeknya langsung. Kelas abstrak digunakan sebagai dasar untuk kelas lain dan bisa punya method tanpa isi.' },
+    { t: 'code', lang: 'text', x: 'KELAS ABSTRAK Hewan:\\\\n  fungsi abstrak bersuara()\\\\nSELESAI KELAS\\\\n\\\\nKELAS Kucing MEWARISI Hewan:\\\\n  fungsi bersuara():\\\\n    tampilkan \\\"Miaw\\\"\\\\nSELESAI KELAS' },
+    { t: 'tip', x: 'Kelas abstrak tidak bisa dibuat objek langsung, harus melalui kelas anak.' },
+], 3],
+['abstraksi-dan-interface', 'Apa itu Interface', [
+    { t: 'p', x: 'Interface adalah kontrak yang menentukan method apa saja yang harus ada di kelas yang mengimplementasinya. Interface tidak punya isi method, hanya deklarasi.' },
+    { t: 'list', items: ['Interface menentukan kontrak method', 'Kelas yang implementasi interface harus isi semua method', 'Interface tidak punya isi method'] },
+    { t: 'tip', x: 'Interface seperti janji: kelas yang mengimplementasi harus memenuhi semua syarat yang ditentukan.' },
+], 3],
+['abstraksi-dan-interface', 'Perbedaan Kelas Abstrak dan Interface', [
+    { t: 'p', x: 'Kelas abstrak bisa punya properti dan method dengan isi, sedangkan interface hanya deklarasi method. Satu kelas bisa implementasi banyak interface tapi hanya mewarisi satu kelas abstrak.' },
+    { t: 'list', items: ['Kelas abstrak: bisa punya properti dan method isi', 'Interface: hanya deklarasi method', 'Satu kelas implementasi banyak interface'] },
+    { t: 'tip', x: 'Gunakan kelas abstrak untuk objek yang erat terkait, interface untuk kemampuan yang bisa dimiliki banyak jenis objek.' },
+], 3],
+ // --- vcs-dasar ---
   ['apa-itu-vcs', 'Apa itu Version Control', [
     { t: 'p', x: 'Version Control System (VCS) adalah catatan perubahan file seiring waktu. Bayangkan kamu menyalin dokumen menjadi versi_v1.doc, versi_v2_final.doc, versi_v3_revisi.doc — VCS mengotomatisasi hal itu.' },
     { t: 'list', items: ['Menyimpan setiap perubahan sebagai versi terpisah', 'Mengizinkan kembali ke versi lama kapan saja', 'Menunjukkan siapa yang mengubah apa dan kapan', 'Mengizinkan banyak orang bekerja pada file yang sama'] },
@@ -440,7 +702,177 @@ const LESSONS = [
     { t: 'tip', x: 'Commit sering, jangan tunggu sampai pekerjaan selesai. Setiap commit adalah titik pulang yang aman.' },
   ], 3],
 
-// --- web-dasar ---
+ // --- repository-dan-commit ---
+ ['repository-dan-commit', 'Apa itu Repository', [
+    { t: 'p', x: 'Repository adalah tempat menyimpan seluruh kode dan riwayat perubahan proyek. Setiap perubahan disimpan sebagai versi terpisah.' },
+    { t: 'list', items: ['Menyimpan kode dan riwayat perubahan', 'Setiap versi tersimpan terpisah', 'Bisa kembali ke versi lama kapan saja'] },
+    { t: 'tip', x: 'Repository bisa lokal di komputer atau remote di GitHub/GitLab.' },
+ ], 3],
+ ['repository-dan-commit', 'Membuat Commit Pertama', [
+    { t: 'p', x: 'Commit adalah menyimpan satu versi perubahan dengan pesan deskriptif. Commit pertama biasanya inisialisasi proyek.' },
+    { t: 'list', items: ['Simpan perubahan sebagai versi baru', 'Tulis pesan yang jelas', 'Setiap commit punya ID unik'] },
+    { t: 'tip', x: 'Pesan commit jelas membantu teman tim mengerti perubahan Anda.' },
+ ], 3],
+ ['repository-dan-commit', 'Melihat Riwayat Commit', [
+    { t: 'p', x: 'Riwayat commit menunjukkan semua versi yang pernah disimpan, siapa yang membuatnya, dan kapan.' },
+    { t: 'list', items: ['Daftar semua versi', 'Siapa dan kapan membuat perubahan', 'Bisa kembali ke versi lama'] },
+    { t: 'tip', x: 'Lihat riwayat sebelum mengubah kode yang sudah ada.' },
+ ], 3],
+ ['repository-dan-commit', 'Commit yang Baik dan Terstruktur', [
+    { t: 'p', x: 'Commit baik berisi satu topik saja, pesan singkat tapi informatif, dan tidak mencampur perubahan yang tidak terkait.' },
+    { t: 'list', items: ['Satu topik per commit', 'Pesan singkat dan informatif', 'Jangan campur perubahan tidak terkait'] },
+    { t: 'tip', x: 'Commit kecil lebih mudah direview dan dibatalkan jika gagal.' },
+ ], 3],
+ // --- branch-dan-merge ---
+ ['branch-dan-merge', 'Apa itu Branch', [
+    { t: 'p', x: 'Branch adalah salinan independen dari repository. Membuat branch memungkinkan mengerjakan fitur baru tanpa mengganggu branch utama.' },
+    { t: 'list', items: ['Salinan independen dari repository', 'Fitur baru dikembangkan di branch terpisah', 'Bisa kembali ke branch utama kapan saja'] },
+    { t: 'tip', x: 'Branch utama biasanya bernama main atau master.' },
+ ], 3],
+ ['branch-dan-merge', 'Membuat dan Pindah Branch', [
+    { t: 'p', x: 'Membuat branch baru untuk fitur, lalu pindah ke branch tersebut untuk mulai bekerja. Branch utama tidak terpengaruh.' },
+    { t: 'code', lang: 'bash', x: 'git branch fitur-baru\\\\ngit checkout fitur-baru\\\\n// atau\\\\ngit checkout -b fitur-baru' },
+    { t: 'list', items: ['Buat branch baru', 'Pindah ke branch baru', 'Kerja di branch tersebut'] },
+    { t: 'tip', x: 'Gunakan nama branch yang deskriptif, misal fitur-login.' },
+ ], 3],
+ ['branch-dan-merge', 'Menggabungkan Branch dengan Merge', [
+    { t: 'p', x: 'Merge menggabungkan perubahan dari branch fitur ke branch utama setelah selesai. Perubahan dari branch fitur menjadi bagian dari branch utama.' },
+    { t: 'list', items: ['Gabungkan branch fitur ke utama', 'Perubahan fitur menjadi bagian utama', 'Branch fitur bisa dihapus setelah merge'] },
+    { t: 'tip', x: 'Update branch utama sebelum merge agar tidak ada konflik.' },
+ ], 3],
+ ['branch-dan-merge', 'Kesalahan Umum dalam Branch dan Merge', [
+    { t: 'p', x: 'Pemula sering lupa merge kembali ke branch utama atau membuat terlalu banyak branch yang tidak terelola.' },
+    { t: 'list', items: ['Lupa merge ke branch utama', 'Terlalu banyak branch yang dibiarkan', 'Merge tanpa review'] },
+    { t: 'tip', x: 'Hapus branch fitur setelah digabung agar repository tetap rapi.' },
+ ], 3],
+ // --- resolve-konflik ---
+ ['resolve-konflik', 'Apa itu Konflik Merge', [
+    { t: 'p', x: 'Konflik merge terjadi saat dua branch mengubah bagian yang sama dalam satu file. Git tidak tahu perubahan mana yang dipertahankan.' },
+    { t: 'list', items: ['Dua branch mengubah bagian yang sama', 'Git memerlukan intervensi manusia', 'File ditandai dengan penanda konflik'] },
+    { t: 'tip', x: 'Konflik adalah hal normal saat bekerja sama, jangan panic.' },
+ ], 3],
+ ['resolve-konflik', 'Mengapa Konflik Terjadi', [
+    { t: 'p', x: 'Konflik terjadi karena dua orang mengedit baris yang sama, atau satu orang menghapus file yang diedit orang lain.' },
+    { t: 'list', items: ['Dua orang edit baris yang sama', 'Satu orang hapus file yang diedit lain', 'Merge branch yang berbeda terlalu lama'] },
+    { t: 'tip', x: 'Komunikasikan dengan tim saat mengedit file yang sama.' },
+ ], 3],
+ ['resolve-konflik', 'Menyelesaikan Konflik Secara Manual', [
+    { t: 'p', x: 'Buka file dengan konflik, pilih perubahan mana yang dipertahankan, hapus penanda konflik, lalu simpan dan commit.' },
+    { t: 'list', items: ['Buka file konflik', 'Pilih perubahan yang dipertahankan', 'Hapus penanda konflik', 'Simpan dan commit'] },
+    { t: 'tip', x: 'Tanyakan kepada orang yang mengedit jika tidak yakin perubahan mana yang dipertahankan.' },
+ ], 3],
+ ['resolve-konflik', 'Menghindari Konflik di Masa Depan', [
+    { t: 'p', x: 'Pull perubahan terbaru sering, bekerja pada bagian file yang berbeda, dan commit sebelum merge agar konflik minim.' },
+    { t: 'list', items: ['Pull perubahan terbaru sering', 'Kerja pada bagian file yang berbeda', 'Commit sebelum merge'] },
+    { t: 'tip', x: 'Komunikasi tim yang baik mencegah sebagian besar konflik.' },
+ ], 3],
+  // --- git-github ---
+  ['install-git', 'Menginstal Git', [
+      { t: 'p', x: 'Git adalah sistem version control yang wajib diketahui seorang pengembang software. Git membantu melacak perubahan kode dan bekerja sama dengan tim.' },
+      { t: 'list', items: ['Git melacak setiap perubahan kode', 'Membuat repository lokal di komputer', 'Mengunggah kode ke remote repository'] },
+      { t: 'tip', x: 'Install git dari situs resmi git-scm.com sebelum memulai.' },
+   ], 3],
+   ['install-git', 'Konfigurasi Pertama Git', [
+      { t: 'p', x: 'Setelah instalasi, konfigurasi nama dan email Git agar setiap commit teridentifikasi dengan benar.' },
+      { t: 'code', lang: 'bash', x: 'git config --global user.name \"Nama Anda\"\\ngit config --global user.email \"email@anda.com\"' },
+      { t: 'list', items: ['Setel nama pengguna', 'Setel email pengguna', 'Verifikasi konfigurasi dengan git config --list'] },
+      { t: 'tip', x: 'Gunakan nama dan email yang profesional untuk commit.' },
+   ], 3],
+   ['install-git', 'Perintah Dasar Git', [
+      { t: 'p', x: 'Perintah-perintah Git dasar: init, add, commit, status. Ini adalah fondasi sebelum bekerja bersama tim.' },
+      { t: 'code', lang: 'bash', x: 'git init\\ngit add .\\ngit commit -m \"Menyimpan versi pertama\"\\ngit status' },
+      { t: 'list', items: ['Inisialisasi repository baru', 'Menambah file ke staging area', 'Menyimpan perubahan dengan pesan', 'Melihat status repository'] },
+      { t: 'tip', x: 'Jalankan git status setiap kali bingung status repository Anda.' },
+   ], 3],
+   ['install-git', 'Membuat Repository Pertama', [
+      { t: 'p', x: 'Membuat repository Git baru untuk menyimpan proyek Anda. Repository bisa lokal atau remote di GitHub/GitLab.' },
+      { t: 'list', items: ['Memb folder baru untuk repository', 'Jalankan git init', 'Mulai menambah dan commit file'] },
+      { t: 'tip', x: 'Muliai dengan proyek kecil seperti to-do list sebelum coba proyek besar.' },
+   ], 3],
+   ['konfigurasi-dan-perintah-dasar', 'Konfigurasi Nama dan Email', [
+      { t: 'p', x: 'Setiap commit di Git harus teridentifikasi dengan nama dan email. Konfigurasi global akan berlakukan untuk semua repository di komputer Anda.' },
+      { t: 'code', lang: 'bash', x: 'git config --global user.name \"Fikri Amalia\"\\ngit config --global user.email \"fikri@ediverse.id\"' },
+      { t: 'list', items: ['Gunakan --global untuk semua repo', 'Periksa dengan: git config --list', 'Bisa di-set per-repository dengan hapus --global'] },
+      { t: 'tip', x: 'Gunakan email yang sama dengan akun GitHub Anda.' },
+   ], 3],
+   ['konfigurasi-dan-perintah-dasar', 'Inisialisasi Repository', [
+      { t: 'p', x: 'Membuat repository Git baru dari nol. Perintah ini membuat folder menjadi repository Git.' },
+      { t: 'code', lang: 'bash', x: 'mkdir belajar-git\\ncd belajar-git\\ngit init' },
+      { t: 'list', items: ['Buat folder proyek', 'Pindah ke folder tersebut', 'Inisialisasi Git'] },
+      { t: 'tip', x: 'Git init hanya perlu sekali per repository.' },
+   ], 3],
+   ['konfigurasi-dan-perintah-dasar', 'Menambah dan Commit File', [
+      { t: 'p', x: 'Menambah file ke repository dan menyimpan perubahan dengan pesan yang deskriptif.' },
+      { t: 'code', lang: 'bash', x: 'git add nama-file\\ngit commit -m \"Menambahkan file inisial\"' },
+      { t: 'list', items: ['git add: menambah file ke staging area', 'git commit: menyimpan perubahan'] },
+      { t: 'tip', x: 'Gunakan pesan commit yang jelas dan singkat.' },
+   ], 3],
+   ['konfigurasi-dan-perintah-dasar', 'Melihat Status Repository', [
+      { t: 'p', x: 'Melihat status berapa perubahan yang sudah tersimpan, sedang di-staging, atau belum di-track.' },
+      { t: 'code', lang: 'bash', x: 'git status' },
+      { t: 'list', items: ['File baru yang belum ter-track', 'Perubahan yang sudah di-staging', 'Riwayat commit terakhir'] },
+      { t: 'tip', x: 'Jalankan git status sebelum commit untuk menghindari kesalahan.' },
+   ], 3],
+   ['konfigurasi-dan-perintah-dasar', 'Melihat Riwayat Commit', [
+      { t: 'p', x: 'Melihat daftar semua commit yang pernah dilakukan beserta pesan dan authornya.' },
+      { t: 'code', lang: 'bash', x: 'git log' },
+      { t: 'list', items: ['Melihat semua commit', 'Melihat detail commit tertentu', 'Mencari commit berdasarkan kata kunci'] },
+      { t: 'tip', x: 'Gunakan git log --oneline untuk tampilan ringkas.' },
+   ], 3],
+   ['branch-dan-pull-request', 'Membuat Branch di GitHub', [
+      { t: 'p', x: 'Branch adalah salinan repository yang independen. Membuat branch memungkinkan Anda bekerja pada fitur baru tanpa memengaruhi branch utama.' },
+      { t: 'list', items: ['Branch independen dari branch utama', 'Fitur baru dikembangkan di branch', 'Bisa kembali ke branch utama kapan saja'] },
+      { t: 'tip', x: 'Gunakan nama branch yang deskriptif, misal fitur-login atau perbaiki-bug.' },
+   ], 3],
+   ['branch-dan-pull-request', 'Mengunggah Branch ke GitHub', [
+      { t: 'p', x: 'Mengunggah branch ke GitHub agar bisa dibagikan dan direview oleh tim.' },
+      { t: 'list', items: ['Push branch ke remote repository', 'Branch terlihat di halaman GitHub', 'Siap untuk dibuat pull request'] },
+      { t: 'tip', x: 'Push branch dengan: git push origin nama-branch' },
+   ], 3],
+   ['branch-dan-pull-request', 'Apa itu Pull Request', [
+      { t: 'p', x: 'Pull Request (PR) adalah permintaan untuk menggabungkan branch ke branch utama. PR memungkinkan tim untuk mereview kode sebelum digabung.' },
+      { t: 'list', items: ['Minta tinjauan kode dari teman tim', 'Diskusi dan perbaikan kode sebelum merge', 'Merge ke branch utama setelah disetujui'] },
+      { t: 'tip', x: 'Tulis deskripsi PR yang jelas mengapa perubahan dibutuhkan.' },
+   ], 3],
+   ['branch-dan-pull-request', 'Menyelesaikan Pull Request', [
+      { t: 'p', x: 'Melakukan review kode, membahas perubahan, lalu melakukan merge ke branch utama jika disetujui.' },
+      { t: 'list', items: ['Reviewer meninjau kode', 'Diberikan label LGTM (Looks Good To Merge)', 'Merge ke branch utama setelah disetujui'] },
+      { t: 'tip', x: 'Tidak boleh ada konflik merge sebelum PR disetujui.' },
+   ], 3],
+   ['kolaborasi-tim', 'Cloning Repository', [
+      { t: 'p', x: 'Cloning membuat salinan lengkap repository lokal dari remote. Ini memungkinkan bekerja secara offline dan sinkronisasi dengan remote.' },
+      { t: 'code', lang: 'bash', x: 'git clone https://github.com/username/repo-name.git' },
+      { t: 'list', items: ['Membuat salinan lengkap repository', 'Mengizinkan bekerja secara offline', 'Sinkronisasi dengan remote melalui push/pull'] },
+      { t: 'tip', x: 'Gunakan https atau SSH sesuai keamanan akun Anda.' },
+   ], 3],
+   ['kolaborasi-tim', 'Mendapatkan Perubahan Terbaru', [
+      { t: 'p', x: 'Mengunduh perubahan terbaru dari remote repository ke lokal. Perintah ini sinkronisasi proyek dengan teman tim.' },
+      { t: 'code', lang: 'bash', x: 'git pull origin branch-name' },
+      { t: 'list', items: ['Mendownload commit terbaru', 'Mengupdate file lokal', 'Sinkronisasi dengan remote'] },
+      { t: 'tip', x: 'Jalankan git pull sebelum mulai kerja sehari-hari.' },
+   ], 3],
+   ['kolaborasi-tim', 'Mengunggah Perubahan', [
+      { t: 'p', x: 'Mengirim perubahan dari repository lokal ke remote repository agar terlihat oleh tim.' },
+      { t: 'code', lang: 'bash', x: 'git push origin branch-name' },
+      { t: 'list', items: ['Mengirim commit terbaru', 'Update di remote repository', 'Tersedia untuk dibaca tim'] },
+      { t: 'tip', x: 'Jika push gagal, mungkin ada yang mengunggah sebelum Anda.' },
+   ], 3],
+   ['kolaborasi-tim', 'Konflik Merge', [
+      { t: 'p', x: 'Konflik merge terjadi ketika dua branch mengubah bagian yang sama file. Git memerlukan intervensi manusia untuk menyelesaikan.' },
+      { t: 'list', items: ['Git menghighlight area konflik', 'Edit manual untuk menyelesaikan konflik', 'Selesaikan lalu commit ulang'] },
+      { t: 'tip', x: 'Komunikasikan dengan tim saat ada konflik merge.' },
+   ], 3],
+   ['issues-dan-project', 'Apa itu Issue di GitHub', [
+      { t: 'p', x: 'Issue adalah fitur GitHub untuk melacak masalah, ide, atau tugas. Issue bisa digunakan untuk melacak bug, permintaan fitur, atau diskusi.' },
+      { t: 'list', items: ['Melacak bug atau masalah', 'Mengajukan permintaan fitur', 'Diskusi dan koordinasi tim'] },
+      { t: 'tip', x: 'Gunakan label dan assignee untuk mengorganisir issue.' },
+   ], 3],
+   ['issues-dan-project', 'Project Board dan Pengorganisasian', [
+      { t: 'p', x: 'Project Board membantu mengorganisir issue ke dalam kolom seperti To Do, In Progress, dan Done. Visualisasi alur kerja tim.' },
+      { t: 'list', items: ['Kolom To Do, In Progress, Done', 'Taruh issue ke kolom sesuai status', 'Lihat progres tim pada satu pandangan'] },
+      { t: 'tip', x: 'Proyek kecil cukup 3 kolom, proyek besar bisa lebih detail.' },
+   ], 3],
+   // --- web-dasar ---
   ['html-pertama', 'Struktur Halaman HTML', [
     { t: 'p', x: 'HTML bukan bahasa pemrograman, melainkan bahasa penanda (markup). Tugasnya memberi tahu browser bagian mana judul, mana paragraf, dan mana gambar.' },
     { t: 'code', lang: 'html', x: '<!doctype html>\\n<html lang=\"id\">\\n  <body>\\n    <h1>Halo, EduVerse</h1>\\n    <p>Halaman pertama saya.</p>\\n  </body>\\n</html>' },
@@ -894,6 +1326,51 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'list', items: ['Lupa titik koma di akhir baris', 'Tanda kurung kurawal tidak seimbang', 'Variabel tanpa tanda dolar', 'Kutipan string tidak pasangan'] },
     { t: 'tip', x: 'Aktifkan error_reporting di development untuk melihat pesan error yang membantu debugging.' },
   ], 3],
+ // --- form-dan-database ---
+['form-dan-database', 'Membuat Form HTML dengan PHP', [
+    { t: 'p', x: 'Form HTML mengumpulkan input dari pengguna, lalu diproses di server dengan PHP. Form butuh atribut action dan method.' },
+    { t: 'list', items: ['Form mengumpulkan input pengguna', 'PHP memproses data di server', 'Butuh atribut action dan method'] },
+    { t: 'tip', x: 'Gunakan method POST untuk data sensitif seperti password.' },
+], 4],
+['form-dan-database', 'Mengirim Data Form ke Server', [
+    { t: 'p', x: 'Data form diterima PHP melalui superglobal $_POST atau $_GET tergantung method form. Nilai diakses dengan nama input.' },
+    { t: 'code', lang: 'php', x: '<?php\\n\\n$nama = $_POST[\\"nama\\"];\\n\\n$email = $_POST[\\"email\\"];\\n\\n\\necho \\"Halo, $nama\\";\\n\\n?>' },
+    { t: 'list', items: ['$_POST untuk method POST', '$_GET untuk method GET', 'Akses dengan nama input'] },
+    { t: 'tip', x: 'Cek apakah data dikirim dengan isset() sebelum mengakses.' },
+], 4],
+['form-dan-database', 'Koneksi PHP ke Database', [
+    { t: 'p', x: 'PHP terhubung ke database dengan mysqli atau PDO. Butuh host, nama database, username, dan password.' },
+    { t: 'list', items: ['mysqli atau PDO untuk koneksi', 'Host, nama DB, username, password', 'Koneksi dicek sebelum query'] },
+    { t: 'tip', x: 'Jangan simpan password database langsung di kode yang dipublikasikan.' },
+], 4],
+['form-dan-database', 'Menyimpan Data Form ke Database', [
+    { t: 'p', x: 'Data form disimpan ke tabel database dengan perintah INSERT. Data harus dibersihkan dulu dari karakter berbahaya.' },
+    { t: 'list', items: ['Gunakan perintah INSERT', 'Bersihkan data dari karakter berbahaya', 'Periksa apakah simpan berhasil'] },
+    { t: 'tip', x: 'Gunakan prepared statement untuk mencegah SQL injection.' },
+], 4],
+ // --- session-dan-keamanan ---
+['session-dan-keamanan', 'Apa itu Session PHP', [
+    { t: 'p', x: 'Session menyimpan data pengguna di server selama kunjungan. Data tersimpan di server, hanya ID session yang dikirim ke browser.' },
+    { t: 'list', items: ['Data disimpan di server', 'Tahan selama kunjungan pengguna', 'Hanya ID session ke browser'] },
+    { t: 'tip', x: 'Mulai session dengan session_start() di setiap halaman.' },
+], 3],
+['session-dan-keamanan', 'Membuat dan Menggunakan Session', [
+    { t: 'p', x: 'Mulai session, simpan data di $_SESSION, baca di halaman lain, dan hancurkan dengan session_destroy() saat logout.' },
+    { t: 'code', lang: 'php', x: '<?php\\n\\nsession_start();\\n\\n$_SESSION[\\"user\\"] = \\"Rafi\\";\\n\\n\\n// halaman lain\\n\\necho $_SESSION[\\"user\\"];\\n\\n?>' },
+    { t: 'list', items: ['session_start() memulai session', 'Simpan data di $_SESSION', 'Hancurkan dengan session_destroy()'] },
+    { t: 'tip', x: 'Panggil session_start() di awal setiap halaman yang butuh session.' },
+], 3],
+['session-dan-keamanan', 'Keamanan Dasar PHP', [
+    { t: 'p', x: 'Jangan percaya data dari pengguna sepenuhnya. Bersihkan dan validasi semua input sebelum diproses atau disimpan.' },
+    { t: 'list', items: ['Jangan percaya input pengguna sepenuhnya', 'Bersihkan dan validasi semua input', 'Hindari menampilkan error ke pengguna'] },
+    { t: 'tip', x: 'Tampilkan pesan error umum, simpan detailnya di log server.' },
+], 3],
+['session-dan-keamanan', 'Melindungi dari Serangan Umum', [
+    { t: 'p', x: 'Serangan umum seperti SQL injection dan XSS dapat dicegah dengan prepared statement dan escaping output.' },
+    { t: 'list', items: ['Prepared statement mencegah SQL injection', 'Escaping output mencegah XSS', 'Validasi input di sisi server'] },
+    { t: 'tip', x: 'Selalu assume input pengguna berbahaya sampai dibuktikan sebaliknya.' },
+], 3],
+
   // --- variabel-dan-fungsi ---
   ['variabel-dan-fungsi', 'Variabel dan Tipe Data', [
     { t: 'p', x: 'PHP memiliki beberapa tipe data: string, int, float, boolean, array, object, null, dan resource. Tipe data biasanya ditentukan otomatis berdasarkan nilai yang diassign.' },
