@@ -124,10 +124,6 @@ export function SignInPage() {
       <Card>
         <CardHeader>
           <CardTitle className="text-base">Login dengan username &amp; password</CardTitle>
-          <CardDescription>
-            Untuk admin atau akun platform tanpa provider. Akun admin default: AdminHafiz / 12345678. Password
-            disimpan sebagai hash, dan ganti atau lupa bisa lewat halaman akun.
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <form className="flex flex-col gap-3" onSubmit={(event) => void kirim(event)}>
