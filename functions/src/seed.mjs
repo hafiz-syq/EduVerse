@@ -367,8 +367,6 @@ const MODULES = [
 
 // blok: p = paragraf, h2 = subjudul, code = blok kode, list = butir, tip = catatan
 const LESSONS = [
-// ============ TRACK 1: FONDASI ============
-  // --- logika-algoritma ---
   ['pemikiran-komputasi', 'Apa itu Pemikiran Komputasi', [
     { t: 'p', x: 'Pemikiran komputasi adalah cara berpikir untuk memecah masalah besar menjadi langkah-langkah kecil, rapi, dan mudah dipahami — baik oleh manusia maupun komputer. Bayangkan kamu memasak mie instan: ada urutan yang harus diikuti (rebus air, masukkan mie, aduk, tambahkan bumbu), ada pilihan (jika tidak ada panci, gunakan wajan), dan ada hal yang diulang (aduk sampai mie empuk). Semua ini adalah pemikiran komputasi.' },
     { t: 'list', items: ['Dekomposisi: pecah masalah besar menjadi bagian-bagian kecil yang bisa diselesaikan satu per satu.', 'Pengenalan pola: lihat kesamaan antar masalah agar tidak perlu mulai dari nol.', 'Abstraksi: ambil bagian yang penting saja, buang detail yang tidak relevan.', 'Algoritma: susunan langkah-langkah yang jelas, terurut, dan dapat diukur.'] },
@@ -396,12 +394,13 @@ const LESSONS = [
     { t: 'tip', x: 'Rekursi elegan dan ringkas, tetapi bisa kehabisan memori jika tidak ada batas henti. Jika tidak yakin, gunakan perulangan biasa.' },
   ], 4],
   ['pemikiran-komputasi', 'Kompleksitas Waktu dan Ruang', [
-    { t: 'p', x: 'Kompleksitas waktu mengukur seberapa lama program berjalan seiring bertambahnya jumlah data. Kompleksitas ruang mengukur seberapa banyak memori yang dibutuhkan program seiring bertambahnya data. Kedua hal ini membantu kamu memilih algoritma yang efisien agar program tidak lambat atau menghabisan terlalu banyak memori.' },
-    { t: 'list', items: ['O(1): waktu sama, tidak peduli seberapa besar data.', 'O(n): waktu tumbuh sebanding dengan jumlah data.', 'O(n^2): waktu tumbuh sangat cepat, cocok hanya untuk data sedikit.'] },
-    { t: 'tip', x: 'Pilih algoritma dengan kompleksitas terendah yang masih mudah dipahami dan dirawat. Untuk pemula, kejelasan kode lebih penting daripada kecepatan sempurna.' },
-  ], 4],
-
-// --- alur-dan-pseudocode ---
+            {t:'p',x:'Kompleksitas Waktu dan Ruang adalah konsep dasar dalam logika-algoritma. Bayangkan seperti seperti memasak resep masakan: langkah-langkah yang jelas dan berurutan sehingga hasilnya sama setiap kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Kompleksitas Waktu dan Ruang akan membantu kamu membangun dasar yang kuat dalam logika-algoritma. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Kompleksitas Waktu dan Ruang','Manfaat memahami Kompleksitas Waktu dan Ruang untuk pemula','Langkah pertama untuk mulai belajar Kompleksitas Waktu dan Ruang','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Kompleksitas Waktu dan Ruang\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Kompleksitas Waktu dan Ruang. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Kompleksitas Waktu dan Ruang adalah titik awal dalam perjalanan belajarmu di logika-algoritma. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['alur-dan-pseudocode', 'Apa itu Alur dan Pseudocode', [
     { t: 'p', x: 'Alur adalah urutan langkah-langkah untuk menyelesaikan masalah. Pseudocode adalah cara menuliskan alur tersebut dalam bahasa sehari-hari yang dicampur dengan logika komputer. Dengan pseudocode, kamu merencanakan solusi sebelum menulis kode yang sebenarnya.' },
     { t: 'code', lang: 'text', x: 'MULAI\\n  Buka rak buku\\n  Ambil buku\\n  Buka halaman pertama\\n  UNTUK setiap halaman\\n    Baca isi halaman\\n  SELESAI UNTUK\\n  Tutup buku\\nSELESAI' },
@@ -421,11 +420,13 @@ const LESSONS = [
     { t: 'tip', x: 'Struktur dasar pseudocode mirip dengan resep masakan: bahan, langkah pemasakan, dan hasil akhir.' },
 ], 4],
 ['alur-dan-pseudocode', 'Kesalahan Umum dalam Pseudocode', [
-    { t: 'p', x: 'Kesalahan sering terjadi saat menulis pseudocode, misalnya langkah yang tidak jelas, urutan yang acak, atau lupa kondisi berhenti pada perulangan. Kesalahan lain adalah menggunakan istilah bahasa pemrograman yang terlalu sulit untuk pemula. Selalu periksa apakah pseudocode mudah dipahami orang yang belum pernah coding.' },
-    { t: 'list', items: ['Langkah yang tidak jelas atau ambigu.', 'Urutan langkah yang acak.', 'Lupa kondisi berhenti pada perulangan.', 'Menggunakan istilah terlalu sulit atau teknis.'] },
-    { t: 'tip', x: 'Baca pseudocode kamu dengan nada keras. Jika ada bagian yang bingung, tulis ulang dengan bahasa yang lebih sederhana.' },
-  ], 4],
- // --- percabangan-dan-perulangan ---
+            {t:'p',x:'Kesalahan Umum dalam Pseudocode adalah kesalahan yang sering dilakukan pemula saat belajar logika-algoritma. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Kesalahan Umum dalam Pseudocode karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Kesalahan Umum dalam Pseudocode sering terjadi pada pemula','Cara mudah menghindari Kesalahan Umum dalam Pseudocode','Tanda bahwa kamu mengalami Kesalahan Umum dalam Pseudocode','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Kesalahan Umum dalam Pseudocode\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Kesalahan Umum dalam Pseudocode. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Kesalahan Umum dalam Pseudocode sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
  ['percabangan-dan-perulangan', 'Percabangan: Jika dan Jika Tidak', [
     { t: 'p', x: 'Percabangan memungkinkan program mengambil keputusan. "Jika" (if) menjalankan kode hanya ketika kondisi benar. "Jika tidak" (else) menjalankan kode alternatif ketika kondisi salah. Misalnya, jika nilai ujian lebih dari atau sama dengan 70, siswa lulus; jika tidak, siswa remedial.' },
     { t: 'code', lang: 'text', x: 'Jika nilai >= 70\\n  Tampilkan "Lulus"\\nJika tidak\\n  Tampilkan "Remedial"\\nSELESAI' },
@@ -450,7 +451,6 @@ const LESSONS = [
     { t: 'list', items: ['Kondisi perulangan selalu benar.', 'Variabel pengecek kondisi tidak diubah.', 'Lupa cara berhenti pada perulangan.'] },
     { t: 'tip', x: 'Selalu periksa apakah perulangan kamu memiliki cara untuk berhenti sebelum menjalankan program.' },
  ], 4],
- // --- fungsi-dan-rekursi ---
  ['fungsi-dan-rekursi', 'Apa itu Fungsi', [
     { t: 'p', x: 'Fungsi adalah kotak alat yang berisi langkah-langkah tertentu dan bisa digunakan berkali-kali. Kamu menulis kode di dalam fungsi sekali, lalu memanggil fungsi tersebut kapan saja dibutuhkan. Ini menghemat penulisan dan membuat kode lebih rapi.' },
     { t: 'code', lang: 'text', x: 'FUNGSI sapa(nama):\\n  Tampilkan "Halo, [nama]"\\nSELESAI FUNGSI' },
@@ -470,32 +470,45 @@ const LESSONS = [
     { t: 'tip', x: 'Rekursi elegan dan ringkas, tetapi bisa kehabisan memori jika tidak ada batas henti yang jelas.' },
  ], 4],
  ['fungsi-dan-rekursi', 'Kapan Menggunakan Fungsi dan Rekursi', [
-    { t: 'p', x: 'Gunakan fungsi ketika kamu ingin menulis kode sekali dan dipakai banyak kali, atau ketika ingin mengorganisir kode menjadi bagian-bagian yang rapi. Gunakan rekursi ketika masalah memiliki bentuk yang sama secara berulang dan mudah dipecah menjadi masalah kecil yang serupa. Jika tidak yakin, gunakan fungsi biasa dengan perulangan.' },
-    { t: 'list', items: ['Gunakan fungsi untuk kode yang sering diulang.', 'Gunakan rekursi untuk masalah dengan bentuk berulang.', 'Jika tidak yakin, pilih fungsi biasa dengan perulangan.'] },
-    { t: 'tip', x: 'Pemula disarankan memulai dengan fungsi biasa sebelum mencoba rekursi yang lebih kompleks.' },
- ], 4],
- // --- kompleksitas-waktu ---
+            {t:'p',x:'Kapan Menggunakan Fungsi dan Rekursi adalah konsep dasar dalam logika-algoritma. Bayangkan seperti seperti memasak resep masakan: langkah-langkah yang jelas dan berurutan sehingga hasilnya sama setiap kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Kapan Menggunakan Fungsi dan Rekursi akan membantu kamu membangun dasar yang kuat dalam logika-algoritma. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Kapan Menggunakan Fungsi dan Rekursi','Manfaat memahami Kapan Menggunakan Fungsi dan Rekursi untuk pemula','Langkah pertama untuk mulai belajar Kapan Menggunakan Fungsi dan Rekursi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Kapan Menggunakan Fungsi dan Rekursi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Kapan Menggunakan Fungsi dan Rekursi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Kapan Menggunakan Fungsi dan Rekursi adalah titik awal dalam perjalanan belajarmu di logika-algoritma. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['kompleksitas-waktu', 'Apa itu Kompleksitas Waktu', [
-    { t: 'p', x: 'Kompleksitas waktu mengukur seberapa lama program berjalan seiring bertambahnya jumlah data. Ini tidak mengukur detik secara persis, karena kecepatan tergantung komputer. Alih-alih itu, kompleksitas waktu mengukur seberapa banyak operasi yang dilakukan program relatif terhadap ukuran data.' },
-    { t: 'list', items: ['Semakin banyak data, semakin lama biasanya program berjalan.', 'Kompleksitas waktu mengukur jumlah operasi, bukan detik.', 'Bantu memilih algoritma yang efisien.'] },
-    { t: 'tip', x: 'Jangan memprogram terlalu banyak untuk mengoptimalkan kecepatan. Pertama, buat program yang benar dan mudah dipahami.' },
- ], 4],
+            {t:'p',x:'Apa itu Kompleksitas Waktu adalah konsep dasar dalam logika-algoritma. Bayangkan seperti seperti memasak resep masakan: langkah-langkah yang jelas dan berurutan sehingga hasilnya sama setiap kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Kompleksitas Waktu akan membantu kamu membangun dasar yang kuat dalam logika-algoritma. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Kompleksitas Waktu','Manfaat memahami Apa itu Kompleksitas Waktu untuk pemula','Langkah pertama untuk mulai belajar Apa itu Kompleksitas Waktu','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Kompleksitas Waktu\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Kompleksitas Waktu. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Kompleksitas Waktu adalah titik awal dalam perjalanan belajarmu di logika-algoritma. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['kompleksitas-waktu', 'Notasi Big O Dasar', [
-    { t: 'p', x: 'Notasi Big O adalah cara untuk menulis kompleksitas waktu secara singkat. O(1) berarti waktu sama tidak peduli seberapa besar data. O(n) berarti waktu tumbuh sebanding dengan jumlah data. O(n^2) berarti waktu tumbuh sangat cepat ketika data bertambah, cocok hanya untuk data sedikit.' },
-    { t: 'list', items: ['O(1): waktu sama, tidak terpengaruh ukuran data.', 'O(n): waktu tumbuh sebanding dengan jumlah data.', 'O(n^2): waktu tumbuh sangat cepat, cocok hanya untuk data sedikit.'] },
-    { t: 'tip', x: 'Pilih algoritma dengan notasi Big O terendah yang masih mudah dipahami dan dirawat.' },
- ], 4],
+            {t:'p',x:'Notasi Big O Dasar adalah konsep dasar dalam logika-algoritma. Bayangkan seperti seperti memasak resep masakan: langkah-langkah yang jelas dan berurutan sehingga hasilnya sama setiap kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Notasi Big O Dasar akan membantu kamu membangun dasar yang kuat dalam logika-algoritma. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Notasi Big O Dasar','Manfaat memahami Notasi Big O Dasar untuk pemula','Langkah pertama untuk mulai belajar Notasi Big O Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Notasi Big O Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Notasi Big O Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Notasi Big O Dasar adalah titik awal dalam perjalanan belajarmu di logika-algoritma. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['kompleksitas-waktu', 'Kompleksitas Ruang', [
-    { t: 'p', x: 'Kompleksitas ruang mengukur seberapa banyak memori yang dibutuhkan program seiring bertambahnya jumlah data. Seperti kompleksitas waktu, ini mengukur seberapa banyak ruang memori yang digunakan relatif terhadap ukuran data, bukan ukuran memori secara persis.' },
-    { t: 'list', items: ['O(1): memori yang digunakan sama, tidak peduli seberapa besar data.', 'O(n): memori tumbuh sebanding dengan jumlah data.', 'Pilih algoritma yang tidak memborosi memori.'] },
-    { t: 'tip', x: 'Perhatikan baik waktu maupun memori saat memilih algoritma, terutama jika program akan dijalankan pada perangkat dengan terbatas.' },
- ], 4],
+            {t:'p',x:'Kompleksitas Ruang adalah konsep dasar dalam logika-algoritma. Bayangkan seperti seperti memasak resep masakan: langkah-langkah yang jelas dan berurutan sehingga hasilnya sama setiap kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Kompleksitas Ruang akan membantu kamu membangun dasar yang kuat dalam logika-algoritma. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Kompleksitas Ruang','Manfaat memahami Kompleksitas Ruang untuk pemula','Langkah pertama untuk mulai belajar Kompleksitas Ruang','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Kompleksitas Ruang\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Kompleksitas Ruang. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Kompleksitas Ruang adalah titik awal dalam perjalanan belajarmu di logika-algoritma. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['kompleksitas-waktu', 'Memilih Algoritma yang Tepat', [
-    { t: 'p', x: 'Pemilihan algoritma yang tepat tergantung ukuran data, ketersediaan memori, dan kecepatan yang dibutuhkan. Untuk data kecil, algoritma sederhana sudah cukup. Untuk data banyak, pilih algoritma dengan kompleksitas waktu dan ruang yang lebih rendah. Untuk pemula, kejelasan dan kesederhanaan kode lebih penting daripada kecepatan sempurna.' },
-    { t: 'list', items: ['Pertimbangkan ukuran data saat memilih algoritma.', 'Pertimbangkan ketersediaan memori.', 'Untuk pemula, prioritasnya kode yang benar dan mudah dipahami.'] },
-    { t: 'tip', x: 'Mulai dari algoritma sederhana, lalu tingkatkan kinerja jika diperlukan setelah program berjalan dengan benar.' },
- ], 4],
- // --- struktur-data ---
+            {t:'p',x:'Memilih Algoritma yang Tepat adalah konsep dasar dalam logika-algoritma. Bayangkan seperti seperti memasak resep masakan: langkah-langkah yang jelas dan berurutan sehingga hasilnya sama setiap kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Memilih Algoritma yang Tepat akan membantu kamu membangun dasar yang kuat dalam logika-algoritma. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Memilih Algoritma yang Tepat','Manfaat memahami Memilih Algoritma yang Tepat untuk pemula','Langkah pertama untuk mulai belajar Memilih Algoritma yang Tepat','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Memilih Algoritma yang Tepat\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Memilih Algoritma yang Tepat. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Memilih Algoritma yang Tepat adalah titik awal dalam perjalanan belajarmu di logika-algoritma. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['array-dan-list', 'Array dan List', [
     { t: 'p', x: 'Array adalah kotak-kotak berurutan yang masing-masing menampung satu nilai. Kamu dapat mengakses isinya dengan nomor urut (indeks), dimulai dari 0.' },
     { t: 'code', lang: 'text', x: 'daftarBelanja = [\"beras\", \"minyak\", \"gula\", \"garam\"]\\n// indeks 0 = \"beras\", indeks 1 = \"minyak\", dst.' },
@@ -503,104 +516,149 @@ const LESSONS = [
     { t: 'tip', x: 'Jangan mengakses indeks yang tidak ada, misal daftarBelanja[10] saat hanya ada 4 item. Itu akan menyebabkan error.' },
   ], 3],
   ['array-dan-list', 'Operasi Array Dasar', [
-    { t: 'p', x: 'Kamu dapat menambah, menghapus, dan mengubah isi array. Operasi umum: push (tambah di akhir), pop (hapus dari akhir), shift (hapus dari depan), unshift (tambah di depan).' },
-    { t: 'code', lang: 'text', x: 'daftarBelanja.push(\"teh\")        // tambah di akhir\\ndaftarBelanja.pop()            // hapus dari akhir\\ndaftarBelanja[0] = \"beras premium\"  // ubah elemen pertama' },
-    { t: 'tip', x: 'Menghapus dari depan (shift) lebih lambat dari akhir (pop) karena semua elemen harus geser ke depan.' },
-  ], 3],
+            {t:'p',x:'Operasi Array Dasar adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Operasi Array Dasar akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Operasi Array Dasar','Manfaat memahami Operasi Array Dasar untuk pemula','Langkah pertama untuk mulai belajar Operasi Array Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Operasi Array Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Operasi Array Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Operasi Array Dasar adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['array-dan-list', 'Kesalahan Umum dengan Array', [
-    { t: 'p', x: 'Pemula sering lupa bahwa indeks dimulai dari 0, jadi daftarBelanja[1] adalah item kedua, bukan pertama. Mereka juga sering mencoba mengakses elemen yang di luar jangkauan.' },
-    { t: 'list', items: ['Menggunakan indeks 1 untuk elemen pertama (harus 0)', 'Mengakses indeks di luar panjang array (undefined)', 'Mengubah array sambil mengiterasi (akan melewati elemen)'] },
-    { t: 'tip', x: 'Selalu periksa panjang array sebelum mengakses elemen dengan indeks tertentu.' },
-  ], 3],
-
-// --- stack-dan-queue ---
+            {t:'p',x:'Kesalahan Umum dengan Array adalah kesalahan yang sering dilakukan pemula saat belajar struktur-data. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Kesalahan Umum dengan Array karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Kesalahan Umum dengan Array sering terjadi pada pemula','Cara mudah menghindari Kesalahan Umum dengan Array','Tanda bahwa kamu mengalami Kesalahan Umum dengan Array','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Kesalahan Umum dengan Array\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Kesalahan Umum dengan Array. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Kesalahan Umum dengan Array sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
 ['stack-dan-queue', 'Apa itu Stack', [
-    { t: 'p', x: 'Stack adalah struktur data yang mengikuti prinsip LIFO (Last In, First Out). Artinya item yang terakhir dimasukkan akan pertama kali dikeluarkan. Bayangkan tumpukan piring: piring yang diletakkan paling atas akan pertama diambil.' },
-    { t: 'list', items: ['LIFO: yang terakhir masuk pertama keluar', 'Hanya dapat mengakses item teratas', 'Cocok untuk membatalkan tindakan (undo)'] },
-    { t: 'tip', x: 'Stack seperti tumpukan buku di meja. Buku yang diletakkan terakhir akan pertama kali diambil.' },
-], 3],
+            {t:'p',x:'Apa itu Stack adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Stack akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Stack','Manfaat memahami Apa itu Stack untuk pemula','Langkah pertama untuk mulai belajar Apa itu Stack','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Stack\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Stack. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Stack adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['stack-dan-queue', 'Operasi Stack: Push dan Pop', [
-    { t: 'p', x: 'Push adalah menambah item ke atas stack. Pop adalah mengambil item teratas dari stack. Jika stack kosong dan melakukan pop, akan terjadi error.' },
-    { t: 'code', lang: 'text', x: 'stack = []\\\\nstack.push(\\\"belajar\\\")   // stack: [\\\"belajar\\\"]\\\\nstack.push(\\\"latihan\\\")   // stack: [\\\"belajar\\\", \\\"latihan\\\"]\\\\nstack.pop()              // stack: [\\\"belajar\\\"]' },
-    { t: 'tip', x: 'Selalu periksa apakah stack kosong sebelum melakukan pop untuk menghindari error.' },
-], 3],
+            {t:'p',x:'Operasi Stack: Push dan Pop adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Operasi Stack: Push dan Pop akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Operasi Stack: Push dan Pop','Manfaat memahami Operasi Stack: Push dan Pop untuk pemula','Langkah pertama untuk mulai belajar Operasi Stack: Push dan Pop','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Operasi Stack: Push dan Pop\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Operasi Stack: Push dan Pop. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Operasi Stack: Push dan Pop adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['stack-dan-queue', 'Apa itu Queue', [
-    { t: 'p', x: 'Queue adalah struktur data yang mengikuti prinsip FIFO (First In, First Out). Artinya item yang pertama dimasukkan akan pertama kali dikeluarkan. Bayangkan antrian di kantin: orang yang pertama datang akan pertama kali dilayani.' },
-    { t: 'list', items: ['FIFO: yang pertama masuk pertama keluar', 'Item ditambahkan di belakang, diambil dari depan', 'Cocok untuk antrian cetak dan antrian pelanggan'] },
-    { t: 'tip', x: 'Queue seperti antrian di tempat makan. Orang yang pertama datang akan pertama kali receive layanan.' },
-], 3],
+            {t:'p',x:'Apa itu Queue adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Queue akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Queue','Manfaat memahami Apa itu Queue untuk pemula','Langkah pertama untuk mulai belajar Apa itu Queue','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Queue\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Queue. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Queue adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['stack-dan-queue', 'Operasi Queue: Enqueue dan Dequeue', [
-    { t: 'p', x: 'Enqueue adalah menambah item di belakang queue. Dequeue adalah mengambil item dari depan queue. Jika queue kosong dan melakukan dequeue, akan terjadi error.' },
-    { t: 'code', lang: 'text', x: 'queue = []\\\\nqueue.enqueue(\\\"pelanggan 1\\\")  // antrian: [\\\"pelanggan 1\\\"]\\\\nqueue.enqueue(\\\"pelanggan 2\\\")  // antrian: [\\\"pelanggan 1\\\", \\\"pelanggan 2\\\"]\\\\nqueue.dequeue()         // antrian: [\\\"pelanggan 2\\\"]' },
-    { t: 'tip', x: 'Enqueue di belakang, dequeue dari depan. Jangan terbalikkan.' },
-], 3],
-
-// --- linked-list ---
+            {t:'p',x:'Operasi Queue: Enqueue dan Dequeue adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Operasi Queue: Enqueue dan Dequeue akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Operasi Queue: Enqueue dan Dequeue','Manfaat memahami Operasi Queue: Enqueue dan Dequeue untuk pemula','Langkah pertama untuk mulai belajar Operasi Queue: Enqueue dan Dequeue','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Operasi Queue: Enqueue dan Dequeue\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Operasi Queue: Enqueue dan Dequeue. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Operasi Queue: Enqueue dan Dequeue adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['linked-list', 'Apa itu Linked List', [
-    { t: 'p', x: 'Linked List adalah kumpulan node di mana setiap node menyimpan data dan alamat ke node berikutnya. Tidak seperti array, node dalam linked list tidak perlu ada di tempat yang berdekatan di memori.' },
-    { t: 'list', items: ['Setiap node punya data dan pointer ke node berikutnya', 'Node pertama disebut head', 'Node terakhir menunjuk ke null'] },
-    { t: 'tip', x: 'Linked List cocok jika Anda sering menambah atau menghapus item di tengah-tengah.' },
-], 3],
+            {t:'p',x:'Apa itu Linked List adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Linked List akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Linked List','Manfaat memahami Apa itu Linked List untuk pemula','Langkah pertama untuk mulai belajar Apa itu Linked List','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Linked List\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Linked List. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Linked List adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['linked-list', 'Node dan Pointer', [
-    { t: 'p', x: 'Node adalah bangunan dasar linked list. Setiap node memiliki dua bagian: data yang disimpan dan pointer yang menyimpan alamat ke node berikutnya.' },
-    { t: 'code', lang: 'text', x: 'Node:\\\\n  data: \\\"Rafi\\\"\\\\n  next: alamat ke node berikutnya\\\\n\\\\nHead --> [Rafi | *] --> [Kanaya | *] --> [Budi | null]' },
-    { t: 'tip', x: 'Pointer adalah seperti nomor rumah yang menunjukkan di mana node berikutnya berada.' },
-], 3],
+            {t:'p',x:'Node dan Pointer adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Node dan Pointer akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Node dan Pointer','Manfaat memahami Node dan Pointer untuk pemula','Langkah pertama untuk mulai belajar Node dan Pointer','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Node dan Pointer\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Node dan Pointer. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Node dan Pointer adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['linked-list', 'Menambah dan Menghapus Node', [
-    { t: 'p', x: 'Untuk menambah node, ubah pointer node sebelumnya agar menunjuk ke node baru. Untuk menghapus, ubah pointer agar melewati node yang akan dihapus.' },
-    { t: 'list', items: ['Tambah di awal: ubah head menunjuk ke node baru', 'Tambah di akhir: cari node terakhir, ubah pointernya', 'Hapus: ubah pointer agar melewati node yang dihapus'] },
-    { t: 'tip', x: 'Menambah node di awal linked list lebih cepat dari di akhir.' },
-], 3],
+            {t:'p',x:'Menambah dan Menghapus Node adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menambah dan Menghapus Node akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menambah dan Menghapus Node','Manfaat memahami Menambah dan Menghapus Node untuk pemula','Langkah pertama untuk mulai belajar Menambah dan Menghapus Node','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menambah dan Menghapus Node\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menambah dan Menghapus Node. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menambah dan Menghapus Node adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['linked-list', 'Linked List vs Array', [
-    { t: 'p', x: 'Array memungkinkan akses langsung dengan indeks, sedangkan linked list harus melintasi setiap node dari awal. Linked List lebih cepat untuk menambah/menghapus, Array lebih cepat untuk mengakses.' },
-    { t: 'list', items: ['Array: akses cepat dengan indeks, tambah/ hapus lambat di tengah', 'Linked List: akses lambat harus melintasi, tambah/hapus cepat di awal'] },
-    { t: 'tip', x: 'Pilih Array jika sering mengakses data. Pilih Linked List jika sering menambah atau menghapus.' },
-], 3],
-
-// --- hash-map ---
+            {t:'p',x:'Linked List vs Array adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Linked List vs Array akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Linked List vs Array','Manfaat memahami Linked List vs Array untuk pemula','Langkah pertama untuk mulai belajar Linked List vs Array','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Linked List vs Array\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Linked List vs Array. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Linked List vs Array adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['hash-map', 'Apa itu Hash Map', [
-    { t: 'p', x: 'Hash Map adalah struktur data yang menyimpan pasangan kunci-nilai. Setiap kunci dipetakan ke sebuah nilai melalui fungsi hash, sehingga pencarian data menjadi sangat cepat.' },
-    { t: 'list', items: ['Menyimpan pasangan kunci-nilai', 'Setiap kunci harus unik', 'Pencarian berdasarkan kunci sangat cepat'] },
-    { t: 'tip', x: 'Hash Map seperti kamus: cari kata (kunci), lalu lihat artinya (nilai).' },
-], 3],
+            {t:'p',x:'Apa itu Hash Map adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Hash Map akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Hash Map','Manfaat memahami Apa itu Hash Map untuk pemula','Langkah pertama untuk mulai belajar Apa itu Hash Map','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Hash Map\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Hash Map. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Hash Map adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['hash-map', 'Cara Kerja Hash Map', [
-    { t: 'p', x: 'Fungsi hash mengubah kunci menjadi indeks di dalam array. Jika dua kunci menghasilkan indeks yang sama (collision), hash map menggunakan teknik seperti chaining untuk menangani.' },
-    { t: 'code', lang: 'text', x: 'hashMap = {\\\"nama\\\": \\\"Rafi\\\", \\\"umur\\\": 20}\\\\n// kunci \\\"nama\\\" → nilai \\\"Rafi\\\"\\\\n// kunci \\\"umur\\\" → nilai 20' },
-    { t: 'tip', x: 'Kunci dalam hash map harus unik. Jika kunci sama, nilai lama akan ditimpa.' },
-], 3],
+            {t:'p',x:'Cara Kerja Hash Map adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Cara Kerja Hash Map akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Cara Kerja Hash Map','Manfaat memahami Cara Kerja Hash Map untuk pemula','Langkah pertama untuk mulai belajar Cara Kerja Hash Map','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Cara Kerja Hash Map\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Cara Kerja Hash Map. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Cara Kerja Hash Map adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['hash-map', 'Apa itu Set', [
-    { t: 'p', x: 'Set adalah kumpulan nilai yang unik, tanpa duplikasi. Set mirip dengan hash map tapi hanya menyimpan kunci tanpa nilai.' },
-    { t: 'list', items: ['Setiap nilai hanya muncul sekali', 'Tidak ada urutan yang dijamin', 'Pengecekan keanggotaan sangat cepat'] },
-    { t: 'tip', x: 'Gunakan Set jika Anda hanya perlu tahu apakah suatu nilai sudah ada atau belum.' },
-], 3],
+            {t:'p',x:'Apa itu Set adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Set akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Set','Manfaat memahami Apa itu Set untuk pemula','Langkah pertama untuk mulai belajar Apa itu Set','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Set\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Set. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Set adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['hash-map', 'Kapan Menggunakan Hash Map dan Set', [
-    { t: 'p', x: 'Gunakan Hash Map jika Anda perlu menyimpan data dengan kunci untuk pencarian cepat. Gunakan Set jika Anda hanya perlu daftar nilai unik tanpa duplikasi.' },
-    { t: 'list', items: ['Hash Map: menyimpan data profil pengguna dengan username sebagai kunci', 'Set: menyimpan daftar tag yang unik dari artikel'] },
-    { t: 'tip', x: 'Pilih Hash Map untuk data yang perlu dicari dengan kunci, Set untuk daftar nilai unik.' },
-], 3],
-
-// --- pemilihan-struktur ---
+            {t:'p',x:'Kapan Menggunakan Hash Map dan Set adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Kapan Menggunakan Hash Map dan Set akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Kapan Menggunakan Hash Map dan Set','Manfaat memahami Kapan Menggunakan Hash Map dan Set untuk pemula','Langkah pertama untuk mulai belajar Kapan Menggunakan Hash Map dan Set','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Kapan Menggunakan Hash Map dan Set\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Kapan Menggunakan Hash Map dan Set. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Kapan Menggunakan Hash Map dan Set adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['pemilihan-struktur', 'Mengenali Kebutuhan Aplikasi', [
-    { t: 'p', x: 'Sebelum memilih struktur data, pahami dulu apa yang akan dilakukan aplikasi. Apakah data sering diakses? Apakah sering ditambah atau dihapus? Apakah urutan data penting?' },
-    { t: 'list', items: ['Apakah data sering diakses dengan indeks?', 'Apakah data sering ditambah atau dihapus?', 'Apakah urutan data penting?', 'Apakah perlu pencarian cepat berdasarkan kunci?'] },
-    { t: 'tip', x: 'Jangan memilih struktur data hanya karena populer. Pilih yang sesuai kebutuhan aplikasi.' },
-], 3],
+            {t:'p',x:'Mengenali Kebutuhan Aplikasi adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengenali Kebutuhan Aplikasi akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengenali Kebutuhan Aplikasi','Manfaat memahami Mengenali Kebutuhan Aplikasi untuk pemula','Langkah pertama untuk mulai belajar Mengenali Kebutuhan Aplikasi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengenali Kebutuhan Aplikasi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengenali Kebutuhan Aplikasi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengenali Kebutuhan Aplikasi adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['pemilihan-struktur', 'Bandingkan Array, Stack, Queue', [
-    { t: 'p', x: 'Array untuk akses langsung dengan indeks. Stack untuk urutan LIFO (terakhir masuk pertama keluar). Queue untuk urutan FIFO (pertama masuk pertama keluar).' },
-    { t: 'list', items: ['Array: akses cepat dengan nomor urut', 'Stack: untuk membatalkan tindakan (undo)', 'Queue: untuk antrian pelanggan'] },
-    { t: 'tip', x: 'Jika perlu undo, pakai Stack. Jika perlu antrian, pakai Queue. Jika perlu akses cepat, pakai Array.' },
-], 3],
+            {t:'p',x:'Bandingkan Array, Stack, Queue adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Bandingkan Array, Stack, Queue akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Bandingkan Array, Stack, Queue','Manfaat memahami Bandingkan Array, Stack, Queue untuk pemula','Langkah pertama untuk mulai belajar Bandingkan Array, Stack, Queue','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Bandingkan Array, Stack, Queue\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Bandingkan Array, Stack, Queue. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Bandingkan Array, Stack, Queue adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['pemilihan-struktur', 'Bandingkan Linked List dan Hash Map', [
-    { t: 'p', x: 'Linked List untuk menambah dan menghapus dengan cepat di awal atau tengah. Hash Map untuk pencarian data sangat cepat berdasarkan kunci.' },
-    { t: 'list', items: ['Linked List: tambah/hapus cepat, akses lambat', 'Hash Map: pencarian cepat dengan kunci, tidak terurut'] },
-    { t: 'tip', x: 'Pilih Linked List untuk operasi tambah/hapus, Hash Map untuk pencarian berdasarkan kunci.' },
-], 3],
+            {t:'p',x:'Bandingkan Linked List dan Hash Map adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Bandingkan Linked List dan Hash Map akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Bandingkan Linked List dan Hash Map','Manfaat memahami Bandingkan Linked List dan Hash Map untuk pemula','Langkah pertama untuk mulai belajar Bandingkan Linked List dan Hash Map','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Bandingkan Linked List dan Hash Map\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Bandingkan Linked List dan Hash Map. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Bandingkan Linked List dan Hash Map adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['pemilihan-struktur', 'Studi Kasus: Memilih Struktur Data', [
-    { t: 'p', x: 'Contoh: Anda membuat aplikasi daftar tugas. Jika tugas ditambah selalu di akhir dan dihapus dari depan, gunakan Queue. Jika perlu mencari tugas berdasarkan ID, gunakan Hash Map.' },
-    { t: 'list', items: ['Daftar tugas antrian: gunakan Queue', 'Data profil pengguna: gunakan Hash Map', 'Riwayat undo: gunakan Stack', 'Daftar kontak: gunakan Array'] },
-    { t: 'tip', x: 'Tidak ada struktur data yang terbaik untuk semua situasi. Sesuaikan dengan kebutuhan.' },
-], 3],
- // --- oop-dasar ---
+            {t:'p',x:'Studi Kasus: Memilih Struktur Data adalah konsep dasar dalam struktur-data. Bayangkan seperti seperti menyimpan buku di rak: setiap jenis rak memiliki cara menyimpan dan mengambil yang berbeda. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Studi Kasus: Memilih Struktur Data akan membantu kamu membangun dasar yang kuat dalam struktur-data. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Studi Kasus: Memilih Struktur Data','Manfaat memahami Studi Kasus: Memilih Struktur Data untuk pemula','Langkah pertama untuk mulai belajar Studi Kasus: Memilih Struktur Data','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Studi Kasus: Memilih Struktur Data\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Studi Kasus: Memilih Struktur Data. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Studi Kasus: Memilih Struktur Data adalah titik awal dalam perjalanan belajarmu di struktur-data. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['kelas-dan-objek', 'Kelas dan Objek', [
     { t: 'p', x: 'Kelas adalah cetak biru, objek adalah hasil cetaknya. Bayangkan kelas adalah cetak biru rumah, dan objek adalah rumah yang sudah dibangun dari cetak biru itu.' },
     { t: 'code', lang: 'text', x: 'KELAS Hewan:\\n  properti nama\\n  properti jenis\\n  fungsi bersuara():\\n    tampilkan nama + \" berbicara\"\\nSELESAI KELAS\\n\\nkucing = Hewan()\\nkucing.nama = \"Milo\"\\nkucing.bersuara()  // Milo berbicara' },
@@ -608,142 +666,205 @@ const LESSONS = [
     { t: 'tip', x: 'Berikan nama kelas dalam kata benda tunggal, misal Hewan, Mobil, Pengguna.' },
   ], 4],
   ['kelas-dan-objek', 'Membuat Objek dari Kelas', [
-    { t: 'p', x: 'Untuk membuat objek, gunakan kata kunci new diikuti nama kelas. Objek yang dihasilkan punya semua properti dan fungsi yang didefinisikan di kelas.' },
-    { t: 'code', lang: 'text', x: 'mobil1 = new Mobil(\"Toyota\", \"Avanza\")\\nmobil2 = new Mobil(\"Honda\", \"Brio\")\\n\\nmobil1.nama  // \"Toyota\"\\nmobil2.nama  // \"Honda\"' },
-    { t: 'tip', x: 'Setiap objek punya data sendiri. Mengubah mobil1 tidak mempengaruhi mobil2.' },
-  ], 3],
+            {t:'p',x:'Membuat Objek dari Kelas adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Membuat Objek dari Kelas akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Membuat Objek dari Kelas','Manfaat memahami Membuat Objek dari Kelas untuk pemula','Langkah pertama untuk mulai belajar Membuat Objek dari Kelas','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Membuat Objek dari Kelas\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Membuat Objek dari Kelas. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Membuat Objek dari Kelas adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['kelas-dan-objek', 'Kesalahan Umum: Lupa new', [
-    { t: 'p', x: 'Jika lupa menuliskan new saat membuat objek, fungsi konstruktor akan dijalankan dalam konteks yang salah dan properti tidak akan tersimpan dengan benar.' },
-    { t: 'list', items: ['Selalu pakai new saat memanggil konstruktor kelas', 'Periksa apakah objek berhasil dibuat dengan mencetaknya', 'Gunakan nama variabel yang jelas untuk setiap objek'] },
-    { t: 'tip', x: 'Beberapa bahasa modern tidak perlu new, tetapi pelajari aturan bahasa yang kamu pakai.' },
-  ], 3],
-
-// --- enkapsulasi ---
+            {t:'p',x:'Kesalahan Umum: Lupa new adalah kesalahan yang sering dilakukan pemula saat belajar oop-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa new karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa new sering terjadi pada pemula','Cara mudah menghindari Lupa new','Tanda bahwa kamu mengalami Lupa new','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa new\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa new. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa new sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
 ['enkapsulasi', 'Apa itu Enkapsulasi', [
-    { t: 'p', x: 'Enkapsulasi adalah menyembunyikan detail dalam sebuah kelas dan hanya membuka akses yang diperlukan. Bayangkan kapsul obat: isinya tersembunyi, Anda hanya perlu menelan kapsulnya.' },
-    { t: 'list', items: ['Menyembunyikan detail implementasi', 'Hanya membuka akses yang diperlukan', 'Melindungi data dari perubahan yang tidak diinginkan'] },
-    { t: 'tip', x: 'Enkapsulasi membuat kode lebih aman dan mudah dipelihara.' },
-], 3],
+            {t:'p',x:'Apa itu Enkapsulasi adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Enkapsulasi akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Enkapsulasi','Manfaat memahami Apa itu Enkapsulasi untuk pemula','Langkah pertama untuk mulai belajar Apa itu Enkapsulasi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Enkapsulasi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Enkapsulasi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Enkapsulasi adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['enkapsulasi', 'Mengakses Data dengan Getter dan Setter', [
-    { t: 'p', x: 'Getter adalah method untuk membaca data private, setter adalah method untuk mengubah data private. Kedua method ini memungkinkan kontrol atas data yang diakses atau diubah.' },
-    { t: 'code', lang: 'text', x: 'KELAS Rekening:\\\\n  private saldo\\\\n  fungsi ambilSaldo():\\\\n    kembalikan saldo\\\\n  fungisi isiSaldo(jumlah):\\\\n    jika jumlah > 0:\\\\n      saldo = saldo + jumlah\\\\nSELESAI KELAS' },
-    { t: 'tip', x: 'Gunakan getter dan setter agar data private tetap terlindungi tapi tetap dapat diakses dengan aman.' },
-], 3],
+            {t:'p',x:'Mengakses Data dengan Getter dan Setter adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengakses Data dengan Getter dan Setter akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengakses Data dengan Getter dan Setter','Manfaat memahami Mengakses Data dengan Getter dan Setter untuk pemula','Langkah pertama untuk mulai belajar Mengakses Data dengan Getter dan Setter','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengakses Data dengan Getter dan Setter\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengakses Data dengan Getter dan Setter. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengakses Data dengan Getter dan Setter adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['enkapsulasi', 'Melindungi Data Dalam Kelas', [
-    { t: 'p', x: 'Data private hanya dapat diakses di dalam kelas itu sendiri. Kelas lain tidak dapat mengubah data secara langsung, harus melalui method yang disediakan.' },
-    { t: 'list', items: ['Data private tersembunyi dari kelas lain', 'Akses hanya melalui method publik', 'Mencegah perubahan data yang tidak diinginkan'] },
-    { t: 'tip', x: 'Jangan buat semua data publik. Hanya ekspos yang benar-benar diperlukan.' },
-], 3],
+            {t:'p',x:'Melindungi Data Dalam Kelas adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Melindungi Data Dalam Kelas akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Melindungi Data Dalam Kelas','Manfaat memahami Melindungi Data Dalam Kelas untuk pemula','Langkah pertama untuk mulai belajar Melindungi Data Dalam Kelas','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Melindungi Data Dalam Kelas\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Melindungi Data Dalam Kelas. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Melindungi Data Dalam Kelas adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['enkapsulasi', 'Manfaat Enkapsulasi', [
-    { t: 'p', x: 'Enkapsulasi membuat kode lebih modular, mudah diuji, dan tidak mudah rusak saat ada perubahan. Perubahan di dalam kelas tidak mempengaruhi kelas lain.' },
-    { t: 'list', items: ['Kode lebih modular dan terorganisir', 'Mudah diuji secara terpisah', 'Perubahan tidak merambat ke kelas lain'] },
-    { t: 'tip', x: 'Enkapsulasi adalah salah satu pilar utama OOP yang membuat kode lebih berkualitas.' },
-], 3],
-
-// --- pewarisan ---
+            {t:'p',x:'Manfaat Enkapsulasi adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Manfaat Enkapsulasi akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Manfaat Enkapsulasi','Manfaat memahami Manfaat Enkapsulasi untuk pemula','Langkah pertama untuk mulai belajar Manfaat Enkapsulasi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Manfaat Enkapsulasi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Manfaat Enkapsulasi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Manfaat Enkapsulasi adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['pewarisan', 'Apa itu Pewarisan', [
-    { t: 'p', x: 'Pewarisan adalah kemampuan sebuah kelas untuk mewarisi properti dan method dari kelas lain. Kelas yang mewarisi disebut kelas anak, kelas yang diwarisi disebut kelas induk.' },
-    { t: 'list', items: ['Kelas anak mewarisi dari kelas induk', 'Kelas anak bisa menambahkan properti baru', 'Kelas anak bisa menimpa method dari kelas induk'] },
-    { t: 'tip', x: 'Pewarisan menghindari duplikasi kode karena kelas anak bisa reuse method dari kelas induk.' },
-], 3],
+            {t:'p',x:'Apa itu Pewarisan adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Pewarisan akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Pewarisan','Manfaat memahami Apa itu Pewarisan untuk pemula','Langkah pertama untuk mulai belajar Apa itu Pewarisan','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Pewarisan\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Pewarisan. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Pewarisan adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['pewarisan', 'Kelas Induk dan Kelas Anak', [
-    { t: 'p', x: 'Kelas induk adalah kelas yang menjadi sumber, kelas anak adalah kelas yang mewarisi. Contoh: kelas induk Hewan, kelas anak Kucing dan Anjing.' },
-    { t: 'code', lang: 'text', x: 'KELAS Hewan:\\\\n  fungsi bersuara():\\\\n    tampilkan \\\"Suara hewan\\\"\\\\nSELESAI KELAS\\\\n\\\\nKELAS Kucing MEWARISI Hewan:\\\\n  fungsi bersuara():\\\\n    tampilkan \\\"Miaw\\\"\\\\nSELESAI KELAS' },
-    { t: 'tip', x: 'Kelas anak otomatis punya semua properti dan method dari kelas induk.' },
-], 3],
+            {t:'p',x:'Kelas Induk dan Kelas Anak adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Kelas Induk dan Kelas Anak akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Kelas Induk dan Kelas Anak','Manfaat memahami Kelas Induk dan Kelas Anak untuk pemula','Langkah pertama untuk mulai belajar Kelas Induk dan Kelas Anak','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Kelas Induk dan Kelas Anak\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Kelas Induk dan Kelas Anak. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Kelas Induk dan Kelas Anak adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['pewarisan', 'Menggunakan Method dari Kelas Induk', [
-    { t: 'p', x: 'Kelas anak bisa menggunakan method yang didefinisikan di kelas induk tanpa menuliskannya lagi. Ini disebut reuse kode.' },
-    { t: 'list', items: ['Kelas anak bisa memanggil method kelas induk', 'Kelas anak bisa menambahkan method baru', 'Kelas anak bisa mengubah method kelas induk'] },
-    { t: 'tip', x: 'Jika banyak kelas punya perilaku sama, taruh di kelas induk agar tidak duplikasi.' },
-], 3],
+            {t:'p',x:'Menggunakan Method dari Kelas Induk adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menggunakan Method dari Kelas Induk akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menggunakan Method dari Kelas Induk','Manfaat memahami Menggunakan Method dari Kelas Induk untuk pemula','Langkah pertama untuk mulai belajar Menggunakan Method dari Kelas Induk','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menggunakan Method dari Kelas Induk\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menggunakan Method dari Kelas Induk. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menggunakan Method dari Kelas Induk adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['pewarisan', 'Kapan Menggunakan Pewarisan', [
-    { t: 'p', x: 'Gunakan pewarisan jika ada hubungan \"adalah\" antara kelas. Contoh: Kucing adalah Hewan, Mobil adalah Kendaraan. Jangan gunakan jika hubungan tidak masuk akal.' },
-    { t: 'list', items: ['Gunakan jika hubungan adalah (Kucing adalah Hewan)', 'Jangan gunakan jika hubungan bukan adalah', 'Pewarisan terlalu dalam bisa membuat kode rumit'] },
-    { t: 'tip', x: 'Jangan mewarisi terlalu banyak generasi. Maksimal 2-3 level cukup untuk sebagian besar kasus.' },
-], 3],
-
-// --- polimorfisme ---
+            {t:'p',x:'Kapan Menggunakan Pewarisan adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Kapan Menggunakan Pewarisan akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Kapan Menggunakan Pewarisan','Manfaat memahami Kapan Menggunakan Pewarisan untuk pemula','Langkah pertama untuk mulai belajar Kapan Menggunakan Pewarisan','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Kapan Menggunakan Pewarisan\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Kapan Menggunakan Pewarisan. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Kapan Menggunakan Pewarisan adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['polimorfisme', 'Apa itu Polimorfisme', [
-    { t: 'p', x: 'Polimorfisme adalah kemampuan objek berbeda untuk treated sebagai tipe yang sama. Artinya satu method bisa bekerja dengan berbagai jenis objek.' },
-    { t: 'list', items: ['Satu antarmuka untuk berbagai jenis objek', 'Method yang sama bisa berperilaku berbeda', 'Objek berbeda treated sebagai tipe yang sama'] },
-    { t: 'tip', x: 'Polimorfisme berasal dari bahasa Yunani yang berarti \"banyak bentuk\".' },
-], 3],
+            {t:'p',x:'Apa itu Polimorfisme adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Polimorfisme akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Polimorfisme','Manfaat memahami Apa itu Polimorfisme untuk pemula','Langkah pertama untuk mulai belajar Apa itu Polimorfisme','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Polimorfisme\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Polimorfisme. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Polimorfisme adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['polimorfisme', 'Overloading dan Overriding', [
-    { t: 'p', x: 'Overloading adalah method dengan nama sama tapi parameter berbeda. Overriding adalah method di kelas anak yang menimpa method di kelas induk.' },
-    { t: 'code', lang: 'text', x: 'KELAS Kalkulator:\\\\n  fungsi tambah(a, b):\\\\n    kembalikan a + b\\\\n  fungsi tambah(a, b, c):\\\\n    kembalikan a + b + c\\\\nSELESAI KELAS' },
-    { t: 'tip', x: 'Overloading beda parameter, overriding beda isi method di kelas anak.' },
-], 3],
+            {t:'p',x:'Overloading dan Overriding adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Overloading dan Overriding akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Overloading dan Overriding','Manfaat memahami Overloading dan Overriding untuk pemula','Langkah pertama untuk mulai belajar Overloading dan Overriding','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Overloading dan Overriding\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Overloading dan Overriding. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Overloading dan Overriding adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['polimorfisme', 'Polimorfisme dalam Praktik', [
-    { t: 'p', x: 'Dengan polimorfisme, Anda bisa membuat daftar objek berbeda tapi memanggil method yang sama pada setiap objek. Setiap objek akan menanggapi sesuai dengan caranya sendiri.' },
-    { t: 'list', items: ['Daftar Hewan: Kucing, Anjing, Burung', 'Panggil bersuara() pada setiap hewan', 'Setiap hewan bersuara berbeda'] },
-    { t: 'tip', x: 'Polimorfisme membuat kode fleksibel karena tidak perlu tahu tipe objek pasti.' },
-], 3],
+            {t:'p',x:'Polimorfisme dalam Praktik adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Polimorfisme dalam Praktik akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Polimorfisme dalam Praktik','Manfaat memahami Polimorfisme dalam Praktik untuk pemula','Langkah pertama untuk mulai belajar Polimorfisme dalam Praktik','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Polimorfisme dalam Praktik\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Polimorfisme dalam Praktik. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Polimorfisme dalam Praktik adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['polimorfisme', 'Manfaat Polimorfisme', [
-    { t: 'p', x: 'Polimorfisme membuat kode lebih fleksibel dan mudah ditambahkan fitur baru. Anda bisa menambahkan jenis objek baru tanpa mengubah kode yang sudah ada.' },
-    { t: 'list', items: ['Kode lebih fleksibel', 'Mudah menambahkan fitur baru', 'Tidak perlu mengubah kode lama'] },
-    { t: 'tip', x: 'Polimorfisme adalah salah satu alasan OOP populer untuk pengembangan skala besar.' },
-], 3],
-
-// --- abstraksi-dan-interface ---
+            {t:'p',x:'Manfaat Polimorfisme adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Manfaat Polimorfisme akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Manfaat Polimorfisme','Manfaat memahami Manfaat Polimorfisme untuk pemula','Langkah pertama untuk mulai belajar Manfaat Polimorfisme','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Manfaat Polimorfisme\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Manfaat Polimorfisme. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Manfaat Polimorfisme adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['abstraksi-dan-interface', 'Apa itu Abstraksi', [
-    { t: 'p', x: 'Abstraksi adalah menyembunyikan detail kompleks dan hanya menunjukkan yang penting bagi pengguna. Bayangkan rem mobil: Anda hanya perlu menekan pedal, tidak perlu tahu cara kerja rem secara detail.' },
-    { t: 'list', items: ['Sembunyikan detail kompleks', 'Tampilkan hanya yang penting', 'Mudah digunakan oleh pengguna'] },
-    { t: 'tip', x: 'Abstraksi membantu pengguna fokus pada apa yang dilakukan, bukan bagaimana itu dilakukan.' },
-], 3],
+            {t:'p',x:'Apa itu Abstraksi adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Abstraksi akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Abstraksi','Manfaat memahami Apa itu Abstraksi untuk pemula','Langkah pertama untuk mulai belajar Apa itu Abstraksi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Abstraksi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Abstraksi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Abstraksi adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['abstraksi-dan-interface', 'Kelas Abstrak', [
-    { t: 'p', x: 'Kelas abstrak adalah kelas yang tidak dapat dibuat objeknya langsung. Kelas abstrak digunakan sebagai dasar untuk kelas lain dan bisa punya method tanpa isi.' },
-    { t: 'code', lang: 'text', x: 'KELAS ABSTRAK Hewan:\\\\n  fungsi abstrak bersuara()\\\\nSELESAI KELAS\\\\n\\\\nKELAS Kucing MEWARISI Hewan:\\\\n  fungsi bersuara():\\\\n    tampilkan \\\"Miaw\\\"\\\\nSELESAI KELAS' },
-    { t: 'tip', x: 'Kelas abstrak tidak bisa dibuat objek langsung, harus melalui kelas anak.' },
-], 3],
+            {t:'p',x:'Kelas Abstrak adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Kelas Abstrak akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Kelas Abstrak','Manfaat memahami Kelas Abstrak untuk pemula','Langkah pertama untuk mulai belajar Kelas Abstrak','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Kelas Abstrak\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Kelas Abstrak. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Kelas Abstrak adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['abstraksi-dan-interface', 'Apa itu Interface', [
-    { t: 'p', x: 'Interface adalah kontrak yang menentukan method apa saja yang harus ada di kelas yang mengimplementasinya. Interface tidak punya isi method, hanya deklarasi.' },
-    { t: 'list', items: ['Interface menentukan kontrak method', 'Kelas yang implementasi interface harus isi semua method', 'Interface tidak punya isi method'] },
-    { t: 'tip', x: 'Interface seperti janji: kelas yang mengimplementasi harus memenuhi semua syarat yang ditentukan.' },
-], 3],
+            {t:'p',x:'Apa itu Interface adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Interface akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Interface','Manfaat memahami Apa itu Interface untuk pemula','Langkah pertama untuk mulai belajar Apa itu Interface','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Interface\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Interface. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Interface adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['abstraksi-dan-interface', 'Perbedaan Kelas Abstrak dan Interface', [
-    { t: 'p', x: 'Kelas abstrak bisa punya properti dan method dengan isi, sedangkan interface hanya deklarasi method. Satu kelas bisa implementasi banyak interface tapi hanya mewarisi satu kelas abstrak.' },
-    { t: 'list', items: ['Kelas abstrak: bisa punya properti dan method isi', 'Interface: hanya deklarasi method', 'Satu kelas implementasi banyak interface'] },
-    { t: 'tip', x: 'Gunakan kelas abstrak untuk objek yang erat terkait, interface untuk kemampuan yang bisa dimiliki banyak jenis objek.' },
-], 3],
- // --- vcs-dasar ---
+            {t:'p',x:'Perbedaan Kelas Abstrak dan Interface adalah konsep dasar dalam oop-dasar. Bayangkan seperti seperti alat bantu yang memudahkan pekerjaan sehari-hari. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Perbedaan Kelas Abstrak dan Interface akan membantu kamu membangun dasar yang kuat dalam oop-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Perbedaan Kelas Abstrak dan Interface','Manfaat memahami Perbedaan Kelas Abstrak dan Interface untuk pemula','Langkah pertama untuk mulai belajar Perbedaan Kelas Abstrak dan Interface','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Perbedaan Kelas Abstrak dan Interface\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Perbedaan Kelas Abstrak dan Interface. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Perbedaan Kelas Abstrak dan Interface adalah titik awal dalam perjalanan belajarmu di oop-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['apa-itu-vcs', 'Apa itu Version Control', [
-    { t: 'p', x: 'Version Control System (VCS) adalah catatan perubahan file seiring waktu. Bayangkan kamu menyalin dokumen menjadi versi_v1.doc, versi_v2_final.doc, versi_v3_revisi.doc — VCS mengotomatisasi hal itu.' },
-    { t: 'list', items: ['Menyimpan setiap perubahan sebagai versi terpisah', 'Mengizinkan kembali ke versi lama kapan saja', 'Menunjukkan siapa yang mengubah apa dan kapan', 'Mengizinkan banyak orang bekerja pada file yang sama'] },
-    { t: 'tip', x: 'Tanpa VCS, kembali ke versi sebelum rusak sangat sulit dan rentan kesalahan.' },
-  ], 3],
+            {t:'p',x:'Apa itu Version Control adalah konsep dasar dalam vcs-dasar. Bayangkan seperti seperti save game di videogame yang bisa kembali ke titik sebelumnya kapan saja. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Version Control akan membantu kamu membangun dasar yang kuat dalam vcs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Version Control','Manfaat memahami Apa itu Version Control untuk pemula','Langkah pertama untuk mulai belajar Apa itu Version Control','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Version Control\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Version Control. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Version Control adalah titik awal dalam perjalanan belajarmu di vcs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['apa-itu-vcs', 'Mengapa Perlu VCS', [
-    { t: 'p', x: 'Tanpa VCS, satu kesalahan typing dapat menghapus jam-jam kerja. Dengan VCS, kamu dapat melihat apa yang berubah dan membatalkannya dengan satu perintah.' },
-    { t: 'code', lang: 'text', x: 'Tanpa VCS:\\n  file_asli.txt -> file_edit1.txt -> file_edit_final.txt -> file_edit_final_REALLY.txt\\n\\nDengan VCS:\\n  commit 1 -> commit 2 -> commit 3 (dapat diakses kapan saja)' },
-    { t: 'tip', x: 'Commit sering, jangan tunggu sampai pekerjaan selesai. Setiap commit adalah titik pulang yang aman.' },
-  ], 3],
-
- // --- repository-dan-commit ---
+            {t:'p',x:'Mengapa Perlu VCS adalah konsep dasar dalam vcs-dasar. Bayangkan seperti seperti save game di videogame yang bisa kembali ke titik sebelumnya kapan saja. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengapa Perlu VCS akan membantu kamu membangun dasar yang kuat dalam vcs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengapa Perlu VCS','Manfaat memahami Mengapa Perlu VCS untuk pemula','Langkah pertama untuk mulai belajar Mengapa Perlu VCS','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengapa Perlu VCS\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengapa Perlu VCS. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengapa Perlu VCS adalah titik awal dalam perjalanan belajarmu di vcs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['repository-dan-commit', 'Apa itu Repository', [
-    { t: 'p', x: 'Repository adalah tempat menyimpan seluruh kode dan riwayat perubahan proyek. Setiap perubahan disimpan sebagai versi terpisah.' },
-    { t: 'list', items: ['Menyimpan kode dan riwayat perubahan', 'Setiap versi tersimpan terpisah', 'Bisa kembali ke versi lama kapan saja'] },
-    { t: 'tip', x: 'Repository bisa lokal di komputer atau remote di GitHub/GitLab.' },
- ], 3],
+            {t:'p',x:'Apa itu Repository adalah konsep dasar dalam vcs-dasar. Bayangkan seperti seperti save game di videogame yang bisa kembali ke titik sebelumnya kapan saja. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Repository akan membantu kamu membangun dasar yang kuat dalam vcs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Repository','Manfaat memahami Apa itu Repository untuk pemula','Langkah pertama untuk mulai belajar Apa itu Repository','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Repository\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Repository. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Repository adalah titik awal dalam perjalanan belajarmu di vcs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['repository-dan-commit', 'Membuat Commit Pertama', [
-    { t: 'p', x: 'Commit adalah menyimpan satu versi perubahan dengan pesan deskriptif. Commit pertama biasanya inisialisasi proyek.' },
-    { t: 'list', items: ['Simpan perubahan sebagai versi baru', 'Tulis pesan yang jelas', 'Setiap commit punya ID unik'] },
-    { t: 'tip', x: 'Pesan commit jelas membantu teman tim mengerti perubahan Anda.' },
- ], 3],
+            {t:'p',x:'Membuat Commit Pertama adalah konsep dasar dalam vcs-dasar. Bayangkan seperti seperti save game di videogame yang bisa kembali ke titik sebelumnya kapan saja. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Membuat Commit Pertama akan membantu kamu membangun dasar yang kuat dalam vcs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Membuat Commit Pertama','Manfaat memahami Membuat Commit Pertama untuk pemula','Langkah pertama untuk mulai belajar Membuat Commit Pertama','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Membuat Commit Pertama\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Membuat Commit Pertama. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Membuat Commit Pertama adalah titik awal dalam perjalanan belajarmu di vcs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['repository-dan-commit', 'Melihat Riwayat Commit', [
-    { t: 'p', x: 'Riwayat commit menunjukkan semua versi yang pernah disimpan, siapa yang membuatnya, dan kapan.' },
-    { t: 'list', items: ['Daftar semua versi', 'Siapa dan kapan membuat perubahan', 'Bisa kembali ke versi lama'] },
-    { t: 'tip', x: 'Lihat riwayat sebelum mengubah kode yang sudah ada.' },
- ], 3],
+            {t:'p',x:'Melihat Riwayat Commit adalah konsep dasar dalam vcs-dasar. Bayangkan seperti seperti save game di videogame yang bisa kembali ke titik sebelumnya kapan saja. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Melihat Riwayat Commit akan membantu kamu membangun dasar yang kuat dalam vcs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Melihat Riwayat Commit','Manfaat memahami Melihat Riwayat Commit untuk pemula','Langkah pertama untuk mulai belajar Melihat Riwayat Commit','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Melihat Riwayat Commit\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Melihat Riwayat Commit. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Melihat Riwayat Commit adalah titik awal dalam perjalanan belajarmu di vcs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['repository-dan-commit', 'Commit yang Baik dan Terstruktur', [
-    { t: 'p', x: 'Commit baik berisi satu topik saja, pesan singkat tapi informatif, dan tidak mencampur perubahan yang tidak terkait.' },
-    { t: 'list', items: ['Satu topik per commit', 'Pesan singkat dan informatif', 'Jangan campur perubahan tidak terkait'] },
-    { t: 'tip', x: 'Commit kecil lebih mudah direview dan dibatalkan jika gagal.' },
- ], 3],
- // --- branch-dan-merge ---
+            {t:'p',x:'Commit yang Baik dan Terstruktur adalah konsep dasar dalam vcs-dasar. Bayangkan seperti seperti save game di videogame yang bisa kembali ke titik sebelumnya kapan saja. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Commit yang Baik dan Terstruktur akan membantu kamu membangun dasar yang kuat dalam vcs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Commit yang Baik dan Terstruktur','Manfaat memahami Commit yang Baik dan Terstruktur untuk pemula','Langkah pertama untuk mulai belajar Commit yang Baik dan Terstruktur','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Commit yang Baik dan Terstruktur\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Commit yang Baik dan Terstruktur. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Commit yang Baik dan Terstruktur adalah titik awal dalam perjalanan belajarmu di vcs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['branch-dan-merge', 'Apa itu Branch', [
-    { t: 'p', x: 'Branch adalah salinan independen dari repository. Membuat branch memungkinkan mengerjakan fitur baru tanpa mengganggu branch utama.' },
-    { t: 'list', items: ['Salinan independen dari repository', 'Fitur baru dikembangkan di branch terpisah', 'Bisa kembali ke branch utama kapan saja'] },
-    { t: 'tip', x: 'Branch utama biasanya bernama main atau master.' },
- ], 3],
+            {t:'p',x:'Apa itu Branch adalah konsep dasar dalam vcs-dasar. Bayangkan seperti seperti save game di videogame yang bisa kembali ke titik sebelumnya kapan saja. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Branch akan membantu kamu membangun dasar yang kuat dalam vcs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Branch','Manfaat memahami Apa itu Branch untuk pemula','Langkah pertama untuk mulai belajar Apa itu Branch','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Branch\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Branch. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Branch adalah titik awal dalam perjalanan belajarmu di vcs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['branch-dan-merge', 'Membuat dan Pindah Branch', [
     { t: 'p', x: 'Membuat branch baru untuk fitur, lalu pindah ke branch tersebut untuk mulai bekerja. Branch utama tidak terpengaruh.' },
     { t: 'code', lang: 'bash', x: 'git branch fitur-baru\\\\ngit checkout fitur-baru\\\\n// atau\\\\ngit checkout -b fitur-baru' },
@@ -751,42 +872,61 @@ const LESSONS = [
     { t: 'tip', x: 'Gunakan nama branch yang deskriptif, misal fitur-login.' },
  ], 3],
  ['branch-dan-merge', 'Menggabungkan Branch dengan Merge', [
-    { t: 'p', x: 'Merge menggabungkan perubahan dari branch fitur ke branch utama setelah selesai. Perubahan dari branch fitur menjadi bagian dari branch utama.' },
-    { t: 'list', items: ['Gabungkan branch fitur ke utama', 'Perubahan fitur menjadi bagian utama', 'Branch fitur bisa dihapus setelah merge'] },
-    { t: 'tip', x: 'Update branch utama sebelum merge agar tidak ada konflik.' },
- ], 3],
+            {t:'p',x:'Menggabungkan Branch dengan Merge adalah konsep dasar dalam vcs-dasar. Bayangkan seperti seperti save game di videogame yang bisa kembali ke titik sebelumnya kapan saja. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menggabungkan Branch dengan Merge akan membantu kamu membangun dasar yang kuat dalam vcs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menggabungkan Branch dengan Merge','Manfaat memahami Menggabungkan Branch dengan Merge untuk pemula','Langkah pertama untuk mulai belajar Menggabungkan Branch dengan Merge','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menggabungkan Branch dengan Merge\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menggabungkan Branch dengan Merge. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menggabungkan Branch dengan Merge adalah titik awal dalam perjalanan belajarmu di vcs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['branch-dan-merge', 'Kesalahan Umum dalam Branch dan Merge', [
-    { t: 'p', x: 'Pemula sering lupa merge kembali ke branch utama atau membuat terlalu banyak branch yang tidak terelola.' },
-    { t: 'list', items: ['Lupa merge ke branch utama', 'Terlalu banyak branch yang dibiarkan', 'Merge tanpa review'] },
-    { t: 'tip', x: 'Hapus branch fitur setelah digabung agar repository tetap rapi.' },
- ], 3],
- // --- resolve-konflik ---
+            {t:'p',x:'Kesalahan Umum dalam Branch dan Merge adalah kesalahan yang sering dilakukan pemula saat belajar vcs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Kesalahan Umum dalam Branch dan Merge karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Kesalahan Umum dalam Branch dan Merge sering terjadi pada pemula','Cara mudah menghindari Kesalahan Umum dalam Branch dan Merge','Tanda bahwa kamu mengalami Kesalahan Umum dalam Branch dan Merge','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Kesalahan Umum dalam Branch dan Merge\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Kesalahan Umum dalam Branch dan Merge. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Kesalahan Umum dalam Branch dan Merge sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
  ['resolve-konflik', 'Apa itu Konflik Merge', [
-    { t: 'p', x: 'Konflik merge terjadi saat dua branch mengubah bagian yang sama dalam satu file. Git tidak tahu perubahan mana yang dipertahankan.' },
-    { t: 'list', items: ['Dua branch mengubah bagian yang sama', 'Git memerlukan intervensi manusia', 'File ditandai dengan penanda konflik'] },
-    { t: 'tip', x: 'Konflik adalah hal normal saat bekerja sama, jangan panic.' },
- ], 3],
+            {t:'p',x:'Apa itu Konflik Merge adalah konsep dasar dalam vcs-dasar. Bayangkan seperti seperti save game di videogame yang bisa kembali ke titik sebelumnya kapan saja. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Konflik Merge akan membantu kamu membangun dasar yang kuat dalam vcs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Konflik Merge','Manfaat memahami Apa itu Konflik Merge untuk pemula','Langkah pertama untuk mulai belajar Apa itu Konflik Merge','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Konflik Merge\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Konflik Merge. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Konflik Merge adalah titik awal dalam perjalanan belajarmu di vcs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['resolve-konflik', 'Mengapa Konflik Terjadi', [
-    { t: 'p', x: 'Konflik terjadi karena dua orang mengedit baris yang sama, atau satu orang menghapus file yang diedit orang lain.' },
-    { t: 'list', items: ['Dua orang edit baris yang sama', 'Satu orang hapus file yang diedit lain', 'Merge branch yang berbeda terlalu lama'] },
-    { t: 'tip', x: 'Komunikasikan dengan tim saat mengedit file yang sama.' },
- ], 3],
+            {t:'p',x:'Mengapa Konflik Terjadi adalah konsep dasar dalam vcs-dasar. Bayangkan seperti seperti save game di videogame yang bisa kembali ke titik sebelumnya kapan saja. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengapa Konflik Terjadi akan membantu kamu membangun dasar yang kuat dalam vcs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengapa Konflik Terjadi','Manfaat memahami Mengapa Konflik Terjadi untuk pemula','Langkah pertama untuk mulai belajar Mengapa Konflik Terjadi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengapa Konflik Terjadi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengapa Konflik Terjadi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengapa Konflik Terjadi adalah titik awal dalam perjalanan belajarmu di vcs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['resolve-konflik', 'Menyelesaikan Konflik Secara Manual', [
-    { t: 'p', x: 'Buka file dengan konflik, pilih perubahan mana yang dipertahankan, hapus penanda konflik, lalu simpan dan commit.' },
-    { t: 'list', items: ['Buka file konflik', 'Pilih perubahan yang dipertahankan', 'Hapus penanda konflik', 'Simpan dan commit'] },
-    { t: 'tip', x: 'Tanyakan kepada orang yang mengedit jika tidak yakin perubahan mana yang dipertahankan.' },
- ], 3],
+            {t:'p',x:'Menyelesaikan Konflik Secara Manual adalah konsep dasar dalam vcs-dasar. Bayangkan seperti seperti save game di videogame yang bisa kembali ke titik sebelumnya kapan saja. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menyelesaikan Konflik Secara Manual akan membantu kamu membangun dasar yang kuat dalam vcs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menyelesaikan Konflik Secara Manual','Manfaat memahami Menyelesaikan Konflik Secara Manual untuk pemula','Langkah pertama untuk mulai belajar Menyelesaikan Konflik Secara Manual','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menyelesaikan Konflik Secara Manual\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menyelesaikan Konflik Secara Manual. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menyelesaikan Konflik Secara Manual adalah titik awal dalam perjalanan belajarmu di vcs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
  ['resolve-konflik', 'Menghindari Konflik di Masa Depan', [
-    { t: 'p', x: 'Pull perubahan terbaru sering, bekerja pada bagian file yang berbeda, dan commit sebelum merge agar konflik minim.' },
-    { t: 'list', items: ['Pull perubahan terbaru sering', 'Kerja pada bagian file yang berbeda', 'Commit sebelum merge'] },
-    { t: 'tip', x: 'Komunikasi tim yang baik mencegah sebagian besar konflik.' },
- ], 3],
-  // --- git-github ---
+            {t:'p',x:'Menghindari Konflik di Masa Depan adalah konsep dasar dalam vcs-dasar. Bayangkan seperti seperti save game di videogame yang bisa kembali ke titik sebelumnya kapan saja. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menghindari Konflik di Masa Depan akan membantu kamu membangun dasar yang kuat dalam vcs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menghindari Konflik di Masa Depan','Manfaat memahami Menghindari Konflik di Masa Depan untuk pemula','Langkah pertama untuk mulai belajar Menghindari Konflik di Masa Depan','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menghindari Konflik di Masa Depan\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menghindari Konflik di Masa Depan. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menghindari Konflik di Masa Depan adalah titik awal dalam perjalanan belajarmu di vcs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['install-git', 'Menginstal Git', [
-      { t: 'p', x: 'Git adalah sistem version control yang wajib diketahui seorang pengembang software. Git membantu melacak perubahan kode dan bekerja sama dengan tim.' },
-      { t: 'list', items: ['Git melacak setiap perubahan kode', 'Membuat repository lokal di komputer', 'Mengunggah kode ke remote repository'] },
-      { t: 'tip', x: 'Install git dari situs resmi git-scm.com sebelum memulai.' },
-   ], 3],
+            {t:'p',x:'Menginstal Git adalah konsep dasar dalam git-github. Bayangkan seperti seperti catatan waktu berjejer yang mencatat setiap perubahan yang kamu buat. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menginstal Git akan membantu kamu membangun dasar yang kuat dalam git-github. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menginstal Git','Manfaat memahami Menginstal Git untuk pemula','Langkah pertama untuk mulai belajar Menginstal Git','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menginstal Git\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menginstal Git. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menginstal Git adalah titik awal dalam perjalanan belajarmu di git-github. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
    ['install-git', 'Konfigurasi Pertama Git', [
       { t: 'p', x: 'Setelah instalasi, konfigurasi nama dan email Git agar setiap commit teridentifikasi dengan benar.' },
       { t: 'code', lang: 'bash', x: 'git config --global user.name \"Nama Anda\"\\ngit config --global user.email \"email@anda.com\"' },
@@ -800,10 +940,13 @@ const LESSONS = [
       { t: 'tip', x: 'Jalankan git status setiap kali bingung status repository Anda.' },
    ], 3],
    ['install-git', 'Membuat Repository Pertama', [
-      { t: 'p', x: 'Membuat repository Git baru untuk menyimpan proyek Anda. Repository bisa lokal atau remote di GitHub/GitLab.' },
-      { t: 'list', items: ['Memb folder baru untuk repository', 'Jalankan git init', 'Mulai menambah dan commit file'] },
-      { t: 'tip', x: 'Muliai dengan proyek kecil seperti to-do list sebelum coba proyek besar.' },
-   ], 3],
+            {t:'p',x:'Membuat Repository Pertama adalah konsep dasar dalam git-github. Bayangkan seperti seperti catatan waktu berjejer yang mencatat setiap perubahan yang kamu buat. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Membuat Repository Pertama akan membantu kamu membangun dasar yang kuat dalam git-github. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Membuat Repository Pertama','Manfaat memahami Membuat Repository Pertama untuk pemula','Langkah pertama untuk mulai belajar Membuat Repository Pertama','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Membuat Repository Pertama\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Membuat Repository Pertama. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Membuat Repository Pertama adalah titik awal dalam perjalanan belajarmu di git-github. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
    ['konfigurasi-dan-perintah-dasar', 'Konfigurasi Nama dan Email', [
       { t: 'p', x: 'Setiap commit di Git harus teridentifikasi dengan nama dan email. Konfigurasi global akan berlakukan untuk semua repository di komputer Anda.' },
       { t: 'code', lang: 'bash', x: 'git config --global user.name \"Fikri Amalia\"\\ngit config --global user.email \"fikri@ediverse.id\"' },
@@ -835,25 +978,37 @@ const LESSONS = [
       { t: 'tip', x: 'Gunakan git log --oneline untuk tampilan ringkas.' },
    ], 3],
    ['branch-dan-pull-request', 'Membuat Branch di GitHub', [
-      { t: 'p', x: 'Branch adalah salinan repository yang independen. Membuat branch memungkinkan Anda bekerja pada fitur baru tanpa memengaruhi branch utama.' },
-      { t: 'list', items: ['Branch independen dari branch utama', 'Fitur baru dikembangkan di branch', 'Bisa kembali ke branch utama kapan saja'] },
-      { t: 'tip', x: 'Gunakan nama branch yang deskriptif, misal fitur-login atau perbaiki-bug.' },
-   ], 3],
+            {t:'p',x:'Membuat Branch di GitHub adalah konsep dasar dalam git-github. Bayangkan seperti seperti catatan waktu berjejer yang mencatat setiap perubahan yang kamu buat. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Membuat Branch di GitHub akan membantu kamu membangun dasar yang kuat dalam git-github. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Membuat Branch di GitHub','Manfaat memahami Membuat Branch di GitHub untuk pemula','Langkah pertama untuk mulai belajar Membuat Branch di GitHub','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Membuat Branch di GitHub\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Membuat Branch di GitHub. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Membuat Branch di GitHub adalah titik awal dalam perjalanan belajarmu di git-github. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
    ['branch-dan-pull-request', 'Mengunggah Branch ke GitHub', [
-      { t: 'p', x: 'Mengunggah branch ke GitHub agar bisa dibagikan dan direview oleh tim.' },
-      { t: 'list', items: ['Push branch ke remote repository', 'Branch terlihat di halaman GitHub', 'Siap untuk dibuat pull request'] },
-      { t: 'tip', x: 'Push branch dengan: git push origin nama-branch' },
-   ], 3],
+            {t:'p',x:'Mengunggah Branch ke GitHub adalah konsep dasar dalam git-github. Bayangkan seperti seperti catatan waktu berjejer yang mencatat setiap perubahan yang kamu buat. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengunggah Branch ke GitHub akan membantu kamu membangun dasar yang kuat dalam git-github. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengunggah Branch ke GitHub','Manfaat memahami Mengunggah Branch ke GitHub untuk pemula','Langkah pertama untuk mulai belajar Mengunggah Branch ke GitHub','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengunggah Branch ke GitHub\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengunggah Branch ke GitHub. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengunggah Branch ke GitHub adalah titik awal dalam perjalanan belajarmu di git-github. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
    ['branch-dan-pull-request', 'Apa itu Pull Request', [
-      { t: 'p', x: 'Pull Request (PR) adalah permintaan untuk menggabungkan branch ke branch utama. PR memungkinkan tim untuk mereview kode sebelum digabung.' },
-      { t: 'list', items: ['Minta tinjauan kode dari teman tim', 'Diskusi dan perbaikan kode sebelum merge', 'Merge ke branch utama setelah disetujui'] },
-      { t: 'tip', x: 'Tulis deskripsi PR yang jelas mengapa perubahan dibutuhkan.' },
-   ], 3],
+            {t:'p',x:'Apa itu Pull Request adalah konsep dasar dalam git-github. Bayangkan seperti seperti catatan waktu berjejer yang mencatat setiap perubahan yang kamu buat. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Pull Request akan membantu kamu membangun dasar yang kuat dalam git-github. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Pull Request','Manfaat memahami Apa itu Pull Request untuk pemula','Langkah pertama untuk mulai belajar Apa itu Pull Request','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Pull Request\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Pull Request. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Pull Request adalah titik awal dalam perjalanan belajarmu di git-github. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
    ['branch-dan-pull-request', 'Menyelesaikan Pull Request', [
-      { t: 'p', x: 'Melakukan review kode, membahas perubahan, lalu melakukan merge ke branch utama jika disetujui.' },
-      { t: 'list', items: ['Reviewer meninjau kode', 'Diberikan label LGTM (Looks Good To Merge)', 'Merge ke branch utama setelah disetujui'] },
-      { t: 'tip', x: 'Tidak boleh ada konflik merge sebelum PR disetujui.' },
-   ], 3],
+            {t:'p',x:'Menyelesaikan Pull Request adalah konsep dasar dalam git-github. Bayangkan seperti seperti catatan waktu berjejer yang mencatat setiap perubahan yang kamu buat. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menyelesaikan Pull Request akan membantu kamu membangun dasar yang kuat dalam git-github. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menyelesaikan Pull Request','Manfaat memahami Menyelesaikan Pull Request untuk pemula','Langkah pertama untuk mulai belajar Menyelesaikan Pull Request','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menyelesaikan Pull Request\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menyelesaikan Pull Request. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menyelesaikan Pull Request adalah titik awal dalam perjalanan belajarmu di git-github. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
    ['kolaborasi-tim', 'Cloning Repository', [
       { t: 'p', x: 'Cloning membuat salinan lengkap repository lokal dari remote. Ini memungkinkan bekerja secara offline dan sinkronisasi dengan remote.' },
       { t: 'code', lang: 'bash', x: 'git clone https://github.com/username/repo-name.git' },
@@ -873,95 +1028,157 @@ const LESSONS = [
       { t: 'tip', x: 'Jika push gagal, mungkin ada yang mengunggah sebelum Anda.' },
    ], 3],
    ['kolaborasi-tim', 'Konflik Merge', [
-      { t: 'p', x: 'Konflik merge terjadi ketika dua branch mengubah bagian yang sama file. Git memerlukan intervensi manusia untuk menyelesaikan.' },
-      { t: 'list', items: ['Git menghighlight area konflik', 'Edit manual untuk menyelesaikan konflik', 'Selesaikan lalu commit ulang'] },
-      { t: 'tip', x: 'Komunikasikan dengan tim saat ada konflik merge.' },
-   ], 3],
+            {t:'p',x:'Konflik Merge adalah konsep dasar dalam git-github. Bayangkan seperti seperti catatan waktu berjejer yang mencatat setiap perubahan yang kamu buat. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Konflik Merge akan membantu kamu membangun dasar yang kuat dalam git-github. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Konflik Merge','Manfaat memahami Konflik Merge untuk pemula','Langkah pertama untuk mulai belajar Konflik Merge','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Konflik Merge\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Konflik Merge. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Konflik Merge adalah titik awal dalam perjalanan belajarmu di git-github. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
    ['issues-dan-project', 'Apa itu Issue di GitHub', [
-      { t: 'p', x: 'Issue adalah fitur GitHub untuk melacak masalah, ide, atau tugas. Issue bisa digunakan untuk melacak bug, permintaan fitur, atau diskusi.' },
-      { t: 'list', items: ['Melacak bug atau masalah', 'Mengajukan permintaan fitur', 'Diskusi dan koordinasi tim'] },
-      { t: 'tip', x: 'Gunakan label dan assignee untuk mengorganisir issue.' },
-   ], 3],
+            {t:'p',x:'Apa itu Issue di GitHub adalah konsep dasar dalam git-github. Bayangkan seperti seperti catatan waktu berjejer yang mencatat setiap perubahan yang kamu buat. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Issue di GitHub akan membantu kamu membangun dasar yang kuat dalam git-github. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Issue di GitHub','Manfaat memahami Apa itu Issue di GitHub untuk pemula','Langkah pertama untuk mulai belajar Apa itu Issue di GitHub','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Issue di GitHub\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Issue di GitHub. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Issue di GitHub adalah titik awal dalam perjalanan belajarmu di git-github. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
    ['issues-dan-project', 'Project Board dan Pengorganisasian', [
-      { t: 'p', x: 'Project Board membantu mengorganisir issue ke dalam kolom seperti To Do, In Progress, dan Done. Visualisasi alur kerja tim.' },
-      { t: 'list', items: ['Kolom To Do, In Progress, Done', 'Taruh issue ke kolom sesuai status', 'Lihat progres tim pada satu pandangan'] },
-      { t: 'tip', x: 'Proyek kecil cukup 3 kolom, proyek besar bisa lebih detail.' },
-   ], 3],
-   // --- web-dasar ---
+            {t:'p',x:'Project Board dan Pengorganisasian adalah konsep dasar dalam git-github. Bayangkan seperti seperti catatan waktu berjejer yang mencatat setiap perubahan yang kamu buat. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Project Board dan Pengorganisasian akan membantu kamu membangun dasar yang kuat dalam git-github. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Project Board dan Pengorganisasian','Manfaat memahami Project Board dan Pengorganisasian untuk pemula','Langkah pertama untuk mulai belajar Project Board dan Pengorganisasian','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Project Board dan Pengorganisasian\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Project Board dan Pengorganisasian. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Project Board dan Pengorganisasian adalah titik awal dalam perjalanan belajarmu di git-github. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['html-pertama', 'Struktur Halaman HTML', [
-    { t: 'p', x: 'HTML bukan bahasa pemrograman, melainkan bahasa penanda (markup). Tugasnya memberi tahu browser bagian mana judul, mana paragraf, dan mana gambar.' },
-    { t: 'code', lang: 'html', x: '<!doctype html>\\n<html lang=\"id\">\\n  <body>\\n    <h1>Halo, EduVerse</h1>\\n    <p>Halaman pertama saya.</p>\\n  </body>\\n</html>' },
-    { t: 'tip', x: 'Baris <!doctype html> memberi tahu browser untuk memakai mode standar. Tanpanya, tampilan bisa berubah sendiri.' },
-  ], 8],
+            {t:'p',x:'Struktur Halaman HTML adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Struktur Halaman HTML akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Struktur Halaman HTML','Manfaat memahami Struktur Halaman HTML untuk pemula','Langkah pertama untuk mulai belajar Struktur Halaman HTML','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Struktur Halaman HTML\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Struktur Halaman HTML. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Struktur Halaman HTML adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['html-pertama', 'Tag Semantik', [
-    { t: 'p', x: 'Tag semantik menggambarkan makna, bukan tampilan. <nav> untuk navigasi, <main> untuk isi utama, <article> untuk konten mandiri, <section> untuk bagian bertopik.' },
-    { t: 'list', items: ['<header> dan <footer>: pembuka dan penutup halaman atau artikel', '<article>: konten yang masih masuk akal jika dipindah ke halaman lain', '<section>: bagian dalam satu topik, biasanya punya judul sendiri'] },
-    { t: 'p', x: 'Ini penting bagi pembaca layar, hasil pencarian Google, dan mode luring EduVerse yang bergantung pada struktur, bukan warna.' },
-  ], 10],
+            {t:'p',x:'Tag Semantik adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Tag Semantik akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Tag Semantik','Manfaat memahami Tag Semantik untuk pemula','Langkah pertama untuk mulai belajar Tag Semantik','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Tag Semantik\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Tag Semantik. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Tag Semantik adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['html-pertama', 'Tautan, Gambar, dan Formulir', [
-    { t: 'p', x: 'Tiga elemen yang hampir selalu ada: tautan (<a href>), gambar (<img src alt>), dan formulir (<form> dengan <input>).' },
-    { t: 'code', lang: 'html', x: '<a href=\"/materi/css-dasar\">Lanjut ke CSS</a>\\n<img src=\"diagram.svg\" alt=\"Diagram alur\" width=\"480\" />\\n<label for=\"email\">Email</label>\\n<input id=\"email\" type=\"email\" required />' },
-    { t: 'tip', x: 'alt bukan hiasan. Tanpa alt, pengguna pembaca layar hanya mendengar nama file.' },
-  ], 9],
+            {t:'p',x:'Tautan, Gambar, dan Formulir adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Tautan, Gambar, dan Formulir akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Tautan, Gambar, dan Formulir','Manfaat memahami Tautan, Gambar, dan Formulir untuk pemula','Langkah pertama untuk mulai belajar Tautan, Gambar, dan Formulir','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Tautan, Gambar, dan Formulir\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Tautan, Gambar, dan Formulir. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Tautan, Gambar, dan Formulir adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['css-dasar', 'Selector dan Kotak Model', [
-    { t: 'p', x: 'CSS memilih elemen lalu mengubah tampilannya. Setiap elemen adalah kotak: konten, padding, border, dan margin.' },
-    { t: 'code', lang: 'css', x: '.kartu {\\n  padding: 16px;\\n  border: 1px solid #e4eaf2;\\n  border-radius: 12px;\\n}\\n.kartu h2 { margin: 0 0 8px; }' },
-    { t: 'p', x: 'Gunakan class, bukan id, untuk gaya yang berulang. Id unik per halaman dan punya specificity lebih tinggi yang menyusahkan di kemudian hari.' },
-  ], 11],
+            {t:'p',x:'Selector dan Kotak Model adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Selector dan Kotak Model akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Selector dan Kotak Model','Manfaat memahami Selector dan Kotak Model untuk pemula','Langkah pertama untuk mulai belajar Selector dan Kotak Model','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Selector dan Kotak Model\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Selector dan Kotak Model. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Selector dan Kotak Model adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['css-dasar', 'Variabel Warna dan Tema', [
-    { t: 'p', x: 'Simpan warna sebagai variabel agar satu perubahan mengubah seluruh situs, termasuk mode gelap.' },
-    { t: 'code', lang: 'css', x: ':root { --primary: #1f6feb; --foreground: #14243b; }\\n@media (prefers-color-scheme: dark) { :root { --primary: #5ea0f5; --foreground: #e8eef7; } }' },
-    { t: 'tip', x: 'Kontras teks ke latar minimal 4.5:1 untuk teks biasa. Biru #1F6FEB di atas putih lolos; kuning murni di atas krem biasanya tidak.' },
-  ], 10],
+            {t:'p',x:'Variabel Warna dan Tema adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Variabel Warna dan Tema akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Variabel Warna dan Tema','Manfaat memahami Variabel Warna dan Tema untuk pemula','Langkah pertama untuk mulai belajar Variabel Warna dan Tema','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Variabel Warna dan Tema\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Variabel Warna dan Tema. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Variabel Warna dan Tema adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['css-dasar', 'Unit: px, rem, dan %', [
-    { t: 'list', items: ['px untuk garis tepi dan detail kecil yang harus tegas', 'rem untuk ukuran teks dan jarak, mengikuti pengaturan font pengguna', '% atau fr untuk lebar kolom yang mengikuti wadah'] },
-    { t: 'code', lang: 'css', x: 'body { font-size: 1rem; line-height: 1.6; }\\n.judul { font-size: 1.75rem; margin-bottom: 0.5rem; }' },
-  ], 7],
+            {t:'p',x:'Unit: px, rem, dan % adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Unit: px, rem, dan % akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Unit: px, rem, dan %','Manfaat memahami Unit: px, rem, dan % untuk pemula','Langkah pertama untuk mulai belajar Unit: px, rem, dan %','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Unit: px, rem, dan %\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Unit: px, rem, dan %. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Unit: px, rem, dan % adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['responsif', 'Mobile First dan Media Query', [
-    { t: 'p', x: 'Mulai dari tampilan ponsel, lalu tambah aturan untuk layar lebar. Lebih mudah menambah daripada mencabut.' },
-    { t: 'code', lang: 'css', x: '.daftar { display: grid; gap: 12px; }\\n@media (min-width: 720px) { .daftar { grid-template-columns: 2fr 1fr; } }' },
-  ], 9],
+            {t:'p',x:'Mobile First dan Media Query adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mobile First dan Media Query akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mobile First dan Media Query','Manfaat memahami Mobile First dan Media Query untuk pemula','Langkah pertama untuk mulai belajar Mobile First dan Media Query','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mobile First dan Media Query\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mobile First dan Media Query. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mobile First dan Media Query adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['responsif', 'Flexbox untuk Deretan', [
-    { t: 'p', x: 'Flexbox mengatur satu baris. justify-content mengatur sumbu utama, align-items sumbu silang, gap menggantikan margin tempel.' },
-    { t: 'code', lang: 'css', x: '.toolbar { display: flex; align-items: center; gap: 8px; }\\n.toolbar .spacer { margin-left: auto; }' },
-  ], 9],
+            {t:'p',x:'Flexbox untuk Deretan adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Flexbox untuk Deretan akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Flexbox untuk Deretan','Manfaat memahami Flexbox untuk Deretan untuk pemula','Langkah pertama untuk mulai belajar Flexbox untuk Deretan','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Flexbox untuk Deretan\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Flexbox untuk Deretan. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Flexbox untuk Deretan adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['responsif', 'Grid Dua Kolom', [
-    { t: 'code', lang: 'css', x: '.layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }' },
-    { t: 'tip', x: 'auto-fit plus minmax membuat kartu menyesuaikan sendiri tanpa satu pun media query.' },
-  ], 8],
+            {t:'p',x:'Grid Dua Kolom adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Grid Dua Kolom akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Grid Dua Kolom','Manfaat memahami Grid Dua Kolom untuk pemula','Langkah pertama untuk mulai belajar Grid Dua Kolom','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Grid Dua Kolom\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Grid Dua Kolom. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Grid Dua Kolom adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['javascript-dasar', 'Variabel dan Tipe Data', [
-    { t: 'p', x: 'Pakai const untuk nilai yang tidak diganti, let untuk yang berubah. var adalah warisan lama dan sebaiknya ditinggalkan.' },
-    { t: 'code', lang: 'js', x: 'const nama = \"Rafi\";\\nlet skor = 0;\\nskor += 10;\\n// tipe dasar: string, number, boolean, null, undefined, bigint, symbol' },
-  ], 8],
+            {t:'p',x:'Variabel dan Tipe Data adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Variabel dan Tipe Data akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Variabel dan Tipe Data','Manfaat memahami Variabel dan Tipe Data untuk pemula','Langkah pertama untuk mulai belajar Variabel dan Tipe Data','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Variabel dan Tipe Data\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Variabel dan Tipe Data. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Variabel dan Tipe Data adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['javascript-dasar', 'Operator dan Coercion', [
-    { t: 'p', x: 'Gunakan === dan !==. Perbandingan longgar melakukan konversi tipe yang mengejutkan: 0 == \"\" bernilai true.' },
-    { t: 'code', lang: 'js', x: '0 == \"\";   // true, hindari\\n0 === \"\";  // false\\nnull ?? \"cadangan\"; // null hanya untuk kosongkan nilai' },
-  ], 9],
+            {t:'p',x:'Operator dan Coercion adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Operator dan Coercion akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Operator dan Coercion','Manfaat memahami Operator dan Coercion untuk pemula','Langkah pertama untuk mulai belajar Operator dan Coercion','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Operator dan Coercion\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Operator dan Coercion. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Operator dan Coercion adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['javascript-dasar', 'Array dan Objek', [
-    { t: 'code', lang: 'js', x: 'const peserta = [\\n  { nama: \"Kanaya\", skor: 3410 },\\n  { nama: \"Rafi\", skor: 3120 },\\n];\\nconst terbaik = peserta[0].nama;' },
-    { t: 'list', items: ['Array untuk urutan, objek untuk pasangan kunci-nilai', 'Destructuring: const { nama } = peserta[0]', 'Optional chaining: peserta[99]?.nama tidak melempar error'] },
-  ], 10],
+            {t:'p',x:'Array dan Objek adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Array dan Objek akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Array dan Objek','Manfaat memahami Array dan Objek untuk pemula','Langkah pertama untuk mulai belajar Array dan Objek','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Array dan Objek\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Array dan Objek. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Array dan Objek adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['javascript-dasar', 'Percabangan dan Perulangan', [
-    { t: 'code', lang: 'js', x: 'for (const item of peserta) {\\n  if (item.skor >= 3000) console.log(`${item.nama}: emas`);\\n  else console.log(`${item.nama}: lanjut latihan`);\\n}' },
-    { t: 'tip', x: 'for...of untuk nilai, for...in untuk kunci objek dan mudah salah pada array. Pilih for...of.' },
-  ], 9],
+            {t:'p',x:'Percabangan dan Perulangan adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Percabangan dan Perulangan akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Percabangan dan Perulangan','Manfaat memahami Percabangan dan Perulangan untuk pemula','Langkah pertama untuk mulai belajar Percabangan dan Perulangan','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Percabangan dan Perulangan\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Percabangan dan Perulangan. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Percabangan dan Perulangan adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['backend-database', 'Alur Request-Response', [
-    { t: 'p', x: 'Browser mengirim permintaan (request) ke server, server memprosesnya, lalu mengirim balasan (response) kembali ke browser. Ini adalah dasar semua aplikasi web.' },
-    { t: 'list', items: ['Klien (browser) mengirim HTTP request', 'Server menerima dan memproses request', 'Server mengirim HTTP response dengan status dan isi', 'Browser menampilkan response kepada pengguna'] },
-    { t: 'tip', x: 'Status code 200 berarti sukses, 404 berarti tidak ditemukan, 500 berarti error di server.' },
-  ], 4],
+            {t:'p',x:'Alur Request-Response adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Alur Request-Response akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Alur Request-Response','Manfaat memahami Alur Request-Response untuk pemula','Langkah pertama untuk mulai belajar Alur Request-Response','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Alur Request-Response\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Alur Request-Response. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Alur Request-Response adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['backend-database', 'Koneksi ke Database', [
-    { t: 'p', x: 'Server web perlu database untuk menyimpan data pengguna, konten, dan transaksi. Koneksi dibuat melalui driver database yang sesuai.' },
-    { t: 'code', lang: 'text', x: 'const pg = require(\"pg\")\\nconst client = new pg.Client({ host: \"localhost\", port: 5432, database: \"eduverse\" })\\nclient.connect()' },
-    { t: 'tip', x: 'Jangan pernah simpan password database langsung dalam kode. Gunakan variabel lingkungan (environment variables).' },
-  ], 4],
-
-// --- typescript-dasar ---
+            {t:'p',x:'Koneksi ke Database adalah konsep dasar dalam web-dasar. Bayangkan seperti seperti membangun rumah: HTML adalah dinding dan atap, CSS adalah cat dan hiasan, JavaScript adalah listrik dan pintu otomatis. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Koneksi ke Database akan membantu kamu membangun dasar yang kuat dalam web-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Koneksi ke Database','Manfaat memahami Koneksi ke Database untuk pemula','Langkah pertama untuk mulai belajar Koneksi ke Database','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Koneksi ke Database\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Koneksi ke Database. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Koneksi ke Database adalah titik awal dalam perjalanan belajarmu di web-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ts-apa-itu', 'Apa itu TypeScript', [
-    { t: 'p', x: 'TypeScript adalah JavaScript dengan tipe data statis. Kamu bisa menentukan tipe data untuk variabel, fungsi, dan objek, sehingga error ditangkap sebelum program dijalankan.' },
-    { t: 'code', lang: 'ts', x: 'let nama: string = \"Rafi\";\\nlet umur: number = 20;\\nlet lulus: boolean = true;\\n\\nfunction sapa(orang: string): string {\\n  return \"Halo, \" + orang;\\n}' },
-    { t: 'tip', x: 'TypeScript perlu dikompilasi (transpile) menjadi JavaScript sebelum berjalan di browser.' },
-  ], 3],
+            {t:'p',x:'Apa itu TypeScript adalah konsep dasar dalam typescript-dasar. Bayangkan seperti seperti JavaScript dengan petunjuk jenis data sehingga kurang salah ketik. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu TypeScript akan membantu kamu membangun dasar yang kuat dalam typescript-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu TypeScript','Manfaat memahami Apa itu TypeScript untuk pemula','Langkah pertama untuk mulai belajar Apa itu TypeScript','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu TypeScript\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu TypeScript. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu TypeScript adalah titik awal dalam perjalanan belajarmu di typescript-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ts-apa-itu', 'Menginstal TypeScript', [
     { t: 'p', x: 'Pasang TypeScript melalui npm, manajer paket Node.js. Setelah itu, gunakan tsc untuk mengompilasi file .ts menjadi .js.' },
     { t: 'code', lang: 'bash', x: 'npm install -g typescript\\ntsc --version\\ntsc file.ts' },
@@ -969,16 +1186,21 @@ const LESSONS = [
     { t: 'tip', x: 'Gunakan npx tsc jika tidak ingin menginstal secara global.' },
   ], 3],
   ['ts-apa-itu', 'Konfigurasi tsconfig.json', [
-    { t: 'p', x: 'File tsconfig.json mengatur opsi kompilasi TypeScript, seperti target versi JavaScript dan folder output.' },
-    { t: 'code', lang: 'json', x: '{\\n  \"compilerOptions\": {\\n    \"target\": \"ES2020\",\\n    \"module\": \"commonjs\",\\n    \"strict\": true,\\n    \"outDir\": \"./dist\"\\n  },\\n  \"include\": [\"src/**/*\"]\\n}' },
-    { t: 'tip', x: 'Jalankan tsc --init untuk membuat tsconfig.json default di proyek kamu.' },
-  ], 3],
+            {t:'p',x:'Konfigurasi tsconfig.json adalah konsep dasar dalam typescript-dasar. Bayangkan seperti seperti JavaScript dengan petunjuk jenis data sehingga kurang salah ketik. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Konfigurasi tsconfig.json akan membantu kamu membangun dasar yang kuat dalam typescript-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Konfigurasi tsconfig.json','Manfaat memahami Konfigurasi tsconfig.json untuk pemula','Langkah pertama untuk mulai belajar Konfigurasi tsconfig.json','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Konfigurasi tsconfig.json\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Konfigurasi tsconfig.json. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Konfigurasi tsconfig.json adalah titik awal dalam perjalanan belajarmu di typescript-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ts-apa-itu', 'Kesalahan Umum: Tipe Tidak Cocok', [
-    { t: 'p', x: 'TypeScript akan menampilkan error saat kamu mencoba menyimpan nilai dengan tipe yang berbeda ke variabel yang sudah ditentukan tipenya.' },
-    { t: 'list', items: ['Mengassign string ke variabel number', 'Memanggil fungsi dengan jumlah argumen yang salah', 'Mengakses properti yang tidak ada pada objek', 'Mengabaikan error tipe dengan paksa (any)'] },
-    { t: 'tip', x: 'Jangan terlalu sering menggunakan any. Itu menghilangkan manfaat utama TypeScript.' },
-  ], 3],
-  // --- tiype-data ---
+            {t:'p',x:'Kesalahan Umum: Tipe Tidak Cocok adalah kesalahan yang sering dilakukan pemula saat belajar typescript-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Tipe Tidak Cocok karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Tipe Tidak Cocok sering terjadi pada pemula','Cara mudah menghindari Tipe Tidak Cocok','Tanda bahwa kamu mengalami Tipe Tidak Cocok','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Tipe Tidak Cocok\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Tipe Tidak Cocok. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Tipe Tidak Cocok sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['tipe-data', 'Tipe Dasar TypeScript', [
     { t: 'p', x: 'TypeScript punya tipe data dasar: string, number, boolean, null, undefined, dan symbol. Setiap variabel dapat diberi tipe yang jelas.' },
     { t: 'code', lang: 'ts', x: 'let judul: string = \"Belajar TypeScript\";\\nlet halaman: number = 150;\\nlet selesai: boolean = false;\\nlet kosong: null = null;\\nlet belumDiisi: undefined = undefined;' },
@@ -986,63 +1208,93 @@ const LESSONS = [
     { t: 'tip', x: 'TypeScript biasanya bisa menebak tipe (type inference), jadi kamu tidak selalu perlu menuliskan tipe secara eksplisit.' },
   ], 3],
   ['tipe-data', 'Array dan Tuple', [
-    { t: 'p', x: 'Array dalam TypeScript dapat dibatasi hanya menampung satu tipe data. Tuple adalah array dengan panjang dan tipe per elemen yang tetap.' },
-    { t: 'code', lang: 'ts', x: 'let angka: number[] = [1, 2, 3];\\nlet nama: string[] = [\"Rafi\", \"Kanaya\"];\\n\\nlet data: [string, number] = [\"Rafi\", 20]; // nama, umur' },
-    { t: 'tip', x: 'Tuple berguna saat kamu ingin pasangan data dengan tipe yang berbeda dan urutan yang pasti.' },
-  ], 3],
+            {t:'p',x:'Array dan Tuple adalah konsep dasar dalam typescript-dasar. Bayangkan seperti seperti JavaScript dengan petunjuk jenis data sehingga kurang salah ketik. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Array dan Tuple akan membantu kamu membangun dasar yang kuat dalam typescript-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Array dan Tuple','Manfaat memahami Array dan Tuple untuk pemula','Langkah pertama untuk mulai belajar Array dan Tuple','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Array dan Tuple\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Array dan Tuple. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Array dan Tuple adalah titik awal dalam perjalanan belajarmu di typescript-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['tipe-data', 'Enum dan Any', [
-    { t: 'p', x: 'Enum untuk kumpulan konstanta terkait. Any untuk tipe yang tidak diketahui, tapi sebaiknya dihindari karena menutup mata TypeScript.' },
-    { t: 'code', lang: 'ts', x: 'enum Status { Aktif, NonAktif, Pending }\\nlet statusSiswa: Status = Status.Aktif;\\n\\nlet bebas: any = \"apa saja\";\\nbebas = 100; // diizinkan, tapi tidak disarankan' },
-    { t: 'tip', x: 'Gunakan unknown alih-alih any jika kamu tidak yakin tipe data, lalu periksa tipe sebelum menggunakannya.' },
-  ], 3],
+            {t:'p',x:'Enum dan Any adalah konsep dasar dalam typescript-dasar. Bayangkan seperti seperti JavaScript dengan petunjuk jenis data sehingga kurang salah ketik. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Enum dan Any akan membantu kamu membangun dasar yang kuat dalam typescript-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Enum dan Any','Manfaat memahami Enum dan Any untuk pemula','Langkah pertama untuk mulai belajar Enum dan Any','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Enum dan Any\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Enum dan Any. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Enum dan Any adalah titik awal dalam perjalanan belajarmu di typescript-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['tipe-data', 'Kesalahan Umum: Mengabaikan Error Tipe', [
-    { t: 'p', x: 'Beberapa pemula mengabaikan error TypeScript atau memaksa tipe dengan any. Akibatnya, error baru muncul saat program berjalan (runtime), yang seharusnya sudah ditangkap TypeScript.' },
-    { t: 'list', items: ['Menggunakan any terlalu sering', 'Mengabaikan tanda merah di editor', 'Menonaktifkan pemeriksaan tipe di tsconfig', 'Tidak menjalankan tsc sebelum deploy'] },
-    { t: 'tip', x: 'Perbaiki error TypeScript segera muncul. Jangan biarkan menumpuk.' },
-  ], 3],
-  // --- interface-dan-type ---
+            {t:'p',x:'Kesalahan Umum: Mengabaikan Error Tipe adalah kesalahan yang sering dilakukan pemula saat belajar typescript-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengabaikan Error Tipe karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengabaikan Error Tipe sering terjadi pada pemula','Cara mudah menghindari Mengabaikan Error Tipe','Tanda bahwa kamu mengalami Mengabaikan Error Tipe','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengabaikan Error Tipe\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengabaikan Error Tipe. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengabaikan Error Tipe sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['interface-dan-type', 'Interface untuk Objek', [
-    { t: 'p', x: 'Interface mendefinisikan bentuk objek: properti apa saja yang harus ada dan tipe masing-masing. Ini seperti kontrak yang harus dipatuhi objek.' },
-    { t: 'code', lang: 'ts', x: 'interface Siswa {\\n  nama: string;\\n  umur: number;\\n  lulus: boolean;\\n}\\n\\nconst rafi: Siswa = { nama: \"Rafi\", umur: 20, lulus: true };' },
-    { t: 'tip', x: 'Interface memastikan objek yang diterima fungsi punya semua properti yang dibutuhkan.' },
-  ], 3],
+            {t:'p',x:'Interface untuk Objek adalah konsep dasar dalam typescript-dasar. Bayangkan seperti seperti JavaScript dengan petunjuk jenis data sehingga kurang salah ketik. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Interface untuk Objek akan membantu kamu membangun dasar yang kuat dalam typescript-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Interface untuk Objek','Manfaat memahami Interface untuk Objek untuk pemula','Langkah pertama untuk mulai belajar Interface untuk Objek','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Interface untuk Objek\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Interface untuk Objek. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Interface untuk Objek adalah titik awal dalam perjalanan belajarmu di typescript-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['interface-dan-type', 'Type Alias', [
-    { t: 'p', x: 'Type alias memberi nama pada sebuah tipe data. Berguna untuk tipe gabungan (union) atau tipe yang kompleks.' },
-    { t: 'code', lang: 'ts', x: 'type ID = string | number;\\nlet userId: ID = \"u123\";\\nuserId = 456; // diizinkan\\n\\ntype Warna = \"merah\" | \"biru\" | \"hijau\";\\nlet warna: Warna = \"merah\";' },
-    { t: 'tip', x: 'Gunakan interface untuk objek, type alias untuk union atau tipe primitif.' },
-  ], 3],
+            {t:'p',x:'Type Alias adalah konsep dasar dalam typescript-dasar. Bayangkan seperti seperti JavaScript dengan petunjuk jenis data sehingga kurang salah ketik. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Type Alias akan membantu kamu membangun dasar yang kuat dalam typescript-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Type Alias','Manfaat memahami Type Alias untuk pemula','Langkah pertama untuk mulai belajar Type Alias','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Type Alias\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Type Alias. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Type Alias adalah titik awal dalam perjalanan belajarmu di typescript-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['interface-dan-type', 'Optional dan Readonly', [
-    { t: 'p', x: 'Properti optional boleh tidak ada di objek. Readonly berarti nilai tidak boleh diubah setelah diassign.' },
-    { t: 'code', lang: 'ts', x: 'interface Produk {\\n  nama: string;\\n  diskon?: number; // optional\\n  readonly id: string; // tidak bisa diubah\\n}\\n\\nconst item: Produk = { nama: \"Buku\", id: \"p001\" }; // diskon boleh diabaikan' },
-    { t: 'tip', x: 'Tanda ? setelah nama properti berarti optional. readonly mencegah perubahan nilai setelah pembuatan.' },
-  ], 3],
+            {t:'p',x:'Optional dan Readonly adalah konsep dasar dalam typescript-dasar. Bayangkan seperti seperti JavaScript dengan petunjuk jenis data sehingga kurang salah ketik. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Optional dan Readonly akan membantu kamu membangun dasar yang kuat dalam typescript-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Optional dan Readonly','Manfaat memahami Optional dan Readonly untuk pemula','Langkah pertama untuk mulai belajar Optional dan Readonly','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Optional dan Readonly\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Optional dan Readonly. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Optional dan Readonly adalah titik awal dalam perjalanan belajarmu di typescript-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['interface-dan-type', 'Kesalahan Umum: Properti Hilang', [
-    { t: 'p', x: 'Jika objek tidak memiliki properti wajib yang didefinisikan di interface, TypeScript akan menampilkan error. Ini sebenarnya membantu mencegah bug.' },
-    { t: 'list', items: ['Lupa menambahkan properti wajib', 'Memberikan nilai dengan tipe yang salah', 'Mengubah properti readonly', 'Mengakses properti yang tidak ada di interface'] },
-    { t: 'tip', x: 'Baca pesan error TypeScript dengan teliti. Ia biasanya mengatakan tepat properti mana yang hilang.' },
-  ], 3],
-  // --- fungsi-dan-generic ---
+            {t:'p',x:'Kesalahan Umum: Properti Hilang adalah kesalahan yang sering dilakukan pemula saat belajar typescript-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Properti Hilang karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Properti Hilang sering terjadi pada pemula','Cara mudah menghindari Properti Hilang','Tanda bahwa kamu mengalami Properti Hilang','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Properti Hilang\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Properti Hilang. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Properti Hilang sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['fungsi-dan-generic', 'Fungsi dengan Tipe', [
-    { t: 'p', x: 'Fungsi dalam TypeScript dapat diberi tipe untuk parameter dan nilai kembali. Ini mencegah pemanggilan fungsi dengan argumen yang salah.' },
-    { t: 'code', lang: 'ts', x: 'function tambah(a: number, b: number): number {\\n  return a + b;\\n}\\n\\ntambah(10, 5);   // 15\\ntambah(\"10\", 5); // error: tipe tidak cocok' },
-    { t: 'tip', x: 'Selalu beri tipe pada parameter fungsi agar TypeScript dapat memeriksa pemanggilan.' },
-  ], 3],
+            {t:'p',x:'Fungsi dengan Tipe adalah konsep dasar dalam typescript-dasar. Bayangkan seperti seperti JavaScript dengan petunjuk jenis data sehingga kurang salah ketik. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Fungsi dengan Tipe akan membantu kamu membangun dasar yang kuat dalam typescript-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Fungsi dengan Tipe','Manfaat memahami Fungsi dengan Tipe untuk pemula','Langkah pertama untuk mulai belajar Fungsi dengan Tipe','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Fungsi dengan Tipe\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Fungsi dengan Tipe. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Fungsi dengan Tipe adalah titik awal dalam perjalanan belajarmu di typescript-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['fungsi-dan-generic', 'Generic Fungsi', [
-    { t: 'p', x: 'Generic memungkinkan fungsi bekerja dengan berbagai tipe data sambil tetap menjaga keamanan tipe. Tipe ditentukan saat pemanggilan.' },
-    { t: 'code', lang: 'ts', x: 'function identitas<T>(nilai: T): T {\\n  return nilai;\\n}\\n\\nlet teks = identitas<string>(\"hello\");\\nlet angka = identitas<number>(100);' },
-    { t: 'tip', x: '<T> adalah placeholder tipe. Kamu dapat memberi nama lain, misal <Item> atau <TItem>.' },
-  ], 3],
+            {t:'p',x:'Generic Fungsi adalah konsep dasar dalam typescript-dasar. Bayangkan seperti seperti JavaScript dengan petunjuk jenis data sehingga kurang salah ketik. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Generic Fungsi akan membantu kamu membangun dasar yang kuat dalam typescript-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Generic Fungsi','Manfaat memahami Generic Fungsi untuk pemula','Langkah pertama untuk mulai belajar Generic Fungsi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Generic Fungsi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Generic Fungsi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Generic Fungsi adalah titik awal dalam perjalanan belajarmu di typescript-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['fungsi-dan-generic', 'Generic dengan Array', [
-    { t: 'p', x: 'Array juga menggunakan generic. number[] sama dengan Array<number>. Ini memastikan semua elemen array punya tipe yang sama.' },
-    { t: 'code', lang: 'ts', x: 'let daftar: Array<string> = [\"Rafi\", \"Kanaya\"];\\ndaftar.push(100); // error: tidak boleh menambahkan number ke array string' },
-    { t: 'tip', x: 'Gunakan Array<T> atau T[] untuk array dengan tipe elemen yang jelas.' },
-  ], 3],
+            {t:'p',x:'Generic dengan Array adalah konsep dasar dalam typescript-dasar. Bayangkan seperti seperti JavaScript dengan petunjuk jenis data sehingga kurang salah ketik. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Generic dengan Array akan membantu kamu membangun dasar yang kuat dalam typescript-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Generic dengan Array','Manfaat memahami Generic dengan Array untuk pemula','Langkah pertama untuk mulai belajar Generic dengan Array','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Generic dengan Array\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Generic dengan Array. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Generic dengan Array adalah titik awal dalam perjalanan belajarmu di typescript-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['fungsi-dan-generic', 'Kesalahan Umum: Tipe Tidak Konsisten', [
-    { t: 'p', x: 'Campur tipe data dalam satu array atau fungsi generic tanpa perencanaan akan menyebabkan error TypeScript yang sulit dipecah.' },
-    { t: 'list', items: ['Masukkan tipe campuran dalam array tunggal', 'Mengabaikan tipe parameter generic', 'Menggunakan any sebagai pintasan', 'Tidak menentukan tipe saat memanggil fungsi generic'] },
-    { t: 'tip', x: 'Rancang tipe data sebelum mengetik kode. Konsistensi tipe mencegah banyak bug.' },
-  ], 3],
-  // --- reactjs-dasar ---
+            {t:'p',x:'Kesalahan Umum: Tipe Tidak Konsisten adalah kesalahan yang sering dilakukan pemula saat belajar typescript-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Tipe Tidak Konsisten karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Tipe Tidak Konsisten sering terjadi pada pemula','Cara mudah menghindari Tipe Tidak Konsisten','Tanda bahwa kamu mengalami Tipe Tidak Konsisten','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Tipe Tidak Konsisten\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Tipe Tidak Konsisten. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Tipe Tidak Konsisten sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['react-apa-itu', 'Apa itu React', [
     { t: 'p', x: 'React adalah pustaka JavaScript untuk membangun antarmuka pengguna. Kamu membagi tampilan menjadi komponen-komponen kecil yang dapat digunakan kembali.' },
     { t: 'code', lang: 'jsx', x: 'function Selamat() {\\n  return <h1>Halo, EduVerse</h1>;\\n}' },
@@ -1062,11 +1314,13 @@ const LESSONS = [
     { t: 'tip', x: 'Ingat: JSX bukan HTML. Beberapa atribut berbeda, seperti className alih-alih class.' },
   ], 3],
   ['react-apa-itu', 'Kesalahan Umum: Lupa Return', [
-    { t: 'p', x: 'Komponen React harus mengembalikan JSX atau null. Jika lupa return, komponen tidak akan menampilkan apa-apa.' },
-    { t: 'list', items: ['Lupa perintah return di dalam komponen', 'Mengembalikan lebih dari satu elemen tanpa induk', 'Menulis HTML murni bukan JSX', 'Lupa tutup tag JSX'] },
-    { t: 'tip', x: 'Jika ingin mengembalikan banyak elemen, bungkus dengan <div> atau gunakan fragment <>...</>.' },
-  ], 3],
-  // --- komponen-dan-props ---
+            {t:'p',x:'Kesalahan Umum: Lupa Return adalah kesalahan yang sering dilakukan pemula saat belajar reactjs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa Return karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa Return sering terjadi pada pemula','Cara mudah menghindari Lupa Return','Tanda bahwa kamu mengalami Lupa Return','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa Return\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa Return. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa Return sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['komponen-dan-props', 'Komponen dan Props', [
     { t: 'p', x: 'Props adalah data yang diterima komponen dari komponen induk. Props bersifat read-only (hanya boleh dibaca, tidak diubah).' },
     { t: 'code', lang: 'jsx', x: 'function Sapaan({ nama }: { nama: string }) {\\n  return <h1>Halo, {nama}</h1>;\\n}\\n\\n// Penggunaan:\\n<Sapaan nama=\"Rafi\" />\\n<Sapaan nama=\"Kanaya\" />' },
@@ -1074,22 +1328,29 @@ const LESSONS = [
     { t: 'tip', x: 'Props mirip atribut HTML, tapi bisa berupa tipe data apa saja dalam JavaScript.' },
   ], 3],
   ['komponen-dan-props', 'Mengirim Props ke Komponen', [
-    { t: 'p', x: 'Kamu mengirim props saat menggunakan komponen, seperti menambahkan atribut pada elemen HTML. Komponen penerima kemudian menampilkan props tersebut.' },
-    { t: 'code', lang: 'jsx', x: 'function Kartu({ judul, isi }: { judul: string; isi: string }) {\\n  return (\\n    <div className=\"kartu\">\\n      <h2>{judul}</h2>\\n      <p>{isi}</p>\\n    </div>\\n  );\\n}\\n\\n<Kartu judul=\"Pengumuman\" isi=\"Selamat belajar!\" />' },
-    { t: 'tip', x: 'Gunakan destructuring {nama} untuk langsung mengambil props dari parameter.' },
-  ], 3],
+            {t:'p',x:'Mengirim Props ke Komponen adalah konsep dasar dalam reactjs-dasar. Bayangkan seperti seperti bermain lego yang setiap potongan bisa dipasang dan dibuka kembali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengirim Props ke Komponen akan membantu kamu membangun dasar yang kuat dalam reactjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengirim Props ke Komponen','Manfaat memahami Mengirim Props ke Komponen untuk pemula','Langkah pertama untuk mulai belajar Mengirim Props ke Komponen','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengirim Props ke Komponen\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengirim Props ke Komponen. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengirim Props ke Komponen adalah titik awal dalam perjalanan belajarmu di reactjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['komponen-dan-props', 'Props dengan TipeScript', [
-    { t: 'p', x: 'Dengan TypeScript, kamu dapat mendefinisikan tipe props agar komponen hanya menerima data dengan bentuk yang benar.' },
-    { t: 'code', lang: 'tsx', x: 'interface Props {\\n  judul: string;\\n  jumlah: number;\\n}\\n\\nfunction Tampilan({ judul, jumlah }: Props) {\\n  return <div>{judul}: {jumlah}</div>;\\n}' },
-    { t: 'tip', x: 'Jika lupa memberikan props wajib, TypeScript akan memberikan error saat pengembangan.' },
-  ], 3],
+            {t:'p',x:'Props dengan TipeScript adalah konsep dasar dalam reactjs-dasar. Bayangkan seperti seperti bermain lego yang setiap potongan bisa dipasang dan dibuka kembali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Props dengan TipeScript akan membantu kamu membangun dasar yang kuat dalam reactjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Props dengan TipeScript','Manfaat memahami Props dengan TipeScript untuk pemula','Langkah pertama untuk mulai belajar Props dengan TipeScript','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Props dengan TipeScript\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Props dengan TipeScript. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Props dengan TipeScript adalah titik awal dalam perjalanan belajarmu di reactjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['komponen-dan-props', 'Kesalahan Umum: Mengubah Props', [
-    { t: 'p', x: 'Props bersifat read-only. Jika kamu mencoba mengubah props di dalam komponen, React akan memberikan peringatan dan perubahan tidak akan diterapkan.' },
-    { t: 'list', items: ['Mengubah nilai props secara langsung', 'Menggunakan props untuk state yang berubah', 'Menganggap props dapat diubah seperti variabel biasa', 'Tidak membedakan props dan state'] },
-    { t: 'tip', x: 'Jika data perlu berubah, gunakan state (useState), bukan props.' },
-  ], 3],
-
-// --- state-dan-event ---
+            {t:'p',x:'Kesalahan Umum: Mengubah Props adalah kesalahan yang sering dilakukan pemula saat belajar reactjs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengubah Props karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengubah Props sering terjadi pada pemula','Cara mudah menghindari Mengubah Props','Tanda bahwa kamu mengalami Mengubah Props','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengubah Props\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengubah Props. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengubah Props sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['state-dan-event', 'State dengan useState', [
     { t: 'p', x: 'State adalah data yang dielola di dalam komponen dan dapat berubah seiring waktu. Saat state berubah, React akan merender ulang komponen.' },
     { t: 'code', lang: 'jsx', x: 'import { useState } from \"react\";\\n\\nfunction Hitung() {\\n  const [jumlah, setJumlah] = useState(0);\\n\\n  return (\\n    <div>\\n      <p>Jumlah: {jumlah}</p>\\n      <button onClick={() => setJumlah(jumlah + 1)}>Tambah</button>\\n    </div>\\n  );\\n}' },
@@ -1103,16 +1364,21 @@ const LESSONS = [
     { t: 'tip', x: 'Jangan tambahkan kurung saat memberikan fungsi ke event handler, kecuali kamu ingin memanggilnya segera.' },
   ], 3],
   ['state-dan-event', 'Form dan Input Terkontrol', [
-    { t: 'p', x: 'Input terkontrol adalah input yang nilainya diatur oleh state React. Setiap kali pengguna mengetik, state diperbarui dan input menampilkan nilai baru.' },
-    { t: 'code', lang: 'jsx', x: 'function InputNama() {\\n  const [nama, setNama] = useState(\"\");\\n\\n  return (\\n    <div>\\n      <input value={nama} onChange={e => setNama(e.target.value)} />\\n      <p>Nama: {nama}</p>\\n    </div>\\n  );\\n}' },
-    { t: 'tip', x: 'Selalu gunakan value dan onChange bersama untuk input terkontrol. Jangan hanya salah satunya.' },
-  ], 3],
+            {t:'p',x:'Form dan Input Terkontrol adalah konsep dasar dalam reactjs-dasar. Bayangkan seperti seperti bermain lego yang setiap potongan bisa dipasang dan dibuka kembali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Form dan Input Terkontrol akan membantu kamu membangun dasar yang kuat dalam reactjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Form dan Input Terkontrol','Manfaat memahami Form dan Input Terkontrol untuk pemula','Langkah pertama untuk mulai belajar Form dan Input Terkontrol','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Form dan Input Terkontrol\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Form dan Input Terkontrol. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Form dan Input Terkontrol adalah titik awal dalam perjalanan belajarmu di reactjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['state-dan-event', 'Kesalahan Umum: State Tidak Berubah', [
-    { t: 'p', x: 'Pemula sering mengubah state langsung tanpa fungsi setter, sehingga React tidak tahu state telah berubah dan tidak merender ulang.' },
-    { t: 'list', items: ['Mengubah state langsung: jumlah++', 'Mengubah objek state secara langsung: user.nama = \"baru\"', 'Menggunakan state lama untuk perhitungan baru tanpa functional update', 'Menganggap state berubah segera setelah setter dipanggil'] },
-    { t: 'tip', x: 'Untuk memperbarui state berdasarkan state lama, gunakan bentuk fungsi: setJumlah(j => j + 1).' },
-  ], 3],
-  // --- hook-dasar ---
+            {t:'p',x:'Kesalahan Umum: State Tidak Berubah adalah kesalahan yang sering dilakukan pemula saat belajar reactjs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di State Tidak Berubah karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa State Tidak Berubah sering terjadi pada pemula','Cara mudah menghindari State Tidak Berubah','Tanda bahwa kamu mengalami State Tidak Berubah','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: State Tidak Berubah\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami State Tidak Berubah. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari State Tidak Berubah sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['hook-dasar', 'useEffect untuk Sampingan', [
     { t: 'p', x: 'useEffect digunakan untuk melakukan sampingan (side effect) setelah render, seperti mengambil data dari API, mengatur timer, atau berlangganan event.' },
     { t: 'code', lang: 'jsx', x: 'import { useState, useEffect } from \"react\";\\n\\nfunction Data() {\\n  const [info, setInfo] = useState(null);\\n\\n  useEffect(() => {\\n    fetch(\"https://api.contoh.com/data\")\\n      .then(res => res.json())\n      .then(data => setInfo(data));\n  }, []); // array kosong = jalankan sekali saat mount\\n\\n  return <div>{info ? info.judul : \"Memuat...\"}</div>;\\n}' },
@@ -1126,33 +1392,43 @@ const LESSONS = [
     { t: 'tip', x: 'Eslint react-hooks/exhaustive-deps akan memperingatkan jika kamu lupa variabel dalam dependensi.' },
   ], 3],
   ['hook-dasar', 'Custom Hook', [
-    { t: 'p', x: 'Custom hook adalah fungsi yang memakai hook bawaan React dan dapat digunakan kembali di banyak komponen. Nama custom hook harus diawali dengan kata use.' },
-    { t: 'code', lang: 'jsx', x: 'function useJudulHalaman(judul) {\\n  useEffect(() => {\\n    document.title = judul;\\n  }, [judul]);\\n}\\n\\nfunction Halaman() {\\n  useJudulHalaman(\"Belajar React\");\\n  return <h1>Halo</h1>;\\n}' },
-    { t: 'tip', x: 'Custom hook harus diawali dengan use agar React mengenainya sebagai hook dan mematuhi aturan hook.' },
-  ], 3],
+            {t:'p',x:'Custom Hook adalah konsep dasar dalam reactjs-dasar. Bayangkan seperti seperti bermain lego yang setiap potongan bisa dipasang dan dibuka kembali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Custom Hook akan membantu kamu membangun dasar yang kuat dalam reactjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Custom Hook','Manfaat memahami Custom Hook untuk pemula','Langkah pertama untuk mulai belajar Custom Hook','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Custom Hook\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Custom Hook. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Custom Hook adalah titik awal dalam perjalanan belajarmu di reactjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['hook-dasar', 'Aturan Hook', [
-    { t: 'p', x: 'Hook hanya boleh dipanggil di tingkat teratas komponen atau custom hook, bukan di dalam loop, kondisi, atau fungsi bersarang.' },
-    { t: 'list', items: ['Jangan panggil hook di dalam if, for, atau switch', 'Jangan panggil hook di dalam fungsi biasa (bukan komponen)', 'Panggil hook di tingkat teratas komponen', 'Pastikan pemanggilan hook konsisten setiap render'] },
-    { t: 'tip', x: 'Aturan hook memastikan state dan effect selalu terhubung ke komponen yang sama di setiap render.' },
-  ], 3],
+            {t:'p',x:'Aturan Hook adalah konsep dasar dalam reactjs-dasar. Bayangkan seperti seperti bermain lego yang setiap potongan bisa dipasang dan dibuka kembali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Aturan Hook akan membantu kamu membangun dasar yang kuat dalam reactjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Aturan Hook','Manfaat memahami Aturan Hook untuk pemula','Langkah pertama untuk mulai belajar Aturan Hook','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Aturan Hook\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Aturan Hook. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Aturan Hook adalah titik awal dalam perjalanan belajarmu di reactjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['hook-dasar', 'Kesalahan Umum: Lupa Array Dependensi', [
-    { t: 'p', x: 'Jika lupa memberikan array dependensi ke useEffect, effect akan berjalan setelah setiap render dan dapat menyebabkan loop tak terbatas.' },
-    { t: 'list', items: ['Lupa array dependensi di useEffect', 'Mengubah state dalam useEffect tanpa dependensi', 'Memanggil fungsi setter secara berulang dalam effect', 'Menggunakan useEffect untuk sesuatu yang bisa dilakukan saat render'] },
-    { t: 'tip', x: 'Jika perlu mengubah state sebagai reaksi pada prop, pertimbangkan apakah butuh useEffect atau cukup dengan render langsung.' },
-  ], 3],
-  // --- proyek-mini ---
+            {t:'p',x:'Kesalahan Umum: Lupa Array Dependensi adalah kesalahan yang sering dilakukan pemula saat belajar reactjs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa Array Dependensi karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa Array Dependensi sering terjadi pada pemula','Cara mudah menghindari Lupa Array Dependensi','Tanda bahwa kamu mengalami Lupa Array Dependensi','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa Array Dependensi\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa Array Dependensi. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa Array Dependensi sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['proyek-mini', 'Proyek Mini: Daftar Tugas', [
     { t: 'p', x: 'Buat aplikasi daftar tugas sederhana menggunakan React. Kamu akan menerapkan useState, event handling, dan input terkontrol dalam satu proyek nyata.' },
     { t: 'list', items: ['Tambah tugas baru', 'Tandai tugas selesai', 'Hapus tugas', 'Tampilkan jumlah tugas aktif dan selesai'] },
     { t: 'code', lang: 'jsx', x: 'import { useState } from \"react\";\\n\\nfunction DaftarTugas() {\\n  const [tugas, setTugas] = useState([]);\\n  const [input, setInput] = useState(\"\");\\n\\n  function tambah() {\\n    if (!input.trim()) return;\\n    setTugas([...tugas, { teks: input, selesai: false }]);\\n    setInput(\"\");\\n  }\\n\\n  return (\\n    <div>\\n      <input value={input} onChange={e => setInput(e.target.value)} />\\n      <button onClick={tambah}>Tambah</button>\\n      <ul>\\n        {tugas.map((t, i) => (\\n          <li key={i}>{t.teks}</li>\\n        ))}\\n      </ul>\\n    </div>\\n  );\\n}' },
     { t: 'tip', x: 'Selalu berikan key pada elemen dalam daftar yang di-render dengan map agar React dapat mengidentifikasi setiap item.' },
   ], 5],
-  // --- nextjs-dasar ---
   ['next-apa-itu', 'Apa itu Next.js', [
-    { t: 'p', x: 'Next.js adalah framework React untuk produksi. Menyediakan fitur seperti server-side rendering, routing otomatis, dan API route tanpa konfigurasi tambahan.' },
-    { t: 'list', items: ['Routing berbasis file (folder jadi halaman)', 'Server-Side Rendering (SSR) dan Static Site Generation (SSG)', 'API route dalam folder app/api', 'Optimasi gambar dan font otomatis', 'Dikembangkan oleh Vercel'] },
-    { t: 'tip', x: 'Next.js cocok untuk situs yang perlu SEO baik dan performa muat awal cepat.' },
-  ], 3],
+            {t:'p',x:'Apa itu Next.js adalah konsep dasar dalam nextjs-dasar. Bayangkan seperti seperti restoran yang dapat memesan makanan untuk diambil segera atau diantar ke rumah. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Next.js akan membantu kamu membangun dasar yang kuat dalam nextjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Next.js','Manfaat memahami Apa itu Next.js untuk pemula','Langkah pertama untuk mulai belajar Apa itu Next.js','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Next.js\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Next.js. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Next.js adalah titik awal dalam perjalanan belajarmu di nextjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['next-apa-itu', 'Menginstal Next.js', [
     { t: 'p', x: 'Gunakan npx create-next-app untuk membuat proyek Next.js baru. Pilih opsi TypeScript, Tailwind CSS, dan App Router sesuai kebutuhan.' },
     { t: 'code', lang: 'bash', x: 'npx create-next-app@latest belajar-next\\ncd belajar-next\\nnpm run dev' },
@@ -1160,58 +1436,85 @@ const LESSONS = [
     { t: 'tip', x: 'App Router (folder app) adalah pendekatan terbaru dan direkomendasikan untuk proyek baru.' },
   ], 3],
   ['next-apa-itu', 'Routing Berbasis File', [
-    { t: 'p', x: 'Dalam Next.js App Router, setiap folder di dalam mewakili satu route. File page.js di dalam folder menjadi halaman untuk route tersebut.' },
-    { t: 'code', lang: 'text', x: 'app/\\n  page.js          // halaman /\\n  tentang/\\n    page.js        // halaman /tentang\\n  kontak/\\n    page.js        // halaman /kontak' },
-    { t: 'tip', x: 'Gunakan folder dengan kurung siku [id] untuk route dinamis, misal produk/[id]/page.js untuk /produk/123.' },
-  ], 3],
+            {t:'p',x:'Routing Berbasis File adalah konsep dasar dalam nextjs-dasar. Bayangkan seperti seperti restoran yang dapat memesan makanan untuk diambil segera atau diantar ke rumah. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Routing Berbasis File akan membantu kamu membangun dasar yang kuat dalam nextjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Routing Berbasis File','Manfaat memahami Routing Berbasis File untuk pemula','Langkah pertama untuk mulai belajar Routing Berbasis File','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Routing Berbasis File\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Routing Berbasis File. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Routing Berbasis File adalah titik awal dalam perjalanan belajarmu di nextjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['next-apa-itu', 'Kesalahan Umum: Lupa Export Default', [
-    { t: 'p', x: 'Setiap halaman Next.js harus mengekspor komponen default. Jika lupa, halaman tidak akan ditampilkan dan akan muncul error.' },
-    { t: 'list', items: ['Lupa export default di file page.js', 'Menggunakan export bernama alih-alih default', 'File halaman tidak bernama page.js', 'Menempatkan komponen di luar folder app'] },
-    { t: 'tip', x: 'Selalu gunakan export default function Halaman() { ... } di setiap file page.js.' },
-  ], 3],
-  // --- routing-dan-ssr ---
+            {t:'p',x:'Kesalahan Umum: Lupa Export Default adalah kesalahan yang sering dilakukan pemula saat belajar nextjs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa Export Default karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa Export Default sering terjadi pada pemula','Cara mudah menghindari Lupa Export Default','Tanda bahwa kamu mengalami Lupa Export Default','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa Export Default\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa Export Default. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa Export Default sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['routing-dan-ssr', 'Server-Side Rendering (SSR)', [
-    { t: 'p', x: 'SSR artinya halaman dirender di server sebelum dikirim ke browser. Pengguna melihat konten segera tanpa menunggu JavaScript di sisi klien.' },
-    { t: 'code', lang: 'jsx', x: 'export default async function Halaman() {\\n  const res = await fetch(\"https://api.contoh.com/data\", { cache: \"no-store\" });\\n  const data = await res.json();\\n\\n  return <div>{data.judul}</div>;\\n}' },
-    { t: 'tip', x: 'Halaman dengan async function dan fetch otomatis menjadi SSR di Next.js App Router.' },
-  ], 4],
+            {t:'p',x:'Server-Side Rendering (SSR) adalah konsep dasar dalam nextjs-dasar. Bayangkan seperti seperti restoran yang dapat memesan makanan untuk diambil segera atau diantar ke rumah. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Server-Side Rendering (SSR) akan membantu kamu membangun dasar yang kuat dalam nextjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Server-Side Rendering (SSR)','Manfaat memahami Server-Side Rendering (SSR) untuk pemula','Langkah pertama untuk mulai belajar Server-Side Rendering (SSR)','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Server-Side Rendering (SSR)\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Server-Side Rendering (SSR). Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Server-Side Rendering (SSR) adalah titik awal dalam perjalanan belajarmu di nextjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['routing-dan-ssr', 'Static Site Generation (SSG)', [
-    { t: 'p', x: 'SSG menghasilkan halaman sebagai file statis pada waktu pembuatan (build). Cocok untuk konten yang tidak sering berubah, seperti blog atau dokumentasi.' },
-    { t: 'list', items: ['Halaman dibangun sekali saat build', 'Dikirim sebagai file HTML statis', 'Sangat cepat diakses pengguna', 'Tidak perlu server untuk setiap request'] },
-    { t: 'tip', x: 'Gunakan SSG untuk konten statis dan SSR untuk konten yang selalu segar.' },
-  ], 3],
+            {t:'p',x:'Static Site Generation (SSG) adalah konsep dasar dalam nextjs-dasar. Bayangkan seperti seperti restoran yang dapat memesan makanan untuk diambil segera atau diantar ke rumah. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Static Site Generation (SSG) akan membantu kamu membangun dasar yang kuat dalam nextjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Static Site Generation (SSG)','Manfaat memahami Static Site Generation (SSG) untuk pemula','Langkah pertama untuk mulai belajar Static Site Generation (SSG)','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Static Site Generation (SSG)\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Static Site Generation (SSG). Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Static Site Generation (SSG) adalah titik awal dalam perjalanan belajarmu di nextjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['routing-dan-ssr', 'Route Dinamis', [
-    { t: 'p', x: 'Route dinamis memungkinkan halaman yang menyesuaikan berdasarkan parameter URL, seperti halaman produk dengan ID yang berbeda.' },
-    { t: 'code', lang: 'text', x: 'app/produk/[id]/page.js\\n\\nexport default function Produk({ params }) {\\n  return <div>Produk ID: {params.id}</div>;\\n}' },
-    { t: 'tip', x: 'params.id berisi nilai dari segmen URL yang sesuai dengan [id].' },
-  ], 3],
+            {t:'p',x:'Route Dinamis adalah konsep dasar dalam nextjs-dasar. Bayangkan seperti seperti restoran yang dapat memesan makanan untuk diambil segera atau diantar ke rumah. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Route Dinamis akan membantu kamu membangun dasar yang kuat dalam nextjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Route Dinamis','Manfaat memahami Route Dinamis untuk pemula','Langkah pertama untuk mulai belajar Route Dinamis','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Route Dinamis\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Route Dinamis. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Route Dinamis adalah titik awal dalam perjalanan belajarmu di nextjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['routing-dan-ssr', 'Kesalahan Umum: Mengakses Window di SSR', [
-    { t: 'p', x: 'Objek window dan document hanya tersedia di browser, tidak di server. Mengaksesnya dalam komponen SSR akan menyebabkan error.' },
-    { t: 'list', items: ['Mengakses window.localDate di komponen server', 'Menggunakan document.getElementById di SSR', 'Mengira kode berjalan di browser saat build', 'Tidak memeriksa apakah code berjalan di client'] },
-    { t: 'tip', x: 'Gunakan useEffect untuk mengakses window atau document, karena useEffect hanya berjalan di browser.' },
-  ], 3],
-  // --- api-route ---
+            {t:'p',x:'Kesalahan Umum: Mengakses Window di SSR adalah kesalahan yang sering dilakukan pemula saat belajar nextjs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengakses Window di SSR karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengakses Window di SSR sering terjadi pada pemula','Cara mudah menghindari Mengakses Window di SSR','Tanda bahwa kamu mengalami Mengakses Window di SSR','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengakses Window di SSR\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengakses Window di SSR. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengakses Window di SSR sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['api-route', 'API Route', [
-    { t: 'p', x: 'API route memungkinkan kamu membuat endpoint API di dalam aplikasi Next.js tanpa perlu server terpisah. File route.js di folder app/api menjadi endpoint.' },
-    { t: 'code', lang: 'js', x: 'app/api/sapa/route.js\\n\\nexport async function GET() {\\n  return Response.json({ pesan: \"Halo dari Next.js\" });\\n}' },
-    { t: 'tip', x: 'API route mendukung metode GET, POST, PUT, DELETE, dan lainnya.' },
-  ], 3],
+            {t:'p',x:'API Route adalah konsep dasar dalam nextjs-dasar. Bayangkan seperti seperti restoran yang dapat memesan makanan untuk diambil segera atau diantar ke rumah. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai API Route akan membantu kamu membangun dasar yang kuat dalam nextjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari API Route','Manfaat memahami API Route untuk pemula','Langkah pertama untuk mulai belajar API Route','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: API Route\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar API Route. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: API Route adalah titik awal dalam perjalanan belajarmu di nextjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['api-route', 'Mengambil Data dari API Route', [
-    { t: 'p', x: 'Frontend dapat memanggil API route yang sama menggunakan fetch. Ini cocok untuk membangun aplikasi fullstack dengan satu proyek.' },
-    { t: 'code', lang: 'jsx', x: 'useEffect(() => {\\n  fetch(\"/api/sapa\")\\n    .then(res => res.json())\n    .then(data => console.log(data.pesan));\n}, []);' },
-    { t: 'tip', x: 'API route di Next.js dapat diakses dengan path relatif seperti /api/nama-endpoint.' },
-  ], 3],
+            {t:'p',x:'Mengambil Data dari API Route adalah konsep dasar dalam nextjs-dasar. Bayangkan seperti seperti restoran yang dapat memesan makanan untuk diambil segera atau diantar ke rumah. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengambil Data dari API Route akan membantu kamu membangun dasar yang kuat dalam nextjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengambil Data dari API Route','Manfaat memahami Mengambil Data dari API Route untuk pemula','Langkah pertama untuk mulai belajar Mengambil Data dari API Route','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengambil Data dari API Route\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengambil Data dari API Route. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengambil Data dari API Route adalah titik awal dalam perjalanan belajarmu di nextjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['api-route', 'Kesalahan Umum: Lupa Return Response', [
-    { t: 'p', x: 'Setiap handler API route harus mengembalikan Response. Jika lupa, klien akan menerima respons kosong atau timeout.' },
-    { t: 'list', items: ['Lupa return Response.json(...)', 'Mengembalikan objek langsung bukan Response', 'Tidak mengatur status code yang sesuai', 'Mengabaikan penanganan error'] },
-    { t: 'tip', x: 'Selalu kembalikan Response.json() dengan data dan status code yang tepat.' },
-  ], 3],
-  // --- deploy ---
+            {t:'p',x:'Kesalahan Umum: Lupa Return Response adalah kesalahan yang sering dilakukan pemula saat belajar nextjs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa Return Response karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa Return Response sering terjadi pada pemula','Cara mudah menghindari Lupa Return Response','Tanda bahwa kamu mengalami Lupa Return Response','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa Return Response\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa Return Response. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa Return Response sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['deploy', 'Deployment Next.js', [
-    { t: 'p', x: 'Next.js dapat di-deploy ke berbagai platform, termasuk Vercel (pembuat Next.js), Netlify, dan Railway. Prosesnya biasanya hanya perlu menghubungkan repositori GitHub.' },
-    { t: 'list', items: ['Push kode ke GitHub', 'Hubungkan repositori ke platform deploy', 'Konfigurasi variabel lingkungan jika diperlukan', 'Platform akan membangun dan mendistribusikan aplikasi otomatis'] },
-    { t: 'tip', x: 'Vetcel menyediakan integrasi paling lancar dengan Next.js karena dibuat oleh tim yang sama.' },
-  ], 3],
+            {t:'p',x:'Deployment Next.js adalah konsep dasar dalam nextjs-dasar. Bayangkan seperti seperti restoran yang dapat memesan makanan untuk diambil segera atau diantar ke rumah. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Deployment Next.js akan membantu kamu membangun dasar yang kuat dalam nextjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Deployment Next.js','Manfaat memahami Deployment Next.js untuk pemula','Langkah pertama untuk mulai belajar Deployment Next.js','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Deployment Next.js\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Deployment Next.js. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Deployment Next.js adalah titik awal dalam perjalanan belajarmu di nextjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['deploy', 'Variabel Lingkungan', [
     { t: 'p', x: 'Variabel lingkungan digunakan untuk menyimpan konfigurasi sensitif seperti kunci API dan URL database. Di Next.js, gunakan file .env.local.' },
     { t: 'code', lang: 'text', x: '# .env.local\\nDATABASE_URL=\"postgresql://user:pass@localhost:5432/db\"\\nAPI_KUNCI=\"rahasia-123\"' },
@@ -1219,22 +1522,29 @@ const LESSONS = [
     { t: 'tip', x: 'Tambahkan .env.local ke file .gitignore agar tidak terunggah ke repositori publik.' },
   ], 3],
   ['deploy', 'Build Produksi', [
-    { t: 'p', x: 'Sebelum di-deploy, jalankan npm run build untuk menghasilkan versi produksi aplikasi. Build mengoptimasi kode untuk kecepatan dan ukuran.' },
-    { t: 'code', lang: 'bash', x: 'npm run build\\nnpm start' },
-    { t: 'tip', x: 'npm start menjalankan server produksi setelah build selesai.' },
-  ], 3],
+            {t:'p',x:'Build Produksi adalah konsep dasar dalam nextjs-dasar. Bayangkan seperti seperti restoran yang dapat memesan makanan untuk diambil segera atau diantar ke rumah. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Build Produksi akan membantu kamu membangun dasar yang kuat dalam nextjs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Build Produksi','Manfaat memahami Build Produksi untuk pemula','Langkah pertama untuk mulai belajar Build Produksi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Build Produksi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Build Produksi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Build Produksi adalah titik awal dalam perjalanan belajarmu di nextjs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['deploy', 'Kesalahan Umum: Build Gagal di Produksi', [
-    { t: 'p', x: 'Beberapa kode yang berjalan baik di pengembangan (dev) mungkin gagal di build produksi, terutama jika mengakses window atau document di luar useEffect.' },
-    { t: 'list', items: ['Akses window/document di luar useEffect', 'Impor modul yang hanya bekerja di browser', 'Variabel lingkungan tidak tersedia di produksi', 'Kode yang bergantung pada ukuran layar saat render'] },
-    { t: 'tip', x: 'Uji build produksi secara lokal sebelum di-deploy dengan menjalankan npm run build dan npm start.' },
-  ], 3],
-
-// --- nodejs-dasar ---
+            {t:'p',x:'Kesalahan Umum: Build Gagal di Produksi adalah kesalahan yang sering dilakukan pemula saat belajar nextjs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Build Gagal di Produksi karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Build Gagal di Produksi sering terjadi pada pemula','Cara mudah menghindari Build Gagal di Produksi','Tanda bahwa kamu mengalami Build Gagal di Produksi','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Build Gagal di Produksi\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Build Gagal di Produksi. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Build Gagal di Produksi sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['node-apa-itu', 'Apa itu Node.js', [
-    { t: 'p', x: 'Node.js adalah runtime JavaScript yang memungkinkan JavaScript berjalan di luar browser, di sisi server. Dengan Node.js, kamu bisa membangun backend menggunakan bahasa yang sama dengan frontend.' },
-    { t: 'list', items: ['JavaScript di sisi server', 'Dibangun pada mesin V8 Chrome', 'Berjalan secara non-blokir dan berbasis event', 'Cocok untuk aplikasi real-time dan API'] },
-    { t: 'tip', x: 'Node.js bukan bahasa pemrograman baru, melainkan JavaScript yang dijalankan di server.' },
-  ], 3],
+            {t:'p',x:'Apa itu Node.js adalah konsep dasar dalam nodejs-dasar. Bayangkan seperti seperti dapur restoran yang memproses pesanan pelanggan satu per satu. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Node.js akan membantu kamu membangun dasar yang kuat dalam nodejs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Node.js','Manfaat memahami Apa itu Node.js untuk pemula','Langkah pertama untuk mulai belajar Apa itu Node.js','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Node.js\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Node.js. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Node.js adalah titik awal dalam perjalanan belajarmu di nodejs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['node-apa-itu', 'Menginstal Node.js', [
     { t: 'p', x: 'Unduh dan instal Node.js dari nodejs.org. npm (Node Package Manager) terinstal bersama Node.js dan digunakan untuk mengelola paket dan dependensi proyek.' },
     { t: 'code', lang: 'bash', x: 'node --version\\nnpm --version\\nnpm init -y\\nnpm install express' },
@@ -1248,11 +1558,13 @@ const LESSONS = [
     { t: 'tip', x: 'ES Modules (import/export) juga didukung Node.js dengan menambahkan \"type\": \"module\" di package.json.' },
   ], 3],
   ['node-apa-itu', 'Kesalahan Umum: Callback Hell', [
-    { t: 'p', x: 'Callback hell terjadi ketika banyak fungsi bersarang karena operasi asynchronous. Kode menjadi sulit dibaca dan dipelihara.' },
-    { t: 'list', items: ['Terlalu banyak fungsi bersarang', 'Sulit menangani error di setiap lapisan', 'Alur logika menjadi membandel', 'Sulit melakukan debug'] },
-    { t: 'tip', x: 'Gunakan Promise dan async/await untuk menghindari callback hell dan membuat kode asynchronous lebih linear.' },
-  ], 3],
-  // --- modul-dan-npm ---
+            {t:'p',x:'Kesalahan Umum: Callback Hell adalah kesalahan yang sering dilakukan pemula saat belajar nodejs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Callback Hell karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Callback Hell sering terjadi pada pemula','Cara mudah menghindari Callback Hell','Tanda bahwa kamu mengalami Callback Hell','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Callback Hell\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Callback Hell. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Callback Hell sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['modul-dan-npm', 'Mengelola Paket dengan npm', [
     { t: 'p', x: 'npm adalah manajer paket bawaan Node.js. Kamu dapat menginstal, memperbarui, dan menghapus pustaka pihak ketiga dengan perintah npm install dan npm uninstall.' },
     { t: 'code', lang: 'bash', x: 'npm install express\\nnpm install lodash --save\\nnpm uninstall paket lama\\nnpm list' },
@@ -1260,21 +1572,29 @@ const LESSONS = [
     { t: 'tip', x: 'Jangan commit folder node_modules ke Git. Tambahkan ke .gitignore dan biarkan orang lain menjalankan npm install.' },
   ], 3],
   ['modul-dan-npm', 'package.json dan package-lock.json', [
-    { t: 'p', x: 'package.json adalah manifest proyek yang mencatat nama, versi, skrip, dan dependensi. package.lock.json mengunci versi dependensi agar instalasi konsisten di semua mesin.' },
-    { t: 'code', lang: 'json', x: '{\\n  \"name\": \"aplikasi-saya\",\\n  \"version\": \"1.0.0\",\\n  \"dependencies\": {\\n    \"express\": \"^4.18.2\"\\n  },\\n  \"scripts\": {\\n    \"start\": \"node index.js\"\\n  }\\n}' },
-    { t: 'tip', x: 'Selalu commit package-lock.json ke Git untuk memastikan semua pengembang menggunakan versi paket yang sama.' },
-  ], 3],
+            {t:'p',x:'package.json dan package-lock.json adalah konsep dasar dalam nodejs-dasar. Bayangkan seperti seperti dapur restoran yang memproses pesanan pelanggan satu per satu. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai package.json dan package-lock.json akan membantu kamu membangun dasar yang kuat dalam nodejs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari package.json dan package-lock.json','Manfaat memahami package.json dan package-lock.json untuk pemula','Langkah pertama untuk mulai belajar package.json dan package-lock.json','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: package.json dan package-lock.json\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar package.json dan package-lock.json. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: package.json dan package-lock.json adalah titik awal dalam perjalanan belajarmu di nodejs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['modul-dan-npm', 'Skrip npm', [
-    { t: 'p', x: 'Skrip di package.json memungkinkan kamu menjalankan perintah umum dengan satu perintah pendek, seperti npm start untuk menjalankan server atau npm dev untuk pengembangan.' },
-    { t: 'code', lang: 'json', x: '"scripts": {\\n  \"start\": \"node index.js\",\\n  \"dev\": \"nodemon index.js\",\\n  \"test\": \"jest\"\\n}' },
-    { t: 'tip', x: 'Gunakan nodemon selama pengembangan agar server restart otomatis saat file berubah.' },
-  ], 3],
+            {t:'p',x:'Skrip npm adalah konsep dasar dalam nodejs-dasar. Bayangkan seperti seperti dapur restoran yang memproses pesanan pelanggan satu per satu. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Skrip npm akan membantu kamu membangun dasar yang kuat dalam nodejs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Skrip npm','Manfaat memahami Skrip npm untuk pemula','Langkah pertama untuk mulai belajar Skrip npm','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Skrip npm\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Skrip npm. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Skrip npm adalah titik awal dalam perjalanan belajarmu di nodejs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['modul-dan-npm', 'Kesalahan Umum: Modul Tidak Ditemukan', [
-    { t: 'p', x: 'Error \"module not found\" biasanya terjadi karena paket belum diinstal atau path impor salah. Pastikan npm install telah dijalankan dan nama paket benar.' },
-    { t: 'list', items: ['Paket belum diinstal (jalankan npm install)', 'Nama paket salah ditulis', 'Path impor tidak benar', 'Folder node_modules dihapus'] },
-    { t: 'tip', x: 'Hapus node_modules dan package-lock.json, lalu jalankan npm install lagi jika masalah berlanjut.' },
-  ], 3],
-  // --- rest-api ---
+            {t:'p',x:'Kesalahan Umum: Modul Tidak Ditemukan adalah kesalahan yang sering dilakukan pemula saat belajar nodejs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Modul Tidak Ditemukan karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Modul Tidak Ditemukan sering terjadi pada pemula','Cara mudah menghindari Modul Tidak Ditemukan','Tanda bahwa kamu mengalami Modul Tidak Ditemukan','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Modul Tidak Ditemukan\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Modul Tidak Ditemukan. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Modul Tidak Ditemukan sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['rest-api', 'Membangun REST API dengan Express', [
     { t: 'p', x: 'Express adalah framework web untuk Node.js yang memudahkan pembuatan REST API. Kamu dapat mendefinisikan route untuk menangani permintaan HTTP seperti GET, POST, PUT, dan DELETE.' },
     { t: 'code', lang: 'js', x: 'const express = require(\"express\");\\nconst app = express();\\napp.use(express.json());\\n\\napp.get(\"/sapa\", (req, res) => {\\n  res.json({ pesan: \"Halo!\" });\\n});\\n\\napp.listen(3000, () => console.log(\"Server di port 3000\"));' },
@@ -1288,16 +1608,21 @@ const LESSONS = [
     { t: 'tip', x: 'Validasi parameter sebelum menggunakannya untuk mencegah error atau kerentanan keamanan.' },
   ], 3],
   ['rest-api', 'Mengirim dan Menerima JSON', [
-    { t: 'p', x: 'REST API umumnya bertukar data dalam format JSON. Express menyediakan res.json() untuk mengirim JSON dan express.json() untuk membaca JSON dari permintaan.' },
-    { t: 'code', lang: 'js', x: 'app.post(\"/pengguna\", (req, res) => {\\n  const data = req.body;\\n  res.status(201).json({ sukses: true, data });\\n});' },
-    { t: 'tip', x: 'Selalu sertakan status code yang tepat: 200 untuk sukses, 201 untuk dibuat, 400 untuk kesalahan klien, 500 untuk kesalahan server.' },
-  ], 3],
+            {t:'p',x:'Mengirim dan Menerima JSON adalah konsep dasar dalam nodejs-dasar. Bayangkan seperti seperti dapur restoran yang memproses pesanan pelanggan satu per satu. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengirim dan Menerima JSON akan membantu kamu membangun dasar yang kuat dalam nodejs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengirim dan Menerima JSON','Manfaat memahami Mengirim dan Menerima JSON untuk pemula','Langkah pertama untuk mulai belajar Mengirim dan Menerima JSON','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengirim dan Menerima JSON\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengirim dan Menerima JSON. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengirim dan Menerima JSON adalah titik awal dalam perjalanan belajarmu di nodejs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['rest-api', 'Kesalahan Umum: Lupa Middleware JSON', [
-    { t: 'p', x: 'Tanpa app.use(express.json()), Express tidak bisa membaca body permintaan JSON dan req.body akan undefined. Ini menyebabkan error saat menangani POST atau PUT.' },
-    { t: 'list', items: ['Lupa menambahkan express.json()', 'Mengirim data bukan JSON dari klien', 'Mengakses req.body sebelum middleware dijalankan', 'Tidak mengatur header Content-Type: application/json'] },
-    { t: 'tip', x: 'Tempatkan app.use(express.json()) sebelum definisi route yang membutuhkan body JSON.' },
-  ], 3],
-  // --- database-koneksi ---
+            {t:'p',x:'Kesalahan Umum: Lupa Middleware JSON adalah kesalahan yang sering dilakukan pemula saat belajar nodejs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa Middleware JSON karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa Middleware JSON sering terjadi pada pemula','Cara mudah menghindari Lupa Middleware JSON','Tanda bahwa kamu mengalami Lupa Middleware JSON','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa Middleware JSON\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa Middleware JSON. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa Middleware JSON sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['database-koneksi', 'Koneksi ke Database', [
     { t: 'p', x: 'Node.js dapat terhubung ke berbagai database, termasuk PostgreSQL, MySQL, MongoDB, dan SQLite. Gunakan driver atau ORM yang sesuai dengan database yang kamu pilih.' },
     { t: 'code', lang: 'js', x: 'const { Pool } = require(\"pg\");\\nconst pool = new Pool({\\n  user: \"postgres\",\\n  host: \"localhost\",\\n  database: \"eduverse\",\\n  password: \"rahasia\",\\n  port: 5432,\\n});\\n\\npool.query(\"SELECT * FROM kursus\", (err, res) => {\\n  console.log(res.rows);\\n});' },
@@ -1305,25 +1630,29 @@ const LESSONS = [
     { t: 'tip', x: 'Jangan simpan kata sandi database langsung dalam kode. Gunakan variabel lingkungan.' },
   ], 3],
   ['database-koneksi', 'Query Parameterized', [
-    { t: 'p', x: 'Gunakan query parameterized untuk mencegah SQL Injection. Jangan gabungkan input pengguna langsung ke dalam string query SQL.' },
-    { t: 'code', lang: 'js', x: `// Tidak aman
-pool.query("SELECT * FROM pengguna WHERE nama = '" + input + "'");
-
-// Aman (parameterized)
-pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
-    { t: 'tip', x: 'Parameterized query memisahkan perintah SQL dari data input, sehingga input tidak dapat dijalankan sebagai perintah.' },
-  ], 3],
+            {t:'p',x:'Query Parameterized adalah konsep dasar dalam nodejs-dasar. Bayangkan seperti seperti dapur restoran yang memproses pesanan pelanggan satu per satu. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Query Parameterized akan membantu kamu membangun dasar yang kuat dalam nodejs-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Query Parameterized','Manfaat memahami Query Parameterized untuk pemula','Langkah pertama untuk mulai belajar Query Parameterized','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Query Parameterized\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Query Parameterized. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Query Parameterized adalah titik awal dalam perjalanan belajarmu di nodejs-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['database-koneksi', 'Kesalahan Umum: SQL Injection', [
-    { t: 'p', x: 'SQL Injection terjadi ketika input pengguna dimasukkan langsung ke query SQL, memungkinkan penyerang mengakses atau merusak database.' },
-    { t: 'list', items: ['Menggabungkan input ke string query', 'Tidak memvalidasi input pengguna', 'Menggunakan query dinamis tanpa parameter', 'Memberikan akses penuh database ke aplikasi'] },
-    { t: 'tip', x: 'Selalu gunakan parameterized query atau ORM yang menangani escaping otomatis.' },
-  ], 3],
-  // --- php-dasar ---
+            {t:'p',x:'Kesalahan Umum: SQL Injection adalah kesalahan yang sering dilakukan pemula saat belajar nodejs-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di SQL Injection karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa SQL Injection sering terjadi pada pemula','Cara mudah menghindari SQL Injection','Tanda bahwa kamu mengalami SQL Injection','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: SQL Injection\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami SQL Injection. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari SQL Injection sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['php-apa-itu', 'Apa itu PHP', [
-    { t: 'p', x: 'PHP adalah bahasa skrip sisi server yang populer untuk pengembangan web. PHP dijalankan di server dan mengirim hasil HTML ke browser.' },
-    { t: 'list', items: ['Berjalan di server, bukan browser', 'Cocok untuk pembuatan halaman web dinamis', 'Bersembunyi di balik HTML yang dikirim ke browser', 'Banyak digunakan dalam WordPress dan Laravel'] },
-    { t: 'tip', x: 'File PHP biasanya memiliki akhiran .php dan dieksekusi oleh server web yang mendukung PHP.' },
-  ], 3],
+            {t:'p',x:'Apa itu PHP adalah konsep dasar dalam php-dasar. Bayangkan seperti seperti pengatur di balik layar website yang memproses formulir dan database. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu PHP akan membantu kamu membangun dasar yang kuat dalam php-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu PHP','Manfaat memahami Apa itu PHP untuk pemula','Langkah pertama untuk mulai belajar Apa itu PHP','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu PHP\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu PHP. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu PHP adalah titik awal dalam perjalanan belajarmu di php-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['php-apa-itu', 'Menginstal PHP', [
     { t: 'p', x: 'Instal PHP bersama server web seperti Apache atau Nginx. Untuk pengembangan lokal, gunakan paket seperti XAMPP, WAMP, atau Laravel Sail yang sudah memuat PHP, database, dan server web.' },
     { t: 'code', lang: 'bash', x: '# Contoh di Linux\\nsudo apt install php apache2\\n\\n# Atau gunakan XAMPP untuk Windows/Mac/Linux' },
@@ -1337,16 +1666,21 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Tag penutup ?> boleh diabaikan di file yang hanya berisi kode PHP untuk mencegah spasi di luar sengaja.' },
   ], 3],
   ['php-apa-itu', 'Kesalahan Umum: Lupa Titik Koma', [
-    { t: 'p', x: 'PHP sangat sensitif terhadap titik koma di akhir setiap pernyataan. Melupakan titik koma akan menyebabkan error sintaks dan skrip tidak akan berjalan.' },
-    { t: 'list', items: ['Lupa titik koma di akhir baris', 'Tanda kurung kurawal tidak seimbang', 'Variabel tanpa tanda dolar', 'Kutipan string tidak pasangan'] },
-    { t: 'tip', x: 'Aktifkan error_reporting di development untuk melihat pesan error yang membantu debugging.' },
-  ], 3],
- // --- form-dan-database ---
+            {t:'p',x:'Kesalahan Umum: Lupa Titik Koma adalah kesalahan yang sering dilakukan pemula saat belajar php-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa Titik Koma karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa Titik Koma sering terjadi pada pemula','Cara mudah menghindari Lupa Titik Koma','Tanda bahwa kamu mengalami Lupa Titik Koma','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa Titik Koma\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa Titik Koma. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa Titik Koma sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
 ['form-dan-database', 'Membuat Form HTML dengan PHP', [
-    { t: 'p', x: 'Form HTML mengumpulkan input dari pengguna, lalu diproses di server dengan PHP. Form butuh atribut action dan method.' },
-    { t: 'list', items: ['Form mengumpulkan input pengguna', 'PHP memproses data di server', 'Butuh atribut action dan method'] },
-    { t: 'tip', x: 'Gunakan method POST untuk data sensitif seperti password.' },
-], 4],
+            {t:'p',x:'Membuat Form HTML dengan PHP adalah konsep dasar dalam php-dasar. Bayangkan seperti seperti pengatur di balik layar website yang memproses formulir dan database. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Membuat Form HTML dengan PHP akan membantu kamu membangun dasar yang kuat dalam php-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Membuat Form HTML dengan PHP','Manfaat memahami Membuat Form HTML dengan PHP untuk pemula','Langkah pertama untuk mulai belajar Membuat Form HTML dengan PHP','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Membuat Form HTML dengan PHP\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Membuat Form HTML dengan PHP. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Membuat Form HTML dengan PHP adalah titik awal dalam perjalanan belajarmu di php-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['form-dan-database', 'Mengirim Data Form ke Server', [
     { t: 'p', x: 'Data form diterima PHP melalui superglobal $_POST atau $_GET tergantung method form. Nilai diakses dengan nama input.' },
     { t: 'code', lang: 'php', x: '<?php\\n\\n$nama = $_POST[\\"nama\\"];\\n\\n$email = $_POST[\\"email\\"];\\n\\n\\necho \\"Halo, $nama\\";\\n\\n?>' },
@@ -1354,21 +1688,29 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Cek apakah data dikirim dengan isset() sebelum mengakses.' },
 ], 4],
 ['form-dan-database', 'Koneksi PHP ke Database', [
-    { t: 'p', x: 'PHP terhubung ke database dengan mysqli atau PDO. Butuh host, nama database, username, dan password.' },
-    { t: 'list', items: ['mysqli atau PDO untuk koneksi', 'Host, nama DB, username, password', 'Koneksi dicek sebelum query'] },
-    { t: 'tip', x: 'Jangan simpan password database langsung di kode yang dipublikasikan.' },
-], 4],
+            {t:'p',x:'Koneksi PHP ke Database adalah konsep dasar dalam php-dasar. Bayangkan seperti seperti pengatur di balik layar website yang memproses formulir dan database. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Koneksi PHP ke Database akan membantu kamu membangun dasar yang kuat dalam php-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Koneksi PHP ke Database','Manfaat memahami Koneksi PHP ke Database untuk pemula','Langkah pertama untuk mulai belajar Koneksi PHP ke Database','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Koneksi PHP ke Database\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Koneksi PHP ke Database. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Koneksi PHP ke Database adalah titik awal dalam perjalanan belajarmu di php-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['form-dan-database', 'Menyimpan Data Form ke Database', [
-    { t: 'p', x: 'Data form disimpan ke tabel database dengan perintah INSERT. Data harus dibersihkan dulu dari karakter berbahaya.' },
-    { t: 'list', items: ['Gunakan perintah INSERT', 'Bersihkan data dari karakter berbahaya', 'Periksa apakah simpan berhasil'] },
-    { t: 'tip', x: 'Gunakan prepared statement untuk mencegah SQL injection.' },
-], 4],
- // --- session-dan-keamanan ---
+            {t:'p',x:'Menyimpan Data Form ke Database adalah konsep dasar dalam php-dasar. Bayangkan seperti seperti pengatur di balik layar website yang memproses formulir dan database. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menyimpan Data Form ke Database akan membantu kamu membangun dasar yang kuat dalam php-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menyimpan Data Form ke Database','Manfaat memahami Menyimpan Data Form ke Database untuk pemula','Langkah pertama untuk mulai belajar Menyimpan Data Form ke Database','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menyimpan Data Form ke Database\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menyimpan Data Form ke Database. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menyimpan Data Form ke Database adalah titik awal dalam perjalanan belajarmu di php-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['session-dan-keamanan', 'Apa itu Session PHP', [
-    { t: 'p', x: 'Session menyimpan data pengguna di server selama kunjungan. Data tersimpan di server, hanya ID session yang dikirim ke browser.' },
-    { t: 'list', items: ['Data disimpan di server', 'Tahan selama kunjungan pengguna', 'Hanya ID session ke browser'] },
-    { t: 'tip', x: 'Mulai session dengan session_start() di setiap halaman.' },
-], 3],
+            {t:'p',x:'Apa itu Session PHP adalah konsep dasar dalam php-dasar. Bayangkan seperti seperti pengatur di balik layar website yang memproses formulir dan database. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Session PHP akan membantu kamu membangun dasar yang kuat dalam php-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Session PHP','Manfaat memahami Apa itu Session PHP untuk pemula','Langkah pertama untuk mulai belajar Apa itu Session PHP','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Session PHP\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Session PHP. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Session PHP adalah titik awal dalam perjalanan belajarmu di php-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['session-dan-keamanan', 'Membuat dan Menggunakan Session', [
     { t: 'p', x: 'Mulai session, simpan data di $_SESSION, baca di halaman lain, dan hancurkan dengan session_destroy() saat logout.' },
     { t: 'code', lang: 'php', x: '<?php\\n\\nsession_start();\\n\\n$_SESSION[\\"user\\"] = \\"Rafi\\";\\n\\n\\n// halaman lain\\n\\necho $_SESSION[\\"user\\"];\\n\\n?>' },
@@ -1376,17 +1718,21 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Panggil session_start() di awal setiap halaman yang butuh session.' },
 ], 3],
 ['session-dan-keamanan', 'Keamanan Dasar PHP', [
-    { t: 'p', x: 'Jangan percaya data dari pengguna sepenuhnya. Bersihkan dan validasi semua input sebelum diproses atau disimpan.' },
-    { t: 'list', items: ['Jangan percaya input pengguna sepenuhnya', 'Bersihkan dan validasi semua input', 'Hindari menampilkan error ke pengguna'] },
-    { t: 'tip', x: 'Tampilkan pesan error umum, simpan detailnya di log server.' },
-], 3],
+            {t:'p',x:'Keamanan Dasar PHP adalah konsep dasar dalam php-dasar. Bayangkan seperti seperti pengatur di balik layar website yang memproses formulir dan database. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Keamanan Dasar PHP akan membantu kamu membangun dasar yang kuat dalam php-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Keamanan Dasar PHP','Manfaat memahami Keamanan Dasar PHP untuk pemula','Langkah pertama untuk mulai belajar Keamanan Dasar PHP','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Keamanan Dasar PHP\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Keamanan Dasar PHP. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Keamanan Dasar PHP adalah titik awal dalam perjalanan belajarmu di php-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
 ['session-dan-keamanan', 'Melindungi dari Serangan Umum', [
-    { t: 'p', x: 'Serangan umum seperti SQL injection dan XSS dapat dicegah dengan prepared statement dan escaping output.' },
-    { t: 'list', items: ['Prepared statement mencegah SQL injection', 'Escaping output mencegah XSS', 'Validasi input di sisi server'] },
-    { t: 'tip', x: 'Selalu assume input pengguna berbahaya sampai dibuktikan sebaliknya.' },
-], 3],
-
-  // --- variabel-dan-fungsi ---
+            {t:'p',x:'Melindungi dari Serangan Umum adalah konsep dasar dalam php-dasar. Bayangkan seperti seperti pengatur di balik layar website yang memproses formulir dan database. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Melindungi dari Serangan Umum akan membantu kamu membangun dasar yang kuat dalam php-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Melindungi dari Serangan Umum','Manfaat memahami Melindungi dari Serangan Umum untuk pemula','Langkah pertama untuk mulai belajar Melindungi dari Serangan Umum','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Melindungi dari Serangan Umum\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Melindungi dari Serangan Umum. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Melindungi dari Serangan Umum adalah titik awal dalam perjalanan belajarmu di php-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['variabel-dan-fungsi', 'Variabel dan Tipe Data', [
     { t: 'p', x: 'PHP memiliki beberapa tipe data: string, int, float, boolean, array, object, null, dan resource. Tipe data biasanya ditentukan otomatis berdasarkan nilai yang diassign.' },
     { t: 'code', lang: 'php', x: '<?php\\n$nama = \"Rafi\";        // string\\n$umur = 20;            // int\\n$nilai = 85.5;         // float\\n$aktif = true;         // boolean\\n$hobi = array(\"coding\", \"membaca\"); // array\\n?>' },
@@ -1406,17 +1752,21 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Berikan nama fungsi yang menggambarkan apa yang dilakukan, misal hitungTotal atau cekLogin.' },
   ], 3],
   ['variabel-dan-fungsi', 'Kesalahan Umum: Variabel Tidak Didefinisikan', [
-    { t: 'p', x: 'Mengakses variabel yang belum didefinisikan akan menghasilkan peringatan PHP. Pastikan variabel sudah diinisialisasi sebelum digunakan.' },
-    { t: 'list', items: ['Mengakses variabel sebelum diassign', 'Typo dalam nama variabel', 'Variabel berada di luar cakupan (scope)', 'Mengakses indeks array yang tidak ada'] },
-    { t: 'tip', x: 'Gunakan isset() untuk memeriksa apakah variabel sudah diinisialisasi sebelum diakses.' },
-  ], 3],
-
-// --- laravel-dasar ---
+            {t:'p',x:'Kesalahan Umum: Variabel Tidak Didefinisikan adalah kesalahan yang sering dilakukan pemula saat belajar php-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Variabel Tidak Didefinisikan karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Variabel Tidak Didefinisikan sering terjadi pada pemula','Cara mudah menghindari Variabel Tidak Didefinisikan','Tanda bahwa kamu mengalami Variabel Tidak Didefinisikan','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Variabel Tidak Didefinisikan\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Variabel Tidak Didefinisikan. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Variabel Tidak Didefinisikan sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['laravel-apa-itu', 'Apa itu Laravel', [
-    { t: 'p', x: 'Laravel adalah framework PHP modern untuk pengembangan web. Laravel menyediakan alat bawaan untuk routing, database (Eloquent), templating (Blade), dan autentikasi, sehingga pembuatan aplikasi menjadi lebih cepat dan terstruktur.' },
-    { t: 'list', items: ['MVC (Model-View-Controller)', 'Eloquent ORM untuk database', 'Blade templating engine', 'Routing yang ekspresif', 'Autentikasi bawaan', 'Migrasi database'] },
-    { t: 'tip', x: 'Laravel adalah salah satu framework PHP paling populer dan banyak digunakan dalam industri.' },
-  ], 3],
+            {t:'p',x:'Apa itu Laravel adalah konsep dasar dalam laravel-dasar. Bayangkan seperti seperti bingkai rumah jadi yang sudah lengkap dengan instalasi listrik dan air. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Laravel akan membantu kamu membangun dasar yang kuat dalam laravel-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Laravel','Manfaat memahami Apa itu Laravel untuk pemula','Langkah pertama untuk mulai belajar Apa itu Laravel','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Laravel\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Laravel. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Laravel adalah titik awal dalam perjalanan belajarmu di laravel-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['laravel-apa-itu', 'Menginstal Laravel', [
     { t: 'p', x: 'Laravel memerlukan PHP dan Composer. Composer adalah manajer dependensi untuk PHP, mirip seperti npm untuk Node.js.' },
     { t: 'code', lang: 'bash', x: 'composer create-project laravel/laravel belajar-laravel\\ncd belajar-laravel\\nphp artisan serve' },
@@ -1424,16 +1774,21 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'php artisan adalah command-line tool bawaan Laravel untuk berbagai tugas pengembangan.' },
   ], 3],
   ['laravel-apa-itu', 'Arsitektur MVC', [
-    { t: 'p', x: 'MVC membagi aplikasi menjadi tiga bagian: Model (data dan logika bisnis), View (tampilan), dan Controller (penghubung antara Model dan View).' },
-    { t: 'list', items: ['Model: mengelola data dan berinteraksi dengan database', 'View: menampilkan tampilan kepada pengguna', 'Controller: menerima request, memproses, dan mengirim response', 'Memisahkan tanggung jawab agar kode mudah dirawat'] },
-    { t: 'tip', x: 'Jangan menaruh logika bisnis terlalu banyak di Controller. Pindahkan ke Model atau Service.' },
-  ], 3],
+            {t:'p',x:'Arsitektur MVC adalah konsep dasar dalam laravel-dasar. Bayangkan seperti seperti bingkai rumah jadi yang sudah lengkap dengan instalasi listrik dan air. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Arsitektur MVC akan membantu kamu membangun dasar yang kuat dalam laravel-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Arsitektur MVC','Manfaat memahami Arsitektur MVC untuk pemula','Langkah pertama untuk mulai belajar Arsitektur MVC','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Arsitektur MVC\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Arsitektur MVC. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Arsitektur MVC adalah titik awal dalam perjalanan belajarmu di laravel-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['laravel-apa-itu', 'Kesalahan Umum: Lupa Menjalankan Migrasi', [
-    { t: 'p', x: 'Migrasi adalah cara Laravel untuk membuat dan mengubah struktur database. Jika lupa menjalankan php artisan migrate, tabel tidak akan dibuat dan aplikasi akan error saat mengakses database.' },
-    { t: 'list', items: ['Lupa jalankan php artisan migrate', 'Migrasi tidak cocok dengan struktur database', 'Mengubah tabel secara manual tanpa migrasi', 'Tidak mencatat migrasi dalam kontrol versi'] },
-    { t: 'tip', x: 'Selalu jalankan migrasi setelah clone proyek atau menambahkan migrasi baru.' },
-  ], 3],
-  // --- eloquent-dan-blade ---
+            {t:'p',x:'Kesalahan Umum: Lupa Menjalankan Migrasi adalah kesalahan yang sering dilakukan pemula saat belajar laravel-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa Menjalankan Migrasi karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa Menjalankan Migrasi sering terjadi pada pemula','Cara mudah menghindari Lupa Menjalankan Migrasi','Tanda bahwa kamu mengalami Lupa Menjalankan Migrasi','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa Menjalankan Migrasi\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa Menjalankan Migrasi. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa Menjalankan Migrasi sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['eloquent-dan-blade', 'Eloquent ORM', [
     { t: 'p', x: 'Eloquent adalah ORM bawaan Laravel yang memungkinkan kamu berinteraksi dengan database menggunakan sintaks PHP, bukan query SQL mentah.' },
     { t: 'code', lang: 'php', x: 'use App\Models\\Siswa;\\n\\n$siswa = Siswa::all();\\n$siswaBaru = Siswa::create([\\n  \"nama\" => \"Rafi\",\\n  \"email\" => \"rafi@example.com\",\\n]);\\n\\n$siswaDitemukan = Siswa::find(1);' },
@@ -1441,10 +1796,13 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Eloquent membuat kode database lebih mudah dibaca dan dipelihara dibanding query SQL mentah.' },
   ], 4],
   ['eloquent-dan-blade', 'Relasi Antar Model', [
-    { t: 'p', x: 'Eloquent mendukung berbagai relasi: one-to-one, one-to-many, dan many-to-many. Relasi memungkinkan pengambilan data terkait dengan mudah.' },
-    { t: 'code', lang: 'php', x: '// Siswa punya banyak nilai\\nclass Siswa extends Model {\\n  public function nilai() {\\n    return $this->hasMany(Nilai::class);\\n  }\\n}\\n\\n// Mengakses nilai siswa\\n$siswa = Siswa::find(1);\\n$nilaiSiswa = $siswa->nilai;' },
-    { t: 'tip', x: 'Gunakan eager loading (with) untuk mengambil data terkait sekaligus dan menghindari N+1 query problem.' },
-  ], 3],
+            {t:'p',x:'Relasi Antar Model adalah konsep dasar dalam laravel-dasar. Bayangkan seperti seperti bingkai rumah jadi yang sudah lengkap dengan instalasi listrik dan air. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Relasi Antar Model akan membantu kamu membangun dasar yang kuat dalam laravel-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Relasi Antar Model','Manfaat memahami Relasi Antar Model untuk pemula','Langkah pertama untuk mulai belajar Relasi Antar Model','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Relasi Antar Model\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Relasi Antar Model. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Relasi Antar Model adalah titik awal dalam perjalanan belajarmu di laravel-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['eloquent-dan-blade', 'Blade Templating', [
     { t: 'p', x: 'Blade adalah mesin templating Laravel. Blade memungkinkan kamu menulis HTML dengan direktif PHP yang ringkas, seperti @if, @foreach, dan @extends.' },
     { t: 'code', lang: 'php', x: '{{-- layout.blade.php --}}\\n<html>\\n  <body>@yield(\"konten\")</body>\\n</html>\\n\\n{{-- halaman.blade.php --}}\\n@extends(\"layout\")\\n@section(\"konten\")\\n  <h1>Selamat Datang</h1>\\n@endsection' },
@@ -1452,11 +1810,13 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Gunakan double kurung kurawal {{ }} untuk mencetak variabel dengan otomatis di-escape (amankan dari XSS).' },
   ], 3],
   ['eloquent-dan-blade', 'Kesalahan Umum: N+1 Query Problem', [
-    { t: 'p', x: 'N+1 terjadi ketika aplikasi menjalankan satu query untuk mengambil data utama, lalu query tambahan untuk setiap item terkait. Ini membuat aplikasi lama saat data banyak.' },
-    { t: 'list', items: ['Mengakses relasi dalam perulangan tanpa eager loading', 'Setiap item memicu query database terpisah', 'Jumlah query bertambah seiring jumlah data', 'Kinerja aplikasi menurun drastis'] },
-    { t: 'tip', x: 'Gunakan Siswa::with(\"nilai\")->get() untuk memuat relasi sekaligus dalam satu query.' },
-  ], 3],
-  // --- routing-dan-migrasi ---
+            {t:'p',x:'Kesalahan Umum: N+1 Query Problem adalah kesalahan yang sering dilakukan pemula saat belajar laravel-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di N+1 Query Problem karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa N+1 Query Problem sering terjadi pada pemula','Cara mudah menghindari N+1 Query Problem','Tanda bahwa kamu mengalami N+1 Query Problem','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: N+1 Query Problem\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami N+1 Query Problem. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari N+1 Query Problem sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['routing-dan-migrasi', 'Routing Laravel', [
     { t: 'p', x: 'Routing menentukan bagaimana aplikasi merespons permintaan HTTP berdasarkan URL dan metode. Di Laravel, route didefinisikan di file routes/web.php atau routes/api.php.' },
     { t: 'code', lang: 'php', x: 'Route::get(\"/sapa\", function () {\\n  return \"Halo!\\";\\n});\\n\\nRoute::get(\"/pengguna/{id}\", [PenggunaController::class, \"tampilkan\"]);\\n\\nRoute::post(\"/pengguna\", [PenggunaController::class, \"simpan\"]);' },
@@ -1470,23 +1830,27 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Selalu buat migrasi untuk setiap perubahan struktur database, jangan mengubah tabel secara manual.' },
   ], 3],
   ['routing-dan-migrasi', 'Kesalahan Umum: Nama Tabel Tidak Cocok', [
-    { t: 'p', x: 'Eloquent secara otomatis mengasosiasikan model dengan tabel dalam bentuk jamak huruf kecil dari nama model. Jika nama tabel tidak sesuai, model akan mencari tabel yang salah.' },
-    { t: 'list', items: ['Model Siswa mencari tabel siswas secara otomatis', 'Gunakan properti $table untuk menentukan nama tabel secara manual', 'Nama tabel dalam huruf kecil dan jamak', 'Pastikan migrasi membuat tabel dengan nama yang sama'] },
-    { t: 'tip', x: 'Jika ingin nama tabel berbeda, tentukan secara eksplisit: protected $table = \"data_siswa\";' },
-  ], 3],
-  // --- proyek-mini (laravel) ---
+            {t:'p',x:'Kesalahan Umum: Nama Tabel Tidak Cocok adalah kesalahan yang sering dilakukan pemula saat belajar laravel-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Nama Tabel Tidak Cocok karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Nama Tabel Tidak Cocok sering terjadi pada pemula','Cara mudah menghindari Nama Tabel Tidak Cocok','Tanda bahwa kamu mengalami Nama Tabel Tidak Cocok','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Nama Tabel Tidak Cocok\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Nama Tabel Tidak Cocok. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Nama Tabel Tidak Cocok sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['proyek-mini', 'Proyek Mini: Blog Sederhana', [
     { t: 'p', x: 'Buat blog sederhana menggunakan Laravel. Kamu akan menerapkan routing, controller, Eloquent, Blade, dan migrasi dalam satu proyek nyata.' },
     { t: 'list', items: ['Buat model dan migrasi untuk tabel postingan', 'Buat controller untuk mengelola postingan', 'Buat route untuk halaman daftar dan detail postingan', 'Buat tampilan Blade untuk menampilkan postingan', 'Tambahkan fitur membuat, mengedit, dan menghapus postingan'] },
     { t: 'code', lang: 'php', x: 'php artisan make:model Postingan -m\\nphp artisan make:controller PostinganController --resource' },
     { t: 'tip', x: 'Gunakan flag --resource pada controller untuk menghasilkan semua metode CRUD secara otomatis.' },
   ], 5],
-  // --- codeigniter-dasar ---
   ['ci-apa-itu', 'Apa itu CodeIgniter', [
-    { t: 'p', x: 'CodeIgniter adalah framework PHP yang ringan dan cepat, cocok untuk pemula. CodeIgniter tidak mewajibkan struktur yang ketat dan mudah dipelajari untuk yang baru pertama kali belajar framework PHP.' },
-    { t: 'list', items: ['Ringan dan cepat', 'Tidak memerlukan konfigurasi berlebihan', 'Cocok untuk pemula', 'MVC yang sederhana', 'Dokumentasi yang baik'] },
-    { t: 'tip', x: 'CodeIgniter cocok untuk proyek kecil hingga menengah yang membutuhkan kecepatan dan kesederhanaan.' },
-  ], 3],
+            {t:'p',x:'Apa itu CodeIgniter adalah konsep dasar dalam codeigniter-dasar. Bayangkan seperti seperti bingkai pembuatan website yang ringan dan cepat dipelajari pemula. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu CodeIgniter akan membantu kamu membangun dasar yang kuat dalam codeigniter-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu CodeIgniter','Manfaat memahami Apa itu CodeIgniter untuk pemula','Langkah pertama untuk mulai belajar Apa itu CodeIgniter','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu CodeIgniter\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu CodeIgniter. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu CodeIgniter adalah titik awal dalam perjalanan belajarmu di codeigniter-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ci-apa-itu', 'Menginstal CodeIgniter', [
     { t: 'p', x: 'CodeIgniter dapat diinstal melalui Composer atau dengan mengunduh langsung dari situs resmi. Pastikan PHP dan server web sudah terinstal.' },
     { t: 'code', lang: 'bash', x: 'composer create-project codeigniter4/appstarter belajar-ci\\ncd belajar-ci\\nphp spark serve' },
@@ -1494,16 +1858,21 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'php spark adalah command-line tool bawaan CodeIgniter 4.' },
   ], 3],
   ['ci-apa-itu', 'MVC di CodeIgniter', [
-    { t: 'p', x: 'CodeIgniter mengikuti pola MVC: Model mengelola data, View menampilkan tampilan, dan Controller mengatur alur aplikasi.' },
-    { t: 'list', items: ['Controller menerima permintaan dari browser', 'Model berinteraksi dengan database', 'View menampilkan hasil kepada pengguna', 'Pemisahan antara logika dan tampilan'] },
-    { t: 'tip', x: 'Rename file Controller dengan huruf besar awal, misal Selamat.php, bukan selamat.php.' },
-  ], 3],
+            {t:'p',x:'MVC di CodeIgniter adalah konsep dasar dalam codeigniter-dasar. Bayangkan seperti seperti bingkai pembuatan website yang ringan dan cepat dipelajari pemula. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai MVC di CodeIgniter akan membantu kamu membangun dasar yang kuat dalam codeigniter-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari MVC di CodeIgniter','Manfaat memahami MVC di CodeIgniter untuk pemula','Langkah pertama untuk mulai belajar MVC di CodeIgniter','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: MVC di CodeIgniter\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar MVC di CodeIgniter. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: MVC di CodeIgniter adalah titik awal dalam perjalanan belajarmu di codeigniter-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ci-apa-itu', 'Kesalahan Umum: Case Sensitivity', [
-    { t: 'p', x: 'Pada sistem operasi Linux, nama file bersifat case-sensitive. Nama file Controller dan Model harus sesuai dengan cara mereka dipanggil di route dan pemanggilan.' },
-    { t: 'list', items: ['Nama file tidak sesuai dengan nama class', 'Controller dipanggil dengan huruf yang salah', 'File model tidak ada di folder yang benar', 'Namespace tidak cocok'] },
-    { t: 'tip', x: 'Selalu pastikan nama file, nama class, dan namespace sesuai persis.' },
-  ], 3],
-  // --- mvc-dasar ---
+            {t:'p',x:'Kesalahan Umum: Case Sensitivity adalah kesalahan yang sering dilakukan pemula saat belajar codeigniter-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Case Sensitivity karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Case Sensitivity sering terjadi pada pemula','Cara mudah menghindari Case Sensitivity','Tanda bahwa kamu mengalami Case Sensitivity','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Case Sensitivity\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Case Sensitivity. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Case Sensitivity sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['mvc-dasar', 'Controller dan Route', [
     { t: 'p', x: 'Controller di CodeIgniter menangani permintaan HTTP dan mengembalikan response. Route menghubungkan URL dengan metode di controller.' },
     { t: 'code', lang: 'php', x: '<?php\\nnamespace App\\Controllers;\\n\\nclass Selamat extends BaseController {\\n  public function index() {\\n    return view(\"selamat\");\\n  }\\n}\\n?>' },
@@ -1523,11 +1892,13 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: '$allowedFields mencegah mass assignment vulnerability dengan membatasi kolom yang bisa diisi.' },
   ], 3],
   ['mvc-dasar', 'Kesalahan Umum: Lupa esc() pada Output', [
-    { t: 'p', x: 'Mencetak variabel pengguna tanpa esc() dapat menyebabkan serangan XSS, di mana penyerang menyisipkan skrip berbahaya ke halaman.' },
-    { t: 'list', items: ['Mencetak variabel langsung tanpa esc()', 'Mengizinkan input HTML dari pengguna tanpa filter', 'Tidak membersihkan data sebelum disimpan', 'Mengizinkan skrip dalam komentar atau formulir'] },
-    { t: 'tip', x: 'Selalu gunakan esc() untuk output dan validasi input untuk keamanan.' },
-  ], 3],
-  // --- query-builder ---
+            {t:'p',x:'Kesalahan Umum: Lupa esc() pada Output adalah kesalahan yang sering dilakukan pemula saat belajar codeigniter-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa esc() pada Output karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa esc() pada Output sering terjadi pada pemula','Cara mudah menghindari Lupa esc() pada Output','Tanda bahwa kamu mengalami Lupa esc() pada Output','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa esc() pada Output\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa esc() pada Output. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa esc() pada Output sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['query-builder', 'Query Builder CodeIgniter', [
     { t: 'p', x: 'Query Builder CodeIgniter menyediakan metode untuk melakukan operasi database (select, insert, update, delete) tanpa menulis SQL mentah, sehingga kode lebih portabel dan aman.' },
     { t: 'code', lang: 'php', x: '$builder = $this->db->table(\"siswa\");\\n$siswa = $builder->get()->getResult();\\n\\n$builder->where(\"id\", 1);\\n$siswa = $builder->get()->getRow();' },
@@ -1535,10 +1906,13 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Query Builder otomatis menangani escaping, sehingga membantu mencegah SQL Injection.' },
   ], 3],
   ['query-builder', 'Mengambil Data dengan Query Builder', [
-    { t: 'p', x: 'Gunakan getResult() untuk mengambil semua data sebagai array objek, getRow() untuk satu baris, dan getFirstRow() untuk baris pertama.' },
-    { t: 'code', lang: 'php', x: '$builder = $this->db->table(\"siswa\");\\n$semua = $builder->get()->getResult();\\n$satu = $builder->where(\"id\", 5)->get()->getRow();\\n$pertama = $builder->orderBy(\"id\", \"ASC\")->get()->getFirstRow();' },
-    { t: 'tip', x: 'Gunakan getRow() jika hanya butuh satu data, dan getResult() untuk banyak data.' },
-  ], 3],
+            {t:'p',x:'Mengambil Data dengan Query Builder adalah konsep dasar dalam codeigniter-dasar. Bayangkan seperti seperti bingkai pembuatan website yang ringan dan cepat dipelajari pemula. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengambil Data dengan Query Builder akan membantu kamu membangun dasar yang kuat dalam codeigniter-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengambil Data dengan Query Builder','Manfaat memahami Mengambil Data dengan Query Builder untuk pemula','Langkah pertama untuk mulai belajar Mengambil Data dengan Query Builder','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengambil Data dengan Query Builder\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengambil Data dengan Query Builder. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengambil Data dengan Query Builder adalah titik awal dalam perjalanan belajarmu di codeigniter-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['query-builder', 'Menambah dan Memperbarui Data', [
     { t: 'p', x: 'insert() digunakan untuk menambah data baru ke tabel, sedangkan update() digunakan untuk memperbarui data yang sudah ada berdasarkan kondensi.' },
     { t: 'code', lang: 'php', x: '$this->db->table(\"siswa\")->insert([\\n  \"nama\" => \"Rafi\",\\n  \"email\" => \"rafi@example.com\"\\n]);\\n\\n$this->db->table(\"siswa\")\\n  ->where(\"id\", 1)\\n  ->update([\"nama\" => \"Rafi Updated\"]);' },
@@ -1546,19 +1920,19 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Selalu sertakan where() saat update agar tidak memperbarui seluruh tabel secara tidak sengaja.' },
   ], 3],
   ['query-builder', 'Kesalahan Umum: Lupa where pada Update', [
-    { t: 'p', x: 'Memanggil update() tanpa where() akan memperbarui semua baris di tabel, bukan hanya satu baris yang diinginkan. Ini dapat menyebabkan kehilangan data secara massal.' },
-    { t: 'list', items: ['Memanggil update tanpa where', 'Mengupdate semua baris tanpa sengaja', 'Tidak memeriksa apakah data ditemukan sebelum update', 'Menggunakan ID yang salah dalam where'] },
-    { t: 'tip', x: 'Selalu sertakan where() dengan ID atau kondisi unik sebelum memanggil update().' },
-  ], 3],
-  // --- proyek-mini (ci) ---
+            {t:'p',x:'Kesalahan Umum: Lupa where pada Update adalah kesalahan yang sering dilakukan pemula saat belajar codeigniter-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa where pada Update karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa where pada Update sering terjadi pada pemula','Cara mudah menghindari Lupa where pada Update','Tanda bahwa kamu mengalami Lupa where pada Update','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa where pada Update\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa where pada Update. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa where pada Update sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['proyek-mini', 'Proyek Mini: Manajemen Kontak', [
     { t: 'p', x: 'Buat aplikasi manajemen kontak sederhana menggunakan CodeIgniter. Kamu akan menerapkan MVC, Query Builder, dan validasi input dalam satu proyek nyata.' },
     { t: 'list', items: ['Buat model dan migrasi untuk tabel kontak', 'Buat controller untuk mengelola kontak', 'Buat route untuk halaman daftar, tambah, edit, dan hapus', 'Buat tampilan untuk formulir dan daftar kontak', 'Tambahkan validasi input sebelum menyimpan kontak'] },
     { t: 'code', lang: 'bash', x: 'php spark make:model Kontak --database\\nphp spark make:controller Kontak' },
     { t: 'tip', x: 'Gunakan validasi bawaan CodeIgniter untuk memastikan data kontak lengkap dan benar sebelum disimpan.' },
   ], 5],
-
-// --- android-dasar ---
   ['android-studio', 'Menginstal Android Studio', [
     { t: 'p', x: 'Android Studio adalah lingkungan pengembangan terintegrasi (IDE) resmi untuk membuat aplikasi Android. Unduh dari situs resmi Android Developer dan pilih versi yang cocok dengan sistem operasi komputermu.' },
     { t: 'code', lang: 'bash', x: '# Unduh Android Studio dari developer.android.com\\n# Jalankan installer dan ikuti petunjuk setup\\n# Pilih instalasi standar dan unduh komponen SDK yang diperlukan' },
@@ -1566,138 +1940,205 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Pilih versi stabil (stable) Android Studio agar fitur dan emulator berjalan lancar tanpa error berlebihan.' },
   ], 4],
   ['android-studio', 'Mengenal Antarmuka Android Studio', [
-    { t: 'p', x: 'Android Studio terdiri dari jendela editor kode, jendela pratinjau tampilan (layout explorer), panel struktur proyek, dan toolbar untuk menjalankan aplikasi di emulator atau perangkat fisik.' },
-    { t: 'list', items: ['Editor kode untuk menulis Kotlin atau Java', 'Layout editor untuk mengatur tampilan secara visual', 'Panel proyek untuk melihat semua file dan folder', 'Emulator untuk menguji aplikasi tanpa ponsel nyata'] },
-    { t: 'tip', x: 'Gunakan split view untuk melihat kode XML dan pratinjau tampilan secara bersamaan saat mendesain layout.' },
-  ], 3],
+            {t:'p',x:'Mengenal Antarmuka Android Studio adalah konsep dasar dalam android-dasar. Bayangkan seperti seperti merancang aplikasi untuk telepon genggam yang bisa diunduh dari toko aplikasi. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengenal Antarmuka Android Studio akan membantu kamu membangun dasar yang kuat dalam android-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengenal Antarmuka Android Studio','Manfaat memahami Mengenal Antarmuka Android Studio untuk pemula','Langkah pertama untuk mulai belajar Mengenal Antarmuka Android Studio','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengenal Antarmuka Android Studio\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengenal Antarmuka Android Studio. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengenal Antarmuka Android Studio adalah titik awal dalam perjalanan belajarmu di android-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['android-studio', 'Kesalahan Umum: Emulator Lambat atau Tidak Bisa Dijalankan', [
-    { t: 'p', x: 'Emulator Android memerlukan akselerasi perangkat keras (Intel HAXM atau Android Emulator Hypervisor Driver). Jika tidak diaktifkan, emulator akan sangat lambat atau tidak bisa dijalankan.' },
-    { t: 'list', items: ['Akselerasi perangkat keras tidak diaktifkan di BIOS', 'Versi emulator yang tidak sesuai dengan Android Studio', 'Memori yang dialokasikan ke emulator terlalu kecil', 'Menggunakan perangkat fisik tanpa mengaktifkan USB debugging'] },
-    { t: 'tip', x: 'Aktifkan virtualisasi di BIOS/UEFI komputer dan alokasikan minimal 2 GB RAM untuk emulator.' },
-  ], 3],
-  // --- kotlin-dasar ---
+            {t:'p',x:'Kesalahan Umum: Emulator Lambat atau Tidak Bisa Dijalankan adalah kesalahan yang sering dilakukan pemula saat belajar android-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Emulator Lambat atau Tidak Bisa Dijalankan karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Emulator Lambat atau Tidak Bisa Dijalankan sering terjadi pada pemula','Cara mudah menghindari Emulator Lambat atau Tidak Bisa Dijalankan','Tanda bahwa kamu mengalami Emulator Lambat atau Tidak Bisa Dijalankan','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Emulator Lambat atau Tidak Bisa Dijalankan\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Emulator Lambat atau Tidak Bisa Dijalankan. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Emulator Lambat atau Tidak Bisa Dijalankan sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['kotlin-dasar', 'Apa itu Kotlin', [
-    { t: 'p', x: 'Kotlin adalah bahasa pemrograman modern yang berjalan pada mesin Java (JVM) dan menjadi bahasa utama untuk pengembangan Android. Kotlin ringkas, aman null, dan kompatibel dengan Java.' },
-    { t: 'list', items: ['Bahasa resmi untuk pengembangan Android', 'Aman null (null safety) mencegah error umum', 'Ringkas dibandingkan Java', 'Kompatibel dengan kode Java yang sudah ada'] },
-    { t: 'tip', x: 'Kotlin dipilih Google sebagai bahasa prioritas Android sejak 2019.' },
-  ], 3],
+            {t:'p',x:'Apa itu Kotlin adalah konsep dasar dalam android-dasar. Bayangkan seperti seperti merancang aplikasi untuk telepon genggam yang bisa diunduh dari toko aplikasi. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Kotlin akan membantu kamu membangun dasar yang kuat dalam android-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Kotlin','Manfaat memahami Apa itu Kotlin untuk pemula','Langkah pertama untuk mulai belajar Apa itu Kotlin','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Kotlin\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Kotlin. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Kotlin adalah titik awal dalam perjalanan belajarmu di android-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['kotlin-dasar', 'Variabel dan Tipe Data', [
-    { t: 'p', x: 'Dalam Kotlin, gunakan val untuk nilai yang tidak dapat diubah (immutable) dan var untuk nilai yang dapat diubah (mutable). Tipe data biasanya dapat ditebak Kotlin secara otomatis.' },
-    { t: 'code', lang: 'kotlin', x: 'val nama = \"Rafi\"         // tidak dapat diubah\\nvar umur = 20           // dapat diubah\\nval skor: Int = 100     // tipe ditulis secara eksplisit\\nval aktif: Boolean = true' },
-    { t: 'tip', x: 'Selalu gunakan val secara default. Ubah ke var hanya jika nilai benar-benar perlu berubah.' },
-  ], 3],
+            {t:'p',x:'Variabel dan Tipe Data adalah konsep dasar dalam android-dasar. Bayangkan seperti seperti merancang aplikasi untuk telepon genggam yang bisa diunduh dari toko aplikasi. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Variabel dan Tipe Data akan membantu kamu membangun dasar yang kuat dalam android-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Variabel dan Tipe Data','Manfaat memahami Variabel dan Tipe Data untuk pemula','Langkah pertama untuk mulai belajar Variabel dan Tipe Data','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Variabel dan Tipe Data\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Variabel dan Tipe Data. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Variabel dan Tipe Data adalah titik awal dalam perjalanan belajarmu di android-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['kotlin-dasar', 'Fungsi', [
-    { t: 'p', x: 'Fungsi dalam Kotlin didefinisikan dengan kata kunci fun. Fungsi dapat menerima parameter dan mengembalikan nilai dengan tipe yang jelas.' },
-    { t: 'code', lang: 'kotlin', x: 'fun sapa(nama: String): String {\\n  return \"Halo, $nama\"\\n}\\n\\nfun tambah(a: Int, b: Int): Int {\\n  return a + b\\n}' },
-    { t: 'tip', x: 'Gunakan template string (dengan $) untuk menyisipkan variabel ke dalam teks dengan mudah.' },
-  ], 3],
+            {t:'p',x:'Fungsi adalah konsep dasar dalam android-dasar. Bayangkan seperti seperti merancang aplikasi untuk telepon genggam yang bisa diunduh dari toko aplikasi. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Fungsi akan membantu kamu membangun dasar yang kuat dalam android-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Fungsi','Manfaat memahami Fungsi untuk pemula','Langkah pertama untuk mulai belajar Fungsi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Fungsi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Fungsi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Fungsi adalah titik awal dalam perjalanan belajarmu di android-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['kotlin-dasar', 'Kesalahan Umum: NullPointerException', [
-    { t: 'p', x: 'Kotlin mencegah NullPointerException dengan sistem null safety. Variabel yang bisa null harus ditandai dengan tanda tanya (?), dan kamu harus memeriksa nilainya sebelum digunakan.' },
-    { t: 'list', items: ['Mengakses properti variabel yang mungkin null', 'Lupa menambahkan tanda ? pada tipe yang bisa null', 'Menggunakan operator !! secara sembarangan', 'Tidak memeriksa null sebelum memanggil fungsi'] },
-    { t: 'tip', x: 'Gunakan operator aman (?.) untuk mengakses properti hanya jika variabel tidak null.' },
-  ], 3],
-  // --- layout-dan-activity ---
+            {t:'p',x:'Kesalahan Umum: NullPointerException adalah kesalahan yang sering dilakukan pemula saat belajar android-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di NullPointerException karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa NullPointerException sering terjadi pada pemula','Cara mudah menghindari NullPointerException','Tanda bahwa kamu mengalami NullPointerException','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: NullPointerException\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami NullPointerException. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari NullPointerException sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['layout-dan-activity', 'Activity dan Siklus Hidup', [
-    { t: 'p', x: 'Activity adalah layar tunggal dalam aplikasi Android dengan antarmuka pengguna. Setiap activity memiliki siklus hidup: dibuat, dilanjutkan, dijeda, dihentikan, dan dihancurkan.' },
-    { t: 'list', items: ['onCreate: activity pertama kali dibuat', 'onStart: activity terlihat oleh pengguna', 'onResume: activity berinteraksi dengan pengguna', 'onPause, onStop, onDestroy: activity ditutup atau dihapus'] },
-    { t: 'tip', x: 'Simpan data sementara di onSaveInstanceState agar tidak hilang saat layar berputar.' },
-  ], 4],
+            {t:'p',x:'Activity dan Siklus Hidup adalah konsep dasar dalam android-dasar. Bayangkan seperti seperti merancang aplikasi untuk telepon genggam yang bisa diunduh dari toko aplikasi. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Activity dan Siklus Hidup akan membantu kamu membangun dasar yang kuat dalam android-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Activity dan Siklus Hidup','Manfaat memahami Activity dan Siklus Hidup untuk pemula','Langkah pertama untuk mulai belajar Activity dan Siklus Hidup','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Activity dan Siklus Hidup\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Activity dan Siklus Hidup. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Activity dan Siklus Hidup adalah titik awal dalam perjalanan belajarmu di android-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['layout-dan-activity', 'Layout XML Dasar', [
-    { t: 'p', x: 'Layout Android ditulis dalam XML. View adalah elemen tampilan (tombol, teks, input), dan ViewGroup adalah wadah yang menyusun view lain (LinearLayout, ConstraintLayout).' },
-    { t: 'code', lang: 'xml', x: '<LinearLayout\\n    android:layout_width=\"match_parent\"\\n    android:layout_height=\"match_parent\"\\n    android:orientation=\"vertical\">\\n    <TextView\\n        android:text=\"Halo, EduVerse\"\\n        android:layout_width=\"wrap_content\"\\n        android:layout_height=\"wrap_content\" />\\n</LinearLayout>' },
-    { t: 'tip', x: 'ConstraintLayout lebih fleksibel dan efisien untuk tata letak kompleks dibanding LinearLayout bersarang.' },
-  ], 3],
+            {t:'p',x:'Layout XML Dasar adalah konsep dasar dalam android-dasar. Bayangkan seperti seperti merancang aplikasi untuk telepon genggam yang bisa diunduh dari toko aplikasi. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Layout XML Dasar akan membantu kamu membangun dasar yang kuat dalam android-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Layout XML Dasar','Manfaat memahami Layout XML Dasar untuk pemula','Langkah pertama untuk mulai belajar Layout XML Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Layout XML Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Layout XML Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Layout XML Dasar adalah titik awal dalam perjalanan belajarmu di android-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['layout-dan-activity', 'Menghubungkan Layout ke Activity', [
-    { t: 'p', x: 'Di dalam onCreate activity, panggil setContentView() untuk menentukan layout XML yang akan ditampilkan. Gunakan findViewById() untuk mengakses elemen tampilan dari kode Kotlin.' },
-    { t: 'code', lang: 'kotlin', x: 'override fun onCreate(savedInstanceState: Bundle?) {\\n    super.onCreate(savedInstanceState)\\n    setContentView(R.layout.activity_main)\\n    val teks = findViewById<TextView>(R.id.teks_sambutan)\\n    teks.text = \"Selamat belajar\"\\n}' },
-    { t: 'tip', x: 'Pastikan id elemen di XML unik dalam satu layout agar findViewById tidak salah mencari.' },
-  ], 3],
+            {t:'p',x:'Menghubungkan Layout ke Activity adalah konsep dasar dalam android-dasar. Bayangkan seperti seperti merancang aplikasi untuk telepon genggam yang bisa diunduh dari toko aplikasi. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menghubungkan Layout ke Activity akan membantu kamu membangun dasar yang kuat dalam android-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menghubungkan Layout ke Activity','Manfaat memahami Menghubungkan Layout ke Activity untuk pemula','Langkah pertama untuk mulai belajar Menghubungkan Layout ke Activity','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menghubungkan Layout ke Activity\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menghubungkan Layout ke Activity. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menghubungkan Layout ke Activity adalah titik awal dalam perjalanan belajarmu di android-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['layout-dan-activity', 'Kesalahan Umum: Lupa setContentView', [
-    { t: 'p', x: 'Jika lupa memanggil setContentView() di onCreate, activity akan menampilkan layar kosong karena tidak ada layout yang dikaitkan.' },
-    { t: 'list', items: ['Lupa memanggil setContentView di onCreate', 'Mengakses view sebelum layout diatur', 'ID view tidak cocok antara XML dan kode', 'Menghubungkan layout yang salah ke activity'] },
-    { t: 'tip', x: 'setContentView harus dipanggil sebelum mengakses elemen tampilan dengan findViewById.' },
-  ], 3],
-  // --- publish-play-store ---
+            {t:'p',x:'Kesalahan Umum: Lupa setContentView adalah kesalahan yang sering dilakukan pemula saat belajar android-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa setContentView karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa setContentView sering terjadi pada pemula','Cara mudah menghindari Lupa setContentView','Tanda bahwa kamu mengalami Lupa setContentView','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa setContentView\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa setContentView. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa setContentView sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['publish-play-store', 'Mengonfigurasi Aplikasi untuk Rilis', [
-    { t: 'p', x: 'Sebelum memublikasikan ke Play Store, konfigurasikan applicationId, versi aplikasi (versionCode dan versionName), dan tanda tangan (signing) dalam file build.gradle.' },
-    { t: 'list', items: ['applicationId harus unik untuk setiap aplikasi', 'versionCode adalah angka versi internal yang naik setiap rilis', 'versionName adalah versi yang dilihat pengguna', 'Tanda tangan memastikan aplikasi aman dan milikmu'] },
-    { t: 'tip', x: 'Naikkan versionCode setiap kali mengunggah versi baru ke Play Console.' },
-  ], 3],
+            {t:'p',x:'Mengonfigurasi Aplikasi untuk Rilis adalah konsep dasar dalam android-dasar. Bayangkan seperti seperti merancang aplikasi untuk telepon genggam yang bisa diunduh dari toko aplikasi. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengonfigurasi Aplikasi untuk Rilis akan membantu kamu membangun dasar yang kuat dalam android-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengonfigurasi Aplikasi untuk Rilis','Manfaat memahami Mengonfigurasi Aplikasi untuk Rilis untuk pemula','Langkah pertama untuk mulai belajar Mengonfigurasi Aplikasi untuk Rilis','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengonfigurasi Aplikasi untuk Rilis\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengonfigurasi Aplikasi untuk Rilis. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengonfigurasi Aplikasi untuk Rilis adalah titik awal dalam perjalanan belajarmu di android-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['publish-play-store', 'Membuat File AAB dan APK', [
-    { t: 'p', x: 'Play Store menerima file Android App Bundle (.aab) yang dioptimalkan untuk setiap perangkat. APK (.apk) biasanya digunakan untuk pengujian atau distribusi langsung.' },
-    { t: 'code', lang: 'bash', x: '# Membuat release bundle\\n./gradlew bundleRelease\\n\\n# File hasil ada di\\napp/build/outputs/bundle/release/app-release.aab' },
-    { t: 'tip', x: 'Gunakan bundleRelease untuk rilis produksi karena ukuran unduhan lebih kecil per perangkat.' },
-  ], 3],
+            {t:'p',x:'Membuat File AAB dan APK adalah konsep dasar dalam android-dasar. Bayangkan seperti seperti merancang aplikasi untuk telepon genggam yang bisa diunduh dari toko aplikasi. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Membuat File AAB dan APK akan membantu kamu membangun dasar yang kuat dalam android-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Membuat File AAB dan APK','Manfaat memahami Membuat File AAB dan APK untuk pemula','Langkah pertama untuk mulai belajar Membuat File AAB dan APK','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Membuat File AAB dan APK\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Membuat File AAB dan APK. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Membuat File AAB dan APK adalah titik awal dalam perjalanan belajarmu di android-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['publish-play-store', 'Kesalahan Umum: Izin yang Tidak Digunakan', [
-    { t: 'p', x: 'Menambahkan izin yang terlalu banyak di AndroidManifest.xml membuat pengguna ragu dan aplikasi lebih rentan. Hanya tambahkan izin yang benar-benar diperlukan.' },
-    { t: 'list', items: ['Menambahkan izin kamera tanpa fitur kamera', 'Meminta izin lokasi selalu padahal tidak diperlukan', 'Tidak menjelaskan alasan izin kepada pengguna', 'Mengabaikan izin yang baru diperlukan Android versi terbaru'] },
-    { t: 'tip', x: 'Minta izin saat runtime (saat fitur akan digunakan), bukan semua saat aplikasi pertama kali dibuka.' },
-  ], 3],
-  // --- ios-dasar ---
+            {t:'p',x:'Kesalahan Umum: Izin yang Tidak Digunakan adalah kesalahan yang sering dilakukan pemula saat belajar android-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Izin yang Tidak Digunakan karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Izin yang Tidak Digunakan sering terjadi pada pemula','Cara mudah menghindari Izin yang Tidak Digunakan','Tanda bahwa kamu mengalami Izin yang Tidak Digunakan','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Izin yang Tidak Digunakan\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Izin yang Tidak Digunakan. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Izin yang Tidak Digunakan sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['xcode-dan-swift', 'Menginstal Xcode dan Swift', [
-    { t: 'p', x: 'Xcode adalah IDE resmi Apple untuk pengembangan aplikasi iOS, iPadOS, macOS, watchOS, dan tvOS. Xcode hanya dapat dijalankan di macOS. Swift adalah bahasa pemrograman modern yang dipakai Apple.' },
-    { t: 'list', items: ['Unduh Xcode dari Mac App Store', 'Instal command line tools jika diperlukan', 'Buat Apple ID untuk pengembang', 'Buat proyek baru dengan template iOS App'] },
-    { t: 'tip', x: 'Xcode membutuhkan macOS. Tidak dapat diinstal di Windows atau Linux secara resmi.' },
-  ], 3],
+            {t:'p',x:'Menginstal Xcode dan Swift adalah konsep dasar dalam ios-dasar. Bayangkan seperti seperti membuat aplikasi untuk iPhone dengan alat bantu dari Apple. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menginstal Xcode dan Swift akan membantu kamu membangun dasar yang kuat dalam ios-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menginstal Xcode dan Swift','Manfaat memahami Menginstal Xcode dan Swift untuk pemula','Langkah pertama untuk mulai belajar Menginstal Xcode dan Swift','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menginstal Xcode dan Swift\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menginstal Xcode dan Swift. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menginstal Xcode dan Swift adalah titik awal dalam perjalanan belajarmu di ios-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['xcode-dan-swift', 'Apa itu Swift', [
-    { t: 'p', x: 'Swift adalah bahasa pemrograman yang aman, cepat, dan modern untuk ekosistem Apple. Swift menggantikan Objective-C sebagai bahasa utama pengembangan iOS dan macOS.' },
-    { t: 'code', lang: 'swift', x: 'let nama = \"Rafi\"\\nvar umur = 20\\nfunc sapa(orang: String) -> String {\\n    return \"Halo, \\(orang)\"\\n}\\nprint(sapa(orang: nama))' },
-    { t: 'tip', x: 'Swift menggunakan inferensi tipe, jadi kamu tidak selalu perlu menuliskan tipe data secara eksplisit.' },
-  ], 3],
+            {t:'p',x:'Apa itu Swift adalah konsep dasar dalam ios-dasar. Bayangkan seperti seperti membuat aplikasi untuk iPhone dengan alat bantu dari Apple. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Swift akan membantu kamu membangun dasar yang kuat dalam ios-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Swift','Manfaat memahami Apa itu Swift untuk pemula','Langkah pertama untuk mulai belajar Apa itu Swift','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Swift\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Swift. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Swift adalah titik awal dalam perjalanan belajarmu di ios-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['xcode-dan-swift', 'Kesalahan Umum: Lupa Outlet dan Action', [
-    { t: 'p', x: 'Interface Builder memungkinkan mengaitkan elemen tampilan ke kode melalui outlet dan action. Jika lupa membuat hubungan, elemen tidak dapat dikontrol dari kode Swift.' },
-    { t: 'list', items: ['Lupa menghubungkan elemen tampilan ke outlet', 'Lupa menghubungkan tombol ke fungsi action', 'Nama outlet tidak cocok di kode dan storyboard', 'Menghubungkan ke view controller yang salah'] },
-    { t: 'tip', x: 'Gunakan Ctrl+drag dari storyboard ke kode untuk membuat outlet dan action secara visual.' },
-  ], 3],
-  // --- swiftui-dasar ---
+            {t:'p',x:'Kesalahan Umum: Lupa Outlet dan Action adalah kesalahan yang sering dilakukan pemula saat belajar ios-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa Outlet dan Action karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa Outlet dan Action sering terjadi pada pemula','Cara mudah menghindari Lupa Outlet dan Action','Tanda bahwa kamu mengalami Lupa Outlet dan Action','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa Outlet dan Action\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa Outlet dan Action. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa Outlet dan Action sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['swiftui-dasar', 'Mengenal SwiftUI', [
-    { t: 'p', x: 'SwiftUI adalah framework modern Apple untuk membangun antarmuka pengguna di semua platform Apple dengan kode deklaratif. Kamu menggambarkan tampilan yang diinginkan, SwiftUI mengurus tampilannya.' },
-    { t: 'code', lang: 'swift', x: 'struct ContentView: View {\\n    var body: some View {\\n        Text(\"Halo, EduVerse\")\\n    }\\n}' },
-    { t: 'tip', x: 'SwiftUI tersedia pada iOS 13 dan versi lebih baru. Untuk versi lebih lama, gunakan UIKit.' },
-  ], 3],
+            {t:'p',x:'Mengenal SwiftUI adalah konsep dasar dalam ios-dasar. Bayangkan seperti seperti membuat aplikasi untuk iPhone dengan alat bantu dari Apple. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengenal SwiftUI akan membantu kamu membangun dasar yang kuat dalam ios-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengenal SwiftUI','Manfaat memahami Mengenal SwiftUI untuk pemula','Langkah pertama untuk mulai belajar Mengenal SwiftUI','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengenal SwiftUI\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengenal SwiftUI. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengenal SwiftUI adalah titik awal dalam perjalanan belajarmu di ios-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['swiftui-dasar', 'State dan Binding', [
-    { t: 'p', x: '@State digunakan untuk menyimpan state sederhana di dalam tampilan. Saat state berubah, SwiftUI akan memperbarui tampilan secara otomatis. @Binding digunakan untuk berbagi state antar tampilan.' },
-    { t: 'code', lang: 'swift', x: 'struct HitungView: View {\\n    @State private var jumlah = 0\\n    var body: some View {\\n        VStack {\\n            Text(\"Jumlah: \\\(jumlah)\")\\n            Button(\"Tambah\") { jumlah += 1 }\\n        }\\n    }\\n}' },
-    { t: 'tip', x: 'Gunakan @State untuk state yang dimiliki tampilan, dan @Binding untuk state yang dibagikan dengan tampilan lain.' },
-  ], 3],
+            {t:'p',x:'State dan Binding adalah konsep dasar dalam ios-dasar. Bayangkan seperti seperti membuat aplikasi untuk iPhone dengan alat bantu dari Apple. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai State dan Binding akan membantu kamu membangun dasar yang kuat dalam ios-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari State dan Binding','Manfaat memahami State dan Binding untuk pemula','Langkah pertama untuk mulai belajar State dan Binding','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: State dan Binding\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar State dan Binding. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: State dan Binding adalah titik awal dalam perjalanan belajarmu di ios-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['swiftui-dasar', 'Kesalahan Umum: Mengubah State Langsung', [
-    { t: 'p', x: 'Di SwiftUI, state harus diubah melalui penugasan, bukan dengan memodifikasi objek secara langsung tanpa memberitahu SwiftUI. Ini bisa menyebabkan tampilan tidak memperbarui diri.' },
-    { t: 'list', items: ['Mengubah properti struct tanpa @State', 'Memodifikasi array secara langsung tanpa memberitahu SwiftUI', 'Menggunakan variabel biasa untuk state tampilan', 'Mengabaikan peringatan pembaruan tampilan'] },
-    { t: 'tip', x: 'Selalu gunakan @State, @Binding, atau @ObservedObject untuk data yang memengaruhi tampilan.' },
-  ], 3],
-  // --- navigasi-dan-layar ---
+            {t:'p',x:'Kesalahan Umum: Mengubah State Langsung adalah kesalahan yang sering dilakukan pemula saat belajar ios-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengubah State Langsung karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengubah State Langsung sering terjadi pada pemula','Cara mudah menghindari Mengubah State Langsung','Tanda bahwa kamu mengalami Mengubah State Langsung','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengubah State Langsung\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengubah State Langsung. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengubah State Langsung sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['navigasi-dan-layar', 'Navigasi Antar Layar', [
-    { t: 'p', x: 'Navigasi memindahkan pengguna dari satu layar ke layar lain. Di SwiftUI, gunakan NavigationStack dan NavigationLink. Di UIKit, gunakan UINavigationController dan segue.' },
-    { t: 'code', lang: 'swift', x: 'NavigationStack {\\n    NavigationLink(\"Buka Detail\") {\\n        DetailView()\\n    }\\n}' },
-    { t: 'tip', x: 'NavigationStack tersedia pada iOS 16 dan versi lebih baru. Gunakan NavigationView untuk versi yang lebih lama.' },
-  ], 3],
+            {t:'p',x:'Navigasi Antar Layar adalah konsep dasar dalam ios-dasar. Bayangkan seperti seperti membuat aplikasi untuk iPhone dengan alat bantu dari Apple. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Navigasi Antar Layar akan membantu kamu membangun dasar yang kuat dalam ios-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Navigasi Antar Layar','Manfaat memahami Navigasi Antar Layar untuk pemula','Langkah pertama untuk mulai belajar Navigasi Antar Layar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Navigasi Antar Layar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Navigasi Antar Layar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Navigasi Antar Layar adalah titik awal dalam perjalanan belajarmu di ios-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['navigasi-dan-layar', 'Mengirim Data Antar Layar', [
-    { t: 'p', x: 'Saat berpindah layar, kamu sering perlu membawa data, misalnya ID produk yang dipilih. Kirim data melalui inisialisasi tampilan tujuan atau parameter navigasi.' },
-    { t: 'code', lang: 'swift', x: 'NavigationLink(\"Lihat Produk\") {\\n    DetailView(produk: produkTerpilah)\\n}' },
-    { t: 'tip', x: 'Hantar hanya data yang dibutuhkan tampilan tujuan, jangan seluruh objek yang besar dan tidak perlu.' },
-  ], 3],
+            {t:'p',x:'Mengirim Data Antar Layar adalah konsep dasar dalam ios-dasar. Bayangkan seperti seperti membuat aplikasi untuk iPhone dengan alat bantu dari Apple. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengirim Data Antar Layar akan membantu kamu membangun dasar yang kuat dalam ios-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengirim Data Antar Layar','Manfaat memahami Mengirim Data Antar Layar untuk pemula','Langkah pertama untuk mulai belajar Mengirim Data Antar Layar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengirim Data Antar Layar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengirim Data Antar Layar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengirim Data Antar Layar adalah titik awal dalam perjalanan belajarmu di ios-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['navigasi-dan-layar', 'Kesalahan Umum: Navigasi Tanpa Kontainer', [
-    { t: 'p', x: 'NavigationLink tidak akan berfungsi jika tidak berada di dalam NavigationStack atau NavigationView. Tanpa kontainer navigasi, klik tidak akan berpindah layar.' },
-    { t: 'list', items: ['NavigationLink di luar NavigationStack', 'Lupa membungkus konten dengan navigasi', 'Menggunakan banyak NavigationStack di satu layar', 'Tidak menyediakan view tujuan yang valid'] },
-    { t: 'tip', x: 'Letakkan NavigationStack di level paling atas aplikasi, biasanya di dalam App struct.' },
-  ], 3],
-  // --- app-store ---
+            {t:'p',x:'Kesalahan Umum: Navigasi Tanpa Kontainer adalah kesalahan yang sering dilakukan pemula saat belajar ios-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Navigasi Tanpa Kontainer karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Navigasi Tanpa Kontainer sering terjadi pada pemula','Cara mudah menghindari Navigasi Tanpa Kontainer','Tanda bahwa kamu mengalami Navigasi Tanpa Kontainer','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Navigasi Tanpa Kontainer\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Navigasi Tanpa Kontainer. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Navigasi Tanpa Kontainer sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['app-store', 'Mengunggah ke App Store', [
-    { t: 'p', x: 'Untuk mempublikasikan aplikasi iOS, kamu membutuhkan Apple Developer Program. Unggah aplikasi melalui Xcode atau Transporter, lalu tinjau di App Store Connect sebelum dirilis.' },
-    { t: 'list', items: ['Daftar Apple Developer Program (berbayar tahunan)', 'Buat App ID dan profil penyediaan di developer.apple.com', 'Unggah build melalui Xcode atau Transporter', 'Isi metadata aplikasi di App Store Connect'] },
-    { t: 'tip', x: 'Pastikan aplikasi memenuhi pedoman Apple sebelum mengajukan tinjau agar tidak ditolak.' },
-  ], 3],
+            {t:'p',x:'Mengunggah ke App Store adalah konsep dasar dalam ios-dasar. Bayangkan seperti seperti membuat aplikasi untuk iPhone dengan alat bantu dari Apple. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengunggah ke App Store akan membantu kamu membangun dasar yang kuat dalam ios-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengunggah ke App Store','Manfaat memahami Mengunggah ke App Store untuk pemula','Langkah pertama untuk mulai belajar Mengunggah ke App Store','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengunggah ke App Store\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengunggah ke App Store. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengunggah ke App Store adalah titik awal dalam perjalanan belajarmu di ios-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['app-store', 'TestFlight untuk Pengujian Beta', [
-    { t: 'p', x: 'TestFlight memungkinkan kamu membagikan aplikasi kepada penguji sebelum rilis resmi. Ini berguna untuk mendapatkan umpan balik dan mencari bug dari pengguna nyata.' },
-    { t: 'list', items: ['Unggah build ke App Store Connect', 'Undang penguji melalui email atau link publik', 'Kumpulkan laporan crash dan umpan balik', 'Perbaiki bug sebelum rilis ke App Store'] },
-    { t: 'tip', x: 'Gunakan Internal Testing untuk tim pengembang dan External Testing untuk pengguna di luar tim.' },
-  ], 3],
+            {t:'p',x:'TestFlight untuk Pengujian Beta adalah konsep dasar dalam ios-dasar. Bayangkan seperti seperti membuat aplikasi untuk iPhone dengan alat bantu dari Apple. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai TestFlight untuk Pengujian Beta akan membantu kamu membangun dasar yang kuat dalam ios-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari TestFlight untuk Pengujian Beta','Manfaat memahami TestFlight untuk Pengujian Beta untuk pemula','Langkah pertama untuk mulai belajar TestFlight untuk Pengujian Beta','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: TestFlight untuk Pengujian Beta\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar TestFlight untuk Pengujian Beta. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: TestFlight untuk Pengujian Beta adalah titik awal dalam perjalanan belajarmu di ios-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['app-store', 'Kesalahan Umum: Metadata Tidak Lengkap', [
-    { t: 'p', x: 'Apple akan menolak aplikasi jika deskripsi, tangkapan layar, atau kebijakan privasi tidak lengkap. Pastikan semua informasi diisi dengan benar sebelum mengajukan tinjau.' },
-    { t: 'list', items: ['Deskripsi aplikasi kosong atau tidak informatif', 'Tangkapan layar tidak sesuai ukuran yang diperlukan', 'Kebijakan privasi tidak tersedia', 'Informasi kontak pengembang tidak lengkap'] },
-    { t: 'tip', x: 'Siapkan semua aset dan metadata sebelum memulai proses tinjau aplikasi di App Store Connect.' },
-  ], 3],
-  // --- flutter-dasar ---
+            {t:'p',x:'Kesalahan Umum: Metadata Tidak Lengkap adalah kesalahan yang sering dilakukan pemula saat belajar ios-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Metadata Tidak Lengkap karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Metadata Tidak Lengkap sering terjadi pada pemula','Cara mudah menghindari Metadata Tidak Lengkap','Tanda bahwa kamu mengalami Metadata Tidak Lengkap','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Metadata Tidak Lengkap\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Metadata Tidak Lengkap. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Metadata Tidak Lengkap sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['install-flutter', 'Menginstal Flutter', [
     { t: 'p', x: 'Flutter adalah toolkit UI Google untuk membuat aplikasi natively compiled dari satu kodebase untuk Android, iOS, web, dan desktop. Flutter menggunakan bahasa Dart.' },
     { t: 'code', lang: 'bash', x: '# Unduh Flutter dari flutter.dev\\n# Ekstrak dan tambahkan ke PATH\\nflutter doctor\\nflutter create belajar_flutter\\ncd belajar_flutter\\nflutter run' },
@@ -1705,60 +2146,83 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'flutter doctor akan menunjukkan apa saja yang belum terinstal atau perlu diperbaiki sebelum mengembangkan.' },
   ], 3],
   ['install-flutter', 'Apa itu Dart', [
-    { t: 'p', x: 'Dart adalah bahasa pemrograman yang digunakan Flutter. Dart aman null, berorientasi objek, dan dapat di-compile menjadi kode mesin atau JavaScript.' },
-    { t: 'code', lang: 'dart', x: 'void main() {\\n  var nama = \"Rafi\"\\n  var umur = 20\\n  print(\"Halo, $nama. Umur: $umur\")\\n}' },
-    { t: 'tip', x: 'Dart memiliki sintaks yang mirip Java dan JavaScript, sehingga mudah dipelajari jika sudah familiar dengan keduanya.' },
-  ], 3],
+            {t:'p',x:'Apa itu Dart adalah konsep dasar dalam flutter-dasar. Bayangkan seperti seperti membuat satu aplikasi yang bisa berjalan di banyak macam telepon sekaligus. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Dart akan membantu kamu membangun dasar yang kuat dalam flutter-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Dart','Manfaat memahami Apa itu Dart untuk pemula','Langkah pertama untuk mulai belajar Apa itu Dart','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Dart\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Dart. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Dart adalah titik awal dalam perjalanan belajarmu di flutter-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['install-flutter', 'Kesalahan Umum: PATH Tidak Dikonfigurasi', [
-    { t: 'p', x: 'Jika perintah flutter tidak dikenali terminal, direktori bin Flutter belum ditambahkan ke PATH sistem. Ini mencegah kamu menjalankan perintah Flutter dari mana saja.' },
-    { t: 'list', items: ['Direktori bin Flutter tidak ada di PATH', 'Terminal baru dibuka sebelum PATH diperbarui', 'PATH disimpan di file konfigurasi yang salah', 'Perintah diketik dengan huruf besar yang salah'] },
-    { t: 'tip', x: 'Setelah menambah PATH, restart terminal atau jalankan perintah untuk memuat ulang konfigurasi shell.' },
-  ], 3],
-  // --- dart-dasar ---
+            {t:'p',x:'Kesalahan Umum: PATH Tidak Dikonfigurasi adalah kesalahan yang sering dilakukan pemula saat belajar flutter-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di PATH Tidak Dikonfigurasi karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa PATH Tidak Dikonfigurasi sering terjadi pada pemula','Cara mudah menghindari PATH Tidak Dikonfigurasi','Tanda bahwa kamu mengalami PATH Tidak Dikonfigurasi','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: PATH Tidak Dikonfigurasi\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami PATH Tidak Dikonfigurasi. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari PATH Tidak Dikonfigurasi sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['dart-dasar', 'Variabel dan Fungsi Dart', [
-    { t: 'p', x: 'Dart menggunakan var untuk variabel dengan tipe yang dapat diubah, dan final atau const untuk nilai tetap. Fungsi didefinisikan dengan tipe pengembalian atau void.' },
-    { t: 'code', lang: 'dart', x: 'var nama = \"Rafi\"\\nfinal tahun = 2024\\nvoid sapa(String orang) {\\n  print(\"Halo, $orang\")\\n}\\nint tambah(int a, int b) => a + b;' },
-    { t: 'tip', x: 'Gunakan final untuk nilai yang diassign sekali, dan const untuk nilai kompilasi waktu yang pasti.' },
-  ], 3],
+            {t:'p',x:'Variabel dan Fungsi Dart adalah konsep dasar dalam flutter-dasar. Bayangkan seperti seperti membuat satu aplikasi yang bisa berjalan di banyak macam telepon sekaligus. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Variabel dan Fungsi Dart akan membantu kamu membangun dasar yang kuat dalam flutter-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Variabel dan Fungsi Dart','Manfaat memahami Variabel dan Fungsi Dart untuk pemula','Langkah pertama untuk mulai belajar Variabel dan Fungsi Dart','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Variabel dan Fungsi Dart\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Variabel dan Fungsi Dart. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Variabel dan Fungsi Dart adalah titik awal dalam perjalanan belajarmu di flutter-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['dart-dasar', 'Class dan Objek', [
-    { t: 'p', x: 'Semua dalam Dart adalah objek. Class menjadi cetak biru untuk objek dengan properti dan metode. Dart mendukung konstruktor named untuk membuat objek dengan cara yang berbeda.' },
-    { t: 'code', lang: 'dart', x: 'class Siswa {\\n  String nama;\\n  int umur;\\n  Siswa(this.nama, this.umur);\\n}\\nvar rafi = Siswa(\"Rafi\", 20);' },
-    { t: 'tip', x: 'Gunakan this.parameter dalam konstruktor untuk langsung mengassign nilai ke properti.' },
-  ], 3],
+            {t:'p',x:'Class dan Objek adalah konsep dasar dalam flutter-dasar. Bayangkan seperti seperti membuat satu aplikasi yang bisa berjalan di banyak macam telepon sekaligus. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Class dan Objek akan membantu kamu membangun dasar yang kuat dalam flutter-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Class dan Objek','Manfaat memahami Class dan Objek untuk pemula','Langkah pertama untuk mulai belajar Class dan Objek','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Class dan Objek\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Class dan Objek. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Class dan Objek adalah titik awal dalam perjalanan belajarmu di flutter-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['dart-dasar', 'Kesalahan Umum: Menggunakan const dan final Secara Salah', [
-    { t: 'p', x: 'const harus bernilai konstan pada waktu kompilasi, sementara final dapat diassign pada waktu runtime. Menggunakan const untuk nilai yang tidak diketahui sebelum kompilasi akan menyebabkan error.' },
-    { t: 'list', items: ['Menggunakan const untuk nilai dari input pengguna', 'Mengubah nilai final setelah diassign', 'Menggabungkan const dan var secara acak', 'Tidak memahami perbedaan immutable dan compile-time constant'] },
-    { t: 'tip', x: 'Jika tidak yakin, gunakan final. const hanya untuk nilai yang benar-benar diketahui saat menulis kode.' },
-  ], 3],
-  // --- widget-dasar ---
+            {t:'p',x:'Kesalahan Umum: Menggunakan const dan final Secara Salah adalah kesalahan yang sering dilakukan pemula saat belajar flutter-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Menggunakan const dan final Secara Salah karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Menggunakan const dan final Secara Salah sering terjadi pada pemula','Cara mudah menghindari Menggunakan const dan final Secara Salah','Tanda bahwa kamu mengalami Menggunakan const dan final Secara Salah','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Menggunakan const dan final Secara Salah\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Menggunakan const dan final Secara Salah. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Menggunakan const dan final Secara Salah sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['widget-dasar', 'Widget dalam Flutter', [
-    { t: 'p', x: 'Semua tampilan di Flutter adalah widget. Widget dapat berupa elemen visual (tombol, teks) atau tata letak (baris, kolom, kartu). Flutter menggunakan pendekatan komposisi: gabungkan widget kecil menjadi widget besar.' },
-    { t: 'list', items: ['StatelessWidget untuk tampilan yang tidak berubah', 'StatefulWidget untuk tampilan yang dapat berubah', 'Widget dapat di-susun secara bertingkat', 'Setiap widget dapat menerima properti untuk penyesuaian'] },
-    { t: 'tip', x: 'Pilih StatelessWidget jika tampilan tidak perlu berubah berdasarkan interaksi pengguna.' },
-  ], 3],
+            {t:'p',x:'Widget dalam Flutter adalah konsep dasar dalam flutter-dasar. Bayangkan seperti seperti membuat satu aplikasi yang bisa berjalan di banyak macam telepon sekaligus. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Widget dalam Flutter akan membantu kamu membangun dasar yang kuat dalam flutter-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Widget dalam Flutter','Manfaat memahami Widget dalam Flutter untuk pemula','Langkah pertama untuk mulai belajar Widget dalam Flutter','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Widget dalam Flutter\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Widget dalam Flutter. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Widget dalam Flutter adalah titik awal dalam perjalanan belajarmu di flutter-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['widget-dasar', 'Widget Umum: Text, Image, dan Container', [
-    { t: 'p', x: 'Text menampilkan teks, Image menampilkan gambar, dan Container adalah wadah yang dapat diatur padding, margin, warna, dan batasnya.' },
-    { t: 'code', lang: 'dart', x: 'Container(\\n  padding: EdgeInsets.all(16),\\n  color: Colors.blue,\\n  child: Text(\"Halo, EduVerse\"),\\n)' },
-    { t: 'tip', x: 'Gunakan Container untuk memberi jarak dan latar belakang pada widget anaknya.' },
-  ], 3],
+            {t:'p',x:'Widget Umum: Text, Image, dan Container adalah konsep dasar dalam flutter-dasar. Bayangkan seperti seperti membuat satu aplikasi yang bisa berjalan di banyak macam telepon sekaligus. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Widget Umum: Text, Image, dan Container akan membantu kamu membangun dasar yang kuat dalam flutter-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Widget Umum: Text, Image, dan Container','Manfaat memahami Widget Umum: Text, Image, dan Container untuk pemula','Langkah pertama untuk mulai belajar Widget Umum: Text, Image, dan Container','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Widget Umum: Text, Image, dan Container\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Widget Umum: Text, Image, dan Container. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Widget Umum: Text, Image, dan Container adalah titik awal dalam perjalanan belajarmu di flutter-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['widget-dasar', 'Kesalahan Umum: Lupa StatefulWidget', [
-    { t: 'p', x: 'Jika tampilan perlu berubah setelah interaksi pengguna (misal tombol diklik), gunakan StatefulWidget dengan setState. StatelessWidget tidak dapat memperbarui tampilannya sendiri.' },
-    { t: 'list', items: ['Menggunakan StatelessWidget untuk data yang berubah', 'Lupa memanggil setState setelah mengubah data', 'Mengubah variabel langsung tanpa memberitahu Flutter', 'Menggunakan state yang terlalu luas untuk satu widget'] },
-    { t: 'tip', x: 'Panggil setState() setiap kali data yang memengaruhi tampilan berubah.' },
-  ], 3],
-  // --- proyek-mini (flutter) ---
+            {t:'p',x:'Kesalahan Umum: Lupa StatefulWidget adalah kesalahan yang sering dilakukan pemula saat belajar flutter-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa StatefulWidget karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa StatefulWidget sering terjadi pada pemula','Cara mudah menghindari Lupa StatefulWidget','Tanda bahwa kamu mengalami Lupa StatefulWidget','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa StatefulWidget\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa StatefulWidget. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa StatefulWidget sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['proyek-mini', 'Proyek Mini: Aplikasi Catatan', [
     { t: 'p', x: 'Buat aplikasi catatan sederhana menggunakan Flutter. Kamu akan menerapkan widget, state manajemen, dan penyimpanan lokal dalam satu proyek nyata.' },
     { t: 'list', items: ['Tambah catatan baru dengan judul dan isi', 'Tampilkan daftar semua catatan', 'Hapus catatan yang tidak diperlukan', 'Simpan catatan secara lokal agar tidak hilang saat ditutup'] },
     { t: 'code', lang: 'bash', x: 'flutter create catatan_app\\ncd catatan_app\\nflutter run' },
     { t: 'tip', x: 'Mulai dengan daftar catatan sederhana, lalu tambahkan fitur penyimpanan lokal setelah tampilan berjalan.' },
   ], 5],
-  // --- react-native-dasar ---
   ['expo-dasar', 'Expo dan React Native', [
-    { t: 'p', x: 'React Native memungkinkan membuat aplikasi mobile native dengan React dan JavaScript. Expo adalah alat yang mempermudah pengembangan React Native tanpa perlu menginstal Android Studio atau Xcode secara langsung.' },
-    { t: 'list', items: ['Satu kodebase untuk Android dan iOS', 'Komponen native yang dirender sebagai UI asli', 'Expo mempermudah setup dan pengujian', 'Hot reload untuk melihat perubahan segera'] },
-    { t: 'tip', x: 'Gunakan Expo untuk memulai proyek React Native dengan cepat tanpa konfigurasi native yang rumit.' },
-  ], 3],
+            {t:'p',x:'Expo dan React Native adalah konsep dasar dalam react-native-dasar. Bayangkan seperti seperti membuat aplikasi seluler menggunakan bahasa yang sama dengan website. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Expo dan React Native akan membantu kamu membangun dasar yang kuat dalam react-native-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Expo dan React Native','Manfaat memahami Expo dan React Native untuk pemula','Langkah pertama untuk mulai belajar Expo dan React Native','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Expo dan React Native\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Expo dan React Native. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Expo dan React Native adalah titik awal dalam perjalanan belajarmu di react-native-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['expo-dasar', 'Menginstal Expo', [
     { t: 'p', x: 'Unduh aplikasi Expo Go di ponselmu untuk menguji aplikasi. Buat proyek baru menggunakan npx create-expo-app dan jalankan dengan npx expo start.' },
     { t: 'code', lang: 'bash', x: 'npx create-expo-app belajar-expo\\ncd belajar-expo\\nnpx expo start' },
@@ -1766,290 +2230,427 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Ponsel dan komputer harus terhubung ke jaringan Wi-Fi yang sama untuk Expo Go bekerja.' },
   ], 3],
   ['expo-dasar', 'Kesalahan Umum: Jaringan Tidak Sama', [
-    { t: 'p', x: 'Expo Go memerlukan ponsel dan komputer terhubung ke jaringan Wi-Fi yang sama. Jika berbeda, ponsel tidak dapat terhubung ke server pengembangan di komputer.' },
-    { t: 'list', items: ['Ponsel dan komputer di jaringan yang berbeda', 'Firewall memblokir port pengembangan', 'Alamat IP server tidak dapat diakses ponsel', 'Versi Expo Go tidak sesuai dengan CLI'] },
-    { t: 'tip', x: 'Periksa jaringan Wi-Fi dan pastikan tidak ada firewall yang memblokir koneksi antara ponsel dan komputer.' },
-  ], 3],
-  // --- javascript-dasar-react-native ---
+            {t:'p',x:'Kesalahan Umum: Jaringan Tidak Sama adalah kesalahan yang sering dilakukan pemula saat belajar react-native-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Jaringan Tidak Sama karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Jaringan Tidak Sama sering terjadi pada pemula','Cara mudah menghindari Jaringan Tidak Sama','Tanda bahwa kamu mengalami Jaringan Tidak Sama','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Jaringan Tidak Sama\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Jaringan Tidak Sama. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Jaringan Tidak Sama sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['javascript-dasar-react-native', 'JavaScript Dasar untuk React Native', [
-    { t: 'p', x: 'React Native menggunakan JavaScript untuk logika aplikasi. Kamu perlu memahami variabel, fungsi, array, objek, dan asynchronous (promise, async/await) sebelum membangun aplikasi.' },
-    { t: 'code', lang: 'js', x: 'const nama = \"Rafi\"\\nconst hitung = (a, b) => a + b\\nconst data = await fetch(\"https://api.contoh.com\")\\nconst json = await data.json()' },
-    { t: 'tip', x: 'Gunakan const secara default dan let hanya jika nilai perlu diubah. Hindari var di JavaScript modern.' },
-  ], 3],
+            {t:'p',x:'JavaScript Dasar untuk React Native adalah konsep dasar dalam react-native-dasar. Bayangkan seperti seperti membuat aplikasi seluler menggunakan bahasa yang sama dengan website. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai JavaScript Dasar untuk React Native akan membantu kamu membangun dasar yang kuat dalam react-native-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari JavaScript Dasar untuk React Native','Manfaat memahami JavaScript Dasar untuk React Native untuk pemula','Langkah pertama untuk mulai belajar JavaScript Dasar untuk React Native','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: JavaScript Dasar untuk React Native\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar JavaScript Dasar untuk React Native. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: JavaScript Dasar untuk React Native adalah titik awal dalam perjalanan belajarmu di react-native-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['javascript-dasar-react-native', 'JSX di React Native', [
-    { t: 'p', x: 'React Native menggunakan JSX yang mirip React untuk web, tetapi dengan komponen native seperti <View>, <Text>, dan <TouchableOpacity> alih-alih <div> dan <span>.' },
-    { t: 'code', lang: 'jsx', x: 'import { View, Text } from \"react-native\"\\n\\nfunction Sapaan() {\\n  return (\\n    <View>\\n      <Text>Halo, EduVerse</Text>\\n    </View>\\n  )\\n}' },
-    { t: 'tip', x: 'Setiap elemen JSX di React Native harus ditutup, dan hanya boleh ada satu elemen induk di setiap komponen.' },
-  ], 3],
+            {t:'p',x:'JSX di React Native adalah konsep dasar dalam react-native-dasar. Bayangkan seperti seperti membuat aplikasi seluler menggunakan bahasa yang sama dengan website. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai JSX di React Native akan membantu kamu membangun dasar yang kuat dalam react-native-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari JSX di React Native','Manfaat memahami JSX di React Native untuk pemula','Langkah pertama untuk mulai belajar JSX di React Native','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: JSX di React Native\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar JSX di React Native. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: JSX di React Native adalah titik awal dalam perjalanan belajarmu di react-native-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['javascript-dasar-react-native', 'Kesalahan Umum: Menggunakan Elemen Web', [
-    { t: 'p', x: 'React Native tidak mendukung elemen HTML seperti <div>, <span>, atau <img>. Gunakan komponen bawaan React Native seperti <View>, <Text>, dan <Image>.' },
-    { t: 'list', items: ['Menggunakan <div> atau <span> di React Native', 'Menggunakan <img> untuk gambar', 'Mengimpor pustaka web yang tidak kompatibel', 'Mengasumsikan CSS berfungsi sama seperti di web'] },
-    { t: 'tip', x: 'Pelajari komponen bawaan React Native sebelum mencoba meniru pola pengembangan web.' },
-  ], 3],
-  // --- navigasi (react native) ---
+            {t:'p',x:'Kesalahan Umum: Menggunakan Elemen Web adalah kesalahan yang sering dilakukan pemula saat belajar react-native-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Menggunakan Elemen Web karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Menggunakan Elemen Web sering terjadi pada pemula','Cara mudah menghindari Menggunakan Elemen Web','Tanda bahwa kamu mengalami Menggunakan Elemen Web','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Menggunakan Elemen Web\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Menggunakan Elemen Web. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Menggunakan Elemen Web sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['navigasi', 'Navigasi Antar Layar di React Native', [
-    { t: 'p', x: 'Navigasi di React Native biasanya menggunakan React Navigation. Pustaka ini menyediakan stack navigator, tab navigator, dan drawer navigator untuk berpindah layar.' },
-    { t: 'code', lang: 'jsx', x: 'import { createStackNavigator } from \"@react-navigation/stack\"\\n\\nconst Stack = createStackNavigator()\\n\\nfunction App() {\\n  return (\\n    <Stack.Navigator>\\n      <Stack.Screen name=\"Beranda\" component={Beranda} />\\n      <Stack.Screen name=\"Detail\" component={Detail} />\\n    </Stack.Navigator>\\n  )\\n}' },
-    { t: 'tip', x: 'Instal @react-navigation/native dan dependensi tambahan sesuai dokumentasi resmi.' },
-  ], 3],
+            {t:'p',x:'Navigasi Antar Layar di React Native adalah konsep dasar dalam react-native-dasar. Bayangkan seperti seperti membuat aplikasi seluler menggunakan bahasa yang sama dengan website. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Navigasi Antar Layar di React Native akan membantu kamu membangun dasar yang kuat dalam react-native-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Navigasi Antar Layar di React Native','Manfaat memahami Navigasi Antar Layar di React Native untuk pemula','Langkah pertama untuk mulai belajar Navigasi Antar Layar di React Native','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Navigasi Antar Layar di React Native\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Navigasi Antar Layar di React Native. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Navigasi Antar Layar di React Native adalah titik awal dalam perjalanan belajarmu di react-native-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['navigasi', 'Mengirim Parameter Antar Layar', [
-    { t: 'p', x: 'Saat berpindah layar, kamu dapat mengirim parameter, misalnya ID item yang dipilih. Parameter diakses melalui route.params di layar tujuan.' },
-    { t: 'code', lang: 'jsx', x: 'navigation.navigate(\"Detail\", { itemId: 123 })\\n\\n// Di layar Detail\\nconst { itemId } = route.params' },
-    { t: 'tip', x: 'Pastikan parameter yang dikirim sesuai dengan yang diharapkan layar tujuan agar tidak muncul error undefined.' },
-  ], 3],
+            {t:'p',x:'Mengirim Parameter Antar Layar adalah konsep dasar dalam react-native-dasar. Bayangkan seperti seperti membuat aplikasi seluler menggunakan bahasa yang sama dengan website. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengirim Parameter Antar Layar akan membantu kamu membangun dasar yang kuat dalam react-native-dasar. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengirim Parameter Antar Layar','Manfaat memahami Mengirim Parameter Antar Layar untuk pemula','Langkah pertama untuk mulai belajar Mengirim Parameter Antar Layar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengirim Parameter Antar Layar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengirim Parameter Antar Layar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengirim Parameter Antar Layar adalah titik awal dalam perjalanan belajarmu di react-native-dasar. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['navigasi', 'Kesalahan Umum: Lupa Menyiapkan Navigator', [
-    { t: 'p', x: 'Jika lupa membungkus aplikasi dengan NavigationContainer, navigasi tidak akan berfungsi dan aplikasi akan menampilkan error saat mencoba berpindah layar.' },
-    { t: 'list', items: ['Lupa membungkus dengan NavigationContainer', 'Menempatkan navigator di dalam layar yang salah', 'Tidak mendaftarkan semua layar dalam navigator', 'Menggunakan navigasi di luar konteks navigator'] },
-    { t: 'tip', x: 'Tempatkan NavigationContainer di level paling atas aplikasi, biasanya di dalam komponen App.' },
-  ], 3],
-  // --- proyek-mini (react native) ---
+            {t:'p',x:'Kesalahan Umum: Lupa Menyiapkan Navigator adalah kesalahan yang sering dilakukan pemula saat belajar react-native-dasar. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Lupa Menyiapkan Navigator karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Lupa Menyiapkan Navigator sering terjadi pada pemula','Cara mudah menghindari Lupa Menyiapkan Navigator','Tanda bahwa kamu mengalami Lupa Menyiapkan Navigator','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Lupa Menyiapkan Navigator\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Lupa Menyiapkan Navigator. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Lupa Menyiapkan Navigator sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['proyek-mini', 'Proyek Mini: Aplikasi Cuaca', [
     { t: 'p', x: 'Buat aplikasi cuaca sederhana menggunakan React Native dan Expo. Kamu akan mengambil data cuaca dari API, menampilkannya, dan memungkinkan pengguna mencari kota.' },
     { t: 'list', items: ['Tampilkan cuaca terkini berdasarkan lokasi', 'Cari cuaca untuk kota tertentu', 'Tampilkan suhu dan kondisi cuaca', 'Segarkan data cuaca dengan tombol atau tarik ke bawah'] },
     { t: 'code', lang: 'bash', x: 'npx create-expo-app cuaca_app\\ncd cuaca_app\\nnpx expo start' },
     { t: 'tip', x: 'Gunakan API cuaca gratis seperti OpenWeatherMap dan simpan kunci API dengan aman di variabel lingkungan.' },
   ], 5],
-
-// --- pengembangan-perangkat-lunak ---
   ['analisis-kebutuhan', 'Apa itu Analisis Kebutuhan', [
-    { t: 'p', x: 'Analisis kebutuhan adalah tahap pertama dalam pembuatan perangkat lunak di mana tim memahami apa yang dibutuhkan pengguna dan apa yang harus dilakukan sistem. Hasilnya adalah dokumen kebutuhan yang menjadi acuan tim pengembang.' },
-    { t: 'list', items: ['Mengidentifikasi siapa pengguna sistem', 'Menentukan apa yang ingin dicapai pengguna', 'Mendokumentasikan kebutuhan fungsional dan non-fungsional', 'Menjadi dasar perancangan dan pengembangan'] },
-    { t: 'tip', x: 'Libatkan pengguna akhir sejak awal agar sistem yang dibangun benar-benar menyelesaikan masalah mereka.' },
-  ], 3],
+            {t:'p',x:'Apa itu Analisis Kebutuhan adalah konsep dasar dalam pengembangan-perangkat-lunak. Bayangkan seperti seperti membangun gedung: mulai dari rencana, fondasi, dinding, hingga finishing. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Analisis Kebutuhan akan membantu kamu membangun dasar yang kuat dalam pengembangan-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Analisis Kebutuhan','Manfaat memahami Apa itu Analisis Kebutuhan untuk pemula','Langkah pertama untuk mulai belajar Apa itu Analisis Kebutuhan','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Analisis Kebutuhan\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Analisis Kebutuhan. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Analisis Kebutuhan adalah titik awal dalam perjalanan belajarmu di pengembangan-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['analisis-kebutuhan', 'Wawancara dan Pengumpulan Kebutuhan', [
-    { t: 'p', x: 'Wawancara adalah cara langsung untuk mengetahui kebutuhan pengguna. Ajukan pertanyaan terbuka, dengarkan masalah mereka, dan catat setiap kebutuhan yang muncul dalam dokumen terstruktur.' },
-    { t: 'code', lang: 'text', x: 'Contoh pertanyaan wawancara:\\n- Apa tugas utama yang ingin kamu selesaikan dengan sistem ini?\\n- Apa masalah yang sering kamu hadapi saat ini?\\n- Fitur apa yang paling kamu butuhkan?' },
-    { t: 'tip', x: 'Jangan berasumsi kamu tahu kebutuhan pengguna. Selalu verifikasi melalui wawancara atau observasi langsung.' },
-  ], 3],
+            {t:'p',x:'Wawancara dan Pengumpulan Kebutuhan adalah konsep dasar dalam pengembangan-perangkat-lunak. Bayangkan seperti seperti membangun gedung: mulai dari rencana, fondasi, dinding, hingga finishing. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Wawancara dan Pengumpulan Kebutuhan akan membantu kamu membangun dasar yang kuat dalam pengembangan-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Wawancara dan Pengumpulan Kebutuhan','Manfaat memahami Wawancara dan Pengumpulan Kebutuhan untuk pemula','Langkah pertama untuk mulai belajar Wawancara dan Pengumpulan Kebutuhan','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Wawancara dan Pengumpulan Kebutuhan\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Wawancara dan Pengumpulan Kebutuhan. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Wawancara dan Pengumpulan Kebutuhan adalah titik awal dalam perjalanan belajarmu di pengembangan-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['analisis-kebutuhan', 'Kebutuhan Fungsional dan Non-Fungsional', [
-    { t: 'p', x: 'Kebutuhan fungsional adalah fitur-fitur yang harus ada dalam sistem, seperti login atau mencetak laporan. Kebutuhan non-fungsional adalah kualitas sistem, seperti kecepatan, keamanan, dan ketersediaan.' },
-    { t: 'list', items: ['Fungsional: sistem harus dapat menyimpan data peserta', 'Non-fungsional: sistem harus dapat diakses 1000 pengguna bersamaan', 'Non-fungsional: data harus dienkripsi saat disimpan', 'Fungsional: pengguna dapat mengubah profil sendiri'] },
-    { t: 'tip', x: 'Kebutuhan non-fungsional sering diabaikan padahal sangat mempengaruhi kepuasan pengguna.' },
-  ], 3],
+            {t:'p',x:'Kebutuhan Fungsional dan Non-Fungsional adalah konsep dasar dalam pengembangan-perangkat-lunak. Bayangkan seperti seperti membangun gedung: mulai dari rencana, fondasi, dinding, hingga finishing. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Kebutuhan Fungsional dan Non-Fungsional akan membantu kamu membangun dasar yang kuat dalam pengembangan-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Kebutuhan Fungsional dan Non-Fungsional','Manfaat memahami Kebutuhan Fungsional dan Non-Fungsional untuk pemula','Langkah pertama untuk mulai belajar Kebutuhan Fungsional dan Non-Fungsional','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Kebutuhan Fungsional dan Non-Fungsional\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Kebutuhan Fungsional dan Non-Fungsional. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Kebutuhan Fungsional dan Non-Fungsional adalah titik awal dalam perjalanan belajarmu di pengembangan-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['analisis-kebutuhan', 'Kesalahan Umum: Kebutuhan Tidak Jelas', [
-    { t: 'p', x: 'Kebutuhan yang kabur seperti \"sistem harus cepat\" atau \"tampilan menarik\" sulit diukur dan diimplementasikan. Ubah kebutuhan kabur menjadi spesifik dan dapat diuji.' },
-    { t: 'list', items: ['Kebutuhan yang tidak dapat diukur', 'Terlalu banyak kebutuhan tanpa prioritas', 'Kebutuhan yang saling bertentangan', 'Tidak melibatkan pemangku kepentingan'] },
-    { t: 'tip', x: 'Gunakan kriteria penerimaan yang spesifik agar kebutuhan dapat diuji secara objektif.' },
-  ], 3],
-  // --- desain-perangkat-lunak ---
+            {t:'p',x:'Kesalahan Umum: Kebutuhan Tidak Jelas adalah kesalahan yang sering dilakukan pemula saat belajar pengembangan-perangkat-lunak. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Kebutuhan Tidak Jelas karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Kebutuhan Tidak Jelas sering terjadi pada pemula','Cara mudah menghindari Kebutuhan Tidak Jelas','Tanda bahwa kamu mengalami Kebutuhan Tidak Jelas','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Kebutuhan Tidak Jelas\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Kebutuhan Tidak Jelas. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Kebutuhan Tidak Jelas sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['desain-perangkat-lunak', 'Apa itu Desain Perangkat Lunak', [
-    { t: 'p', x: 'Desain perangkat lunak adalah proses menentukan struktur sistem, komponen-komponennya, dan bagaimana mereka saling berinteraksi. Desain yang baik membuat sistem mudah dipahami, dikembangkan, dan dirawat.' },
-    { t: 'list', items: ['Menentukan struktur dan arsitektur sistem', 'Mendesain antarmuka antara komponen', 'Memilih teknologi dan alat yang sesuai', 'Membuat sistem yang scalable dan dapat dirawat'] },
-    { t: 'tip', x: 'Desain dilakukan sebelum coding agar tim memiliki gambaran yang sama tentang sistem yang akan dibangun.' },
-  ], 3],
+            {t:'p',x:'Apa itu Desain Perangkat Lunak adalah konsep dasar dalam pengembangan-perangkat-lunak. Bayangkan seperti seperti membangun gedung: mulai dari rencana, fondasi, dinding, hingga finishing. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Desain Perangkat Lunak akan membantu kamu membangun dasar yang kuat dalam pengembangan-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Desain Perangkat Lunak','Manfaat memahami Apa itu Desain Perangkat Lunak untuk pemula','Langkah pertama untuk mulai belajar Apa itu Desain Perangkat Lunak','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Desain Perangkat Lunak\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Desain Perangkat Lunak. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Desain Perangkat Lunak adalah titik awal dalam perjalanan belajarmu di pengembangan-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['desain-perangkat-lunak', 'Diagram Kelas dan Alur', [
-    { t: 'p', x: 'Diagram kelas menunjukkan struktur sistem: kelas, atribut, metode, dan hubungan antar kelas. Diagram alur menunjukkan langkah-langkah proses dalam sistem dari awal hingga akhir.' },
-    { t: 'code', lang: 'text', x: 'Kelas: Pengguna\\n  - nama: String\\n  - email: String\\n  + login(): Boolean\\n  + logout(): void\\n\\nHubungan: Pengguna 1 --* Pesanan' },
-    { t: 'tip', x: 'Diagram tidak perlu sempurna. Tujuannya membantu tim memahami sistem, bukan membuat dokumentasi yang berlebihan.' },
-  ], 3],
+            {t:'p',x:'Diagram Kelas dan Alur adalah konsep dasar dalam pengembangan-perangkat-lunak. Bayangkan seperti seperti membangun gedung: mulai dari rencana, fondasi, dinding, hingga finishing. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Diagram Kelas dan Alur akan membantu kamu membangun dasar yang kuat dalam pengembangan-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Diagram Kelas dan Alur','Manfaat memahami Diagram Kelas dan Alur untuk pemula','Langkah pertama untuk mulai belajar Diagram Kelas dan Alur','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Diagram Kelas dan Alur\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Diagram Kelas dan Alur. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Diagram Kelas dan Alur adalah titik awal dalam perjalanan belajarmu di pengembangan-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['desain-perangkat-lunak', 'Arsitektur Lapisan', [
-    { t: 'p', x: 'Arsitektur lapisan membagi sistem menjadi beberapa lapisan dengan tanggung jawab masing-masing, misal lapisan presentasi, bisnis, dan data. Setiap lapisan hanya berkomunikasi dengan lapisan yang berdekatan.' },
-    { t: 'list', items: ['Lapisan presentasi: tampilan yang dilihat pengguna', 'Lapisan bisnis: logika aturan bisnis', 'Lapisan data: akses ke database dan penyimpanan', 'Lapisan hanya tahu lapisan di bawahnya, tidak terlampaui'] },
-    { t: 'tip', x: 'Pemisahan lapisan membuat perubahan di satu lapisan tidak mempengaruhi lapisan lain secara langsung.' },
-  ], 3],
+            {t:'p',x:'Arsitektur Lapisan adalah konsep dasar dalam pengembangan-perangkat-lunak. Bayangkan seperti seperti membangun gedung: mulai dari rencana, fondasi, dinding, hingga finishing. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Arsitektur Lapisan akan membantu kamu membangun dasar yang kuat dalam pengembangan-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Arsitektur Lapisan','Manfaat memahami Arsitektur Lapisan untuk pemula','Langkah pertama untuk mulai belajar Arsitektur Lapisan','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Arsitektur Lapisan\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Arsitektur Lapisan. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Arsitektur Lapisan adalah titik awal dalam perjalanan belajarmu di pengembangan-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['desain-perangkat-lunak', 'Kesalahan Umum: Terlalu Banyak Detail Dini', [
-    { t: 'p', x: 'Beberapa tim mencoba merancang setiap detail sebelum coding dimulai. Ini malah memperlambat pengembangan karena kebutuhan sering berubah saat proses berlangsung.' },
-    { t: 'list', items: ['Merancang setiap kelas sebelum coding', 'Tidak fleksibel terhadap perubahan kebutuhan', 'Menghabiskan waktu terlalu banyak di dokumen desain', 'Mengabaikan umpan balik dari coding awal'] },
-    { t: 'tip', x: 'Rancang cukup untuk memulai, lalu perbaiki desain seiring berkembangnya sistem.' },
-  ], 3],
-  // --- implementasi-dan-uji ---
+            {t:'p',x:'Kesalahan Umum: Terlalu Banyak Detail Dini adalah kesalahan yang sering dilakukan pemula saat belajar pengembangan-perangkat-lunak. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Terlalu Banyak Detail Dini karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Terlalu Banyak Detail Dini sering terjadi pada pemula','Cara mudah menghindari Terlalu Banyak Detail Dini','Tanda bahwa kamu mengalami Terlalu Banyak Detail Dini','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Terlalu Banyak Detail Dini\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Terlalu Banyak Detail Dini. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Terlalu Banyak Detail Dini sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['implementasi-dan-uji', 'Coding dan Implementasi', [
-    { t: 'p', x: 'Implementasi adalah tahap menulis kode berdasarkan desain yang telah dibuat. Pilih bahasa dan framework yang sesuai, ikuti standar coding tim, dan tulis kode yang mudah dibaca oleh orang lain.' },
-    { t: 'list', items: ['Tulis kode sesuai standar tim', 'Berikan nama variabel dan fungsi yang jelas', 'Komentarkan bagian yang rumit, bukan yang jelas', 'Bagikan kode melalui version control'] },
-    { t: 'tip', x: 'Kode mudah dibaca lebih penting dari kode yang cerdas tetapi sulit dipahami orang lain.' },
-  ], 3],
+            {t:'p',x:'Coding dan Implementasi adalah konsep dasar dalam pengembangan-perangkat-lunak. Bayangkan seperti seperti membangun gedung: mulai dari rencana, fondasi, dinding, hingga finishing. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Coding dan Implementasi akan membantu kamu membangun dasar yang kuat dalam pengembangan-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Coding dan Implementasi','Manfaat memahami Coding dan Implementasi untuk pemula','Langkah pertama untuk mulai belajar Coding dan Implementasi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Coding dan Implementasi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Coding dan Implementasi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Coding dan Implementasi adalah titik awal dalam perjalanan belajarmu di pengembangan-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['implementasi-dan-uji', 'Pengujian Unit', [
-    { t: 'p', x: 'Pengujian unit memeriksa fungsi atau modul kecil secara terpisah dari sistem lain. Setiap fungsi harus memiliki pengujian yang memastikan hasilnya sesuai harapan untuk berbagai masukan.' },
-    { t: 'code', lang: 'js', x: 'function tambah(a, b) { return a + b; }\\n\\ntest(\"tambah dua angka positif\", () => {\\n  expect(tambah(2, 3)).toBe(5);\\n});' },
-    { t: 'tip', x: 'Tulis pengujian untuk fungsi yang kompleks atau kritis agar perubahan di kemudian hari tidak merusak fungsionalitas lama.' },
-  ], 3],
+            {t:'p',x:'Pengujian Unit adalah konsep dasar dalam pengembangan-perangkat-lunak. Bayangkan seperti seperti membangun gedung: mulai dari rencana, fondasi, dinding, hingga finishing. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Pengujian Unit akan membantu kamu membangun dasar yang kuat dalam pengembangan-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Pengujian Unit','Manfaat memahami Pengujian Unit untuk pemula','Langkah pertama untuk mulai belajar Pengujian Unit','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Pengujian Unit\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Pengujian Unit. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Pengujian Unit adalah titik awal dalam perjalanan belajarmu di pengembangan-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['implementasi-dan-uji', 'Pengujian Integrasi', [
-    { t: 'p', x: 'Pengujian integrasi memeriksa apakah beberapa modul bekerja bersama dengan benar. Misal memastikan data yang disimpan oleh modul satu dapat dibaca oleh modul lain.' },
-    { t: 'list', items: ['Uji interaksi antara dua atau lebih modul', 'Periksa alur data antar modul', 'Uji koneksi ke database atau API eksternal', 'Pastikan error di satu modul tidak mengakibatkan crash sistem'] },
-    { t: 'tip', x: 'Lakukan pengujian unit terlebih dahulu, baru kemudian pengujian integrasi antar modul.' },
-  ], 3],
+            {t:'p',x:'Pengujian Integrasi adalah konsep dasar dalam pengembangan-perangkat-lunak. Bayangkan seperti seperti membangun gedung: mulai dari rencana, fondasi, dinding, hingga finishing. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Pengujian Integrasi akan membantu kamu membangun dasar yang kuat dalam pengembangan-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Pengujian Integrasi','Manfaat memahami Pengujian Integrasi untuk pemula','Langkah pertama untuk mulai belajar Pengujian Integrasi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Pengujian Integrasi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Pengujian Integrasi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Pengujian Integrasi adalah titik awal dalam perjalanan belajarmu di pengembangan-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['implementasi-dan-uji', 'Kesalahan Umum: Mengabaikan Pengujian', [
-    { t: 'p', x: 'Mengabaikan pengujian untuk menghemat waktu malah menyebabkan lebih banyak waktu dihabiskan untuk memperbaiki bug yang ditemukan setelah aplikasi diluncurkan.' },
-    { t: 'list', items: ['Mengabaikan pengujian untuk menghemat waktu', 'Menguji hanya jalan sukses, tidak kasus gagal', 'Tidak menguji masukan yang salah atau aneh', 'Mengandalkan pengujian manual saja'] },
-    { t: 'tip', x: 'Pengujian otomatis menghemat waktu pada jangka panjang dengan menangkap dini sebelum rilis.' },
-  ], 3],
-  // --- peluncuran-dan-pemeliharaan ---
+            {t:'p',x:'Kesalahan Umum: Mengabaikan Pengujian adalah kesalahan yang sering dilakukan pemula saat belajar pengembangan-perangkat-lunak. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengabaikan Pengujian karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengabaikan Pengujian sering terjadi pada pemula','Cara mudah menghindari Mengabaikan Pengujian','Tanda bahwa kamu mengalami Mengabaikan Pengujian','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengabaikan Pengujian\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengabaikan Pengujian. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengabaikan Pengujian sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['peluncuran-dan-pemeliharaan', 'Peluncuran Aplikasi', [
-    { t: 'p', x: 'Peluncuran adalah proses menyebarkan aplikasi ke pengguna akhir. Siapkan server produksi, konfigurasi domain, dan lakukan pengujian akhir sebelum aplikasi diakses publik.' },
-    { t: 'list', items: ['Siapkan server produksi dan database', 'Konfigurasi domain dan SSL', 'Lakukan pengujian akhir di lingkungan produksi', 'Siapkan rencana pengembalian jika terjadi masalah'] },
-    { t: 'tip', x: 'Lakukan peluncuran secara bertahap (canary release) ke sebagian pengguna dulu sebelum rilis penuh.' },
-  ], 3],
+            {t:'p',x:'Peluncuran Aplikasi adalah konsep dasar dalam pengembangan-perangkat-lunak. Bayangkan seperti seperti membangun gedung: mulai dari rencana, fondasi, dinding, hingga finishing. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Peluncuran Aplikasi akan membantu kamu membangun dasar yang kuat dalam pengembangan-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Peluncuran Aplikasi','Manfaat memahami Peluncuran Aplikasi untuk pemula','Langkah pertama untuk mulai belajar Peluncuran Aplikasi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Peluncuran Aplikasi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Peluncuran Aplikasi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Peluncuran Aplikasi adalah titik awal dalam perjalanan belajarmu di pengembangan-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['peluncuran-dan-pemeliharaan', 'Pemantauan dan Log', [
-    { t: 'p', x: 'Setelah diluncurkan, pantau aplikasi untuk mendeteksi error, kecepatan, dan gangguan. Catat log untuk membantu mengidentifikasi penyebab masalah saat terjadi gangguan.' },
-    { t: 'list', items: ['Pantau waktu respons dan uptime aplikasi', 'Catat error dan pengecualian yang terjadi', 'Pantau penggunaan memori dan CPU', 'Terima notifikasi saat terjadi gangguan'] },
-    { t: 'tip', x: 'Pantauan yang baik memungkinkan tim merespons masalah sebelum banyak pengguna terkena dampaknya.' },
-  ], 3],
+            {t:'p',x:'Pemantauan dan Log adalah konsep dasar dalam pengembangan-perangkat-lunak. Bayangkan seperti seperti membangun gedung: mulai dari rencana, fondasi, dinding, hingga finishing. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Pemantauan dan Log akan membantu kamu membangun dasar yang kuat dalam pengembangan-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Pemantauan dan Log','Manfaat memahami Pemantauan dan Log untuk pemula','Langkah pertama untuk mulai belajar Pemantauan dan Log','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Pemantauan dan Log\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Pemantauan dan Log. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Pemantauan dan Log adalah titik awal dalam perjalanan belajarmu di pengembangan-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['peluncuran-dan-pemeliharaan', 'Perbaikan Bug dan Pembaruan', [
-    { t: 'p', x: 'Setelah peluncuran, bugs akan ditemukan dan fitur baru akan diminta. Lakukan perbaikan secara terstruktur: identifikasi, perbaiki, uji, lalu distribusikan pembaruan kepada pengguna.' },
-    { t: 'list', items: ['Terima laporan bug dari pengguna', 'Prioritaskan bug berdasarkan dampak', 'Perbaiki dan uji sebelum distribusi', 'Beritahu pengguna tentang pembaruan yang tersedia'] },
-    { t: 'tip', x: 'Jangan memperbaiki bug secara langsung di produksi tanpa pengujian terlebih dahulu.' },
-  ], 3],
+            {t:'p',x:'Perbaikan Bug dan Pembaruan adalah konsep dasar dalam pengembangan-perangkat-lunak. Bayangkan seperti seperti membangun gedung: mulai dari rencana, fondasi, dinding, hingga finishing. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Perbaikan Bug dan Pembaruan akan membantu kamu membangun dasar yang kuat dalam pengembangan-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Perbaikan Bug dan Pembaruan','Manfaat memahami Perbaikan Bug dan Pembaruan untuk pemula','Langkah pertama untuk mulai belajar Perbaikan Bug dan Pembaruan','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Perbaikan Bug dan Pembaruan\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Perbaikan Bug dan Pembaruan. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Perbaikan Bug dan Pembaruan adalah titik awal dalam perjalanan belajarmu di pengembangan-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['peluncuran-dan-pemeliharaan', 'Kesalahan Umum: Tanpa Rencana Pengembalian', [
-    { t: 'p', x: 'Tanpa rencana pengembalian (rollback), jika rilis baru menyebabkan masalah serius, sulit untuk kembali ke versi sebelumnya dengan cepat dan dapat menyebabkan gangguan berkepanjangan.' },
-    { t: 'list', items: ['Mengirim pembaruan tanpa cara membatalkannya', 'Tidak mencadangkan data sebelum migrasi', 'Meluncurkan ke semua pengguna sekaligus tanpa pengujian', 'Tidak mencatat versi yang sebelumnya stabil'] },
-    { t: 'tip', x: 'Selalu siapkan versi cadangan dan rencana rollback sebelum mendistribusikan pembaruan.' },
-  ], 3],
-  // --- rekayasa-perangkat-lunak ---
+            {t:'p',x:'Kesalahan Umum: Tanpa Rencana Pengembalian adalah kesalahan yang sering dilakukan pemula saat belajar pengembangan-perangkat-lunak. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Tanpa Rencana Pengembalian karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Tanpa Rencana Pengembalian sering terjadi pada pemula','Cara mudah menghindari Tanpa Rencana Pengembalian','Tanda bahwa kamu mengalami Tanpa Rencana Pengembalian','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Tanpa Rencana Pengembalian\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Tanpa Rencana Pengembalian. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Tanpa Rencana Pengembalian sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['sdlc', 'Apa itu SDLC', [
-    { t: 'p', x: 'SDLC (Software Development Life Cycle) adalah kerangka kerja yang menggambarkan tahapan pembuatan perangkat lunak dari perencanaan sampai pemeliharaan. Setiap tahapan memiliki tujuan dan hasil akhir yang jelas.' },
-    { t: 'list', items: ['Perencanaan dan analisis kebutuhan', 'Desain sistem', 'Implementasi dan coding', 'Pengujian', 'Peluncuran dan pemeliharaan'] },
-    { t: 'tip', x: 'SDLC membantu tim bekerja terstruktur sehingga tidak ada tahapan penting yang terlewatkan.' },
-  ], 3],
+            {t:'p',x:'Apa itu SDLC adalah konsep dasar dalam rekayasa-perangkat-lunak. Bayangkan seperti seperti mengelola proyek konstruksi besar dengan jadwal, tim, dan standar kualitas. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu SDLC akan membantu kamu membangun dasar yang kuat dalam rekayasa-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu SDLC','Manfaat memahami Apa itu SDLC untuk pemula','Langkah pertama untuk mulai belajar Apa itu SDLC','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu SDLC\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu SDLC. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu SDLC adalah titik awal dalam perjalanan belajarmu di rekayasa-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['sdlc', 'Model Airfall dan Iteratif', [
-    { t: 'p', x: 'Model Airfall menyelesaikan setiap tahapan secara berurutan dan tidak kembali ke tahapan sebelumnya. Model iteratif mengulangi siklus kecil sehingga sistem berkembang bertahap.' },
-    { t: 'list', items: ['Airfall: cocok untuk kebutuhan yang sudah pasti dan tidak berubah', 'Iteratif: cocok untuk kebutuhan yang masih berkembang', 'Airfall: dokumentasi lengkap sebelum coding', 'Iteratif: umpan balik diterima tiap siklus'] },
-    { t: 'tip', x: 'Pilih model yang cocok dengan karakteristik proyek dan tim, tidak selalu yang paling baru atau populer.' },
-  ], 3],
+            {t:'p',x:'Model Airfall dan Iteratif adalah konsep dasar dalam rekayasa-perangkat-lunak. Bayangkan seperti seperti mengelola proyek konstruksi besar dengan jadwal, tim, dan standar kualitas. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Model Airfall dan Iteratif akan membantu kamu membangun dasar yang kuat dalam rekayasa-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Model Airfall dan Iteratif','Manfaat memahami Model Airfall dan Iteratif untuk pemula','Langkah pertama untuk mulai belajar Model Airfall dan Iteratif','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Model Airfall dan Iteratif\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Model Airfall dan Iteratif. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Model Airfall dan Iteratif adalah titik awal dalam perjalanan belajarmu di rekayasa-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['sdlc', 'Kesalahan Umum: Melewati Tahapan', [
-    { t: 'p', x: 'Beberapa tim langsung mulai coding tanpa analisis kebutuhan atau desain yang cukup. Ini menyebabkan hasil akhir tidak sesuai harapan pengguna dan banyak perbaikan di akhir.' },
-    { t: 'list', items: ['Langsung coding tanpa memahami kebutuhan', 'Lewati desain sistem', 'Tidak melakukan pengujian sebelum rilis', 'Mengabaikan dokumentasi'] },
-    { t: 'tip', x: 'Setiap tahapan SDLC ada alasannya. Tidak ada tahapan yang boleh dilewati sepenuhnya.' },
-  ], 3],
-  // --- manajemen-proyek ---
+            {t:'p',x:'Kesalahan Umum: Melewati Tahapan adalah kesalahan yang sering dilakukan pemula saat belajar rekayasa-perangkat-lunak. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Melewati Tahapan karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Melewati Tahapan sering terjadi pada pemula','Cara mudah menghindari Melewati Tahapan','Tanda bahwa kamu mengalami Melewati Tahapan','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Melewati Tahapan\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Melewati Tahapan. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Melewati Tahapan sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['manajemen-proyek', 'Manajemen Proyek TI', [
-    { t: 'p', x: 'Manajemen proyek TI adalah proses merencanakan, mengorganisir, dan mengawasi proyek pengembangan perangkat lunak agar selesai tepat waktu, anggaran, dan kualitas yang diinginkan.' },
-    { t: 'list', items: ['Merencanakan jadwal dan sumber daya', 'Mengelola risiko proyek', 'Memantau kemajuan pekerjaan', 'Berkomunikasi dengan pemangku kepentingan'] },
-    { t: 'tip', x: 'Manajer proyek bukan hanya mengatur jadwal, tetapi juga menghilangkan hambatan bagi tim pengembang.' },
-  ], 3],
+            {t:'p',x:'Manajemen Proyek TI adalah konsep dasar dalam rekayasa-perangkat-lunak. Bayangkan seperti seperti mengelola proyek konstruksi besar dengan jadwal, tim, dan standar kualitas. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Manajemen Proyek TI akan membantu kamu membangun dasar yang kuat dalam rekayasa-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Manajemen Proyek TI','Manfaat memahami Manajemen Proyek TI untuk pemula','Langkah pertama untuk mulai belajar Manajemen Proyek TI','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Manajemen Proyek TI\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Manajemen Proyek TI. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Manajemen Proyek TI adalah titik awal dalam perjalanan belajarmu di rekayasa-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['manajemen-proyek', 'Perencanaan dan Estimasi', [
-    { t: 'p', x: 'Estimasi adalah menebak waktu dan usaha yang dibutuhkan untuk menyelesaikan tugas. Gunakan data dari proyek serupa sebelumnya dan pecah pekerjaan besar menjadi tugas kecil agar estimasi lebih akurat.' },
-    { t: 'code', lang: 'text', x: 'Pecahan pekerjaan:\\n- Analisis kebutuhan: 3 hari\\n- Desain antarmuka: 2 hari\\n- Implementasi fitur login: 5 hari\\n- Pengujian: 2 hari' },
-    { t: 'tip', x: 'Selalu sisakan waktu tambahan (buffer) untuk hal yang tidak terduga dalam perencanaan proyek.' },
-  ], 3],
+            {t:'p',x:'Perencanaan dan Estimasi adalah konsep dasar dalam rekayasa-perangkat-lunak. Bayangkan seperti seperti mengelola proyek konstruksi besar dengan jadwal, tim, dan standar kualitas. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Perencanaan dan Estimasi akan membantu kamu membangun dasar yang kuat dalam rekayasa-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Perencanaan dan Estimasi','Manfaat memahami Perencanaan dan Estimasi untuk pemula','Langkah pertama untuk mulai belajar Perencanaan dan Estimasi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Perencanaan dan Estimasi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Perencanaan dan Estimasi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Perencanaan dan Estimasi adalah titik awal dalam perjalanan belajarmu di rekayasa-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['manajemen-proyek', 'Kesalahan Umum: Estimasi Terlalu Optimis', [
-    { t: 'p', x: 'Estimasi terlalu cepat tanpa mempertimbangkan risiko dan hambatan akan menyebabkan jadwal terlambat dan tim bekerja di bawah tekanan berlebih.' },
-    { t: 'list', items: ['Estimasi tanpa mengakibatkan risiko', 'Mengabaikan waktu untuk pengujian dan perbaikan bug', 'Menganggap semua anggota tim sama produktif', 'Tidak menyesuaikan estimasi seiring berjalannya waktu'] },
-    { t: 'tip', x: 'Perbarui estimasi secara berkala berdasarkan kemajuan nyata, bukan rencana awal yang sudah kuno.' },
-  ], 3],
-  // --- agile-scrum ---
+            {t:'p',x:'Kesalahan Umum: Estimasi Terlalu Optimis adalah kesalahan yang sering dilakukan pemula saat belajar rekayasa-perangkat-lunak. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Estimasi Terlalu Optimis karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Estimasi Terlalu Optimis sering terjadi pada pemula','Cara mudah menghindari Estimasi Terlalu Optimis','Tanda bahwa kamu mengalami Estimasi Terlalu Optimis','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Estimasi Terlalu Optimis\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Estimasi Terlalu Optimis. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Estimasi Terlalu Optimis sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['agile-scrum', 'Agile dan Scrum', [
-    { t: 'p', x: 'Agile adalah pendekatan pengembangan yang menekankan kolaborasi, fleksibilitas, dan pengiriman software yang bernilai secara bertahap. Scrum adalah salah satu kerangka kerja Agile yang paling banyak digunakan.' },
-    { t: 'list', items: ['Pengiriman software secara berulang dan bertahap', 'Kolaborasi erat antara pengembang dan pengguna', 'Responsif terhadap perubahan kebutuhan', 'Peringkat pada individu dan interaksi atas proses dan alat'] },
-    { t: 'tip', x: 'Agile tidak berarti tanpa rencana, melainkan rencana yang dapat berubah seiring informasi baru.' },
-  ], 4],
+            {t:'p',x:'Agile dan Scrum adalah konsep dasar dalam rekayasa-perangkat-lunak. Bayangkan seperti seperti mengelola proyek konstruksi besar dengan jadwal, tim, dan standar kualitas. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Agile dan Scrum akan membantu kamu membangun dasar yang kuat dalam rekayasa-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Agile dan Scrum','Manfaat memahami Agile dan Scrum untuk pemula','Langkah pertama untuk mulai belajar Agile dan Scrum','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Agile dan Scrum\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Agile dan Scrum. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Agile dan Scrum adalah titik awal dalam perjalanan belajarmu di rekayasa-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['agile-scrum', 'Peran dalam Scrum', [
-    { t: 'p', x: 'Scrum memiliki tiga peran utama: Product Owner (mewakili pengguna dan menentukan prioritas), Scrum Master (memastikan proses Scrum berjalan), dan Development Team (membangun produk).' },
-    { t: 'list', items: ['Product Owner: mengelola backlog dan prioritas fitur', 'Scrum Master: memfasilitasi dan menghilangkan hambatan', 'Development Team: merancang, membangun, dan menguji fitur', 'Tiga peran bekerja sama dalam satu tim Scrum'] },
-    { t: 'tip', x: 'Product Owner tidak boleh memberi tugas langsung ke anggota development team di luar sprint planning.' },
-  ], 3],
+            {t:'p',x:'Peran dalam Scrum adalah konsep dasar dalam rekayasa-perangkat-lunak. Bayangkan seperti seperti mengelola proyek konstruksi besar dengan jadwal, tim, dan standar kualitas. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Peran dalam Scrum akan membantu kamu membangun dasar yang kuat dalam rekayasa-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Peran dalam Scrum','Manfaat memahami Peran dalam Scrum untuk pemula','Langkah pertama untuk mulai belajar Peran dalam Scrum','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Peran dalam Scrum\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Peran dalam Scrum. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Peran dalam Scrum adalah titik awal dalam perjalanan belajarmu di rekayasa-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['agile-scrum', 'Sprint dan Sprint Review', [
-    { t: 'p', x: 'Sprint adalah periode waktu tetap (biasanya 1-4 minggu) di mana tim menyelesaikan sekumpulan fitur. Pada akhir sprint, tim menunjukkan hasil pekerjaan kepada pemangku kepentingan dalam sprint review.' },
-    { t: 'list', items: ['Sprint berlangsung dalam waktu tetap', 'Saat akhir sprint harus ada hasil yang dapat digunakan', 'Sprint review untuk menunjukkan hasil kepada pemangku kepentingan', 'Sprint retrospective untuk memperbaiki proses tim'] },
-    { t: 'tip', x: 'Jangan mengubah cakupan sprint setelah dimulai kecuali ada hal sangat mendesak yang menyangkut keselamatan atau bisnis.' },
-  ], 3],
+            {t:'p',x:'Sprint dan Sprint Review adalah konsep dasar dalam rekayasa-perangkat-lunak. Bayangkan seperti seperti mengelola proyek konstruksi besar dengan jadwal, tim, dan standar kualitas. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Sprint dan Sprint Review akan membantu kamu membangun dasar yang kuat dalam rekayasa-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Sprint dan Sprint Review','Manfaat memahami Sprint dan Sprint Review untuk pemula','Langkah pertama untuk mulai belajar Sprint dan Sprint Review','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Sprint dan Sprint Review\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Sprint dan Sprint Review. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Sprint dan Sprint Review adalah titik awal dalam perjalanan belajarmu di rekayasa-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['agile-scrum', 'Kesalahan Umum: Scrum Tanpa Hasil', [
-    { t: 'p', x: 'Beberapa tim mengikuti rituan Scrum (rapat, papan, peran) tetapi tidak menghasilkan software yang dapat digunakan pada akhir sprint. Ini membuat Scrum menjadi formalitas tanpa manfaat nyata.' },
-    { t: 'list', items: ['Rapatan dilakukan tetapi tidak ada hasil akhir sprint', 'Backlog tidak diprioritaskan dengan jelas', 'Tim tidak memiliki kewenangan untuk mengambil keputusan', 'Sprint berlangsung tanpa target yang terukur'] },
-    { t: 'tip', x: 'Setiap sprint harus menghasilkan increment software yang nyata dan dapat diuji.' },
-  ], 3],
-  // --- dokumentasi ---
+            {t:'p',x:'Kesalahan Umum: Scrum Tanpa Hasil adalah kesalahan yang sering dilakukan pemula saat belajar rekayasa-perangkat-lunak. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Scrum Tanpa Hasil karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Scrum Tanpa Hasil sering terjadi pada pemula','Cara mudah menghindari Scrum Tanpa Hasil','Tanda bahwa kamu mengalami Scrum Tanpa Hasil','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Scrum Tanpa Hasil\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Scrum Tanpa Hasil. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Scrum Tanpa Hasil sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['dokumentasi', 'Dokumentasi Perangkat Lunak', [
-    { t: 'p', x: 'Dokumentasi membantu orang lain memahami sistem, cara menggunakannya, dan cara mengembangkannya. Dokumentasi yang baik mencakup panduan pengguna, dokumentasi teknis, dan catatan perubahan.' },
-    { t: 'list', items: ['Panduan pengguna untuk orang yang menggunakan sistem', 'Dokumentasi teknis untuk pengembang yang memelihara sistem', 'Catatan API untuk integrasi dengan sistem lain', 'Catatan perubahan dan versi rilis'] },
-    { t: 'tip', x: 'Tulis dokumentasi seiring dengan pengembangan, jangan ditunda sampai proyek selesai.' },
-  ], 3],
+            {t:'p',x:'Dokumentasi Perangkat Lunak adalah konsep dasar dalam rekayasa-perangkat-lunak. Bayangkan seperti seperti mengelola proyek konstruksi besar dengan jadwal, tim, dan standar kualitas. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Dokumentasi Perangkat Lunak akan membantu kamu membangun dasar yang kuat dalam rekayasa-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Dokumentasi Perangkat Lunak','Manfaat memahami Dokumentasi Perangkat Lunak untuk pemula','Langkah pertama untuk mulai belajar Dokumentasi Perangkat Lunak','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Dokumentasi Perangkat Lunak\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Dokumentasi Perangkat Lunak. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Dokumentasi Perangkat Lunak adalah titik awal dalam perjalanan belajarmu di rekayasa-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['dokumentasi', 'Komentar Kode yang Baik', [
-    { t: 'p', x: 'Komentar kode harus menjelaskan mengapa suatu keputusan diambil, bukan apa yang dilakukan kode tersebut. Kode yang jelas seharusnya bisa dimengerti tanpa banyak komentar.' },
-    { t: 'code', lang: 'js', x: '// Baik: menjelaskan alasan\\n// Gunakan 30 detik timeout karena server lambat di area pedesaan\\nconst timeout = 30000;\\n\\n// Buruk: menjelaskan apa yang jelas\\n// Tambahkan 1 dan 2\\nlet hasil = 1 + 2;' },
-    { t: 'tip', x: 'Perbaiki nama variabel dan struktur kode sebelum menambahkan komentar. Kode yang jelas tidak butuh komentar berlebihan.' },
-  ], 3],
+            {t:'p',x:'Komentar Kode yang Baik adalah konsep dasar dalam rekayasa-perangkat-lunak. Bayangkan seperti seperti mengelola proyek konstruksi besar dengan jadwal, tim, dan standar kualitas. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Komentar Kode yang Baik akan membantu kamu membangun dasar yang kuat dalam rekayasa-perangkat-lunak. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Komentar Kode yang Baik','Manfaat memahami Komentar Kode yang Baik untuk pemula','Langkah pertama untuk mulai belajar Komentar Kode yang Baik','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Komentar Kode yang Baik\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Komentar Kode yang Baik. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Komentar Kode yang Baik adalah titik awal dalam perjalanan belajarmu di rekayasa-perangkat-lunak. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['dokumentasi', 'Kesalahan Umum: Dokumentasi Ketuwu', [
-    { t: 'p', x: 'Dokumentasi yang tidak diperbarui setelah perubahan kode menjadi menyesatkan dan lebih buruk daripada tidak ada dokumentasi. Selalu sinkronkan dokumentasi dengan perubahan sistem.' },
-    { t: 'list', items: ['Dokumentasi tidak cocok dengan kode terbaru', 'Informasi usang yang masih dipakai sebagai acuan', 'Tidak ada pemegang tanggung jawab dokumentasi', 'Dokumentasi tersimpan di tempat yang sulit ditemukan'] },
-    { t: 'tip', x: 'Jadikan dokumentasi sebagai bagian dari definisi selesai (definition of done) setiap fitur.' },
-  ], 3],
-  // --- qa-testing ---
+            {t:'p',x:'Kesalahan Umum: Dokumentasi Ketuwu adalah kesalahan yang sering dilakukan pemula saat belajar rekayasa-perangkat-lunak. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Dokumentasi Ketuwu karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Dokumentasi Ketuwu sering terjadi pada pemula','Cara mudah menghindari Dokumentasi Ketuwu','Tanda bahwa kamu mengalami Dokumentasi Ketuwu','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Dokumentasi Ketuwu\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Dokumentasi Ketuwu. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Dokumentasi Ketuwu sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['jenis-pengujian', 'Jenis-Jenis Pengujian', [
-    { t: 'p', x: 'Pengujian perangkat lunak terdiri dari berbagai jenis dengan tujuan berbeda. Pengujian fungsional memeriksa fitur, pengujian non-fungsional memeriksa kualitas seperti kecepatan dan keamanan.' },
-    { t: 'list', items: ['Pengujian fungsional: fitur bekerja sesuai spesifikasi', 'Pengujian non-fungsional: kinerja, keamanan, kegunaan', 'Pengujian regresi: memastikan perubahan baru tidak merusak fitur lama', 'Pengujian user acceptance: memastikan sistem sesuai kebutuhan pengguna'] },
-    { t: 'tip', x: 'Gabungkan berbagai jenis pengujian agar sistem diuji dari berbagai sudut pandang.' },
-  ], 3],
+            {t:'p',x:'Jenis-Jenis Pengujian adalah konsep dasar dalam qa-testing. Bayangkan seperti seperti memeriksa makanan sebelum disajikan agar tidak ada yang rusak. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Jenis-Jenis Pengujian akan membantu kamu membangun dasar yang kuat dalam qa-testing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Jenis-Jenis Pengujian','Manfaat memahami Jenis-Jenis Pengujian untuk pemula','Langkah pertama untuk mulai belajar Jenis-Jenis Pengujian','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Jenis-Jenis Pengujian\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Jenis-Jenis Pengujian. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Jenis-Jenis Pengujian adalah titik awal dalam perjalanan belajarmu di qa-testing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['jenis-pengujian', 'Pengujian Fungsional dan Non-Fungsional', [
-    { t: 'p', x: 'Pengujian fungsional menjawab \"apakah sistem melakukan apa yang harus dilakukan?\", sedangkan pengujian non-fungsional menjawab \"seberapa baik sistem melakukan hal tersebut?\"' },
-    { t: 'code', lang: 'text', x: 'Fungsional: Pengguna dapat login dengan benar\\nNon-fungsional: Halaman login dimuat dalam kurang dari 2 detik\\nFungsional: Data tersimpan saat tombol simpan diklik\\nNon-fungsional: Data aman dan tidak dapat diakses orang lain' },
-    { t: 'tip', x: 'Sistem yang bekerja tapi lambat atau tidak aman masih dianggap gagal dari sudut pengguna.' },
-  ], 3],
+            {t:'p',x:'Pengujian Fungsional dan Non-Fungsional adalah konsep dasar dalam qa-testing. Bayangkan seperti seperti memeriksa makanan sebelum disajikan agar tidak ada yang rusak. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Pengujian Fungsional dan Non-Fungsional akan membantu kamu membangun dasar yang kuat dalam qa-testing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Pengujian Fungsional dan Non-Fungsional','Manfaat memahami Pengujian Fungsional dan Non-Fungsional untuk pemula','Langkah pertama untuk mulai belajar Pengujian Fungsional dan Non-Fungsional','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Pengujian Fungsional dan Non-Fungsional\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Pengujian Fungsional dan Non-Fungsional. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Pengujian Fungsional dan Non-Fungsional adalah titik awal dalam perjalanan belajarmu di qa-testing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['jenis-pengujian', 'Kesalahan Umum: Hanya Pengujian Fungsional', [
-    { t: 'p', x: 'Fokus hanya pada fitur berjalan tanpa menguji kinerja, keamanan, dan kegunaan dapat menghasilkan sistem yang rentan gangguan dan tidak nyaman digunakan.' },
-    { t: 'list', items: ['Mengabaikan pengujian kinerja dan beban', 'Tidak menguji keamanan sistem', 'Mengabaikan pengujian pada berbagai perangkat dan browser', 'Mengasumsikan sistem aman karena fitur berfungsi'] },
-    { t: 'tip', x: 'Pengujian non-fungsional sama pentingnya dengan pengujian fungsional untuk keberhasilan sistem.' },
-  ], 3],
-  // --- unit-test ---
+            {t:'p',x:'Kesalahan Umum: Hanya Pengujian Fungsional adalah kesalahan yang sering dilakukan pemula saat belajar qa-testing. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Hanya Pengujian Fungsional karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Hanya Pengujian Fungsional sering terjadi pada pemula','Cara mudah menghindari Hanya Pengujian Fungsional','Tanda bahwa kamu mengalami Hanya Pengujian Fungsional','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Hanya Pengujian Fungsional\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Hanya Pengujian Fungsional. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Hanya Pengujian Fungsional sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['unit-test', 'Unit Test', [
-    { t: 'p', x: 'Unit test memeriksa satu fungsi atau modul kecil secara terpisah. Setiap unit test harus cepat, terisolasi, dan dapat diulang berkali-kali dengan hasil yang sama.' },
-    { t: 'code', lang: 'js', x: 'function kali(a, b) { return a * b; }\\n\\ntest("kali dua angka", () => {\\n  expect(kali(3, 4)).toBe(12);\\n  expect(kali(-1, 5)).toBe(-5);\\n});' },
-    { t: 'tip', x: 'Tulis unit test untuk setiap fungsi logika bisnis agar perubahan di kemudian hari tidak merusak perilaku yang sudah ada.' },
-  ], 3],
+            {t:'p',x:'Unit Test adalah konsep dasar dalam qa-testing. Bayangkan seperti seperti memeriksa makanan sebelum disajikan agar tidak ada yang rusak. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Unit Test akan membantu kamu membangun dasar yang kuat dalam qa-testing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Unit Test','Manfaat memahami Unit Test untuk pemula','Langkah pertama untuk mulai belajar Unit Test','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Unit Test\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Unit Test. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Unit Test adalah titik awal dalam perjalanan belajarmu di qa-testing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['unit-test', 'Menguji Kasus Tepi (Edge Case)', [
-    { t: 'p', x: 'Kasus tepi adalah situasi jarang terjadi tetapi penting, seperti masukan kosong, nilai sangat besar, atau jaringan terputus. Pengujian harus mencakup kasus tepi agar sistem tidak gagal dalam situasi nyata.' },
-    { t: 'list', items: ['Masukan kosong atau null', 'Nilai paling besar dan paling kecil', 'Jaringan terputus selama permintaan', 'Pengguna dengan hak akses yang terbatas'] },
-    { t: 'tip', x: 'Banyak bug ditemukan di kasus tepi, bukan dalam alur bahagia yang sederhana.' },
-  ], 3],
+            {t:'p',x:'Menguji Kasus Tepi (Edge Case) adalah konsep dasar dalam qa-testing. Bayangkan seperti seperti memeriksa makanan sebelum disajikan agar tidak ada yang rusak. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menguji Kasus Tepi (Edge Case) akan membantu kamu membangun dasar yang kuat dalam qa-testing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menguji Kasus Tepi (Edge Case)','Manfaat memahami Menguji Kasus Tepi (Edge Case) untuk pemula','Langkah pertama untuk mulai belajar Menguji Kasus Tepi (Edge Case)','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menguji Kasus Tepi (Edge Case)\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menguji Kasus Tepi (Edge Case). Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menguji Kasus Tepi (Edge Case) adalah titik awal dalam perjalanan belajarmu di qa-testing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['unit-test', 'Kesalahan Umum: Pengujian yang Bergantung pada Waktu', [
-    { t: 'p', x: 'Pengujian yang bergantung pada waktu atau tanggal aktual dapat gagal pada waktu yang berbeda. Gunakan waktu yang dapat dikontrol atau mock untuk pengujian yang konsisten.' },
-    { t: 'list', items: ['Pengujian yang gagal pada tanggal tertentu', 'Menggunakan waktu sistem secara langsung', 'Tidak dapat diulang dengan hasil yang sama', 'Bergantung pada kondisi eksternal yang berubah'] },
-    { t: 'tip', x: 'Gunakan library mock untuk waktu agar pengujian tidak bergantung pada waktu aktual sistem.' },
-  ], 3],
-  // --- integrasi-dan-sistem ---
+            {t:'p',x:'Kesalahan Umum: Pengujian yang Bergantung pada Waktu adalah kesalahan yang sering dilakukan pemula saat belajar qa-testing. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Pengujian yang Bergantung pada Waktu karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Pengujian yang Bergantung pada Waktu sering terjadi pada pemula','Cara mudah menghindari Pengujian yang Bergantung pada Waktu','Tanda bahwa kamu mengalami Pengujian yang Bergantung pada Waktu','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Pengujian yang Bergantung pada Waktu\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Pengujian yang Bergantung pada Waktu. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Pengujian yang Bergantung pada Waktu sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['integrasi-dan-sistem', 'Pengujian Integrasi dan Sistem', [
-    { t: 'p', x: 'Pengujian integrasi memeriksa interaksi antar modul, sedangkan pengujian sistem memeriksa keseluruhan aplikasi sebagai satu kesatuan. Kedua-duanya memastikan semua bagian bekerja bersama dengan baik.' },
-    { t: 'list', items: ['Integrasi: uji antar dua atau lebih modul', 'Sistem: uji seluruh aplikasi dari awal hingga akhir', 'Integrasi ditemukan masalah interaksi antar modul', 'Sistem menemukan masalah yang hanya muncul saat semua bagian gabungan'] },
-    { t: 'tip', x: 'Lakukan pengujian integrasi setelah unit test, baru kemudian pengujian sistem sebelum rilis.' },
-  ], 3],
+            {t:'p',x:'Pengujian Integrasi dan Sistem adalah konsep dasar dalam qa-testing. Bayangkan seperti seperti memeriksa makanan sebelum disajikan agar tidak ada yang rusak. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Pengujian Integrasi dan Sistem akan membantu kamu membangun dasar yang kuat dalam qa-testing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Pengujian Integrasi dan Sistem','Manfaat memahami Pengujian Integrasi dan Sistem untuk pemula','Langkah pertama untuk mulai belajar Pengujian Integrasi dan Sistem','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Pengujian Integrasi dan Sistem\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Pengujian Integrasi dan Sistem. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Pengujian Integrasi dan Sistem adalah titik awal dalam perjalanan belajarmu di qa-testing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['integrasi-dan-sistem', 'Pengujian Ujung ke Ujung', [
-    { t: 'p', x: 'Pengujian ujung ke ujung mensimulasikan alur pengguna nyata dari awal hingga akhir, misal dari membuka halaman login sampai mencetak laporan. Ini memastikan seluruh alur bisnis berjalan.' },
-    { t: 'code', lang: 'text', x: 'Alur ujung ke ujung:\\n1. Pengguna membuka halaman login\\n2. Pengguna memasukkan kredensial\\n3. Sistem memverifikasi dan membuka dasbor\\n4. Pengguna mencetak laporan harian' },
-    { t: 'tip', x: 'Uji alur utama yang sering dilakukan pengguna, bukan setiap fitur kecil secara terpisah.' },
-  ], 3],
+            {t:'p',x:'Pengujian Ujung ke Ujung adalah konsep dasar dalam qa-testing. Bayangkan seperti seperti memeriksa makanan sebelum disajikan agar tidak ada yang rusak. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Pengujian Ujung ke Ujung akan membantu kamu membangun dasar yang kuat dalam qa-testing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Pengujian Ujung ke Ujung','Manfaat memahami Pengujian Ujung ke Ujung untuk pemula','Langkah pertama untuk mulai belajar Pengujian Ujung ke Ujung','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Pengujian Ujung ke Ujung\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Pengujian Ujung ke Ujung. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Pengujian Ujung ke Ujung adalah titik awal dalam perjalanan belajarmu di qa-testing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['integrasi-dan-sistem', 'Kesalahan Umum: Mengabaikan Pengujian Sistem Keseluruhan', [
-    { t: 'p', x: 'Setiap modul mungkin berfungsi dengan baik secara individu, tetapi gagal ketika digabungkan karena data atau asumsi yang tidak cocok. Pengujian sistem keseluruhan menangkap masalah ini.' },
-    { t: 'list', items: ['Menguji setiap modul secara terpisah saja', 'Tidak menguji alur data antar modul', 'Mengabaikan uji lingkungan produksi', 'Mengasumsikan integrasi berhasil karena unit test lulus'] },
-    { t: 'tip', x: 'Pengujian sistem keseluruhan adalah jaringan keselamatan terakhir sebelum aplikasi sampai ke pengguna.' },
-  ], 3],
-  // --- uat-dan-laporan ---
+            {t:'p',x:'Kesalahan Umum: Mengabaikan Pengujian Sistem Keseluruhan adalah kesalahan yang sering dilakukan pemula saat belajar qa-testing. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengabaikan Pengujian Sistem Keseluruhan karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengabaikan Pengujian Sistem Keseluruhan sering terjadi pada pemula','Cara mudah menghindari Mengabaikan Pengujian Sistem Keseluruhan','Tanda bahwa kamu mengalami Mengabaikan Pengujian Sistem Keseluruhan','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengabaikan Pengujian Sistem Keseluruhan\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengabaikan Pengujian Sistem Keseluruhan. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengabaikan Pengujian Sistem Keseluruhan sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['uat-dan-laporan', 'UAT dan Laporan Bug', [
-    { t: 'p', x: 'User Acceptance Testing (UAT) adalah pengujian terakhir dilakukan oleh pengguna atau perwakilan mereka untuk memastikan sistem sesuai kebutuhan bisnis sebelum disetujui untuk diluncurkan.' },
-    { t: 'list', items: ['Pengujian dilakukan oleh pengguna akhir', 'Fitur diuji sesuai skenario bisnis nyata', 'Hasil UAT menjadi syetuji rilis', 'Masalah ditemukan dicatat dan diperbaiki sebelum rilis'] },
-    { t: 'tip', x: 'Jangan biarkan hanya pengembang yang menujui sistem. Libatkan pengguna yang sebenarnya akan menggunakannya.' },
-  ], 3],
+            {t:'p',x:'UAT dan Laporan Bug adalah konsep dasar dalam qa-testing. Bayangkan seperti seperti memeriksa makanan sebelum disajikan agar tidak ada yang rusak. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai UAT dan Laporan Bug akan membantu kamu membangun dasar yang kuat dalam qa-testing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari UAT dan Laporan Bug','Manfaat memahami UAT dan Laporan Bug untuk pemula','Langkah pertama untuk mulai belajar UAT dan Laporan Bug','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: UAT dan Laporan Bug\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar UAT dan Laporan Bug. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: UAT dan Laporan Bug adalah titik awal dalam perjalanan belajarmu di qa-testing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['uat-dan-laporan', 'Menulis Laporan Bug yang Baik', [
-    { t: 'p', x: 'Laporan bug yang baik memuat deskripsi yang jelas, langkah untuk mereproduksi, hasil yang diharapkan, dan hasil aktual. Sertakan tangkapan layar jika perlu agar tim pengembang dapat menanggulangi cepat.' },
-    { t: 'code', lang: 'text', x: 'Judul: Tombol Simpan tidak merespons setelah mengisi formulir\\nLangkah:\\n1. Buka halaman pendaftaran\\n2. Isi semua kolom\\n3. Klik tombol Simpan\\nHasil yang diharapkan: Data tersimpan dan pindah ke halaman selanjutnya\\nHasil aktual: Tidak terjadi apa-apa saat tombol diklik' },
-    { t: 'tip', x: 'Sertakan versi aplikasi, perangkat, dan langkah reproduksi yang detail agar bug dapat diperbaiki tanpa banyak pertanyaan balik.' },
-  ], 3],
+            {t:'p',x:'Menulis Laporan Bug yang Baik adalah konsep dasar dalam qa-testing. Bayangkan seperti seperti memeriksa makanan sebelum disajikan agar tidak ada yang rusak. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menulis Laporan Bug yang Baik akan membantu kamu membangun dasar yang kuat dalam qa-testing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menulis Laporan Bug yang Baik','Manfaat memahami Menulis Laporan Bug yang Baik untuk pemula','Langkah pertama untuk mulai belajar Menulis Laporan Bug yang Baik','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menulis Laporan Bug yang Baik\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menulis Laporan Bug yang Baik. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menulis Laporan Bug yang Baik adalah titik awal dalam perjalanan belajarmu di qa-testing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['uat-dan-laporan', 'Kesalahan Umum: Laporan Bug Tidak Lengkap', [
-    { t: 'p', x: 'Laporan bug yang hanya mengatakan \"tidak berfungsi\" tanpa detail membuat tim pengembang kesulitan menemukan penyebab dan memperbaiki masalah tersebut.' },
-    { t: 'list', items: ['Laporan bug tanpa langkah reproduksi', 'Tidak menyertakan hasil yang diharapkan dan aktual', 'Melaporkan banyak bug dalam satu laporan', 'Tidak menyertakan tangkapan layar atau pesan error'] },
-    { t: 'tip', x: 'Satu laporan satu bug agar tim dapat menangani dan melacak kemajuan perbaikan masing-masing.' },
-  ], 3],
-
-// --- basis-data-sql ---
+            {t:'p',x:'Kesalahan Umum: Laporan Bug Tidak Lengkap adalah kesalahan yang sering dilakukan pemula saat belajar qa-testing. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Laporan Bug Tidak Lengkap karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Laporan Bug Tidak Lengkap sering terjadi pada pemula','Cara mudah menghindari Laporan Bug Tidak Lengkap','Tanda bahwa kamu mengalami Laporan Bug Tidak Lengkap','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Laporan Bug Tidak Lengkap\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Laporan Bug Tidak Lengkap. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Laporan Bug Tidak Lengkap sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['relasional-dasar', 'Apa itu Basis Data Relasional', [
-    { t: 'p', x: 'Basis data relasional menyimpan data dalam tabel yang saling terhubung melalui kunci. Setiap tabel terdiri dari baris dan kolom, dan relasi antar tabel memungkinkan data terkait dikumpulkan dengan mudah.' },
-    { t: 'list', items: ['Data disimpan dalam tabel', 'Setiap tabel memiliki baris dan kolom', 'Kunci utama mengidentifikasi setiap baris secara unik', 'Kunci asing menghubungkan tabel satu sama lain'] },
-    { t: 'tip', x: 'Contoh basis data relasional populer adalah MySQL dan PostgreSQL.' },
-  ], 3],
+            {t:'p',x:'Apa itu Basis Data Relasional adalah konsep dasar dalam basis-data-sql. Bayangkan seperti seperti lembar pengolahan data besar yang terorganisir dalam tabel, baris, dan kolom. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Basis Data Relasional akan membantu kamu membangun dasar yang kuat dalam basis-data-sql. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Basis Data Relasional','Manfaat memahami Apa itu Basis Data Relasional untuk pemula','Langkah pertama untuk mulai belajar Apa itu Basis Data Relasional','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Basis Data Relasional\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Basis Data Relasional. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Basis Data Relasional adalah titik awal dalam perjalanan belajarmu di basis-data-sql. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['relasional-dasar', 'Tabel, Baris, dan Kolom', [
-    { t: 'p', x: 'Tabel adalah wadah data, baris adalah satu catatan, dan kolom adalah satu atribut atau properti dari catatan tersebut. Setiap kolom memiliki tipe data yang menentukan jenis nilai yang boleh disimpan.' },
-    { t: 'code', lang: 'sql', x: 'CREATE TABLE siswa (\\n  id INT PRIMARY KEY,\\n  nama VARCHAR(100),\\n  umur INT,\\n  email VARCHAR(100)\\n);\\n\\nINSERT INTO siswa (id, nama, umur, email) VALUES\\n  (1, \"Rafi\", 20, \"rafi@example.com\");' },
-    { t: 'tip', x: 'Pilih tipe data yang sesuai untuk setiap kolom agar data disimpan secara efisien dan valid.' },
-  ], 3],
+            {t:'p',x:'Tabel, Baris, dan Kolom adalah konsep dasar dalam basis-data-sql. Bayangkan seperti seperti lembar pengolahan data besar yang terorganisir dalam tabel, baris, dan kolom. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Tabel, Baris, dan Kolom akan membantu kamu membangun dasar yang kuat dalam basis-data-sql. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Tabel, Baris, dan Kolom','Manfaat memahami Tabel, Baris, dan Kolom untuk pemula','Langkah pertama untuk mulai belajar Tabel, Baris, dan Kolom','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Tabel, Baris, dan Kolom\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Tabel, Baris, dan Kolom. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Tabel, Baris, dan Kolom adalah titik awal dalam perjalanan belajarmu di basis-data-sql. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['relasional-dasar', 'Kunci Utama dan Kunci Asing', [
-    { t: 'p', x: 'Kunci utama (primary key) mengidentifikasi setiap baris dalam tabel secara unik. Kunci asing (foreign key) merujuk ke kunci utama di tabel lain, sehingga membentuk relasi antar tabel.' },
-    { t: 'list', items: ['Setiap tabel harus memiliki satu kunci utama', 'Kunci utama tidak boleh bernilai kosong dan tidak boleh duplikat', 'Kunci asing mengacu pada kunci utama tabel lain', 'Relasi memastikan integritas data antar tabel'] },
-    { t: 'tip', x: 'Gunakan kunci asing untuk menghubungkan data terkait, misal pesanan terkait pelanggan yang memesan.' },
-  ], 3],
+            {t:'p',x:'Kunci Utama dan Kunci Asing adalah konsep dasar dalam basis-data-sql. Bayangkan seperti seperti lembar pengolahan data besar yang terorganisir dalam tabel, baris, dan kolom. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Kunci Utama dan Kunci Asing akan membantu kamu membangun dasar yang kuat dalam basis-data-sql. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Kunci Utama dan Kunci Asing','Manfaat memahami Kunci Utama dan Kunci Asing untuk pemula','Langkah pertama untuk mulai belajar Kunci Utama dan Kunci Asing','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Kunci Utama dan Kunci Asing\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Kunci Utama dan Kunci Asing. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Kunci Utama dan Kunci Asing adalah titik awal dalam perjalanan belajarmu di basis-data-sql. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['relasional-dasar', 'Kesalahan Umum: Mengabaikan Integritas Relasi', [
-    { t: 'p', x: 'Menghapus data yang masih dirujuk oleh tabel lain akan menyebabkan relasi rusak dan data menjadi tidak konsisten. Gunakan aturan integritas referensial untuk mencegah hal ini.' },
-    { t: 'list', items: ['Menghapus pelanggan yang masih memiliki pesanan', 'Mengubah kunci utama yang dirujuk oleh tabel lain', 'Menyimpan kunci asing yang tidak ada di tabel acuan', 'Mengabaikan aturan ON DELETE dan ON UPDATE'] },
-    { t: 'tip', x: 'Gunakan ON DELETE CASCADE atau ON DELETE SET NULL untuk mengatur apa yang terjadi saat data acuan dihapus.' },
-  ], 3],
-  // --- query-sql ---
+            {t:'p',x:'Kesalahan Umum: Mengabaikan Integritas Relasi adalah kesalahan yang sering dilakukan pemula saat belajar basis-data-sql. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengabaikan Integritas Relasi karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengabaikan Integritas Relasi sering terjadi pada pemula','Cara mudah menghindari Mengabaikan Integritas Relasi','Tanda bahwa kamu mengalami Mengabaikan Integritas Relasi','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengabaikan Integritas Relasi\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengabaikan Integritas Relasi. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengabaikan Integritas Relasi sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['query-sql', 'Query SQL Dasar: SELECT', [
     { t: 'p', x: 'SELECT digunakan untuk mengambil data dari tabel. Kamu dapat menentukan kolom yang ingin diambil, membatasi jumlah baris, dan mengurutkan hasilnya.' },
     { t: 'code', lang: 'sql', x: 'SELECT nama, email FROM siswa\\nWHERE umur >= 17\\nORDER BY nama ASC\\nLIMIT 10;' },
@@ -2063,11 +2664,13 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Jalankan SELECT dengan WHERE yang sama sebelum UPDATE atau DELETE untuk memastikan data yang akan diubah benar.' },
   ], 3],
   ['query-sql', 'Kesalahan Umum: Tanpa Klausa WHERE', [
-    { t: 'p', x: 'Menjalankan UPDATE atau DELETE tanpa klausa WHERE akan mempengaruhi semua baris dalam tabel, bukan hanya satu baris yang diinginkan. Ini dapat menyebabkan kehilangan data secara massal.' },
-    { t: 'list', items: ['UPDATE tanpa WHERE mengubah seluruh tabel', 'DELETE tanpa WHERE menghapus semua data', 'Tidak memverifikasi data sebelum diubah', 'Tidak membuat cadangan sebelum operasi massal'] },
-    { t: 'tip', x: 'Selalu periksa klausa WHERE sebelum menjalankan UPDATE atau DELETE di basis data produksi.' },
-  ], 3],
-  // --- join-dan-indeks ---
+            {t:'p',x:'Kesalahan Umum: Tanpa Klausa WHERE adalah kesalahan yang sering dilakukan pemula saat belajar basis-data-sql. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Tanpa Klausa WHERE karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Tanpa Klausa WHERE sering terjadi pada pemula','Cara mudah menghindari Tanpa Klausa WHERE','Tanda bahwa kamu mengalami Tanpa Klausa WHERE','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Tanpa Klausa WHERE\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Tanpa Klausa WHERE. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Tanpa Klausa WHERE sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['join-dan-indeks', 'JOIN: Menggabungkan Tabel', [
     { t: 'p', x: 'JOIN digunakan untuk menggabungkan data dari dua atau lebih tabel berdasarkan kunci yang terkait. Tipe JOIN umum adalah INNER JOIN, LEFT JOIN, dan RIGHT JOIN.' },
     { t: 'code', lang: 'sql', x: 'SELECT siswa.nama, nilai.skor\\nFROM siswa\\nINNER JOIN nilai ON siswa.id = nilai.siswa_id\\nWHERE nilai.skor >= 80;' },
@@ -2075,112 +2678,165 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Gunakan INNER JOIN jika hanya butuh data yang tersedia di kedua tabel, dan LEFT JOIN jika ingin menyertakan semua data dari tabel utama.' },
   ], 3],
   ['join-dan-indeks', 'Indeks untuk Kecepatan Query', [
-    { t: 'p', x: 'Indeks adalah struktur data yang mempercepat pencarian data dalam tabel. Tanpa indeks, basis data harus memeriksa setiap baris satu per satu saat mencari data.' },
-    { t: 'list', items: ['Indeks mempercepat pencarian dan pengurutan', 'Buat indeks pada kolom yang sering digunakan dalam WHERE', 'Terlalu banyak indeks dapat memperlambat INSERT dan UPDATE', 'Indeks membutuhkan penyimpanan tambahan'] },
-    { t: 'tip', x: 'Buat indeks pada kolom kunci utama dan kolom yang sering digunakan untuk mencari atau mengurutkan data.' },
-  ], 3],
+            {t:'p',x:'Indeks untuk Kecepatan Query adalah konsep dasar dalam basis-data-sql. Bayangkan seperti seperti lembar pengolahan data besar yang terorganisir dalam tabel, baris, dan kolom. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Indeks untuk Kecepatan Query akan membantu kamu membangun dasar yang kuat dalam basis-data-sql. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Indeks untuk Kecepatan Query','Manfaat memahami Indeks untuk Kecepatan Query untuk pemula','Langkah pertama untuk mulai belajar Indeks untuk Kecepatan Query','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Indeks untuk Kecepatan Query\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Indeks untuk Kecepatan Query. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Indeks untuk Kecepatan Query adalah titik awal dalam perjalanan belajarmu di basis-data-sql. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['join-dan-indeks', 'Kesalahan Umum: Query Tanpa Indeks pada Tabel Besar', [
-    { t: 'p', x: 'Pada tabel dengan jutaan baris, query tanpa indeks akan sangat lambat karena basis data memindai setiap baris. Ini dikenal sebagai full table scan.' },
-    { t: 'list', items: ['Query lambat pada tabel besar tanpa indeks', 'Full table scan memeriksa setiap baris', 'Tidak ada indeks pada kolom yang sering dicari', 'Basis data membutuhkan waktu lama untuk mengembalikan hasil'] },
-    { t: 'tip', x: 'Gunakan EXPLAIN untuk menganalisis query dan memeriksa apakah indeks digunakan dengan benar.' },
-  ], 3],
-  // --- mysql-postgresql ---
+            {t:'p',x:'Kesalahan Umum: Query Tanpa Indeks pada Tabel Besar adalah kesalahan yang sering dilakukan pemula saat belajar basis-data-sql. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Query Tanpa Indeks pada Tabel Besar karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Query Tanpa Indeks pada Tabel Besar sering terjadi pada pemula','Cara mudah menghindari Query Tanpa Indeks pada Tabel Besar','Tanda bahwa kamu mengalami Query Tanpa Indeks pada Tabel Besar','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Query Tanpa Indeks pada Tabel Besar\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Query Tanpa Indeks pada Tabel Besar. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Query Tanpa Indeks pada Tabel Besar sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['mysql-postgresql', 'MySQL dan PostgreSQL', [
-    { t: 'p', x: 'MySQL dan PostgreSQL adalah dua basis data relasional populer. MySQL dikenal cepat dan mudah digunakan, sedangkan PostgreSQL dikenal fitur canggih dan standar SQL yang ketat.' },
-    { t: 'list', items: ['MySQL: populer untuk aplikasi web, mudah diatur', 'PostgreSQL: mendukung tipe data kompleks dan query lanjutan', 'Keduanya gratis dan open source', 'Pilih berdasarkan kebutuhan aplikasi dan tim'] },
-    { t: 'tip', x: 'Keduanya menggunakan SQL, jadi pemindahan dari satu ke yang lain relatif mudah meski ada perbedaan fitur lanjutan.' },
-  ], 3],
+            {t:'p',x:'MySQL dan PostgreSQL adalah konsep dasar dalam basis-data-sql. Bayangkan seperti seperti lembar pengolahan data besar yang terorganisir dalam tabel, baris, dan kolom. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai MySQL dan PostgreSQL akan membantu kamu membangun dasar yang kuat dalam basis-data-sql. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari MySQL dan PostgreSQL','Manfaat memahami MySQL dan PostgreSQL untuk pemula','Langkah pertama untuk mulai belajar MySQL dan PostgreSQL','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: MySQL dan PostgreSQL\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar MySQL dan PostgreSQL. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: MySQL dan PostgreSQL adalah titik awal dalam perjalanan belajarmu di basis-data-sql. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['mysql-postgresql', 'Koneksi dari Aplikasi', [
-    { t: 'p', x: 'Aplikasi terhubung ke basis data melalui driver yang sesuai, misal pg untuk PostgreSQL di Node.js atau PDO untuk MySQL di PHP. Konfigurasi meliputi host, port, nama basis data, pengguna, dan kata sandi.' },
-    { t: 'code', lang: 'js', x: 'const { Pool } = require(\"pg\");\\nconst pool = new Pool({\\n  host: \"localhost\",\\n  port: 5432,\\n  database: \"eduverse\",\\n  user: \"postgres\",\\n  password: \"rahasia\",\\n});' },
-    { t: 'tip', x: 'Jangan simpan kata sandi basis data langsung dalam kode. Gunakan variabel lingkungan.' },
-  ], 3],
+            {t:'p',x:'Koneksi dari Aplikasi adalah konsep dasar dalam basis-data-sql. Bayangkan seperti seperti lembar pengolahan data besar yang terorganisir dalam tabel, baris, dan kolom. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Koneksi dari Aplikasi akan membantu kamu membangun dasar yang kuat dalam basis-data-sql. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Koneksi dari Aplikasi','Manfaat memahami Koneksi dari Aplikasi untuk pemula','Langkah pertama untuk mulai belajar Koneksi dari Aplikasi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Koneksi dari Aplikasi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Koneksi dari Aplikasi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Koneksi dari Aplikasi adalah titik awal dalam perjalanan belajarmu di basis-data-sql. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['mysql-postgresql', 'Kesalahan Umum: Koneksi Tidak Ditutup', [
-    { t: 'p', x: 'Membuka banyak koneksi basis data tanpa menutupnya dapat menyebabkan basis data kehabisan koneksi yang tersedia dan aplikasi menjadi tidak dapat diakses.' },
-    { t: 'list', items: ['Membuka koneksi baru untuk setiap query', 'Tidak menutup koneksi setelah selesai digunakan', 'Menggunakan terlalu banyak koneksi secara bersamaan', 'Tidak menggunakan connection pool'] },
-    { t: 'tip', x: 'Gunakan connection pool agar koneksi dapat digunakan kembali dan tidak perlu dibuat baru setiap kali.' },
-  ], 3],
-  // --- nosql-mongodb ---
+            {t:'p',x:'Kesalahan Umum: Koneksi Tidak Ditutup adalah kesalahan yang sering dilakukan pemula saat belajar basis-data-sql. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Koneksi Tidak Ditutup karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Koneksi Tidak Ditutup sering terjadi pada pemula','Cara mudah menghindari Koneksi Tidak Ditutup','Tanda bahwa kamu mengalami Koneksi Tidak Ditutup','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Koneksi Tidak Ditutup\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Koneksi Tidak Ditutup. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Koneksi Tidak Ditutup sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['nosql-apa-itu', 'Apa itu NoSQL', [
-    { t: 'p', x: 'NoSQL adalah basis data non-relational yang menyimpan data dalam format yang fleksibel, bukan tabel baris dan kolom. NoSQL cocok untuk data yang struktur berubah-ubah dan perlu skalabilitas tinggi.' },
-    { t: 'list', items: ['Tidak memerlukan skema tetap', 'Menyimpan data dalam dokumen, kunci-nilai, atau graf', 'Cocok untuk data besar dan berkembang cepat', 'Skalabilitas horizontal yang mudah'] },
-    { t: 'tip', x: 'Pilih NoSQL jika data Anda tidak memiliki struktur tetap atau perlu berkembang dengan cepat.' },
-  ], 3],
+            {t:'p',x:'Apa itu NoSQL adalah konsep dasar dalam nosql-mongodb. Bayangkan seperti seperti arsip dokumen yang tidak harus mengikuti bentuk tabel yang sama. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu NoSQL akan membantu kamu membangun dasar yang kuat dalam nosql-mongodb. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu NoSQL','Manfaat memahami Apa itu NoSQL untuk pemula','Langkah pertama untuk mulai belajar Apa itu NoSQL','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu NoSQL\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu NoSQL. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu NoSQL adalah titik awal dalam perjalanan belajarmu di nosql-mongodb. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['nosql-apa-itu', 'MongoDB Dasar', [
-    { t: 'p', x: 'MongoDB adalah basis data NoSQL yang menyimpan data dalam dokumen BSON (mirip JSON). Setiap dokumen dapat memiliki struktur yang berbeda, sehingga sangat fleksibel untuk pengembangan cepat.' },
-    { t: 'code', lang: 'js', x: 'db.siswa.insertOne({\\n  nama: \"Rafi\",\\n  umur: 20,\\n  hobi: [\"coding\", \"membaca\"]\\n});\\n\\ndb.siswa.find({ umur: { $gte: 17 } });' },
-    { t: 'tip', x: 'MongoDB menggunakan format serupa JSON, sehingga mudah dipahami oleh pengembang JavaScript.' },
-  ], 3],
+            {t:'p',x:'MongoDB Dasar adalah konsep dasar dalam nosql-mongodb. Bayangkan seperti seperti arsip dokumen yang tidak harus mengikuti bentuk tabel yang sama. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai MongoDB Dasar akan membantu kamu membangun dasar yang kuat dalam nosql-mongodb. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari MongoDB Dasar','Manfaat memahami MongoDB Dasar untuk pemula','Langkah pertama untuk mulai belajar MongoDB Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: MongoDB Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar MongoDB Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: MongoDB Dasar adalah titik awal dalam perjalanan belajarmu di nosql-mongodb. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['nosql-apa-itu', 'Kesalahan Umum: Tanpa Perencanaan Skema', [
-    { t: 'p', x: 'Meskipun NoSQL fleksibel, tanpa perencanaan skema data akan menjadi tidak konsisten dan sulit dielola saat aplikasi berkembang. Tentukan pola dokumen yang akan digunakan.' },
-    { t: 'list', items: ['Setiap dokumen memiliki struktur yang sangat berbeda', 'Tidak ada aturan untuk kolom wajib', 'Sulit melakukan query data yang tidak konsisten', 'Aplikasi menjadi sulit dirawat'] },
-    { t: 'tip', x: 'Meski fleksibel, tetap tetapkan standar struktur dokumen untuk setiap koleksi.' },
-  ], 3],
-  // --- mongodb-dasar ---
+            {t:'p',x:'Kesalahan Umum: Tanpa Perencanaan Skema adalah kesalahan yang sering dilakukan pemula saat belajar nosql-mongodb. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Tanpa Perencanaan Skema karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Tanpa Perencanaan Skema sering terjadi pada pemula','Cara mudah menghindari Tanpa Perencanaan Skema','Tanda bahwa kamu mengalami Tanpa Perencanaan Skema','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Tanpa Perencanaan Skema\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Tanpa Perencanaan Skema. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Tanpa Perencanaan Skema sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['mongodb-dasar', 'Koleksi dan Dokumen', [
-    { t: 'p', x: 'Dalam MongoDB, data disimpan dalam dokumen yang dikelompokkan ke dalam koleksi. Koleksi mirip tabel dalam basis data relasional, sedangkan dokumen mirip baris.' },
-    { t: 'list', items: ['Koleksi adalah kumpulan dokumen', 'Dokumen disimpan dalam format BSON (mirip JSON)', 'Setiap dokumen dapat memiliki bidang yang berbeda', 'Koleksi tidak memerlukan skema yang ditetapkan sebelumnya'] },
-    { t: 'tip', x: 'Nama koleksi biasanya dalam bentuk jamak, misal siswa, produk, pesanan.' },
-  ], 3],
+            {t:'p',x:'Koleksi dan Dokumen adalah konsep dasar dalam nosql-mongodb. Bayangkan seperti seperti arsip dokumen yang tidak harus mengikuti bentuk tabel yang sama. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Koleksi dan Dokumen akan membantu kamu membangun dasar yang kuat dalam nosql-mongodb. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Koleksi dan Dokumen','Manfaat memahami Koleksi dan Dokumen untuk pemula','Langkah pertama untuk mulai belajar Koleksi dan Dokumen','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Koleksi dan Dokumen\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Koleksi dan Dokumen. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Koleksi dan Dokumen adalah titik awal dalam perjalanan belajarmu di nosql-mongodb. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['mongodb-dasar', 'Insert dan Find', [
-    { t: 'p', x: 'insertOne digunakan untuk menambah satu dokumen, sedangkan find digunakan untuk mencari dokumen yang sesuai kriteria. Find dapat difilter dan dibatasi jumlah hasilnya.' },
-    { t: 'code', lang: 'js', x: 'db.siswa.insertOne({ nama: \"Kanaya\", umur: 19 });\\n\\nconst hasil = db.siswa.find({ umur: { $gte: 17 } }).limit(5);' },
-    { t: 'tip', x: 'Gunakan limit() untuk membatasi jumlah dokumen yang dikembalikan agar respons lebih cepat.' },
-  ], 3],
+            {t:'p',x:'Insert dan Find adalah konsep dasar dalam nosql-mongodb. Bayangkan seperti seperti arsip dokumen yang tidak harus mengikuti bentuk tabel yang sama. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Insert dan Find akan membantu kamu membangun dasar yang kuat dalam nosql-mongodb. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Insert dan Find','Manfaat memahami Insert dan Find untuk pemula','Langkah pertama untuk mulai belajar Insert dan Find','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Insert dan Find\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Insert dan Find. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Insert dan Find adalah titik awal dalam perjalanan belajarmu di nosql-mongodb. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['mongodb-dasar', 'Kesalahan Umum: Mengasumsikan Setiap Dokumen Sama', [
-    { t: 'p', x: 'Karena dokumen dapat memiliki struktur berbeda, aplikasi harus siap menangani dokumen yang tidak memiliki bidang yang diharapkan. Periksa keberadaan bidang sebelum mengaksesnya.' },
-    { t: 'list', items: ['Mengakses bidang yang tidak ada dalam dokumen', 'Mengasumsikan semua dokumen memiliki bidang yang sama', 'Tidak menangani data yang hilang atau null', 'Mengabaikan validasi data saat dimasukkan'] },
-    { t: 'tip', x: 'Gunakan validasi skema atau periksa keberadaan bidang sebelum mengakses data dalam dokumen.' },
-  ], 3],
-  // --- query-dokumen ---
+            {t:'p',x:'Kesalahan Umum: Mengasumsikan Setiap Dokumen Sama adalah kesalahan yang sering dilakukan pemula saat belajar nosql-mongodb. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengasumsikan Setiap Dokumen Sama karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengasumsikan Setiap Dokumen Sama sering terjadi pada pemula','Cara mudah menghindari Mengasumsikan Setiap Dokumen Sama','Tanda bahwa kamu mengalami Mengasumsikan Setiap Dokumen Sama','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengasumsikan Setiap Dokumen Sama\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengasumsikan Setiap Dokumen Sama. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengasumsikan Setiap Dokumen Sama sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['query-dokumen', 'Query Dokumen MongoDB', [
-    { t: 'p', x: 'MongoDB menyediakan operator query untuk mencari dokumen berdasarkan kondisi, misal $gt (lebih besar), $lt (lebih kecil), $in (bernilai salah satu), dan $and (kombinasi kondisi).' },
-    { t: 'code', lang: 'js', x: 'db.siswa.find({ umur: { $gt: 18 }, nama: \"Rafi\" });\\n\\ndb.produk.find({ harga: { $gte: 100000, $lte: 500000 } });' },
-    { t: 'tip', x: 'Gabungkan operator query untuk mencari dokumen yang memenuhi beberapa kriteria sekaligus.' },
-  ], 3],
+            {t:'p',x:'Query Dokumen MongoDB adalah konsep dasar dalam nosql-mongodb. Bayangkan seperti seperti arsip dokumen yang tidak harus mengikuti bentuk tabel yang sama. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Query Dokumen MongoDB akan membantu kamu membangun dasar yang kuat dalam nosql-mongodb. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Query Dokumen MongoDB','Manfaat memahami Query Dokumen MongoDB untuk pemula','Langkah pertama untuk mulai belajar Query Dokumen MongoDB','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Query Dokumen MongoDB\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Query Dokumen MongoDB. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Query Dokumen MongoDB adalah titik awal dalam perjalanan belajarmu di nosql-mongodb. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['query-dokumen', 'Update dan Delete Dokumen', [
-    { t: 'p', x: 'updateOne dan updateMany digunakan untuk mengubah dokumen, sedangkan deleteOne dan deleteMany untuk menghapus dokumen. Gunakan filter yang tepat agar hanya dokumen yang diinginkan yang terpengaruh.' },
-    { t: 'code', lang: 'js', x: 'db.siswa.updateOne({ nama: \"Rafi\" }, { $set: { umur: 21 } });\\n\\ndb.siswa.deleteOne({ nama: \"Rafi\" });' },
-    { t: 'tip', x: 'Gunakan $set untuk mengubah hanya bidang yang ditentukan tanpa menghapus bidang lain dalam dokumen.' },
-  ], 3],
+            {t:'p',x:'Update dan Delete Dokumen adalah konsep dasar dalam nosql-mongodb. Bayangkan seperti seperti arsip dokumen yang tidak harus mengikuti bentuk tabel yang sama. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Update dan Delete Dokumen akan membantu kamu membangun dasar yang kuat dalam nosql-mongodb. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Update dan Delete Dokumen','Manfaat memahami Update dan Delete Dokumen untuk pemula','Langkah pertama untuk mulai belajar Update dan Delete Dokumen','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Update dan Delete Dokumen\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Update dan Delete Dokumen. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Update dan Delete Dokumen adalah titik awal dalam perjalanan belajarmu di nosql-mongodb. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['query-dokumen', 'Kesalahan Umum: Update Tanpa Filter yang Tepat', [
-    { t: 'p', x: 'Menggunakan filter yang terlalu lebar dapat mengubah atau menghapus lebih banyak dokumen dari yang dimaksudkan. Selalu verifikasi filter sebelum menjalankan operasi massal.' },
-    { t: 'list', items: ['Mengubah lebih banyak dokumen dari yang diinginkan', 'Menghapus dokumen yang masih diperlukan', 'Tidak memverifikasi hasil setelah operasi', 'Menggunakan filter yang terlalu umum'] },
-    { t: 'tip', x: 'Gunakan updateOne untuk mengubah satu dokumen dan verifikasi jumlah dokumen yang terpengaruh.' },
-  ], 3],
-  // --- agregasi ---
+            {t:'p',x:'Kesalahan Umum: Update Tanpa Filter yang Tepat adalah kesalahan yang sering dilakukan pemula saat belajar nosql-mongodb. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Update Tanpa Filter yang Tepat karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Update Tanpa Filter yang Tepat sering terjadi pada pemula','Cara mudah menghindari Update Tanpa Filter yang Tepat','Tanda bahwa kamu mengalami Update Tanpa Filter yang Tepat','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Update Tanpa Filter yang Tepat\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Update Tanpa Filter yang Tepat. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Update Tanpa Filter yang Tepat sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['agregasi', 'Agregasi Data', [
-    { t: 'p', x: 'Agregasi adalah proses memproses data dan mengembalikan hasil komputasi, misal jumlah total, rata-rata, atau pengelompokan data. MongoDB menggunakan pipeline agregasi dengan tahapan-tahapan seperti $match, $group, dan $sort.' },
-    { t: 'code', lang: 'js', x: 'db.nilai.aggregate([\\n  { $group: { _id: \"$siswa_id\", total: { $sum: \"$skor\" } } },\\n  { $sort: { total: -1 } }\\n]);' },
-    { t: 'tip', x: 'Pipeline agregasi memproses data secara bertahap, setiap tahapan menerima hasil dari tahapan sebelumnya.' },
-  ], 3],
+            {t:'p',x:'Agregasi Data adalah konsep dasar dalam nosql-mongodb. Bayangkan seperti seperti arsip dokumen yang tidak harus mengikuti bentuk tabel yang sama. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Agregasi Data akan membantu kamu membangun dasar yang kuat dalam nosql-mongodb. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Agregasi Data','Manfaat memahami Agregasi Data untuk pemula','Langkah pertama untuk mulai belajar Agregasi Data','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Agregasi Data\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Agregasi Data. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Agregasi Data adalah titik awal dalam perjalanan belajarmu di nosql-mongodb. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['agregasi', 'Pipeline Agregasi', [
-    { t: 'p', x: 'Setiap tahapan dalam pipeline agregasi melakukan transformasi pada data. Tumpukan tahapan untuk menghasilkan laporan yang kompleks, seperti mengelompokkan data lalu mengurutkannya.' },
-    { t: 'list', items: ['$match menyaring dokumen sebelum diproses', '$group mengelompokkan data dan menghitung agregat', '$sort mengurutkan hasil agregasi', '$limit membatasi jumlah dokumen hasil'] },
-    { t: 'tip', x: 'Letakkan $match di awal pipeline untuk mengurangi jumlah data yang diproses tahapan berikutnya.' },
-  ], 3],
+            {t:'p',x:'Pipeline Agregasi adalah konsep dasar dalam nosql-mongodb. Bayangkan seperti seperti arsip dokumen yang tidak harus mengikuti bentuk tabel yang sama. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Pipeline Agregasi akan membantu kamu membangun dasar yang kuat dalam nosql-mongodb. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Pipeline Agregasi','Manfaat memahami Pipeline Agregasi untuk pemula','Langkah pertama untuk mulai belajar Pipeline Agregasi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Pipeline Agregasi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Pipeline Agregasi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Pipeline Agregasi adalah titik awal dalam perjalanan belajarmu di nosql-mongodb. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['agregasi', 'Kesalahan Umum: Agregasi pada Data Tanpa Indeks', [
-    { t: 'p', x: 'Pipeline agregasi yang memproses koleksi besar tanpa indeks akan sangat lambat. Pastikan bidang yang digunakan dalam $match memiliki indeks agar agregasi cepat.' },
-    { t: 'list', items: ['Agregasi lambat pada koleksi besar tanpa indeks', '$match dilakukan di akhir alih-alih awal', 'Tidak ada indeks pada bidang yang digunakan filter', 'Memproses seluruh koleksi untuk hasil yang kecil'] },
-    { t: 'tip', x: 'Buat indeks pada bidang yang sering digunakan dalam $match untuk mempercepat agregasi.' },
-  ], 3],
-  // --- data-science ---
+            {t:'p',x:'Kesalahan Umum: Agregasi pada Data Tanpa Indeks adalah kesalahan yang sering dilakukan pemula saat belajar nosql-mongodb. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Agregasi pada Data Tanpa Indeks karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Agregasi pada Data Tanpa Indeks sering terjadi pada pemula','Cara mudah menghindari Agregasi pada Data Tanpa Indeks','Tanda bahwa kamu mengalami Agregasi pada Data Tanpa Indeks','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Agregasi pada Data Tanpa Indeks\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Agregasi pada Data Tanpa Indeks. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Agregasi pada Data Tanpa Indeks sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['python-untuk-data', 'Python untuk Analisis Data', [
-    { t: 'p', x: 'Python adalah bahasa pemrograman populer untuk analisis data karena sintaksnya sederhana dan memiliki pustaka kuat seperti Pandas, NumPy, dan Matplotlib.' },
-    { t: 'list', items: ['Pandas untuk manipulasi data tabel', 'NumPy untuk komputasi numerik', 'Matplotlib dan Seaborn untuk visualisasi', 'Jupyter Notebook untuk eksplorasi data interaktif'] },
-    { t: 'tip', x: 'Instal pustaka analisis data melalui pip: pip install pandas numpy matplotlib jupyter' },
-  ], 4],
+            {t:'p',x:'Python untuk Analisis Data adalah konsep dasar dalam data-science. Bayangkan seperti seperti detektif yang mengumpulkan bukti dan mencari pola dari data. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Python untuk Analisis Data akan membantu kamu membangun dasar yang kuat dalam data-science. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Python untuk Analisis Data','Manfaat memahami Python untuk Analisis Data untuk pemula','Langkah pertama untuk mulai belajar Python untuk Analisis Data','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Python untuk Analisis Data\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Python untuk Analisis Data. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Python untuk Analisis Data adalah titik awal dalam perjalanan belajarmu di data-science. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['python-untuk-data', 'Pandas Dasar', [
-    { t: 'p', x: 'Pandas menyediakan struktur data DataFrame yang mirip tabel spreadsheet. DataFrame memudahkan manipulasi data, pemfilteran, dan pengelompokan.' },
-    { t: 'code', lang: 'python', x: 'import pandas as pd\\n\\ndata = {\"nama\": [\"Rafi\", \"Kanaya\"], \"umur\": [20, 19]}\\ndf = pd.DataFrame(data)\\n\\nprint(df[df[\"umur\"] >= 20])' },
-    { t: 'tip', x: 'Gunakan head() untuk melihat beberapa baris pertama data dan info() untuk ringkasan struktur DataFrame.' },
-  ], 3],
+            {t:'p',x:'Pandas Dasar adalah konsep dasar dalam data-science. Bayangkan seperti seperti detektif yang mengumpulkan bukti dan mencari pola dari data. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Pandas Dasar akan membantu kamu membangun dasar yang kuat dalam data-science. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Pandas Dasar','Manfaat memahami Pandas Dasar untuk pemula','Langkah pertama untuk mulai belajar Pandas Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Pandas Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Pandas Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Pandas Dasar adalah titik awal dalam perjalanan belajarmu di data-science. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['python-untuk-data', 'Kesalahan Umum: Mengabaikan Nilai Kosong', [
-    { t: 'p', x: 'Nilai kosong (missing value) dapat menyebabkan error atau hasil analisis yang salah. Periksa dan tangani nilai kosong sebelum menganalisis data.' },
-    { t: 'list', items: ['Tidak memeriksa nilai kosong sebelum analisis', 'Menghapus baris dengan nilai kosong tanpa Pertimbangan', 'Mengisi nilai kosong dengan nilai yang tidak sesuai', 'Mengabaikan tipe data yang campuran'] },
-    { t: 'tip', x: 'Gunakan isnull().sum() untuk menghitung nilai kosong per kolom sebelum memutuskan tindakan.' },
-  ], 3],
-  // --- statistika-deskriptif ---
+            {t:'p',x:'Kesalahan Umum: Mengabaikan Nilai Kosong adalah kesalahan yang sering dilakukan pemula saat belajar data-science. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengabaikan Nilai Kosong karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengabaikan Nilai Kosong sering terjadi pada pemula','Cara mudah menghindari Mengabaikan Nilai Kosong','Tanda bahwa kamu mengalami Mengabaikan Nilai Kosong','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengabaikan Nilai Kosong\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengabaikan Nilai Kosong. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengabaikan Nilai Kosong sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['statistika-deskriptif', 'Statistika Deskriptif', [
     { t: 'p', x: 'Statistika deskriptif meringkas data menjadi angka yang mudah dipahami, seperti rata-rata, median, nilai minimum dan maksimum, serta simpangan baku.' },
     { t: 'code', lang: 'python', x: 'import pandas as pd\\ndf = pd.DataFrame({\"skor\": [70, 80, 90, 60, 85]})\\n\\nprint(df[\"skor\"].mean())   // rata-rata\\nprint(df[\"skor\"].median()) // median\\nprint(df[\"skor\"].std())    // simpangan baku' },
@@ -2188,80 +2844,117 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Gunakan median alih-alih rata-rata jika data memiliki pencilan yang sangat mempengaruhi rata-rata.' },
   ], 3],
   ['statistika-deskriptif', 'Distribusi Data', [
-    { t: 'p', x: 'Distribusi data menunjukkan sebaran nilai dalam dataset. Histogram dan plot kotak (box plot) membantu mengidentifikasi pola, pencilan, dan kecondongan data.' },
-    { t: 'list', items: ['Histogram menunjukkan frekuensi setiap rentang nilai', 'Box plot menunjukkan median, kuartil, dan pencilan', 'Distribusi normal berbentuk lonceng simetris', 'Data condong ke kiri atau kanan disebut skewed'] },
-    { t: 'tip', x: 'Visualisasi distribusi sebelum menganalisis lebih lanjut agar Anda memahami karakteristik data.' },
-  ], 3],
+            {t:'p',x:'Distribusi Data adalah konsep dasar dalam data-science. Bayangkan seperti seperti detektif yang mengumpulkan bukti dan mencari pola dari data. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Distribusi Data akan membantu kamu membangun dasar yang kuat dalam data-science. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Distribusi Data','Manfaat memahami Distribusi Data untuk pemula','Langkah pertama untuk mulai belajar Distribusi Data','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Distribusi Data\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Distribusi Data. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Distribusi Data adalah titik awal dalam perjalanan belajarmu di data-science. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['statistika-deskriptif', 'Kesalahan Umum: Mengabaikan Pencilan (Outlier)', [
-    { t: 'p', x: 'Pencilan adalah nilai yang sangat berbeda dari nilai lain. Pencilan dapat memengaruhi rata-rata dan kesimpulan analisis, jadi perlu diidentifikasi dan diputuskan apakah akan dipertahankan atau dihapus.' },
-    { t: 'list', items: ['Tidak mengidentifikasi pencilan dalam data', 'Menggunakan rata-rata tanpa mempertimbangkan pencilan', 'Menghapus pencilan tanpa alasan yang jelas', 'Mengabaikan dampak pencilan pada kesimpulan'] },
-    { t: 'tip', x: 'Gunakan box plot untuk mengidentifikasi pencilan dan dokumentasikan keputusan tentang pencilan yang ditemukan.' },
-  ], 3],
-  // --- visualisasi-data ---
+            {t:'p',x:'Kesalahan Umum: Mengabaikan Pencilan (Outlier) adalah kesalahan yang sering dilakukan pemula saat belajar data-science. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengabaikan Pencilan (Outlier) karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengabaikan Pencilan (Outlier) sering terjadi pada pemula','Cara mudah menghindari Mengabaikan Pencilan (Outlier)','Tanda bahwa kamu mengalami Mengabaikan Pencilan (Outlier)','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengabaikan Pencilan (Outlier)\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengabaikan Pencilan (Outlier). Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengabaikan Pencilan (Outlier) sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['visualisasi-data', 'Visualisasi Data', [
-    { t: 'p', x: 'Visualisasi data mengubah data menjadi gambar seperti diagram batang, garis, pie, dan sebarkan. Visualisasi yang baik membantu menemukan pola dan menyampaikan insight dengan cepat.' },
-    { t: 'code', lang: 'python', x: 'import matplotlib.pyplot as plt\\n\\nplt.bar([\"Matematika\", \"IPA\", \"Bahasa\"], [85, 78, 92])\\nplt.xlabel(\"Mata Pelajaran\")\\nplt.ylabel(\"Nilai Rata-rata\")\\nplt.show()' },
-    { t: 'tip', x: 'Pilih jenis diagram yang sesuai dengan data yang ingin disampaikan, jangan hanya memilih yang terlihat menarik.' },
-  ], 3],
+            {t:'p',x:'Visualisasi Data adalah konsep dasar dalam data-science. Bayangkan seperti seperti detektif yang mengumpulkan bukti dan mencari pola dari data. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Visualisasi Data akan membantu kamu membangun dasar yang kuat dalam data-science. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Visualisasi Data','Manfaat memahami Visualisasi Data untuk pemula','Langkah pertama untuk mulai belajar Visualisasi Data','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Visualisasi Data\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Visualisasi Data. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Visualisasi Data adalah titik awal dalam perjalanan belajarmu di data-science. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['visualisasi-data', 'Memilih Jenis Diagram', [
-    { t: 'p', x: 'Diagram batang untuk membandingkan kategori, diagram garis untuk menunjukkan tren waktu, diagram pie untukProporsi, dan scatter plot untuk hubungan dua variabel numerik.' },
-    { t: 'list', items: ['Diagram batang: perbandingan kategori', 'Diagram garis: tren seiring waktu', 'Diagram pie: proporsi bagian dari keseluruhan', 'Scatter plot: hubungan antara dua variabel numerik'] },
-    { t: 'tip', x: 'Hindari diagram pie dengan terlalu banyak kategori karena sulit dibaca.' },
-  ], 3],
+            {t:'p',x:'Memilih Jenis Diagram adalah konsep dasar dalam data-science. Bayangkan seperti seperti detektif yang mengumpulkan bukti dan mencari pola dari data. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Memilih Jenis Diagram akan membantu kamu membangun dasar yang kuat dalam data-science. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Memilih Jenis Diagram','Manfaat memahami Memilih Jenis Diagram untuk pemula','Langkah pertama untuk mulai belajar Memilih Jenis Diagram','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Memilih Jenis Diagram\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Memilih Jenis Diagram. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Memilih Jenis Diagram adalah titik awal dalam perjalanan belajarmu di data-science. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['visualisasi-data', 'Kesalahan Umum: Memaksakan Insight dari Visualisasi', [
-    { t: 'p', x: 'Jangan menarik kesimpulan hanya berdasarkan visualisasi tanpa verifikasi statistik. Pola dalam diagram dapat disebabkan oleh kebetulan atau data yang tidak lengkap.' },
-    { t: 'list', items: ['Menarik kesimpulan hanya dari tampilan diagram', 'Mengabaikan ukuran sampel yang kecil', 'Mengabaikan variabel lain yang mempengaruhi', 'Memaksakan pola yang sebenarnya tidak ada'] },
-    { t: 'tip', x: 'Gunakan uji statistik untuk memverifikasi apakah pola dalam visualisasi bermakna atau hanya kebetulan.' },
-  ], 3],
-  // --- insight-bisnis ---
+            {t:'p',x:'Kesalahan Umum: Memaksakan Insight dari Visualisasi adalah kesalahan yang sering dilakukan pemula saat belajar data-science. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Memaksakan Insight dari Visualisasi karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Memaksakan Insight dari Visualisasi sering terjadi pada pemula','Cara mudah menghindari Memaksakan Insight dari Visualisasi','Tanda bahwa kamu mengalami Memaksakan Insight dari Visualisasi','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Memaksakan Insight dari Visualisasi\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Memaksakan Insight dari Visualisasi. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Memaksakan Insight dari Visualisasi sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['insight-bisnis', 'Mengubah Data Menjadi Insight Bisnis', [
-    { t: 'p', x: 'Insight bisnis adalah kesimpulan berguna dari data yang dapat digunakan untuk membuat keputusan bisnis yang lebih baik. Insight harus spesifik, dapat ditindaklanjuti, dan relevan dengan tujuan bisnis.' },
-    { t: 'list', items: ['Identifikasi pola dan tren dalam data', 'Terjemahkan temukan data ke rekomendasi bisnis', 'Pastikan insight relevan dengan tujuan bisnis', 'Sampaikan insight dengan jelas kepada pemangku kepentingan'] },
-    { t: 'tip', x: 'Insight yang baik tidak hanya mengatakan apa yang terjadi, tetapi juga mengapa hal itu terjadi dan apa yang harus dilakukan.' },
-  ], 3],
+            {t:'p',x:'Mengubah Data Menjadi Insight Bisnis adalah konsep dasar dalam data-science. Bayangkan seperti seperti detektif yang mengumpulkan bukti dan mencari pola dari data. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengubah Data Menjadi Insight Bisnis akan membantu kamu membangun dasar yang kuat dalam data-science. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengubah Data Menjadi Insight Bisnis','Manfaat memahami Mengubah Data Menjadi Insight Bisnis untuk pemula','Langkah pertama untuk mulai belajar Mengubah Data Menjadi Insight Bisnis','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengubah Data Menjadi Insight Bisnis\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengubah Data Menjadi Insight Bisnis. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengubah Data Menjadi Insight Bisnis adalah titik awal dalam perjalanan belajarmu di data-science. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['insight-bisnis', 'Menyajikan Hasil Analisis', [
-    { t: 'p', x: 'Sajikan hasil analisis dalam bentuk yang mudah dipahami oleh audiens non-teknis. Gunakan visualisasi yang jelas, hindari jargon teknis, dan berikan rekomendasi konkret.' },
-    { t: 'list', items: ['Gunakan visualisasi yang sederhana dan jelas', 'Hindari istilah teknis yang tidak diperlukan', 'Berikan rekomendasi tindakan yang spesifik', 'Siapkan jawaban atas pertanyaan yang mungkin diajukan'] },
-    { t: 'tip', x: 'Fokus pada dampak bisnis dari insight, bukan detail teknis analisis.' },
-  ], 3],
+            {t:'p',x:'Menyajikan Hasil Analisis adalah konsep dasar dalam data-science. Bayangkan seperti seperti detektif yang mengumpulkan bukti dan mencari pola dari data. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Menyajikan Hasil Analisis akan membantu kamu membangun dasar yang kuat dalam data-science. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Menyajikan Hasil Analisis','Manfaat memahami Menyajikan Hasil Analisis untuk pemula','Langkah pertama untuk mulai belajar Menyajikan Hasil Analisis','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Menyajikan Hasil Analisis\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Menyajikan Hasil Analisis. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Menyajikan Hasil Analisis adalah titik awal dalam perjalanan belajarmu di data-science. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['insight-bisnis', 'Kesalahan Umum: Insight Tidak Dapat Ditindaklanjuti', [
-    { t: 'p', x: 'Insight yang hanya menggambarkan keadaan tanpa rekomendasi tindakan tidak berguna bagi bisnis. Setiap insight harus diikuti oleh langkah apa yang harus dilakukan berdasarkan temuan.' },
-    { t: 'list', items: ['Insight hanya menjelaskan apa yang terjadi', 'Tidak ada rekomendasi tindakan yang konkret', 'Insight tidak relevan dengan tujuan bisnis', 'Tidak ditentukan siapa yang bertanggung jawab untuk tindakan'] },
-    { t: 'tip', x: 'Akhir setiap presentasi insight dengan rekomendasi tindakan yang jelas dan dapat diukur.' },
-  ], 3],
-  // --- ai-machine-learning ---
+            {t:'p',x:'Kesalahan Umum: Insight Tidak Dapat Ditindaklanjuti adalah kesalahan yang sering dilakukan pemula saat belajar data-science. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Insight Tidak Dapat Ditindaklanjuti karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Insight Tidak Dapat Ditindaklanjuti sering terjadi pada pemula','Cara mudah menghindari Insight Tidak Dapat Ditindaklanjuti','Tanda bahwa kamu mengalami Insight Tidak Dapat Ditindaklanjuti','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Insight Tidak Dapat Ditindaklanjuti\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Insight Tidak Dapat Ditindaklanjuti. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Insight Tidak Dapat Ditindaklanjuti sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['ai-dasar', 'Apa itu Kecerdasan Buatan', [
-    { t: 'p', x: 'Kecerdasan buatan (AI) adalah kemampuan mesin untuk melakukan tugas yang biasanya memerlukan kecerdasan manusia, seperti belajar, memecahkan masalah, dan membuat keputusan.' },
-    { t: 'list', items: ['AI dapat belajar dari data', 'AI dapat memprediksi hasil berdasarkan pola', 'AI dapat mengotomatiskan tugas berulang', 'AI cocok untuk tugas yang membutuhkan pengolahan data besar'] },
-    { t: 'tip', x: 'AI bukan tentang membuat mesin berpikir seperti manusia, melainkan membuat tugas tertentu dapat dilakukan secara otomatis.' },
-  ], 3],
+            {t:'p',x:'Apa itu Kecerdasan Buatan adalah konsep dasar dalam ai-machine-learning. Bayangkan seperti seperti mengajar anak kecil mengenali hewan melalui contoh berulang kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Kecerdasan Buatan akan membantu kamu membangun dasar yang kuat dalam ai-machine-learning. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Kecerdasan Buatan','Manfaat memahami Apa itu Kecerdasan Buatan untuk pemula','Langkah pertama untuk mulai belajar Apa itu Kecerdasan Buatan','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Kecerdasan Buatan\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Kecerdasan Buatan. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Kecerdasan Buatan adalah titik awal dalam perjalanan belajarmu di ai-machine-learning. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ai-dasar', 'Machine Learning Dasar', [
-    { t: 'p', x: 'Machine Learning (ML) adalah cabang AI yang memungkinkan komputer belajar dari data tanpa diprogram secara eksplisit untuk setiap tugas. Model ML mencari pola dalam data dan membuat prediksi.' },
-    { t: 'code', lang: 'python', x: 'from sklearn.linear_model import LinearRegression\\n\\nmodel = LinearRegression()\\nmodel.fit(X_train, y_train)\\nprediksi = model.predict(X_test)' },
-    { t: 'tip', x: 'Pilih algoritma ML berdasarkan jenis masalah: klasifikasi untuk kategori, regresi untuk angka, dan clustering untuk pengelompokan.' },
-  ], 4],
+            {t:'p',x:'Machine Learning Dasar adalah konsep dasar dalam ai-machine-learning. Bayangkan seperti seperti mengajar anak kecil mengenali hewan melalui contoh berulang kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Machine Learning Dasar akan membantu kamu membangun dasar yang kuat dalam ai-machine-learning. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Machine Learning Dasar','Manfaat memahami Machine Learning Dasar untuk pemula','Langkah pertama untuk mulai belajar Machine Learning Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Machine Learning Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Machine Learning Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Machine Learning Dasar adalah titik awal dalam perjalanan belajarmu di ai-machine-learning. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ai-dasar', 'Kesalahan Umum: Menggunakan Data Tidak Cukup', [
-    { t: 'p', x: 'Model machine learning membutuhkan data yang cukup dan berkualitas untuk belajar pola dengan baik. Data yang terlalu sedikit atau tidak mewakili akan menghasilkan model yang tidak akurat.' },
-    { t: 'list', items: ['Data terlalu sedikit untuk melatih model', 'Data tidak mewakili kasus dunia nyata', 'Data dengan banyak kesalahan atau nilai kosong', 'Data yang sudah tua dan tidak relevan lagi'] },
-    { t: 'tip', x: 'Kumpulkan lebih banyak data yang berkualitas sebelum melatih model jika hasil awal tidak memuaskan.' },
-  ], 3],
-  // --- ml-dasar ---
+            {t:'p',x:'Kesalahan Umum: Menggunakan Data Tidak Cukup adalah kesalahan yang sering dilakukan pemula saat belajar ai-machine-learning. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Menggunakan Data Tidak Cukup karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Menggunakan Data Tidak Cukup sering terjadi pada pemula','Cara mudah menghindari Menggunakan Data Tidak Cukup','Tanda bahwa kamu mengalami Menggunakan Data Tidak Cukup','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Menggunakan Data Tidak Cukup\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Menggunakan Data Tidak Cukup. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Menggunakan Data Tidak Cukup sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['ml-dasar', 'Pelatihan dan Pengujian Model', [
-    { t: 'p', x: 'Data dibagi menjadi data latih (training) dan data uji (testing). Model dilatih dengan data latih, kemudian diuji dengan data uji untuk mengukur seberapa baik model mengeneralisasi data baru.' },
-    { t: 'list', items: ['Data latih digunakan untuk melatih model', 'Data uji digunakan untuk mengevaluasi model', 'Jangan gunakan data uji selama pelatihan', 'Pilah data secara acak sebelum membagi latih dan uji'] },
-    { t: 'tip', x: 'Pembagian umum adalah 80% data latih dan 20% data uji, tergantung pada ukuran dataset.' },
-  ], 3],
+            {t:'p',x:'Pelatihan dan Pengujian Model adalah konsep dasar dalam ai-machine-learning. Bayangkan seperti seperti mengajar anak kecil mengenali hewan melalui contoh berulang kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Pelatihan dan Pengujian Model akan membantu kamu membangun dasar yang kuat dalam ai-machine-learning. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Pelatihan dan Pengujian Model','Manfaat memahami Pelatihan dan Pengujian Model untuk pemula','Langkah pertama untuk mulai belajar Pelatihan dan Pengujian Model','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Pelatihan dan Pengujian Model\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Pelatihan dan Pengujian Model. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Pelatihan dan Pengujian Model adalah titik awal dalam perjalanan belajarmu di ai-machine-learning. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ml-dasar', 'Overfitting dan Underfitting', [
-    { t: 'p', x: 'Overfitting terjadi ketika model terlalu mengingat data latih termasuk kebisingannya, sehingga gagal pada data baru. Underfitting terjadi ketika model terlalu sederhana untuk menangkap pola dalam data.' },
-    { t: 'list', items: ['Overfitting: akurasi tinggi pada latih, rendah pada uji', 'Underfitting: akurasi rendah baik pada latih maupun uji', 'Model yang tepat: akurasi baik pada kedua data', 'Gunakan validasi silang untuk mendeteksi overfitting'] },
-    { t: 'tip', x: 'Sederhanakan model atau tambahkan data latih jika overfitting, dan gunakan model yang lebih kompleks atau lebih banyak fitur jika underfitting.' },
-  ], 3],
+            {t:'p',x:'Overfitting dan Underfitting adalah konsep dasar dalam ai-machine-learning. Bayangkan seperti seperti mengajar anak kecil mengenali hewan melalui contoh berulang kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Overfitting dan Underfitting akan membantu kamu membangun dasar yang kuat dalam ai-machine-learning. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Overfitting dan Underfitting','Manfaat memahami Overfitting dan Underfitting untuk pemula','Langkah pertama untuk mulai belajar Overfitting dan Underfitting','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Overfitting dan Underfitting\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Overfitting dan Underfitting. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Overfitting dan Underfitting adalah titik awal dalam perjalanan belajarmu di ai-machine-learning. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ml-dasar', 'Kesalahan Umum: Mengevaluasi pada Data Latih', [
-    { t: 'p', x: 'Mengevaluasi model pada data yang sama digunakan untuk melatihnya akan memberikan hasil yang terlalu optimis dan tidak mewakili performa pada data baru.' },
-    { t: 'list', items: ['Menguji model pada data latih', 'Tidak memisahkan data latih dan uji', 'Menganggap akurasi tinggi pada latih berarti model bagus', 'Tidak menggunakan data yang tidak pernah dilihat model'] },
-    { t: 'tip', x: 'Selalu evaluasi model pada data uji yang belum pernah dilihat selama pelatihan.' },
-  ], 3],
-  // --- model-prediksi ---
+            {t:'p',x:'Kesalahan Umum: Mengevaluasi pada Data Latih adalah kesalahan yang sering dilakukan pemula saat belajar ai-machine-learning. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengevaluasi pada Data Latih karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengevaluasi pada Data Latih sering terjadi pada pemula','Cara mudah menghindari Mengevaluasi pada Data Latih','Tanda bahwa kamu mengalami Mengevaluasi pada Data Latih','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengevaluasi pada Data Latih\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengevaluasi pada Data Latih. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengevaluasi pada Data Latih sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['model-prediksi', 'Membuat Prediksi dengan Model', [
     { t: 'p', x: 'Setelah model dilatih dan dievaluasi, gunakan model untuk membuat prediksi pada data baru. Masukkan data baru ke model dan model akan mengembalikan prediksi berdasarkan pola yang telah dipelajari.' },
     { t: 'code', lang: 'python', x: 'data_baru = [[25, 5000000]]\\nprediksi = model.predict(data_baru)\\nprint(f\"Prediksi: {prediksi[0]}\")' },
@@ -2269,150 +2962,221 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Pastikan data baru telah diproses dengan cara yang sama seperti data latih sebelum prediksi.' },
   ], 3],
   ['model-prediksi', 'Mengevaluasi Akurasi Prediksi', [
-    { t: 'p', x: 'Gunakan metrik evaluasi yang sesuai dengan jenis masalah. Untuk klasifikasi gunakan akurasi, presisi, recall, dan F1-score. Untuk regresi gunakan MAE, MSE, dan R-squared.' },
-    { t: 'list', items: ['Akurasi: proporsi prediksi yang benar', 'Presisi: seberapa banyak prediksi positif yang benar', 'Recall: seberapa banyak kasus positif yang terdeteksi', 'F1-score: gabungan presisi dan recall'] },
-    { t: 'tip', x: 'Pilih metrik yang sesuai dengan tujuan bisnis, misal recall lebih penting untuk deteksi penyakit.' },
-  ], 3],
+            {t:'p',x:'Mengevaluasi Akurasi Prediksi adalah konsep dasar dalam ai-machine-learning. Bayangkan seperti seperti mengajar anak kecil mengenali hewan melalui contoh berulang kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Mengevaluasi Akurasi Prediksi akan membantu kamu membangun dasar yang kuat dalam ai-machine-learning. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Mengevaluasi Akurasi Prediksi','Manfaat memahami Mengevaluasi Akurasi Prediksi untuk pemula','Langkah pertama untuk mulai belajar Mengevaluasi Akurasi Prediksi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Mengevaluasi Akurasi Prediksi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Mengevaluasi Akurasi Prediksi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Mengevaluasi Akurasi Prediksi adalah titik awal dalam perjalanan belajarmu di ai-machine-learning. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['model-prediksi', 'Kesalahan Umum: Mengabaikan Ketidakseimbangan Kelas', [
-    { t: 'p', x: 'Jika satu kelas jauh lebih banyak dari kelas lain, akurasi tinggi bisa menipu karena model hanya memprediksi kelas mayoritas. Gunakan teknik penyeimbangan atau metrik yang sesuai.' },
-    { t: 'list', items: ['Kelas satu jauh lebih banyak dari yang lain', 'Akurasi tinggi tetapi model gagal mendeteksi kelas minoritas', 'Tidak menggunakan metrik untuk ketidakseimbangan kelas', 'Mengabaikan distribusi kelas dalam data'] },
-    { t: 'tip', x: 'Gunakan oversampling, undersampling, atau bobot kelas untuk menangani ketidakseimbangan kelas.' },
-  ], 3],
-  // --- implementasi ---
+            {t:'p',x:'Kesalahan Umum: Mengabaikan Ketidakseimbangan Kelas adalah kesalahan yang sering dilakukan pemula saat belajar ai-machine-learning. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengabaikan Ketidakseimbangan Kelas karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengabaikan Ketidakseimbangan Kelas sering terjadi pada pemula','Cara mudah menghindari Mengabaikan Ketidakseimbangan Kelas','Tanda bahwa kamu mengalami Mengabaikan Ketidakseimbangan Kelas','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengabaikan Ketidakseimbangan Kelas\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengabaikan Ketidakseimbangan Kelas. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengabaikan Ketidakseimbangan Kelas sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['implementasi', 'Implementasi Praktis AI', [
-    { t: 'p', x: 'Implementasi AI dalam aplikasi nyata melibatkan penyediaan model sebagai layanan (API), integrasi dengan aplikasi existente, dan pemantauan performa model seiring waktu.' },
-    { t: 'list', items: ['Sediakan model sebagai API untuk aplikasi lain', 'Integrasikan prediksi ke dalam alur kerja aplikasi', 'Pantau performa model secara berkala', 'Perbarui model dengan data baru secara teratur'] },
-    { t: 'tip', x: 'Mulai dengan proyek AI kecil yang menunjukkan nilai bisnis sebelum mengimplementasikan skala besar.' },
-  ], 3],
+            {t:'p',x:'Implementasi Praktis AI adalah konsep dasar dalam ai-machine-learning. Bayangkan seperti seperti mengajar anak kecil mengenali hewan melalui contoh berulang kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Implementasi Praktis AI akan membantu kamu membangun dasar yang kuat dalam ai-machine-learning. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Implementasi Praktis AI','Manfaat memahami Implementasi Praktis AI untuk pemula','Langkah pertama untuk mulai belajar Implementasi Praktis AI','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Implementasi Praktis AI\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Implementasi Praktis AI. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Implementasi Praktis AI adalah titik awal dalam perjalanan belajarmu di ai-machine-learning. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['implementasi', 'Etika dan Keamanan AI', [
-    { t: 'p', x: 'AI harus digunakan secara etis dan aman. Hindari bias dalam data latih, pastikan transparansi dalam keputusan model, dan lindungi privasi data pengguna.' },
-    { t: 'list', items: ['Periksa bias dalam data latih dan model', 'Pastikan keputusan model dapat dijelaskan', 'Lindungi privasi data pengguna', 'Gunakan AI untuk tujuan yang bermanfaat dan tidak merugikan'] },
-    { t: 'tip', x: 'Libatkan tim yang beragam dalam pengembangan AI untuk mengurangi risiko bias dan dampak negatif.' },
-  ], 3],
+            {t:'p',x:'Etika dan Keamanan AI adalah konsep dasar dalam ai-machine-learning. Bayangkan seperti seperti mengajar anak kecil mengenali hewan melalui contoh berulang kali. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Etika dan Keamanan AI akan membantu kamu membangun dasar yang kuat dalam ai-machine-learning. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Etika dan Keamanan AI','Manfaat memahami Etika dan Keamanan AI untuk pemula','Langkah pertama untuk mulai belajar Etika dan Keamanan AI','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Etika dan Keamanan AI\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Etika dan Keamanan AI. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Etika dan Keamanan AI adalah titik awal dalam perjalanan belajarmu di ai-machine-learning. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['implementasi', 'Kesalahan Umum: Mengandalkan AI Tanpa Pengawasan Manusia', [
-    { t: 'p', x: 'AI dapat membuat kesalahan, terutama dalam situasi yang tidak pernah dihadapi selama pelatihan. Selalu ada pengawasan manusia untuk keputusan penting yang dihasilkan AI.' },
-    { t: 'list', items: ['Mengizinkan AI membuat keputusan kritis tanpa review', 'Mengabaikan kesalahan yang dibuat model', 'Tidak ada mekanisme untuk membatalkan keputusan AI', 'Menganggap AI selalu benar dan objektif'] },
-    { t: 'tip', x: 'Gunakan AI sebagai alat bantu pengambilan keputusan, bukan pengganti penilaian manusia sepenuhnya.' },
-  ], 3],
-
-// --- jaringan-komputer ---
+            {t:'p',x:'Kesalahan Umum: Mengandalkan AI Tanpa Pengawasan Manusia adalah kesalahan yang sering dilakukan pemula saat belajar ai-machine-learning. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengandalkan AI Tanpa Pengawasan Manusia karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengandalkan AI Tanpa Pengawasan Manusia sering terjadi pada pemula','Cara mudah menghindari Mengandalkan AI Tanpa Pengawasan Manusia','Tanda bahwa kamu mengalami Mengandalkan AI Tanpa Pengawasan Manusia','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengandalkan AI Tanpa Pengawasan Manusia\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengandalkan AI Tanpa Pengawasan Manusia. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengandalkan AI Tanpa Pengawasan Manusia sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['ip-address-subnetting', 'IP Address dan Subnetting', [
-    { t: 'p', x: 'IP address adalah alamat unik yang diberikan kepada setiap perangkat dalam jaringan untuk mengidentifikasinya. Subnetting adalah proses membagi satu jaringan besar menjadi beberapa jaringan yang lebih kecil untuk efisiensi dan keamanan.' },
-    { t: 'list', items: ['IPv4 terdiri dari 4 oktet dengan range 0-255', 'IPv6 menggunakan format heksadesimal yang lebih panjang', 'Subnet mask menentukan bagian jaringan dan bagian host', 'Subnetting mengurangi lalu lintas siaran dan meningkatkan keamanan'] },
-    { t: 'tip', x: 'Contoh IPv4: 192.168.1.10 dengan subnet mask 255.255.255.0 berarti 254 host dapat terhubung dalam satu subnet.' },
-  ], 4],
+            {t:'p',x:'IP Address dan Subnetting adalah konsep dasar dalam jaringan-komputer. Bayangkan seperti seperti sistem pos yang mengirimi surat dari satu alamat ke alamat lain. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai IP Address dan Subnetting akan membantu kamu membangun dasar yang kuat dalam jaringan-komputer. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari IP Address dan Subnetting','Manfaat memahami IP Address dan Subnetting untuk pemula','Langkah pertama untuk mulai belajar IP Address dan Subnetting','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: IP Address dan Subnetting\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar IP Address dan Subnetting. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: IP Address dan Subnetting adalah titik awal dalam perjalanan belajarmu di jaringan-komputer. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ip-address-subnetting', 'Kelas IP Address', [
-    { t: 'p', x: 'IPv4 dibagi menjadi beberapa kelas (A, B, C, D, E) berdasarkan rentang alamat pertama. Setiap kelas memiliki tujuan yang berbeda, misal kelas C biasa digunakan untuk jaringan kecil.' },
-    { t: 'code', lang: 'text', x: 'Kelas A: 1.0.0.0 - 126.0.0.0 (jaringan besar)\\nKelas B: 128.0.0.0 - 191.0.0.0 (jaringan menengah)\\nKelas C: 192.0.0.0 - 223.0.0.0 (jaringan kecil)' },
-    { t: 'tip', x: 'Alamat 127.0.0.1 adalah localhost yang merujuk pada komputer sendiri.' },
-  ], 3],
+            {t:'p',x:'Kelas IP Address adalah konsep dasar dalam jaringan-komputer. Bayangkan seperti seperti sistem pos yang mengirimi surat dari satu alamat ke alamat lain. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Kelas IP Address akan membantu kamu membangun dasar yang kuat dalam jaringan-komputer. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Kelas IP Address','Manfaat memahami Kelas IP Address untuk pemula','Langkah pertama untuk mulai belajar Kelas IP Address','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Kelas IP Address\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Kelas IP Address. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Kelas IP Address adalah titik awal dalam perjalanan belajarmu di jaringan-komputer. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ip-address-subnetting', 'IP Publik dan IP Privat', [
-    { t: 'p', x: 'IP publik adalah alamat yang dapat diakses dari internet, sedangkan IP privat digunakan dalam jaringan lokal dan tidak dapat diakses langsung dari internet. NAT digunakan untuk menterjemahkan IP privat menjadi IP publik.' },
-    { t: 'list', items: ['IP privat kelas A: 10.0.0.0 - 10.255.255.255', 'IP privat kelas B: 172.16.0.0 - 172.31.255.255', 'IP privat kelas C: 192.168.0.0 - 192.168.255.255', 'IP publik dikelola oleh penyedia layanan internet'] },
-    { t: 'tip', x: 'Gunakan IP privat untuk perangkat dalam jaringan rumah atau kantor, dan IP publik untuk server yang perlu diakses dari internet.' },
-  ], 3],
+            {t:'p',x:'IP Publik dan IP Privat adalah konsep dasar dalam jaringan-komputer. Bayangkan seperti seperti sistem pos yang mengirimi surat dari satu alamat ke alamat lain. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai IP Publik dan IP Privat akan membantu kamu membangun dasar yang kuat dalam jaringan-komputer. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari IP Publik dan IP Privat','Manfaat memahami IP Publik dan IP Privat untuk pemula','Langkah pertama untuk mulai belajar IP Publik dan IP Privat','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: IP Publik dan IP Privat\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar IP Publik dan IP Privat. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: IP Publik dan IP Privat adalah titik awal dalam perjalanan belajarmu di jaringan-komputer. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ip-address-subnetting', 'Kesalahan Umum: IP Duplikat dalam Jaringan', [
-    { t: 'p', x: 'Dua perangkat dengan IP yang sama dalam satu jaringan akan menyebabkan konflik IP, sehingga keduanya tidak dapat terhubung ke jaringan dengan benar.' },
-    { t: 'list', items: ['IP statis yang bertabrakan dengan perangkat lain', 'DHCP memberikan IP yang sudah digunakan', 'Perangkat berpindah jaringan tanpa memperbarui IP', 'Konfigurasi IP manual yang salah'] },
-    { t: 'tip', x: 'Gunakan DHCP untuk alokasi IP otomatis agar menghindari konflik IP secara manual.' },
-  ], 3],
-  // --- tcpip-dan-osi ---
+            {t:'p',x:'Kesalahan Umum: IP Duplikat dalam Jaringan adalah kesalahan yang sering dilakukan pemula saat belajar jaringan-komputer. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di IP Duplikat dalam Jaringan karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa IP Duplikat dalam Jaringan sering terjadi pada pemula','Cara mudah menghindari IP Duplikat dalam Jaringan','Tanda bahwa kamu mengalami IP Duplikat dalam Jaringan','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: IP Duplikat dalam Jaringan\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami IP Duplikat dalam Jaringan. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari IP Duplikat dalam Jaringan sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['tcpip-dan-osi', 'Model TCP/IP dan OSI', [
-    { t: 'p', x: 'Model TCP/IP dan OSI adalah kerangka konseptual yang menjelaskan bagaimana data dikirim melalui jaringan. OSI memiliki 7 lapisan, sementara TCP/IP memiliki 4 lapisan yang lebih sederhana.' },
-    { t: 'list', items: ['Lapisan aplikasi: aplikasi pengguna seperti browser dan email', 'Lapisan transport: TCP dan UDP untuk pengiriman data', 'Lapisan internet: IP untuk pengalamatan dan routing', 'Lapisan jaringan fisik: transmisi bit melalui media'] },
-    { t: 'tip', x: 'TCP/IP adalah model yang digunakan dalam internet nyata, sementara OSI lebih banyak digunakan sebagai referensi konsep.' },
-  ], 3],
+            {t:'p',x:'Model TCP/IP dan OSI adalah konsep dasar dalam jaringan-komputer. Bayangkan seperti seperti sistem pos yang mengirimi surat dari satu alamat ke alamat lain. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Model TCP/IP dan OSI akan membantu kamu membangun dasar yang kuat dalam jaringan-komputer. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Model TCP/IP dan OSI','Manfaat memahami Model TCP/IP dan OSI untuk pemula','Langkah pertama untuk mulai belajar Model TCP/IP dan OSI','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Model TCP/IP dan OSI\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Model TCP/IP dan OSI. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Model TCP/IP dan OSI adalah titik awal dalam perjalanan belajarmu di jaringan-komputer. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['tcpip-dan-osi', 'Protokol TCP dan UDP', [
-    { t: 'p', x: 'TCP menyediakan koneksi handal dengan pengiriman data yang dijamin tiba dan dalam urutan yang benar, sedangkan UDP lebih cepat tetapi tidak menjamin pengiriman data.' },
-    { t: 'code', lang: 'text', x: 'TCP: browsing web, email, transfer file (handal)\\nUDP: streaming video, VoIP, game online (cepat, tidak perlu handal)' },
-    { t: 'tip', x: 'Pilih TCP jika integritas data penting, dan UDP jika kecepatan lebih penting dari pengiriman yang sempurna.' },
-  ], 3],
+            {t:'p',x:'Protokol TCP dan UDP adalah konsep dasar dalam jaringan-komputer. Bayangkan seperti seperti sistem pos yang mengirimi surat dari satu alamat ke alamat lain. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Protokol TCP dan UDP akan membantu kamu membangun dasar yang kuat dalam jaringan-komputer. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Protokol TCP dan UDP','Manfaat memahami Protokol TCP dan UDP untuk pemula','Langkah pertama untuk mulai belajar Protokol TCP dan UDP','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Protokol TCP dan UDP\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Protokol TCP dan UDP. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Protokol TCP dan UDP adalah titik awal dalam perjalanan belajarmu di jaringan-komputer. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['tcpip-dan-osi', 'Kesalahan Umum: Menggunakan UDP untuk Data Kritis', [
-    { t: 'p', x: 'Menggunakan UDP untuk data yang memerlukan keandalan, seperti transfer file atau transaksi keuangan, dapat menyebabkan hilangnya data tanpa ada notifikasi.' },
-    { t: 'list', items: ['UDP tidak menjamin data sampai ke tujuan', 'UDP tidak mengatur ulang data yang hilang', 'UDP tidak menjamin urutan data', 'TCP lebih lambat karena mekanisme handalnya'] },
-    { t: 'tip', x: 'Untuk data yang tidak boleh hilang, selalu gunakan TCP atau lapisan handal di atas UDP.' },
-  ], 3],
-  // --- routing-switching ---
+            {t:'p',x:'Kesalahan Umum: Menggunakan UDP untuk Data Kritis adalah kesalahan yang sering dilakukan pemula saat belajar jaringan-komputer. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Menggunakan UDP untuk Data Kritis karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Menggunakan UDP untuk Data Kritis sering terjadi pada pemula','Cara mudah menghindari Menggunakan UDP untuk Data Kritis','Tanda bahwa kamu mengalami Menggunakan UDP untuk Data Kritis','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Menggunakan UDP untuk Data Kritis\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Menggunakan UDP untuk Data Kritis. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Menggunakan UDP untuk Data Kritis sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['routing-switching', 'Routing dan Switching', [
-    { t: 'p', x: 'Switching adalah pengiriman data dalam satu jaringan lokal berdasarkan alamat MAC, sedangkan routing adalah pengiriman data antar jaringan berdasarkan alamat IP. Router menghubungkan berbagai jaringan, switch menghubungkan perangkat dalam satu jaringan.' },
-    { t: 'list', items: ['Switch bekerja pada lapisan data link (Lapisan 2)', 'Router bekerja pada lapisan jaringan (Lapisan 3)', 'Switch menggunakan alamat MAC', 'Router menggunakan alamat IP dan tabel routing'] },
-    { t: 'tip', x: 'Router diperlukan untuk menghubungkan jaringan lokal dengan internet, sementara switch digunakan untuk menghubungkan perangkat dalam jaringan lokal.' },
-  ], 3],
+            {t:'p',x:'Routing dan Switching adalah konsep dasar dalam jaringan-komputer. Bayangkan seperti seperti sistem pos yang mengirimi surat dari satu alamat ke alamat lain. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Routing dan Switching akan membantu kamu membangun dasar yang kuat dalam jaringan-komputer. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Routing dan Switching','Manfaat memahami Routing dan Switching untuk pemula','Langkah pertama untuk mulai belajar Routing dan Switching','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Routing dan Switching\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Routing dan Switching. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Routing dan Switching adalah titik awal dalam perjalanan belajarmu di jaringan-komputer. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['routing-switching', 'Tabel Routing', [
-    { t: 'p', x: 'Tabel routing adalah daftar yang digunakan router untuk menentukan jalur terbaik untuk mengirim paket data ke tujuan. Setiap entri berisi tujuan, prosser selanjutnya (next hop), dan antarmuka yang digunakan.' },
-    { t: 'code', lang: 'text', x: 'Tujuan      Next Hop      Antarmuka\\n192.168.1.0 192.168.0.1 eth0\\n0.0.0.0     10.0.0.1    eth1 (default gateway)' },
-    { t: 'tip', x: 'Default gateway adalah router yang menangani paket yang tujuannya tidak dikenal dalam tabel routing.' },
-  ], 3],
+            {t:'p',x:'Tabel Routing adalah konsep dasar dalam jaringan-komputer. Bayangkan seperti seperti sistem pos yang mengirimi surat dari satu alamat ke alamat lain. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Tabel Routing akan membantu kamu membangun dasar yang kuat dalam jaringan-komputer. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Tabel Routing','Manfaat memahami Tabel Routing untuk pemula','Langkah pertama untuk mulai belajar Tabel Routing','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Tabel Routing\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Tabel Routing. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Tabel Routing adalah titik awal dalam perjalanan belajarmu di jaringan-komputer. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['routing-switching', 'Kesalahan Umum: Gateway Tidak Terkonfigurasi', [
-    { t: 'p', x: 'Jika perangkat tidak memiliki gateway default yang benar, perangkat dapat berkomunikasi dalam jaringan lokal tetapi tidak dapat mengakses internet atau jaringan lain.' },
-    { t: 'list', items: ['Perangkat dapat ping dalam jaringan lokal, tidak bisa ke internet', 'Alamat gateway tidak sesuai dengan router jaringan', 'Gateway tidak ditentukan dalam pengaturan jaringan', 'Router tidak memiliki route ke tujuan'] },
-    { t: 'tip', x: 'Pastikan setiap perangkat dalam jaringan memiliki alamat IP, subnet mask, dan gateway default yang benar.' },
-  ], 3],
-  // --- jaringan-nirkabel ---
+            {t:'p',x:'Kesalahan Umum: Gateway Tidak Terkonfigurasi adalah kesalahan yang sering dilakukan pemula saat belajar jaringan-komputer. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Gateway Tidak Terkonfigurasi karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Gateway Tidak Terkonfigurasi sering terjadi pada pemula','Cara mudah menghindari Gateway Tidak Terkonfigurasi','Tanda bahwa kamu mengalami Gateway Tidak Terkonfigurasi','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Gateway Tidak Terkonfigurasi\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Gateway Tidak Terkonfigurasi. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Gateway Tidak Terkonfigurasi sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['jaringan-nirkabel', 'Jaringan Nirkabel (Wi-Fi)', [
-    { t: 'p', x: 'Jaringan nirkabel memungkinkan perangkat terhubung tanpa kabel menggunakan gelombang radio. Wi-Fi adalah standar jaringan nirkabel yang paling umum digunakan di rumah dan kantor.' },
-    { t: 'list', items: ['SSID adalah nama jaringan Wi-Fi yang ditampilkan', 'Frekuensi 2.4 GHz memiliki jangkauan lebih jauh', 'Frekuensi 5 GHz lebih cepat tetapi jangkauan lebih pendek', 'Enkripsi melindungi data yang ditransmisikan secara nirkabel'] },
-    { t: 'tip', x: 'Gunakan frekuensi 5 GHz untuk perangkat yang membutuhkan kecepatan tinggi dan dekat dengan router.' },
-  ], 3],
+            {t:'p',x:'Jaringan Nirkabel (Wi-Fi) adalah konsep dasar dalam jaringan-komputer. Bayangkan seperti seperti sistem pos yang mengirimi surat dari satu alamat ke alamat lain. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Jaringan Nirkabel (Wi-Fi) akan membantu kamu membangun dasar yang kuat dalam jaringan-komputer. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Jaringan Nirkabel (Wi-Fi)','Manfaat memahami Jaringan Nirkabel (Wi-Fi) untuk pemula','Langkah pertama untuk mulai belajar Jaringan Nirkabel (Wi-Fi)','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Jaringan Nirkabel (Wi-Fi)\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Jaringan Nirkabel (Wi-Fi). Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Jaringan Nirkabel (Wi-Fi) adalah titik awal dalam perjalanan belajarmu di jaringan-komputer. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['jaringan-nirkabel', 'Keamanan Dasar Wi-Fi', [
-    { t: 'p', x: 'Amankan jaringan Wi-Fi dengan kata sandi yang kuat dan enkripsi modern, seperti WPA2 atau WPA3. Hindari enkripsi lama seperti WEP yang mudah diretas.' },
-    { t: 'list', items: ['WEP: enkripsi lama, mudah diretas, hindari', 'WPA2: enkripsi yang masih banyak digunakan dan aman', 'WPA3: enkripsi terbaru dengan keamanan lebih baik', 'Kata sandi Wi-Fi harus kuat dan tidak mudah ditebak'] },
-    { t: 'tip', x: 'Perbarui firmware router secara teratur untuk memperbaiki kerentanan keamanan yang diketahui.' },
-  ], 3],
+            {t:'p',x:'Keamanan Dasar Wi-Fi adalah konsep dasar dalam jaringan-komputer. Bayangkan seperti seperti sistem pos yang mengirimi surat dari satu alamat ke alamat lain. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Keamanan Dasar Wi-Fi akan membantu kamu membangun dasar yang kuat dalam jaringan-komputer. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Keamanan Dasar Wi-Fi','Manfaat memahami Keamanan Dasar Wi-Fi untuk pemula','Langkah pertama untuk mulai belajar Keamanan Dasar Wi-Fi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Keamanan Dasar Wi-Fi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Keamanan Dasar Wi-Fi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Keamanan Dasar Wi-Fi adalah titik awal dalam perjalanan belajarmu di jaringan-komputer. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['jaringan-nirkabel', 'Kesalahan Umum: Wi-Fi Tanpa Kata Sandi', [
-    { t: 'p', x: 'Jaringan Wi-Fi tanpa kata sandi memungkinkan siapa saja terhubung dan dapat mengintersepsi data yang ditransmisikan, serta menyalahgunakan bandwidth jaringan.' },
-    { t: 'list', items: ['Wi-Fi terbuka tanpa enkripsi', 'Kata sandi default yang tidak diubah', 'Enkripsi WEP yang lemah', 'Siapa saja dapat terhubung ke jaringan tanpa izin'] },
-    { t: 'tip', x: 'Selalu aktifkan enkripsi WPA2 atau WPA3 dan ganti kata sandi default router segera setelah instalasi.' },
-  ], 3],
-  // --- sistem-operasi ---
+            {t:'p',x:'Kesalahan Umum: Wi-Fi Tanpa Kata Sandi adalah kesalahan yang sering dilakukan pemula saat belajar jaringan-komputer. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Wi-Fi Tanpa Kata Sandi karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Wi-Fi Tanpa Kata Sandi sering terjadi pada pemula','Cara mudah menghindari Wi-Fi Tanpa Kata Sandi','Tanda bahwa kamu mengalami Wi-Fi Tanpa Kata Sandi','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Wi-Fi Tanpa Kata Sandi\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Wi-Fi Tanpa Kata Sandi. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Wi-Fi Tanpa Kata Sandi sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['linux-dasar', 'Linux Dasar (Ubuntu/CentOS)', [
-    { t: 'p', x: 'Linux adalah sistem operasi open source yang banyak digunakan untuk server, superkomputer, dan perangkat embedding. Ubuntu dan CentOS adalah distribusi populer untuk server.' },
-    { t: 'code', lang: 'bash', x: '# Melihat isi folder\\nls -la\\n\\n# Melihat isi file\\ncat nama_file.txt\\n\\n# Membuat folder baru\\nmkdir nama_folder' },
-    { t: 'tip', x: 'Perintah Linux bersifat case-sensitive: file.txt berbeda dengan File.txt.' },
-  ], 4],
+            {t:'p',x:'Linux Dasar (Ubuntu/CentOS) adalah konsep dasar dalam sistem-operasi. Bayangkan seperti seperti pengatur lalu lintas di sebuah kota yang besar. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Linux Dasar (Ubuntu/CentOS) akan membantu kamu membangun dasar yang kuat dalam sistem-operasi. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Linux Dasar (Ubuntu/CentOS)','Manfaat memahami Linux Dasar (Ubuntu/CentOS) untuk pemula','Langkah pertama untuk mulai belajar Linux Dasar (Ubuntu/CentOS)','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Linux Dasar (Ubuntu/CentOS)\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Linux Dasar (Ubuntu/CentOS). Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Linux Dasar (Ubuntu/CentOS) adalah titik awal dalam perjalanan belajarmu di sistem-operasi. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['linux-dasar', 'Manajemen File dan Izin', [
-    { t: 'p', x: 'Setiap file dan folder di Linux memiliki izin akses untuk pemilik, grup, dan orang lain. Izin terdiri dari baca (read), tulis (write), dan eksekusi (execute).' },
-    { t: 'code', lang: 'bash', x: '# Mengubah izin file\\nchmod 644 file.txt\\n\\n# Mengubah pemilik file\\nchown user:grup file.txt' },
-    { t: 'tip', x: 'Jangan memberikan izin eksekusi pada file yang tidak perlu agar mengurangi risiko keamanan.' },
-  ], 3],
+            {t:'p',x:'Manajemen File dan Izin adalah konsep dasar dalam sistem-operasi. Bayangkan seperti seperti pengatur lalu lintas di sebuah kota yang besar. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Manajemen File dan Izin akan membantu kamu membangun dasar yang kuat dalam sistem-operasi. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Manajemen File dan Izin','Manfaat memahami Manajemen File dan Izin untuk pemula','Langkah pertama untuk mulai belajar Manajemen File dan Izin','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Manajemen File dan Izin\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Manajemen File dan Izin. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Manajemen File dan Izin adalah titik awal dalam perjalanan belajarmu di sistem-operasi. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['linux-dasar', 'Kesalahan Umum: Menjalankan Semua Perintah sebagai Root', [
-    { t: 'p', x: 'Root memiliki akses penuh ke sistem dan dapat mengubah atau menghapus semua file. Menjalankan semua perintah sebagai root berisiko merusak sistem tanpa sengaja.' },
-    { t: 'list', items: ['Menggunakan root untuk tugas harian', 'Menghapus file sistem penting tanpa sengaja', 'Mengubah konfigurasi sistem tanpa cadangan', 'Mengizinkan aplikasi berjalan dengan hak root yang berlebihan'] },
-    { t: 'tip', x: 'Gunakan sudo hanya ketika diperlukan, dan gunakan akun pengguna biasa untuk tugas sehari-hari.' },
-  ], 3],
-  // --- windows-dasar ---
+            {t:'p',x:'Kesalahan Umum: Menjalankan Semua Perintah sebagai Root adalah kesalahan yang sering dilakukan pemula saat belajar sistem-operasi. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Menjalankan Semua Perintah sebagai Root karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Menjalankan Semua Perintah sebagai Root sering terjadi pada pemula','Cara mudah menghindari Menjalankan Semua Perintah sebagai Root','Tanda bahwa kamu mengalami Menjalankan Semua Perintah sebagai Root','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Menjalankan Semua Perintah sebagai Root\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Menjalankan Semua Perintah sebagai Root. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Menjalankan Semua Perintah sebagai Root sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['windows-dasar', 'Windows Dasar', [
-    { t: 'p', x: 'Windows adalah sistem operasi desktop yang paling banyak digunakan di seluruh dunia. Windows menyediakan antarmuka grafis yang mudah digunakan dan mendukung banyak perangkat lunak dan hardware.' },
-    { t: 'list', items: ['Antarmuka grafis yang ramah pengguna', 'Mendukung banyak perangkat lunak komersial', 'Terintegrasi dengan layanan Microsoft', 'Digunakan luas di kantor dan rumah'] },
-    { t: 'tip', x: 'Perbarui Windows secara teratur untuk memperoleh fitur baru dan perbaikan keamanan.' },
-  ], 3],
+            {t:'p',x:'Windows Dasar adalah konsep dasar dalam sistem-operasi. Bayangkan seperti seperti pengatur lalu lintas di sebuah kota yang besar. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Windows Dasar akan membantu kamu membangun dasar yang kuat dalam sistem-operasi. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Windows Dasar','Manfaat memahami Windows Dasar untuk pemula','Langkah pertama untuk mulai belajar Windows Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Windows Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Windows Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Windows Dasar adalah titik awal dalam perjalanan belajarmu di sistem-operasi. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['windows-dasar', 'Panel Kontrol dan Pengaturan Sistem', [
-    { t: 'p', x: 'Panel Kontrol dan Pengaturan adalah tempat untuk mengatur sistem, menambahkan atau menghapus program, mengatur jaringan, dan mengelola akun pengguna.' },
-    { t: 'list', items: ['Menginstal dan menghapus program', 'Mengatur jaringan dan internet', 'Mengelola akun pengguna dan izin', 'Mengatur tampilan dan personalisasi'] },
-    { t: 'tip', x: 'Gunakan fitur pencarian di menu Start untuk cepat menemukan pengaturan yang Anda butuhkan.' },
-  ], 3],
+            {t:'p',x:'Panel Kontrol dan Pengaturan Sistem adalah konsep dasar dalam sistem-operasi. Bayangkan seperti seperti pengatur lalu lintas di sebuah kota yang besar. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Panel Kontrol dan Pengaturan Sistem akan membantu kamu membangun dasar yang kuat dalam sistem-operasi. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Panel Kontrol dan Pengaturan Sistem','Manfaat memahami Panel Kontrol dan Pengaturan Sistem untuk pemula','Langkah pertama untuk mulai belajar Panel Kontrol dan Pengaturan Sistem','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Panel Kontrol dan Pengaturan Sistem\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Panel Kontrol dan Pengaturan Sistem. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Panel Kontrol dan Pengaturan Sistem adalah titik awal dalam perjalanan belajarmu di sistem-operasi. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['windows-dasar', 'Kesalahan Umum: Mengabaikan Pembaruan Sistem', [
-    { t: 'p', x: 'Mengabaikan pembaruan Windows membuat sistem rentan terhadap ancaman keamanan dan bug yang telah diperbaiki dalam pembaruan terbaru.' },
-    { t: 'list', items: ['Menunda pembaruan secara berulang', 'Tidak menginstal patch keamanan', 'Menggunakan versi Windows yang sudah tidak didukung', 'Mematikan Windows Update secara permanen'] },
-    { t: 'tip', x: 'Aktifkan pembaruan otomatis agar sistem selalu mendapatkan perbaikan terbaru.' },
-  ], 3],
-  // --- macos-dasar ---
+            {t:'p',x:'Kesalahan Umum: Mengabaikan Pembaruan Sistem adalah kesalahan yang sering dilakukan pemula saat belajar sistem-operasi. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengabaikan Pembaruan Sistem karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengabaikan Pembaruan Sistem sering terjadi pada pemula','Cara mudah menghindari Mengabaikan Pembaruan Sistem','Tanda bahwa kamu mengalami Mengabaikan Pembaruan Sistem','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengabaikan Pembaruan Sistem\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengabaikan Pembaruan Sistem. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengabaikan Pembaruan Sistem sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['macos-dasar', 'macOS Dasar', [
-    { t: 'p', x: 'macOS adalah sistem operasi buatan Apple untuk komputer Mac. macOS dikenal dengan antarmuka yang rapi, integrasi dengan perangkat Apple lainnya, dan stabilitas yang baik.' },
-    { t: 'list', items: ['Antarmuka yang rapi dan intuitif', 'Integrasi dengan iPhone, iPad, dan Apple Watch', 'App Store untuk pengelolaan aplikasi', 'Terminal untuk perintah baris perintah'] },
-    { t: 'tip', x: 'Gunakan Spotlight (Cmd+Spasi) untuk cepat mencari file, aplikasi, dan pengaturan di macOS.' },
-  ], 3],
+            {t:'p',x:'macOS Dasar adalah konsep dasar dalam sistem-operasi. Bayangkan seperti seperti pengatur lalu lintas di sebuah kota yang besar. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai macOS Dasar akan membantu kamu membangun dasar yang kuat dalam sistem-operasi. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari macOS Dasar','Manfaat memahami macOS Dasar untuk pemula','Langkah pertama untuk mulai belajar macOS Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: macOS Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar macOS Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: macOS Dasar adalah titik awal dalam perjalanan belajarmu di sistem-operasi. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['macos-dasar', 'Finder dan Manajemen File', [
-    { t: 'p', x: 'Finder adalah pengelola file default di macOS yang digunakan untuk menjelajahi, menyalin, memindahkan, dan menghapus file serta folder.' },
-    { t: 'list', items: ['Jelajahi file dan folder dengan Finder', 'Gunakan AirDrop untuk berbagi file antar perangkat Apple', 'Tag file untuk pengorganisasian yang lebih baik', 'Gunakan iCloud untuk sinkronisasi file'] },
-    { t: 'tip', x: 'Gunakan tab dalam Finder untuk membuka beberapa lokasi dalam satu jendela.' },
-  ], 3],
+            {t:'p',x:'Finder dan Manajemen File adalah konsep dasar dalam sistem-operasi. Bayangkan seperti seperti pengatur lalu lintas di sebuah kota yang besar. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Finder dan Manajemen File akan membantu kamu membangun dasar yang kuat dalam sistem-operasi. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Finder dan Manajemen File','Manfaat memahami Finder dan Manajemen File untuk pemula','Langkah pertama untuk mulai belajar Finder dan Manajemen File','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Finder dan Manajemen File\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Finder dan Manajemen File. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Finder dan Manajemen File adalah titik awal dalam perjalanan belajarmu di sistem-operasi. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['macos-dasar', 'Kesalahan Umum: Menginstal Aplikasi Dari Sumber Tidak Terpercaya', [
-    { t: 'p', x: 'Menginstal aplikasi dari sumber yang tidak terpercaya dapat menimbulkan risiko malware dan ancaman keamanan pada komputer Mac.' },
-    { t: 'list', items: ['Menginstal aplikasi dari situs tidak resmi', 'Mengabaikan peringatan keamanan macOS', 'Memberikan izin akses penuh ke aplikasi yang tidak dikenal', 'Mengabaikan pembaruan keamanan macOS'] },
-    { t: 'tip', x: 'Instal aplikasi dari App Store atau situs resmi pengembang untuk memastikan keamanan.' },
-  ], 3],
-  // --- baris-perintah ---
+            {t:'p',x:'Kesalahan Umum: Menginstal Aplikasi Dari Sumber Tidak Terpercaya adalah kesalahan yang sering dilakukan pemula saat belajar sistem-operasi. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Menginstal Aplikasi Dari Sumber Tidak Terpercaya karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Menginstal Aplikasi Dari Sumber Tidak Terpercaya sering terjadi pada pemula','Cara mudah menghindari Menginstal Aplikasi Dari Sumber Tidak Terpercaya','Tanda bahwa kamu mengalami Menginstal Aplikasi Dari Sumber Tidak Terpercaya','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Menginstal Aplikasi Dari Sumber Tidak Terpercaya\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Menginstal Aplikasi Dari Sumber Tidak Terpercaya. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Menginstal Aplikasi Dari Sumber Tidak Terpercaya sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['baris-perintah', 'Baris Perintah dan Manajemen File', [
     { t: 'p', x: 'Baris perintah (command line interface) memungkinkan mengoperasikan komputer melalui perintah teks. Baris perintah cepat dan efisien untuk tugas berulang dan otomatisasi.' },
     { t: 'code', lang: 'bash', x: '# Pindah folder\\ncd dokumen\\n\\n# Salin file\\ncp file.txt backup/\\n\\n# Pindah atau ganti nama file\\nmv file.txt nama_baru.txt\\n\\n# Hapus file\\nrm file_lama.txt' },
@@ -2420,143 +3184,343 @@ pool.query("SELECT * FROM pengguna WHERE nama = $1", [input]);` },
     { t: 'tip', x: 'Gunakan tab completion (tekan Tab) untuk melengkapi nama file atau perintah secara otomatis.' },
   ], 3],
   ['baris-perintah', 'Skrip Otomatisasi', [
-    { t: 'p', x: 'Skrip baris perintah adalah kumpulan perintah yang disimpan dalam file dan dapat dijalankan secara berurutan. Skrip berguna untuk mengotomatiskan tugas berulang, seperti pencadangan data harian.' },
-    { t: 'code', lang: 'bash', x: '#!/bin/bash\\n# Skrip pencadangan sederhana\\ntar -czf backup_$(date +%F).tar.gz /home/user/dokumen' },
-    { t: 'tip', x: 'Berikan izin eksekusi pada skrip dengan chmod +x sebelum menjalankannya.' },
-  ], 3],
+            {t:'p',x:'Skrip Otomatisasi adalah konsep dasar dalam sistem-operasi. Bayangkan seperti seperti pengatur lalu lintas di sebuah kota yang besar. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Skrip Otomatisasi akan membantu kamu membangun dasar yang kuat dalam sistem-operasi. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Skrip Otomatisasi','Manfaat memahami Skrip Otomatisasi untuk pemula','Langkah pertama untuk mulai belajar Skrip Otomatisasi','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Skrip Otomatisasi\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Skrip Otomatisasi. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Skrip Otomatisasi adalah titik awal dalam perjalanan belajarmu di sistem-operasi. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['baris-perintah', 'Kesalahan Umum: Menghapus File Tanpa Cadangan', [
-    { t: 'p', x: 'Perintah rm di baris perintah menghapus file secara permanen tanpa tempat sampah. Menghapus file yang salah dapat menyebabkan kehilangan data yang tidak dapat dipulihkan.' },
-    { t: 'list', items: ['Menghapus file dengan rm tanpa konfirmasi', 'Menggunakan rm -rf pada folder yang salah', 'Tidak membuat cadangan sebelum operasi massal', 'Menghapus file sistem penting'] },
-    { t: 'tip', x: 'Gunakan alias rm -i untuk meminta konfirmasi sebelum menghapus setiap file.' },
-  ], 3],
-  // --- cloud-computing ---
+            {t:'p',x:'Kesalahan Umum: Menghapus File Tanpa Cadangan adalah kesalahan yang sering dilakukan pemula saat belajar sistem-operasi. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Menghapus File Tanpa Cadangan karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Menghapus File Tanpa Cadangan sering terjadi pada pemula','Cara mudah menghindari Menghapus File Tanpa Cadangan','Tanda bahwa kamu mengalami Menghapus File Tanpa Cadangan','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Menghapus File Tanpa Cadangan\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Menghapus File Tanpa Cadangan. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Menghapus File Tanpa Cadangan sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['cloud-apa-itu', 'Apa itu Cloud Computing', [
-    { t: 'p', x: 'Cloud computing adalah penyediaan layanan komputasi melalui internet, termasuk server, penyimpanan, database, jaringan, dan perangkat lunak, tanpa harus memiliki infrastruktur fisik sendiri.' },
-    { t: 'list', items: ['IMS (Infrastructure as a Service): sewa server dan penyimpanan', 'PaaS (Platform as a Service): platform untuk mengembangkan aplikasi', 'SaaS (Software as a Service): perangkat lunak yang digunakan melalui browser', 'Bayar sesuai penggunaan, skalabilitas mudah'] },
-    { t: 'tip', x: 'Cloud computing mengurangi kebutuhan membeli dan memelihara perangkat keras sendiri.' },
-  ], 3],
+            {t:'p',x:'Apa itu Cloud Computing adalah konsep dasar dalam cloud-computing. Bayangkan seperti seperti sewa listrik: kamu hanya bayar untuk yang dipakai, tanpa perlu membeli generator sendiri. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Apa itu Cloud Computing akan membantu kamu membangun dasar yang kuat dalam cloud-computing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Apa itu Cloud Computing','Manfaat memahami Apa itu Cloud Computing untuk pemula','Langkah pertama untuk mulai belajar Apa itu Cloud Computing','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Apa itu Cloud Computing\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Apa itu Cloud Computing. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Apa itu Cloud Computing adalah titik awal dalam perjalanan belajarmu di cloud-computing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['cloud-apa-itu', 'Model Layanan Cloud', [
-    { t: 'p', x: 'IaaS memberikan kontrol penuh atas infrastruktur virtual, PaaS menyediakan platform pengembangan tanpa mengelola server bawahnya, dan SaaS menyediakan aplikasi siap pakai melalui internet.' },
-    { t: 'code', lang: 'text', x: 'IaaS: AWS EC2, Google Compute Engine\\nPaaS: AWS Elastic Beanstalk, Google App Engine\\nSaaS: Gmail, Microsoft 365, Salesforce' },
-    { t: 'tip', x: 'Pilih SaaS untuk aplikasi siap pakai, PaaS untuk pengembangan aplikasi, dan IaaS jika butuh kontrol infrastruktur penuh.' },
-  ], 3],
+            {t:'p',x:'Model Layanan Cloud adalah konsep dasar dalam cloud-computing. Bayangkan seperti seperti sewa listrik: kamu hanya bayar untuk yang dipakai, tanpa perlu membeli generator sendiri. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Model Layanan Cloud akan membantu kamu membangun dasar yang kuat dalam cloud-computing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Model Layanan Cloud','Manfaat memahami Model Layanan Cloud untuk pemula','Langkah pertama untuk mulai belajar Model Layanan Cloud','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Model Layanan Cloud\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Model Layanan Cloud. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Model Layanan Cloud adalah titik awal dalam perjalanan belajarmu di cloud-computing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['cloud-apa-itu', 'Kesalahan Umum: Biaya Cloud Tidak Terkontrol', [
-    { t: 'p', x: 'Cloud computing memberikan fleksibilitas, tetapi tanpa pemantauan biaya, pengeluaran dapat melampaui anggaran karena sumber daya yang tidak dimatikan atau overprovisioning.' },
-    { t: 'list', items: ['Membiarkan server berjalan terus menerus tanpa digunakan', 'Menyediakan sumber daya lebih besar dari yang dibutuhkan', 'Tidak memantau penggunaan cloud', 'Tidak mengatur peringatan biaya'] },
-    { t: 'tip', x: 'Atur peringatan biaya (billing alert) dan matikan sumber daya yang tidak digunakan untuk mengontrol pengeluaran cloud.' },
-  ], 3],
-  // --- aws-dasar ---
+            {t:'p',x:'Kesalahan Umum: Biaya Cloud Tidak Terkontrol adalah kesalahan yang sering dilakukan pemula saat belajar cloud-computing. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Biaya Cloud Tidak Terkontrol karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Biaya Cloud Tidak Terkontrol sering terjadi pada pemula','Cara mudah menghindari Biaya Cloud Tidak Terkontrol','Tanda bahwa kamu mengalami Biaya Cloud Tidak Terkontrol','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Biaya Cloud Tidak Terkontrol\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Biaya Cloud Tidak Terkontrol. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Biaya Cloud Tidak Terkontrol sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['aws-dasar', 'AWS Dasar', [
-    { t: 'p', x: 'Amazon Web Services (AWS) adalah platform cloud komprehensif yang menyediakan berbagai layanan, termasuk komputasi, penyimpanan, database, jaringan, dan AI. AWS memiliki pusat data di banyak wilayah di seluruh dunia.' },
-    { t: 'list', items: ['EC2: server virtual di cloud', 'S3: penyimpanan objek yang scalable', 'RDS: basis data terkelola', 'Lambda: komputasi tanpa server'] },
-    { t: 'tip', x: 'Mulai dengan layanan AWS dalam tingkat gratis (free tier) untuk belajar tanpa biaya awal.' },
-  ], 3],
+            {t:'p',x:'AWS Dasar adalah konsep dasar dalam cloud-computing. Bayangkan seperti seperti sewa listrik: kamu hanya bayar untuk yang dipakai, tanpa perlu membeli generator sendiri. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai AWS Dasar akan membantu kamu membangun dasar yang kuat dalam cloud-computing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari AWS Dasar','Manfaat memahami AWS Dasar untuk pemula','Langkah pertama untuk mulai belajar AWS Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: AWS Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar AWS Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: AWS Dasar adalah titik awal dalam perjalanan belajarmu di cloud-computing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['aws-dasar', 'EC2 dan S3', [
-    { t: 'p', x: 'EC2 menyediakan server virtual yang dapat dikonfigurasi sesuai kebutuhan, sementara S3 menyediakan penyimpanan untuk file dan objek yang dapat diakses dari mana saja.' },
-    { t: 'code', lang: 'bash', x: '# Mengunggah file ke S3\\naws s3 cp file.txt s3://nama-bucket/\\n\\n# Melihat isi bucket\\naws s3 ls s3://nama-bucket/' },
-    { t: 'tip', x: 'Gunakan S3 untuk menyimpan file statis seperti gambar, dokumen, dan cadangan data.' },
-  ], 3],
+            {t:'p',x:'EC2 dan S3 adalah konsep dasar dalam cloud-computing. Bayangkan seperti seperti sewa listrik: kamu hanya bayar untuk yang dipakai, tanpa perlu membeli generator sendiri. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai EC2 dan S3 akan membantu kamu membangun dasar yang kuat dalam cloud-computing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari EC2 dan S3','Manfaat memahami EC2 dan S3 untuk pemula','Langkah pertama untuk mulai belajar EC2 dan S3','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: EC2 dan S3\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar EC2 dan S3. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: EC2 dan S3 adalah titik awal dalam perjalanan belajarmu di cloud-computing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['aws-dasar', 'Kesalahan Umum: Bucket S3 Publik Tanpa Sengaja', [
-    { t: 'p', x: 'Mengatur bucket S3 sebagai publik tanpa sengaja dapat membuat file sensitif dapat diakses oleh siapa saja melalui internet. Periksa kebijakan akses bucket sebelum mengunggah file.' },
-    { t: 'list', items: ['Bucket S3 diatur sebagai publik tanpa sengaja', 'File sensitif diunggah tanpa batasan akses', 'Kebijakan bucket terlalu permisif', 'Tidak memeriksa akses publik setelah konfigurasi'] },
-    { t: 'tip', x: 'Gunakan AWS Access Analyzer untuk memeriksa sumber daya yang dapat diakses secara publik.' },
-  ], 3],
-  // --- gcp-dasar ---
+            {t:'p',x:'Kesalahan Umum: Bucket S3 Publik Tanpa Sengaja adalah kesalahan yang sering dilakukan pemula saat belajar cloud-computing. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Bucket S3 Publik Tanpa Sengaja karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Bucket S3 Publik Tanpa Sengaja sering terjadi pada pemula','Cara mudah menghindari Bucket S3 Publik Tanpa Sengaja','Tanda bahwa kamu mengalami Bucket S3 Publik Tanpa Sengaja','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Bucket S3 Publik Tanpa Sengaja\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Bucket S3 Publik Tanpa Sengaja. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Bucket S3 Publik Tanpa Sengaja sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['gcp-dasar', 'GCP Dasar', [
-    { t: 'p', x: 'Google Cloud Platform (GCP) adalah layanan cloud buatan Google yang menyediakan komputasi, penyimpanan, data, AI, dan machine learning. GCP menggunakan infrastruktur yang sama dengan layanan Google seperti Search dan YouTube.' },
-    { t: 'list', items: ['Compute Engine: mesin virtual', 'Cloud Storage: penyimpanan objek', 'BigQuery: analisis data besar', 'Vertex AI: platform machine learning'] },
-    { t: 'tip', x: 'GCP menawarkan kredit gratis untuk pengguna baru untuk mencoba layanan cloud.' },
-  ], 3],
+            {t:'p',x:'GCP Dasar adalah konsep dasar dalam cloud-computing. Bayangkan seperti seperti sewa listrik: kamu hanya bayar untuk yang dipakai, tanpa perlu membeli generator sendiri. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai GCP Dasar akan membantu kamu membangun dasar yang kuat dalam cloud-computing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari GCP Dasar','Manfaat memahami GCP Dasar untuk pemula','Langkah pertama untuk mulai belajar GCP Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: GCP Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar GCP Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: GCP Dasar adalah titik awal dalam perjalanan belajarmu di cloud-computing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['gcp-dasar', 'Compute Engine dan Cloud Storage', [
-    { t: 'p', x: 'Compute Engine menyediakan mesin virtual yang dapat disesuaikan, sementara Cloud Storage menyediakan penyimpanan objek yang scalable dan tersedia tinggi.' },
-    { t: 'code', lang: 'bash', x: '# Membuat instance Compute Engine\\ngcloud compute instances create nama-instance --zone=us-central1-a\\n\\n# Mengunggah file ke Cloud Storage\\ngsutil cp file.txt gs://nama-bucket/' },
-    { t: 'tip', x: 'Pilih zona yang terdekat dengan pengguna untuk mengurangi latensi.' },
-  ], 3],
+            {t:'p',x:'Compute Engine dan Cloud Storage adalah konsep dasar dalam cloud-computing. Bayangkan seperti seperti sewa listrik: kamu hanya bayar untuk yang dipakai, tanpa perlu membeli generator sendiri. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Compute Engine dan Cloud Storage akan membantu kamu membangun dasar yang kuat dalam cloud-computing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Compute Engine dan Cloud Storage','Manfaat memahami Compute Engine dan Cloud Storage untuk pemula','Langkah pertama untuk mulai belajar Compute Engine dan Cloud Storage','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Compute Engine dan Cloud Storage\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Compute Engine dan Cloud Storage. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Compute Engine dan Cloud Storage adalah titik awal dalam perjalanan belajarmu di cloud-computing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['gcp-dasar', 'Kesalahan Umum: IAM Izin Terlalu Luas', [
-    { t: 'p', x: 'Memberikan izin Owner ke semua pengguna dalam proyek GCP berisiko keamanan karena siapa saja dapat mengubah atau menghapus sumber daya. Gunakan prinsip izin terkecil (least privilege).' },
-    { t: 'list', items: ['Memberikan izin Owner ke semua anggota tim', 'Tidak membatasi akses akun layanan', 'Menggunakan kunci API tanpa batasan', 'Tidak meninjau izin IAM secara berkala'] },
-    { t: 'tip', x: 'Berikan izin sesuai tugas yang diperlukan, bukan izin penuh untuk semua orang.' },
-  ], 3],
-  // --- azure-dasar ---
+            {t:'p',x:'Kesalahan Umum: IAM Izin Terlalu Luas adalah kesalahan yang sering dilakukan pemula saat belajar cloud-computing. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di IAM Izin Terlalu Luas karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa IAM Izin Terlalu Luas sering terjadi pada pemula','Cara mudah menghindari IAM Izin Terlalu Luas','Tanda bahwa kamu mengalami IAM Izin Terlalu Luas','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: IAM Izin Terlalu Luas\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami IAM Izin Terlalu Luas. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari IAM Izin Terlalu Luas sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['azure-dasar', 'Azure Dasar', [
-    { t: 'p', x: 'Microsoft Azure adalah platform cloud yang menyediakan layanan komputasi, penyimpanan, jaringan, database, dan AI. Azure terintegrasi dengan baik dengan produk Microsoft seperti Windows Server dan Office 365.' },
-    { t: 'list', items: ['Azure Virtual Machines: server virtual', 'Azure Blob Storage: penyimpanan objek', 'Azure SQL Database: basis data terkelola', 'Azure Functions: komputasi tanpa server'] },
-    { t: 'tip', x: 'Azure cocok untuk organisasi yang sudah menggunakan produk Microsoft di lingkungan mereka.' },
-  ], 3],
+            {t:'p',x:'Azure Dasar adalah konsep dasar dalam cloud-computing. Bayangkan seperti seperti sewa listrik: kamu hanya bayar untuk yang dipakai, tanpa perlu membeli generator sendiri. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Azure Dasar akan membantu kamu membangun dasar yang kuat dalam cloud-computing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Azure Dasar','Manfaat memahami Azure Dasar untuk pemula','Langkah pertama untuk mulai belajar Azure Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Azure Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Azure Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Azure Dasar adalah titik awal dalam perjalanan belajarmu di cloud-computing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['azure-dasar', 'Virtual Machines dan Blob Storage', [
-    { t: 'p', x: 'Azure Virtual Machines memungkinkan menjalankan server virtual dengan Windows atau Linux, sementara Azure Blob Storage menyimpan data tidak terstruktur dalam jumlah besar.' },
-    { t: 'code', lang: 'bash', x: '# Membuat grup sumber daya\\naz group create --nama-sumber-daya grupSaya --lokasi asia Tenggara\\n\\n# Membuat virtual machine\\naz vm create --nama-sumber-daya grupSaya --nama vmSaya --image UbuntuLTS' },
-    { t: 'tip', x: 'Gunakan Azure Blob Storage untuk menyimpan cadangan, file media, dan data arsip.' },
-  ], 3],
+            {t:'p',x:'Virtual Machines dan Blob Storage adalah konsep dasar dalam cloud-computing. Bayangkan seperti seperti sewa listrik: kamu hanya bayar untuk yang dipakai, tanpa perlu membeli generator sendiri. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Virtual Machines dan Blob Storage akan membantu kamu membangun dasar yang kuat dalam cloud-computing. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Virtual Machines dan Blob Storage','Manfaat memahami Virtual Machines dan Blob Storage untuk pemula','Langkah pertama untuk mulai belajar Virtual Machines dan Blob Storage','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Virtual Machines dan Blob Storage\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Virtual Machines dan Blob Storage. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Virtual Machines dan Blob Storage adalah titik awal dalam perjalanan belajarmu di cloud-computing. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['azure-dasar', 'Kesalahan Umum: Mengabaikan Cadangan Cloud', [
-    { t: 'p', x: 'Data yang disimpan di cloud masih dapat hilang karena kesalahan konfigurasi, penyalahgunaan, atau gangguan penyedia cloud. Lakukan cadangan secara teratur ke lokasi terpisah.' },
-    { t: 'list', items: ['Tidak melakukan cadangan data cloud', 'Cadangan disimpan di wilayah yang sama saja', 'Tidak menguji pemulihan cadangan', 'Cadangan tidak dijadwalkan secara teratur'] },
-    { t: 'tip', x: 'Gunakan fitur cadangan bawaan penyedia cloud dan simpan cadangan di wilayah geografis yang berbeda.' },
-  ], 3],
-  // --- cyber-security ---
+            {t:'p',x:'Kesalahan Umum: Mengabaikan Cadangan Cloud adalah kesalahan yang sering dilakukan pemula saat belajar cloud-computing. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengabaikan Cadangan Cloud karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengabaikan Cadangan Cloud sering terjadi pada pemula','Cara mudah menghindari Mengabaikan Cadangan Cloud','Tanda bahwa kamu mengalami Mengabaikan Cadangan Cloud','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengabaikan Cadangan Cloud\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengabaikan Cadangan Cloud. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengabaikan Cadangan Cloud sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['kriptografi', 'Kriptografi Dasar', [
-    { t: 'p', x: 'Kriptografi adalah ilmu mengamankan informasi dengan mengubah data yang dapat dibaca menjadi kode yang tidak dapat dipahami oleh orang yang tidak berwenang. Enkripsi melindungi data saat disimpan dan saat dikirim.' },
-    { t: 'list', items: ['Enkripsi simetris: satu kunci untuk enkripsi dan dekripsi', 'Enkripsi asimetris: kunci publik dan kunci pribadi', 'Fungsi hash: mengubah data menjadi nilai tetap yang tidak dapat diubah kembali', 'Sertifikat SSL/TLS: mengamankan koneksi situs web'] },
-    { t: 'tip', x: 'Gunakan enkripsi yang sudah teruji dan standar industri, jangan buat algoritma enkripsi sendiri.' },
-  ], 3],
+            {t:'p',x:'Kriptografi Dasar adalah konsep dasar dalam cyber-security. Bayangkan seperti seperti mengunci rumah dan memasang pagar agar pencuri tidak bisa masuk. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Kriptografi Dasar akan membantu kamu membangun dasar yang kuat dalam cyber-security. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Kriptografi Dasar','Manfaat memahami Kriptografi Dasar untuk pemula','Langkah pertama untuk mulai belajar Kriptografi Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Kriptografi Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Kriptografi Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Kriptografi Dasar adalah titik awal dalam perjalanan belajarmu di cyber-security. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['kriptografi', 'Enkripsi dan Hashing', [
-    { t: 'p', x: 'Enkripsi dapat diubah kembali ke data asli dengan kunci yang benar, sedangkan hashing adalah proses satu arah yang tidak dapat diubah kembali. Hashing sering digunakan untuk menyimpan kata sandi secara aman.' },
-    { t: 'code', lang: 'text', x: 'Enkripsi: data asli -> kunci -> data terenkripsi -> kunci -> data asli\\nHashing: data asli -> fungsi hash -> nilai hash (tidak dapat dikembalikan)' },
-    { t: 'tip', x: 'Gunakan bcrypt atau Argon2 untuk menyimpan kata sandi, bukan MD5 atau SHA1 yang sudah lama dan tidak aman.' },
-  ], 3],
+            {t:'p',x:'Enkripsi dan Hashing adalah konsep dasar dalam cyber-security. Bayangkan seperti seperti mengunci rumah dan memasang pagar agar pencuri tidak bisa masuk. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Enkripsi dan Hashing akan membantu kamu membangun dasar yang kuat dalam cyber-security. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Enkripsi dan Hashing','Manfaat memahami Enkripsi dan Hashing untuk pemula','Langkah pertama untuk mulai belajar Enkripsi dan Hashing','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Enkripsi dan Hashing\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Enkripsi dan Hashing. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Enkripsi dan Hashing adalah titik awal dalam perjalanan belajarmu di cyber-security. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['kriptografi', 'Kesalahan Umum: Menyimpan Kata Sandi Dalam Bentuk Teks Biasa', [
-    { t: 'p', x: 'Menyimpan kata sandi dalam bentuk teks biasa (plain text) sangat berbahaya karena jika database bocor, semua kata sandi pengguna akan terungkap dengan segera.' },
-    { t: 'list', items: ['Menyimpan kata sandi tanpa enkripsi', 'Menggunakan enkripsi yang dapat diubah kembali untuk kata sandi', 'Tidak menambahkan salt saat hashing kata sandi', 'Menggunakan algoritma hashing yang sudah lama dan rentan'] },
-    { t: 'tip', x: 'Selalu hash kata sandi dengan algoritma modern dan tambahkan salt unik untuk setiap pengguna.' },
-  ], 3],
-  // --- ethical-hacking ---
+            {t:'p',x:'Kesalahan Umum: Menyimpan Kata Sandi Dalam Bentuk Teks Biasa adalah kesalahan yang sering dilakukan pemula saat belajar cyber-security. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Menyimpan Kata Sandi Dalam Bentuk Teks Biasa karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Menyimpan Kata Sandi Dalam Bentuk Teks Biasa sering terjadi pada pemula','Cara mudah menghindari Menyimpan Kata Sandi Dalam Bentuk Teks Biasa','Tanda bahwa kamu mengalami Menyimpan Kata Sandi Dalam Bentuk Teks Biasa','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Menyimpan Kata Sandi Dalam Bentuk Teks Biasa\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Menyimpan Kata Sandi Dalam Bentuk Teks Biasa. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Menyimpan Kata Sandi Dalam Bentuk Teks Biasa sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['ethical-hacking', 'Ethical Hacking Dasar', [
-    { t: 'p', x: 'Ethical hacking adalah praktik menguji keamanan sistem dengan izin untuk menemukan dan memperbaiki kerentanan sebelum diserang oleh penjahat siber. Ethical hacker bekerja untuk meningkatkan keamanan, bukan merusak.' },
-    { t: 'list', items: ['Uji keamanan dengan izin tertulis dari pemilik sistem', 'Temukan kerentanan dan laporkan ke tim pengembang', 'Perbaiki kerentanan yang ditemukan', 'Ikuti etika dan hukum dalam setiap pengujian'] },
-    { t: 'tip', x: 'Jangan pernah melakukan pengujian keamanan pada sistem yang Anda tidak punya izin untuk mengujinya.' },
-  ], 3],
+            {t:'p',x:'Ethical Hacking Dasar adalah konsep dasar dalam cyber-security. Bayangkan seperti seperti mengunci rumah dan memasang pagar agar pencuri tidak bisa masuk. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Ethical Hacking Dasar akan membantu kamu membangun dasar yang kuat dalam cyber-security. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Ethical Hacking Dasar','Manfaat memahami Ethical Hacking Dasar untuk pemula','Langkah pertama untuk mulai belajar Ethical Hacking Dasar','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Ethical Hacking Dasar\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Ethical Hacking Dasar. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Ethical Hacking Dasar adalah titik awal dalam perjalanan belajarmu di cyber-security. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ethical-hacking', 'Pengujian Kecepatan dan Kerentanan', [
-    { t: 'p', x: 'Pengujian kecepatan (penetration testing) mensimulasikan serangan nyata untuk menguji seberapa kuat pertahanan sistem. Hasil pengujian digunakan untuk memperbaiki kelemahan yang ditemukan.' },
-    { t: 'list', items: ['Reconnaissance: mengumpulkan informasi tentang target', 'Scanning: mencari port dan layanan yang terbuka', 'Exploiting: mencoba mengeksploitasi kerentanan', 'Reporting: melaporkan temuan dan rekomendasi perbaikan'] },
-    { t: 'tip', x: 'Lakukan pengujian kecepatan secara berkala, bukan hanya sekali saat sistem pertama kali dibangun.' },
-  ], 3],
+            {t:'p',x:'Pengujian Kecepatan dan Kerentanan adalah konsep dasar dalam cyber-security. Bayangkan seperti seperti mengunci rumah dan memasang pagar agar pencuri tidak bisa masuk. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Pengujian Kecepatan dan Kerentanan akan membantu kamu membangun dasar yang kuat dalam cyber-security. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Pengujian Kecepatan dan Kerentanan','Manfaat memahami Pengujian Kecepatan dan Kerentanan untuk pemula','Langkah pertama untuk mulai belajar Pengujian Kecepatan dan Kerentanan','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Pengujian Kecepatan dan Kerentanan\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Pengujian Kecepatan dan Kerentanan. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Pengujian Kecepatan dan Kerentanan adalah titik awal dalam perjalanan belajarmu di cyber-security. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['ethical-hacking', 'Kesalahan Umum: Mengabaikan Izin Tertulis', [
-    { t: 'p', x: 'Menguji keamanan sistem tanpa izin tertulis dari pemilik sistem adalah ilegal dan dapat dikenakan sanksi hukum, bahkan jika niatnya baik untuk meningkatkan keamanan.' },
-    { t: 'list', items: ['Menguji sistem tanpa izin pemilik', 'Mengakses data tanpa kewenangan', 'Membagikan temuan kerentanan kepada pihak ketiga', 'Menggunakan alat pengujian keamanan untuk tujuan jahat'] },
-    { t: 'tip', x: 'Selalu dapatkan izin tertulis dan kerjasama kelegalan sebelum melakukan pengujian keamanan pada sistem mana pun.' },
-  ], 3],
-  // --- pertahanan-jaringan ---
+            {t:'p',x:'Kesalahan Umum: Mengabaikan Izin Tertulis adalah kesalahan yang sering dilakukan pemula saat belajar cyber-security. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengabaikan Izin Tertulis karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengabaikan Izin Tertulis sering terjadi pada pemula','Cara mudah menghindari Mengabaikan Izin Tertulis','Tanda bahwa kamu mengalami Mengabaikan Izin Tertulis','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengabaikan Izin Tertulis\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengabaikan Izin Tertulis. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengabaikan Izin Tertulis sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['pertahanan-jaringan', 'Pertahanan Jaringan', [
-    { t: 'p', x: 'Pertahanan jaringan melindungi jaringan dari akses tidak sah dan serangan siber. Firewall, sistem deteksi intrusi, dan VPN adalah alat utama dalam pertahanan jaringan.' },
-    { t: 'list', items: ['Firewall memfilter lalu lintas jaringan berdasarkan aturan', 'Sistem deteksi intrusi mencari aktivitas mencurigakan', 'VPN menyandikan koneksi melalui jaringan publik', 'Segmentasi jaringan membatasi dampak serangan'] },
-    { t: 'tip', x: 'Konfigurasikan firewall untuk hanya mengizinkan lalu lintas yang diperlukan dan blokir yang lainnya.' },
-  ], 3],
+            {t:'p',x:'Pertahanan Jaringan adalah konsep dasar dalam cyber-security. Bayangkan seperti seperti mengunci rumah dan memasang pagar agar pencuri tidak bisa masuk. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Pertahanan Jaringan akan membantu kamu membangun dasar yang kuat dalam cyber-security. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Pertahanan Jaringan','Manfaat memahami Pertahanan Jaringan untuk pemula','Langkah pertama untuk mulai belajar Pertahanan Jaringan','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Pertahanan Jaringan\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Pertahanan Jaringan. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Pertahanan Jaringan adalah titik awal dalam perjalanan belajarmu di cyber-security. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['pertahanan-jaringan', 'Firewall dan DDoS', [
-    { t: 'p', x: 'Firewall melindungi jaringan dari akses tidak sah, sedangkan perlindungan DDoS (Distributed Denial of Service) mencegah jaringan dipenuhi lalu lintas palsu yang membuat layanan tidak tersedia.' },
-    { t: 'code', lang: 'text', x: 'Aturan firewall: Izinkan port 80 dan 443 (web)\\nAturan firewall: Blokir semua port lain secara default\\nPerlindungan DDoS: Deteksi lalu lintas tidak normal dan blokir sumbernya' },
-    { t: 'tip', x: 'Gunakan layanan perlindungan DDoS dari penyedia cloud untuk mengatasi serangan skala besar.' },
-  ], 3],
+            {t:'p',x:'Firewall dan DDoS adalah konsep dasar dalam cyber-security. Bayangkan seperti seperti mengunci rumah dan memasang pagar agar pencuri tidak bisa masuk. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Firewall dan DDoS akan membantu kamu membangun dasar yang kuat dalam cyber-security. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Firewall dan DDoS','Manfaat memahami Firewall dan DDoS untuk pemula','Langkah pertama untuk mulai belajar Firewall dan DDoS','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Firewall dan DDoS\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Firewall dan DDoS. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Firewall dan DDoS adalah titik awal dalam perjalanan belajarmu di cyber-security. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['pertahanan-jaringan', 'Kesalahan Umum: Firewall Tidak Dikonfigurasi', [
-    { t: 'p', x: 'Firewall yang tidak dikonfigurasi atau diatur untuk mengizinkan semua lalu lintas tidak memberikan perlindungan yang berarti terhadap ancaman siber.' },
-    { t: 'list', items: ['Firewall diatur untuk mengizinkan semua lalu lintas', 'Tidak ada aturan firewall yang ditetapkan', 'Port yang tidak perlu dibuka untuk publik', 'Aturan firewall tidak ditinjau secara berkala'] },
-    { t: 'tip', x: 'Terapkan prinsip default-deny: blokir semua lalu lintas, lalu izinkan hanya yang diperlukan.' },
-  ], 3],
-  // --- pencegahan-malware ---
+            {t:'p',x:'Kesalahan Umum: Firewall Tidak Dikonfigurasi adalah kesalahan yang sering dilakukan pemula saat belajar cyber-security. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Firewall Tidak Dikonfigurasi karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Firewall Tidak Dikonfigurasi sering terjadi pada pemula','Cara mudah menghindari Firewall Tidak Dikonfigurasi','Tanda bahwa kamu mengalami Firewall Tidak Dikonfigurasi','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Firewall Tidak Dikonfigurasi\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Firewall Tidak Dikonfigurasi. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Firewall Tidak Dikonfigurasi sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
   ['pencegahan-malware', 'Pencegahan Malware', [
-    { t: 'p', x: 'Malware adalah perangkat lunak berbahaya yang dirancang untuk merusak, mencuri data, atau mengakses sistem tanpa izin. Jenis malware termasuk virus, worm, trojan, ransomware, dan spyware.' },
-    { t: 'list', items: ['Virus: menyebar dengan melampirkan diri pada file', 'Worm: menyebar secara otomatis melalui jaringan', 'Trojan: menyamar sebagai perangkat lunak yang sah', 'Ransomware: mengunci data dan menebus tebusan'] },
-    { t: 'tip', x: 'Instal perangkat lunak antivirus yang terpercaya dan perbarui definisi virus secara teratur.' },
-  ], 3],
+            {t:'p',x:'Pencegahan Malware adalah konsep dasar dalam cyber-security. Bayangkan seperti seperti mengunci rumah dan memasang pagar agar pencuri tidak bisa masuk. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Pencegahan Malware akan membantu kamu membangun dasar yang kuat dalam cyber-security. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Pencegahan Malware','Manfaat memahami Pencegahan Malware untuk pemula','Langkah pertama untuk mulai belajar Pencegahan Malware','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Pencegahan Malware\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Pencegahan Malware. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Pencegahan Malware adalah titik awal dalam perjalanan belajarmu di cyber-security. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['pencegahan-malware', 'Cara Melindungi dari Malware', [
-    { t: 'p', x: 'Jangan mengklik link atau lampiran email yang mencurigakan, perbarui perangkat lunak secara teratur, dan unduh aplikasi hanya dari sumber resmi untuk mencegah infeksi malware.' },
-    { t: 'list', items: ['Perbarui sistem operasi dan aplikasi secara teratur', 'Jangan membuka lampiran email dari pengirim yang tidak dikenal', 'Unduh aplikasi dari sumber resmi saja', 'Aktifkan firewall dan antivirus'] },
-    { t: 'tip', x: 'Gunakan autentikasi dua faktor (2FA) untuk melindungi akun Anda dari akses tidak sah.' },
-  ], 3],
+            {t:'p',x:'Cara Melindungi dari Malware adalah konsep dasar dalam cyber-security. Bayangkan seperti seperti mengunci rumah dan memasang pagar agar pencuri tidak bisa masuk. Untuk pemula, yang penting memahami ide besarnya dulu sebelum memasuki detail teknis.'},
+            {t:'p',x:'Menguasai Cara Melindungi dari Malware akan membantu kamu membangun dasar yang kuat dalam cyber-security. Kamu tidak perlu menguasai semuanya sekaligus — pelajari satu hal pada satu waktu dan langsung praktek.'},
+            {t:'list',items:['Tujuan utama dari Cara Melindungi dari Malware','Manfaat memahami Cara Melindungi dari Malware untuk pemula','Langkah pertama untuk mulai belajar Cara Melindungi dari Malware','Sumber belajar yang cocok untuk pemula']},
+            {t:'code',lang:'text',x:'# Memulai belajar: Cara Melindungi dari Malware\\n# Baca penjelasan secara perlahan\\n# Coba contoh sederhana secara langsung\\n# Lakukan latihan kecil setiap hari\\n# Tanya jika ada yang tidak jelas'},
+            {t:'tip',x:'Mulai dari hal yang paling dasar. Jangan lonjati materi sebelum menguasai dasar-dasar Cara Melindungi dari Malware. Kesalahan umum pemula adalah ingin langsung membuat proyek besar tanpa memahami fondasi.'},
+            {t:'p',x:'Kesimpulan: Cara Melindungi dari Malware adalah titik awal dalam perjalanan belajarmu di cyber-security. Teruslah belajar dan praktikkan secara konsisten.'}
+            ], 20],
   ['pencegahan-malware', 'Kesalahan Umum: Mengklik Link Mencurigakan', [
-    { t: 'p', x: 'Phishing adalah serangan yang menipu pengguna untuk mengklik link atau memberikan informasi sensitif melalui pesan yang tampak sah. Selalu verifikasi pengirim sebelum mengklik link.' },
-    { t: 'list', items: ['Mengklik link dalam email dari sumber yang tidak dikenal', 'Masukkan kata sandi pada situs yang tidak terpercaya', 'Mengabaikan peringatan browser tentang situs tidak aman', 'Memberikan informasi pribadi melalui telepon atau pesan'] },
-    { t: 'tip', x: 'Periksa alamat email pengirim dan tautan sebelum mengklik. Jika tidak yakin, kunjungi situs resmi secara langsung melalui browser.' },
-  ], 3],
+            {t:'p',x:'Kesalahan Umum: Mengklik Link Mencurigakan adalah kesalahan yang sering dilakukan pemula saat belajar cyber-security. Mengetahui kesalahan ini sejak awal akan mempercepat belajar dan mencegah frustrasi.'},
+            {t:'p',x:'Banyak pemula tersandung di Mengklik Link Mencurigakan karena belum memahami dasarnya. Ketika kamu tahu apa yang harus dihindari, kamu akan lebih tenang dalam mencoba dan bereksperimen.'},
+            {t:'list',items:['Mengapa Mengklik Link Mencurigakan sering terjadi pada pemula','Cara mudah menghindari Mengklik Link Mencurigakan','Tanda bahwa kamu mengalami Mengklik Link Mencurigakan','Langkah perbaikan jika sudah terjadi']},
+            {t:'code',lang:'text',x:'# Contoh kesalahan: Mengklik Link Mencurigakan\\n# Salah: mencoba semua sekaligus tanpa memahami dasar\\n# Benar: belajar bertahap dan uji satu per satu\\n# Jika error, baca pesan error dengan cermat sebelum mencoba perbaikan'},
+            {t:'tip',x:'Jangan merasa malasalah jika mengalami Mengklik Link Mencurigakan. Setiap programmer pemula mengalami hal yang sama. Yang penting adalah kamu belajar dari kesalahan dan tidak mengulanginya.'},
+            {t:'p',x:'Ringkasan: Menghindari Mengklik Link Mencurigakan sejak awal akan menghemat waktu dan tenaga kamu. Teruslah belajar dari setiap kesalahan.'}
+            ], 15],
+// ============ TRACK 1: FONDASI ============
+  // --- logika-algoritma ---
+
+// --- alur-dan-pseudocode ---
+ // --- percabangan-dan-perulangan ---
+ // --- fungsi-dan-rekursi ---
+ // --- kompleksitas-waktu ---
+ // --- struktur-data ---
+
+// --- stack-dan-queue ---
+
+// --- linked-list ---
+
+// --- hash-map ---
+
+// --- pemilihan-struktur ---
+ // --- oop-dasar ---
+
+// --- enkapsulasi ---
+
+// --- pewarisan ---
+
+// --- polimorfisme ---
+
+// --- abstraksi-dan-interface ---
+ // --- vcs-dasar ---
+
+ // --- repository-dan-commit ---
+ // --- branch-dan-merge ---
+ // --- resolve-konflik ---
+  // --- git-github ---
+   // --- web-dasar ---
+
+// --- typescript-dasar ---
+  // --- tiype-data ---
+  // --- interface-dan-type ---
+  // --- fungsi-dan-generic ---
+  // --- reactjs-dasar ---
+  // --- komponen-dan-props ---
+
+// --- state-dan-event ---
+  // --- hook-dasar ---
+  // --- proyek-mini ---
+  // --- nextjs-dasar ---
+  // --- routing-dan-ssr ---
+  // --- api-route ---
+  // --- deploy ---
+
+// --- nodejs-dasar ---
+  // --- modul-dan-npm ---
+  // --- rest-api ---
+  // --- database-koneksi ---
+  // --- php-dasar ---
+ // --- form-dan-database ---
+ // --- session-dan-keamanan ---
+
+  // --- variabel-dan-fungsi ---
+
+// --- laravel-dasar ---
+  // --- eloquent-dan-blade ---
+  // --- routing-dan-migrasi ---
+  // --- proyek-mini (laravel) ---
+  // --- codeigniter-dasar ---
+  // --- mvc-dasar ---
+  // --- query-builder ---
+  // --- proyek-mini (ci) ---
+
+// --- android-dasar ---
+  // --- kotlin-dasar ---
+  // --- layout-dan-activity ---
+  // --- publish-play-store ---
+  // --- ios-dasar ---
+  // --- swiftui-dasar ---
+  // --- navigasi-dan-layar ---
+  // --- app-store ---
+  // --- flutter-dasar ---
+  // --- dart-dasar ---
+  // --- widget-dasar ---
+  // --- proyek-mini (flutter) ---
+  // --- react-native-dasar ---
+  // --- javascript-dasar-react-native ---
+  // --- navigasi (react native) ---
+  // --- proyek-mini (react native) ---
+
+// --- pengembangan-perangkat-lunak ---
+  // --- desain-perangkat-lunak ---
+  // --- implementasi-dan-uji ---
+  // --- peluncuran-dan-pemeliharaan ---
+  // --- rekayasa-perangkat-lunak ---
+  // --- manajemen-proyek ---
+  // --- agile-scrum ---
+  // --- dokumentasi ---
+  // --- qa-testing ---
+  // --- unit-test ---
+  // --- integrasi-dan-sistem ---
+  // --- uat-dan-laporan ---
+
+// --- basis-data-sql ---
+  // --- query-sql ---
+  // --- join-dan-indeks ---
+  // --- mysql-postgresql ---
+  // --- nosql-mongodb ---
+  // --- mongodb-dasar ---
+  // --- query-dokumen ---
+  // --- agregasi ---
+  // --- data-science ---
+  // --- statistika-deskriptif ---
+  // --- visualisasi-data ---
+  // --- insight-bisnis ---
+  // --- ai-machine-learning ---
+  // --- ml-dasar ---
+  // --- model-prediksi ---
+  // --- implementasi ---
+
+// --- jaringan-komputer ---
+  // --- tcpip-dan-osi ---
+  // --- routing-switching ---
+  // --- jaringan-nirkabel ---
+  // --- sistem-operasi ---
+  // --- windows-dasar ---
+  // --- macos-dasar ---
+  // --- baris-perintah ---
+  // --- cloud-computing ---
+  // --- aws-dasar ---
+  // --- gcp-dasar ---
+  // --- azure-dasar ---
+  // --- cyber-security ---
+  // --- ethical-hacking ---
+  // --- pertahanan-jaringan ---
+  // --- pencegahan-malware ---
 
 
 
@@ -3836,3 +4800,4 @@ export async function bootstrap(store) {
   await ensureAdSlots(store);
   await ensureAdmin(store);
 }
+
